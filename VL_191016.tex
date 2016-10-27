@@ -1,0 +1,165 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\chapter{Maßtheorie}
+	
+	\begin{defin}[Algebra]
+		Eine Algebra $\mc{A}$ ist eine Familie von Teilmengen einer gegebenen Menge $X$ mit folgenden Eigenschaften:
+		\begin{itemize}
+			\item $X \in \mc{A}$
+			\item $A \in \mc{A} \Rightarrow \cp{A}\coloneqq X\setminus A \in \mc{A}$
+			\item $A_1,...,A_N \in \mc{A}, N \in \mathbb{N} \Rightarrow \bigcup_{k=1}^N A_k \in \mc{A}$
+		\end{itemize}
+	Wir sprechen von einer $\sigma$-Algebra, wenn $N=\infty$ zulässig ist.
+	\end{defin}
+
+	\begin{lem}
+		Sei $X$ eine Menge. $\mc{A}$ eine $\sigma$-Algebra, $\pr{A_k}_{k\in\mathbb{N}} \subset \mc{A}$. Dann gehören auch $\bigcap_{k=1}^\infty A_k$ und beispielsweise $A_1 \setminus A_2$ zu $\mc{A}$. 
+	\end{lem}
+	\begin{proof}
+		Wir haben
+			\begin{equation*}
+				\bigcap_{k\in\mathbb{N}} A_k = \underbrace{\pr{\bigcup_{k\in\mathbb{N}} \underbrace{\cp{A_k}}_{\in\ \mc{A} } }}_{\in\ \mc{A}}  \raisebox{1.7em}{\kern -0.1em C}  \in \mc{A}
+			\end{equation*}
+		Weiter ist $A_1\setminus A_2 = A_1 \cap \underbrace{\cp{A_2}}_{\in\ \mc{A}} \in \mc{A}$
+	\end{proof}
+	
+	\begin{bsp*}
+		Für $X=\left\{ 1,2,3\right\}$ ist $\mc{A}=\left\{\emptyset, X, \left\{1\right\}, \left\{ 2,3\right\} \right\}$
+	\end{bsp*}
+	
+	\begin{defin}
+		Allgemein ist $\mf{P}\pr{X}$ (=Potenzmenge, Menge aller Teilmengen von X) die größte und $\left\{\emptyset, X \right\}$ die kleinste $\sigma$-Algebra. Sei $S \subset \mf{P}\pr{X}$, dann stellt
+		\begin{equation*}
+			\Sigma\pr{S} = \bigcap\left\{ \mc{A} \mid \mc{A}\ \sigma\text{-Algebra mit } S \in \mc{A}\right\}
+		\end{equation*}
+		tatsächlich eine $\sigma$-Algebra dar. Es ist die kleinste $\sigma$-Algebra die $S$ enthält und wird als \textit{die von $S$ erzeugte} $\sigma$-Algebra bezeichnet. $\Sigma\pr{S}$ ist eindeutig bestimmt.
+		
+		Ist $X$ eine Menge mit $\sigma$-Algebra $\mc{A}$ und $Y \subset X$. Dann bezeichnen wir
+		\begin{equation*}
+			\mc{A}\cap Y := \cbr{A\cap Y \mid A \in \mc{A} }
+		\end{equation*}
+		als \textit{relative $\sigma$-Algebra}. Sie ist in der Tat eine $\sigma$-Algebra auf Y.
+	\end{defin}
+
+	\begin{lem}
+		Die erzeugte und die relative $\sigma$-Algebra sind wohldefiniert, also eindeutig bestimmt, und tatsächlich $\sigma$-Algebren.
+	\end{lem}
+	\begin{proof}
+		In der Übung.
+	\end{proof}
+
+	\begin{beh*}
+		Falls $S\subset \mf{P}\pr{X}$ die $\sigma$-Algebra $\Sigma = \Sigma\pr{S\mid X}$\footnote{Hier bezeichnet $X$ den ''Raum'', der für $\Sigma$ von Bedeutung ist. } erzeugt, dann erzeugt für $Y \subset X$ die Menge $S \cap Y$ die $\sigma$-Algebra $\Sigma\pr{S\cap Y\mid Y}$, und
+		\begin{equation*}
+			\Sigma\pr{S\cap Y \mid Y} = \Sigma\pr{S\mid X} \cap Y
+		\end{equation*}
+	\end{beh*}
+	\begin{proof}\hfill 
+		\begin{itemize}
+			\item[''$\Leftarrow$''] Weil $\Sigma \cap Y$ die Mengen aus $S \cap Y$ enthält, gilt $\Sigma\pr{S\cap Y} \subset \Sigma \cap Y$ 
+			\item[''$\Rightarrow$''] Betrachte die Menge
+				\begin{equation*}
+					\cbr{A \subset \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S\cap Y}}
+				\end{equation*}
+				Dies ist eine $\sigma$-Algebra, weil diese die Menge $S$ enthält, folgt
+				\begin{equation*}
+					\Sigma\pr{S} \subset \cbr{A \in \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S\cap Y}} \subset \Sigma\pr{S}
+				\end{equation*}
+				also Gleichheit und folglich $\Sigma\pr{S} \cap Y = \cbr{A \in \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S \cap Y}} \cap Y \subset \Sigma\pr{S \cap Y}$
+		\end{itemize}
+	\end{proof}
+	
+	\begin{defin}[Topologischer Raum]
+		Sei $X$ eine Menge. Es gibt ein System von Teilmengen $\mc{O} \subset X$ mit $\emptyset,X \in \mc{O}$, das abgeschlossen ist unter endlichen Schnitten und abzählbaren Vereinigungen. Dieses System $\pr{X,\mc{O}}$ heißt \textit{topologischer Raum}. Formal muss gelten:
+		\begin{itemize}
+			\item $\emptyset, X \in \mc{O}$
+			\item $U,V \in \mc{O} \Rightarrow U\cap V \in \mc{O}$
+			\item $\cbr{U_i}_{i\in I}$ , $U_i \in \mc{O} \Rightarrow \bigcup_{i\in I} U_i \in \mc{O}$
+		\end{itemize}
+	\end{defin}
+	
+	\begin{defin}[Borel-$\sigma$-Algebra]
+		Ist $X$ ein topologischer Raum, $\mc{O}\subset X$, so ist $\mc{B}\pr{X}$ diejenige $\sigma$-Algebra, die von $\mc{O}$ erzeugt wird (also die kleinste $\sigma$-Algebra, die die offenen Mengen von $\pr{X,\mc{O}}$ enthält). Wir bezeichnen $\mc{B}\pr{X}$ als \textit{Borel-$\sigma$-Algebra}, und die Mengen in $\mc{B}$ heißen \textit{Borel-Mengen}.
+		
+		Notation:
+		\begin{equation*}
+			\mc{B}^n = \mc{B}\pr{\mathbb{R}^n},\ \mc{B} = \mc{B}^1
+		\end{equation*}
+	\end{defin}
+
+	\begin{bem*}
+		Die Familie aller endlichen offenen Intervalle $\subset \mathbb{R}$ erzeugt bereits $\mc{B}$.
+	\end{bem*}
+	
+	\begin{defin}[Maßraum, Maß]
+		Eine Menge $X$ mit einer $\sigma$-Algebra $\mc{A} \subset \mf{P}\pr{X}$ heißt \textit{Maßraum}. Ein \textit{Maß} ist eine Abbildung $\mu\colon \mc{A} \longrightarrow \left[ 0, \infty \right]$ mit:
+		\begin{itemize}
+			\item $\mu\pr{\emptyset} = 0$
+			\item \textbf{\boldmath$\sigma$-Additivität}: Für eine Folge\footnote{Folgen sind indizierbar mit $\mathbb{N}$. Im Unterschied dazu können Familien auch überabzählbar sein.} paarweise disjunkter\footnote{$A_j \cap A_k = \emptyset$ für $j\neq k$} Mengen $\pr{A_k}_{k\in \mathbb{N}} \subset \mc{A}$ ist $\mu\pr{\bigcup_{k\in\mathbb{N}} A_k } = \sum_{k\in\mathbb{N}} \mu\pr{A_k}$
+		\end{itemize}
+		Die Elemente in $\mc{A}$ heißen \textit{messbar}, und das Tripel $\pr{X, \mc{A}, \mu}$ heißt somit \textit{Maßraum}.
+	\end{defin}
+	
+	\begin{defin}[$\sigma$-Finitheit]
+		Ein Maß heißt \textit{$\sigma$-finit}, falls es eine abzählbare Überdeckung $\cbr{X_k}_{k\in\mathbb{N}} \subset \mc{A}$ von $X$ gibt, also $X=\bigcup_{k\in\mathbb{N}} X_k$, sodass $\mu\pr{X_k} < \infty\ \forall k$.
+		
+		$\mu$ heißt \textit{endlich}, falls $\mu\pr{X}<\infty$, und \textit{Wahrscheinlichkeitsmaß}, falls $\mu\pr{X}=1$.
+	\end{defin}
+
+	\begin{bsp}
+		\hfill
+		\begin{itemize}
+			\item[(a)] \textbf{Zählmaß}: Für $X$ und $\mc{A}=\mf{P}\pr{X}$ setze 
+				\begin{equation*}
+					\mu\pr{A} = 
+					\begin{cases}
+						\#A &: A \text{ endlich}\\
+						\infty &: \text{sonst}
+					\end{cases}\ \forall A\in\mc{A}
+				\end{equation*}
+				$\mu$ ist endlich, wenn $X$ endlich, und $\sigma$-finit, wenn $X$ abzählbar ist.
+				
+			\item[(b)] \textbf{Dirac-Maß}: Für einen fest gewählten Punkt $x_0 \in X$ und $\mc{A}=\mf{P}\pr{X}$ setze für $A \subset X$
+				\begin{equation*}
+					\mu\pr{A} = 
+						\begin{cases}
+							0 &: x_0 \notin A\\
+							1 &: x_0 \in A
+						\end{cases}
+				\end{equation*}
+			
+			\item[(c)] \textbf{Positive Linearkombinationen}: Seien $\mu_1, \mu_2$ Maße auf $\pr{X, \mc{A}}$. Dann erhalten wir durch $\mu:= \alpha_1\mu_1 + \alpha_2\mu_2$ für $\alpha_1, \alpha_2 > 0$ wieder ein Maß. 
+		\end{itemize}
+	\end{bsp}
+
+	\begin{bsp}
+		Sei $\mu$ ein Maß auf $\pr{X,\mc{A}}$ und $Y\in\mc{A}$. Dann ist $\mu_{|_{Y}}\pr{A} \coloneqq \mu\pr{A\cap Y}$ wieder ein Maß auf $\pr{X, \mc{A}}$. 
+	\end{bsp}
+	
+	\begin{bem*}
+		Für $Y \in \mc{A}$ können wir die $\sigma$-Algebra $\mc{A}$ zu 
+		\begin{equation*}
+			\mc{A}_{|_{Y}} = \cbr{A \in \mc{A} \mid A \subset Y}
+		\end{equation*}
+		einschränken. Dann ist $\mu_{|_Y}\pr{A} = \mu\pr{A\cap Y},\ A\cap Y \in \mc{A},$ ein Maß (siehe oben) und $\pr{Y,\mc{A}_{|_Y},\mu_{|_Y}}$ ein Maßraum und dieser ist $\mu$-finit, falls $\pr{X,\mc{A},\mu}\ \sigma$-finit ist. 
+	\end{bem*}
+	
+	\begin{notat}
+		\hfill
+		\begin{itemize}
+			\item[] $A_k \kern -1pt \nearrow \kern -2pt  A$, falls $A_k \subset A_{k+1}\ \forall k\in \mathbb{N}$ und $A = \bigcup_{k\in\mathbb{N}} A_k$
+			\item[] $A_k \kern -2pt \searrow \kern -1pt  A$, falls $A_k \supset A_{k+1}\ \forall k\in \mathbb{N}$ und $A = \bigcap_{k\in\mathbb{N}} A_k$
+		\end{itemize}
+	\end{notat}
+
+	\begin{theorem}
+		Für jeden Maßraum $\pr{X,\mc{A},\mu}$ und $\pr{A_k}_{k\in\mathbb{N}} \subset \mc{A}$ gilt:
+		\begin{itemize}
+			\item[(i)] $A \subset B \Rightarrow \mu\pr{A} \leq \mu\pr{B}$ \textup{(Monotonie)}
+			\item[(ii)] $\mu\pr{\bigcup_{k\in\mathbb{N}}} \leq \sum_{k\in\mathbb{N}} \mu\pr{A_k}$ \textup{($\sigma$-Subadditivität)}
+			\item[(iii)] $A_k\nearr A\Rightarrow \mu\pr{A_k}\nearr \mu\pr{A}$
+			\item[(iv)] $A_k\searr A\Rightarrow \mu\pr{A_k}\searr \mu\pr{A}$\textit{, für }$\mu\pr{A_1} < \infty$
+		\end{itemize}
+	\end{theorem}
+\end{document}

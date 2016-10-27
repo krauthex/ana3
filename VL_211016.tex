@@ -1,0 +1,158 @@
+\documentclass[skript.tex]{\mf{P}s}
+
+\begin{document}
+	
+	\begin{proof}
+		\hfill
+		\begin{itemize}
+			\item[(i)] $A,B \in \mc{A},\ A\subset B \Rightarrow B = A\cupdot\ \pr{B\setminus A},\ B\setminus A \in \mc{A}$, woraus folgt
+				\begin{align*}
+					\mu\pr{B} &= \mu\pr{A} + \mu\pr{B\setminus A}\\
+					&\ge \mu\pr{A}
+				\end{align*}
+			
+			\item[(ii)] Wir definieren $\pr{B_k}_{k\in \mathbb{N}} \subset \mc{A}$ induktiv durch $B_1 \coloneqq A_1$, $B_{k+1} = A_{k+1}\setminus \bigcup_{j=1}^k A_k \in \mc{A}$, woraus folgt
+				\begin{equation*}
+					\bigcupdot_{k=1}^K B_k = \bigcup_{n=1}^K A_k\ \forall k \in \mathbb{N}
+				\end{equation*}
+			Nach Definition gilt:
+				\begin{equation*}
+					\mu\pr{\bigcup_{k \in \mathbb{N}}A_k} = \mu\pr{\bigcupdot_{k\in \mathbb{N}} B_k} = \sum_{k\in \mathbb{N}} \mu\pr{B_k} \stackrel{(i)}{\le} \sum_{k\in\mathbb{N}}\mu\pr{A_k}
+				\end{equation*}
+			
+			\item[(iii)] Definiere $\pr{C_k}_{k \in \mathbb{N}} \subset \mc{A}$ durch $C_1 \coloneqq A_1,\ C_{k+1} \coloneqq A_{k+1}\setminus A_k$. Demnach ist 
+				\begin{equation*}
+					\bigcupdot_{k\in\mathbb{N}} C_k = \bigcup_{k \in\mathbb{N}} A_k = A
+				\end{equation*}
+			Die $\sigma$-Additivität liefert
+				\begin{equation*}
+					\mu\pr{A_k} = \sum_{j=1}^k \mu\pr{C_j} \stackrel{\scriptscriptstyle k\rightarrow\infty}{\longrightarrow} 
+					\underbrace{\sum_{k\in\mathbb{N}} \mu\pr{C_k}}_{=\mu\pr{A}}\ \pr{\le \sum_{k\in\mathbb{N}} \mu\pr{A_k}}
+				\end{equation*}
+				
+			\item[(iv)] $D_k \coloneqq A_1\setminus A_k \forall k \in \mathbb{N}$. Damit ist $D_k \nearr A_k\setminus A$, und wir haben 
+				\begin{equation*}
+					\mu\pr{A_1} - \mu\pr{A_k} = \mu\pr{A_1\setminus A_k} \underset{\scriptscriptstyle (iii)}{\stackrel{\scriptscriptstyle k\rightarrow\infty}{\longrightarrow}} \mu\pr{A_1\setminus A} - \mu\pr{A}
+				\end{equation*}
+			Subtraktion von $\mu\pr{A_1} < \infty$ liefert die Behauptung.
+		\end{itemize}
+	\end{proof}
+
+	\begin{bem}
+		Zählmaß $\mu$ auf $X=\mathbb{N}$ und $A_k=\cbr{j\in\mathbb{N}\mid j \ge k},\ A_k \searr \emptyset,\\ \mu\pr{A_k}=\infty\ \forall k\in \mathbb{N},\ \mu\pr{\emptyset}=0$. Hieraus erkennt man, dass die Bedingung $\mu\pr{A_1}<\infty$ in \textup{Satz $12_{\text{(iv)}}$} wesentlich ist.
+	\end{bem}
+
+	\begin{defin}[Borel-Maß]
+		Sei $X$ ein topologischer Raum mit Borel-$\sigma$-Algebra $\mc{B}\pr{X}$. Ein Maß $\mu$ auf $\pr{X, \mc{B}\pr{X}}$ heißt \textit{Borel-Maß}, falls es auf Kompakten\footnote{Ein topologischer Raum $\pr{X,\mc{O}}$ heißt \textit{kompakt}, wenn jede offene Überdeckung $X=\bigcup_{i\in I}U_i$ mit $U_i \in \mc{O}$ eine endliche Teilüberdeckung $X=U_{i_1}\cup U_{i_2} \cup \dotsm \cup U_{i_n}$ mit $i_1,\dots,i_n \in I$ besitzt.} stets endliche Werte annimmt.
+	\end{defin}
+	
+	\begin{bsp}
+		Sei $X=\mathbb{R},\ \mc{A}=\mc{B}$. Das Dirac-Maß ist ein Borel-Maß, das Zählmaß hingegen nicht. 
+	\end{bsp}
+
+	\begin{defin}[Regularität]
+		Sei $X$ ein topologischer Raum, $\pr{X,\mc{A}, \mu}$ ein Maßraum. Das Maß $\mu$ heißt \textit{regulär von außen}, wenn gilt:
+			\begin{equation*}
+				\mu\pr{A} = \inf\cbr{\mu\pr{U} \mid A \subset U,\ U \text{ offen} } \forall A \in \mc{A}
+			\end{equation*}
+		Außerdem heißt das Maß $\mu$ \textit{regulär von innen}, wenn gilt:
+			\begin{equation*}
+				\mu\pr{A} = \sup\cbr{\mu\pr{K} \mid K \subset A,\ K \text{ kompakt}} \forall A \in \mc{A}
+			\end{equation*}
+		Ein Maß heißt \textit{regulär}, wenn es regulär von innen und außen ist. 
+	\end{defin}
+	
+	\begin{bsp}
+		Das Zählmaß ist regulär von innen, jedoch nicht von außen. Das Dirac-Maß ist regulär ($X,\mc{A}$ wie in \textup{Beispiel 15}).
+	\end{bsp}
+
+	\subsection*{Strategie:}
+	\begin{enumerate}
+		\item Starte mit einem sogenannten Prämaß $\lambda$ auf der Algebra endlicher, disjunkter Vereinigungen von Intervallen, $\lambda=$ Summe der Längen.
+		\item Dies kann zu einem ''äußeren Maß'' auf $\mf{P}\pr{\mathbb{R}}$ fortgesetzt werden (keine $\sigma$-Additivität).
+		\item Einschränkung auf Borel-$\sigma$-Algebren liefert ein Maß.
+	\end{enumerate}
+
+	\begin{defin}[Dynkin-System]
+		Eine Familie $\mc{D} \subset \mf{P}\pr{X},\ X$ eine Menge, heißt \textit{Dynkin-System}, falls gilt:
+		\begin{itemize}
+			\item $X \in \mc{D}$
+			\item $A \in \mc{D} \Rightarrow \cp{A} \in \mc{D}$
+			\item $\pr{A_k}_{k\in\mathbb{N}} \subset \mc{D},\ A_k \cap A_m = \emptyset\ \forall k,m,\ k\neq m \Rightarrow \bigcupdot_{k\in\mathbb{N}} A_k \in \mc{D}$
+		\end{itemize}  
+	\end{defin}
+	
+	\begin{bem}
+		\hfill
+		\begin{itemize}
+			\item[(i)] Ein Dynkin-System ist abgeschlossen unter Mengensubtraktion:
+				\begin{equation*}
+					A,B \in \mc{D},\ B\sbs A \Ra A\sm B = A\cap \cp{B}= \cp{\pr{\cp{A} \cup B}} \in \D
+				\end{equation*}
+				da $ \cp{B},\cp{A}\in \D$, und $ \cp{A}\cup B \in \D$, denn  $B\cap \cp{A} \sbs A\cap\cp{A} = \es$ 
+			
+			\item[(ii)] Ist $S\sbs \mf{P}\pr{X}$, so ist
+				\begin{equation*}
+					\D\pr{S} = \bigcap \cbr{\D \mid \D \text{  ist Dynkin-System, } S\in \D}
+				\end{equation*}
+				das \textup{von $S$ erzeugte Dynkin-System}.
+				
+			\item[(iii)] Das von $S$ erzeugte Dynkin-System ist wohldefiniert, das heißt es ist eindeutig und tatsächlich ein Dynkin-System.
+		\end{itemize}
+	\end{bem}
+
+	\begin{lem}
+		Ist $\D$ abgeschlossen unter endlichen Schnitten oder alternativ unter beliebigen (also nicht notwendigerweise disjunkten) endlichen Vereinigungen, so ist $\D$ eine $\sigma$-Algebra.
+	\end{lem}
+	
+	\begin{proof}
+		In der Übung.
+	\end{proof}
+	
+	\begin{lem}
+		Sei $S$ eine (nichtleere) Familie, von Teilmengen einer Menge $X$, die abgeschlossen ist unter endlichen Schnitten. Dann folgt $\D\pr{S} = \Sigma\pr{S}$.
+	\end{lem}
+
+	\begin{proof}
+		Nach Definition gilt $\D\pr{S} \sbs \Sigma\pr{S}$. Die andere Inklusion, $\Sigma\pr{S} \sbs \D\pr{S}$, folgt sofort, wenn wir zeigen, dass $\D\pr{S}$ eine $\sigma$-Algebra ist. Nach \textit{Lemma 20} genügt hierzu der Nachweis, dass $\D\pr{S}$ abgeschlossen ist unter endlichen Schnitten. Hierzu definieren wir für ein festes $A \in \D \ceq \D\pr{S}$:
+		\begin{equation*}
+			D\pr{A} = \cbr{B\in \D \mid A\cap B \in \D} \sbs \D 
+		\end{equation*}
+		Ziel: $D\pr{A} = \D\ \forall A\in \D$
+		\begin{beh*}
+			$D\pr{A}$ ist ein Dynkin-System für beliebige $A\in\D$.
+		\end{beh*}
+		
+		\begin{proof}
+			\hfill
+			\begin{itemize}
+				\item $X\in \D,\ A\cap X = A\in \D \Ra X \in D\pr{A}$
+				\item $B\in D\pr{A} \Ra B \in \D,\ A\cap B \in \D$. \\Hieraus folgt:
+					$A\cap \cp{B} = A\sm \pr{B\cap A} \in \D \pr{\textit{vgl. Bem. 19}_{(i)} }$
+				\item $B = \bigcupdot_{k\in\N} B_k,\ B_k \in D\pr{A} \Ra B_k\in\D,\ A\cap B_k \in \D$.\\
+					Hieraus folgt: $B\in\D,\ B\cap A = \bigcupdot\pr{B_k\cap A} \in \D \Ra B\in D\pr{A}\ \pr{\text{da }B_k\cap A \in \D}$
+			\end{itemize}
+		\end{proof}
+		\begin{beh*}
+			$A\in S \Ra S\sbs D\pr{A}$, denn $B\in S \Ra A\cap B \in S \sbs \D \Ra B\in D\pr{A}.$ Da $\D = \D\pr{S}$ das kleinste Dynkin-System ist, das $S$ enthält, folgt
+			\begin{equation*}
+				\D \sbs D\pr{A} \Ra \D = D\pr{A}
+			\end{equation*}
+			Für beliebige $U\in S, \mc{V} \in \tilde{\D} \ceq D\pr{U}$ folgt nach Definition $U\cap \mc{V} \in \D$. Dies impliziert $U \in D\pr{\mc{V}}$, also $S\sbs D\pr{\mc{V}}\ \forall \mc{V} \in \D$. Wie eben ist $D\pr{\mc{V}} \sbs \D$, also $D\pr{\mc{V}} = \D\ \forall \mc{V} \in \D$. Folglich ist $\D$ abgeschlossen unter endlichen Schnitten.
+		\end{beh*}
+	\end{proof}
+
+	\begin{bem}
+		\textup{Lemma 21} lässt sich wie folgt anwenden:
+		\begin{itemize}
+			\item Verifiziere eine Eigenschaft $\varepsilon$ auf einer Menge $S\sbs \mf{P}\pr{X}$, die abgeschlossen unter endlichen Schnitten ist.
+			\item Zeige, dass die Menge aller Mengen in $\mf{P}\pr{X}$, die $\varepsilon$ enthalten, ein Dynkin-System bildet.
+			\item Schließe, dass $\varepsilon$ auf $\Sigma\pr{S}$ gilt. 
+		\end{itemize}
+	\textup{Lemma 21} gilt auch unter der Voraussetzung ''Abgeschlossenheit unter beliebigen endlichen Vereinigungen'' (statt der Schnitte).
+	\end{bem}
+	
+	\begin{theorem}[Eindeutigkeit der Maße]
+		Sei $\pr{X,\Sigma, \mu}$ ein Maßraum, und $S\sbs \mf{P}\pr{X}$ eine Familie von Mengen, die abgeschlossen unter endlichen Schnitten ist, und $\Sigma\pr{S}=\Sigma$. Weiter enthält $S$ eine Folge aufsteigender Mengen $\pr{X_k}_{k\in\N} \sbs S$ mit $X_k\nearr X$ und $\mu\pr{X_k} < \infty\ \forall k\in\N$. Dann ist $\mu$ auf $\Sigma=\Sigma\pr{S}$ durch die Werte auf $S$ eindeutig bestimmt. 
+	\end{theorem}
+\end{document}

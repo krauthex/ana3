@@ -1,0 +1,94 @@
+\documentclass[a4paper]{scrreprt}
+\setlength{\parindent}{0pt} % setting the paragraph indent to zero 
+
+% encoding and language
+\usepackage[utf8]{luainputenc}
+\usepackage[english,ngerman]{babel}
+
+% font
+\usepackage{libertine}
+%\usepackage{biolinum}
+\usepackage[mathcal]{euscript} % font for math mode, mathcal
+
+% math packages
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsthm}  % for theorem-stuff
+\usepackage{mathtools}
+\usepackage{dsfont}
+\usepackage{nicefrac}
+
+% other packages
+\usepackage{enumerate}
+\usepackage{subfiles}
+
+% theorem customizations
+\newcounter{cntr}
+\theoremstyle{definition}
+\newtheorem{defin}[cntr]{Definition}
+\newtheorem{notat}[cntr]{Notation}
+\theoremstyle{plain}
+\newtheorem{theorem}[cntr]{Satz}
+\newtheorem{beh}[cntr]{Behauptung}
+\newtheorem*{beh*}{Behauptung}
+\newtheorem{lem}[cntr]{Lemma}
+\newtheorem{prop}[cntr]{Proposition}
+\newtheorem{bsp}[cntr]{Beispiel}
+\newtheorem{bem}[cntr]{Bemerkung}
+\newtheorem*{bsp*}{Beispiel}
+\newtheorem*{bem*}{Bemerkung}
+
+% self defined commands
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\cp}[1]{#1^\mathrm{C}}
+\newcommand{\cbr}[1]{\left\{#1\right\}}
+\newcommand{\searr}{\kern -2pt \searrow \kern -1pt}
+\newcommand{\nearr}{\kern -1pt \nearrow \kern -2pt}
+\newcommand{\cupdot}{\cup \kern -7.65pt \cdot}
+\newcommand{\sm}{\setminus}
+\newcommand{\sbs}{\subset}
+\newcommand{\es}{\emptyset}
+\newcommand{\A}{\mc{A}}
+\newcommand{\D}{\mc{D}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ceq}{\coloneqq}
+
+
+\newcommand{\pr}[1]{\mathchoice%
+			{\kern -1pt \left(#1\right)}  % for equations
+			{\kern -1pt \left(#1\right)}  % for inline math mode
+			{\left(#1\right)}  % for sub- and superscripts
+			{\left(#1\right)}}  % subsub- and supersuperscripts
+
+\newcommand{\bigcupdot}{\mathop{\mathchoice%
+			{\kern -4pt \bigcup \kern -9pt \cdot}  % for equations
+			{\bigcup \kern -7.7pt \cdot \kern 2pt}{}{}}}  % for inline math mode
+
+\renewcommand{\labelitemi}{$\cdot$}  % redefine the intemize dots
+
+
+%%%%%%%%%%%%%%%%%%
+
+% title and author
+\title{Höhere Analysis}
+\author{Dr. Philipp Reiter\\WS 16/17 Universität Heidelberg}
+\date{\today}
+\publishers{\vspace{6em}gesetzt in \LaTeX\ von Sebastian Blänsdorf,\\ Fabian Krautgasser \& Marvin Sipp}
+
+\begin{document}
+	
+	\maketitle
+	\selectlanguage{ngerman}
+	
+	Dies ist das Vorlesungsskript zur Vorlesung \textit{Höhere Analysis} bei Dr. Philipp Reiter im Wintersemester 16/17 an der Universität Heidelberg. Da dieses Skript von Studenten angefertigt wird, ist keine Garantie auf Exaktheit und Vollständigkeit gegeben. Ebenso ist dies kein Anspruch auf Originalität, da sich die Inhalte aus vielerlei Fachbüchern zusammen setzen. Wir bitten zu entschuldigen, dass diese nicht explizit angegeben sind. 
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	\subfile{VL_191016.tex}
+	\subfile{VL_211016.tex}
+	
+\end{document}
