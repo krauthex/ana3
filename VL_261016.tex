@@ -1,0 +1,138 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+
+	\begin{proof}
+		Sei $\mu$ ein weiteres Maß mit $\tilde{\mu}=\mu$ auf S (Ziel: $\mu=\tilde{\mu}$ überall).\\
+		Zunächst ist $\tilde{\mu}(X)\stackrel{\textrm{Satz 12}}=\lim\limits_{k \to \infty}\tilde{\mu}(\underbrace{X_k}_{\in S})=\lim\limits_{k \to \infty}\mu(X_k)\stackrel{\textrm{Satz 12}}=\mu(X)$ \\
+		Sei nun $\mu<\infty$
+	\end{proof}
+
+	\begin{beh*}
+		$\mc{D}=\{A\in \Sigma \mid \tilde{\mu}(A)=\mu(A)\}$ ist ein Dynikn-System (Ziel $\mc{D}=\Sigma(S)$)
+	\end{beh*}
+
+	\begin{proof}
+		$X\in\mc{D}$ wie gesehen. Für $A\in\mc{D}$ ist
+		\begin{equation*}
+			\tilde{\mu}\underbrace{(A^c)}_{\in\Sigma}=\tilde{\mu}(X)-\tilde{\mu}(A)=\mu(X)-\mu(A)=\mu(A^c) \Rightarrow A^c\in\mc{D}
+		\end{equation*}
+	Abgeschlossenheit unter abzählbaren disjunkten Vereinigungen.
+	Betrachte $(B_k)_{k\in\N},\\ B_j\cap B_k=\es \: \forall j,k \in \N, B_k \in \mc{D}, B=\bigcup_{k \in\N} B_k$
+	\begin{equation*}
+		\tilde{\mu}(B)= \sum_{k\in \N}\tilde{\mu}(B_k)=\sum_{k\in \N}\mu(B_k)=\mu(B)
+	\end{equation*}
+	Nach \textit{Lemma 21} folgt nun $\underbrace{\Sigma(S)}_{\Sigma}=\mc{D}(S) \sbs \mc{D} \sbs \Sigma \Rightarrow \mc{D}=\Sigma$. Dies zeigt die Behauptung im Fall $\mu(X)<\infty$.
+	\end{proof}
+
+	Im allgemeinen Fall erhalten wir für jedes $A\in\Sigma$
+	\begin{equation*}
+		\tilde{\mu}(a)=\lim\limits_{k \to \infty}\tilde{\mu}(A \cap X_k)=\footnotemark \lim\limits_{k\in\infty}\mu(A\cap X_k)=\mu(A)
+	\end{equation*}\footnotetext{Argumentation angewendet auf $X_k(\mu(X_k)<\infty)$}
+
+	\begin{defin}[Prämaß]
+		Sei $X$ eine Menge und $\mc{A} \sbs \mf{P}(X)$ eine Algebra. Ein \textit{Prämaß} auf X ist eine $\sigma$-additive Abbildung $\mu(\mc{A}) \to [0,\infty]$ und $ \mu(\emptyset)=0$.
+	\end{defin}
+
+	\begin{bem*}
+		Brauche hier $\sigma$-Additivität nur für solche (paarweise disjunkten) Folgen \\$(A_k)_{k\in\N} \sbs \mc{A}$ gewährleisten, deren Vereinigung $\bigcup_{k\in\N}A_k$ in $\mc{A}$ liegt. Ein Prämaß auf einer $\sigma$-Algebra ist ein Maß.
+	\end{bem*}
+
+	\begin{cor}
+		Sei $\mu$ ein $\sigma$-finites Prämaß auf einer Algebra $\mc{A}$. Dann gibt es höchstens eine Forsetztung auf $\Sigma(\mc{A})$
+	\end{cor}
+	\begin{proof}
+		Setzte $S=\mc{A}$ wie in \textit{Satz 23}. Offenbar ist S abgeschlossen unter endlichen Schnitten. Da $X$ $\sigma$-finit ist, gibt es eine Folge $(X_k)_{k\in\N}$ mit $X=\bigcup_{k\in\N}X_k$ und $\mu(X_k)<\infty$. Für $A_k\ceq\bigcup_{j=1}^{k}X_j$ ist $A_k \nearr X$ und $\mu(A_k) \leq \sum_{j=1}^{k}\underbrace{\mu{X_j}}_{<\infty}<\infty$. Wenn es ein Maß auf $(X,\sigma)$ gibt, ist es eindeutig (\textit{Satz 23}).
+	\end{proof}
+
+	\begin{bsp}
+		Die Menge S aller Intervalle der Form $[a,b)$, $-\infty\leq a \leq b \leq +\infty$, erzeugt unter endlichen Vereinigungen eine Algebra $\mc{A}$. Wir setzten $\mu(\emptyset):=0$, $\mu([a,b))=\infty$ (für $a\neq b$). Dies definiert ein Prämaß auf $\mc{A}$. Es gibt (mindestens) zwei Fortsetztungen auf $\Sigma(S)$. a) mit dem Zählmaß (für $A\in\Sigma$ mit $\#A<\infty$) oder b) $\mu(\emptyset)=0$ und $\mu(A)=+\infty \: \forall \: A\in\Sigma \setminus \{\emptyset\}$
+	\end{bsp}
+
+	\begin{defin}[Äußere Maße]
+		Eine Funktion $\mu^*\colon\mf{P}(X)\lra[0,\infty]$ ist ein \textit{äußeres Maß\footnote{Jedes Maß ist ein äußeres Maß}} auf $X$, falls $\forall \: (A_k)_{k\in\N} \sbs \mf{P}(x)$ die folgenden Eigenschaften erfüllt sind.
+		\begin{itemize}
+			\item $\mu^*(\emptyset)=0$
+			\item $\mu^*(A_1)\leq \mu^*(A_2)$, falls $A_1 \sbs A_2$ (Monotonie)
+			\item $\mu^*(\bigcup_{k\in\N}A_k)\leq \sum_{k\in\N}\mu^*(A_k)$ ($\sigma$-Subadditivität)
+		\end{itemize}
+	\end{defin}
+
+	\begin{theorem}[Fortsetzung äußere Maße]
+		Sei $\mu^*$ ein äußeres Maß auf einer Menge $X$. Wir sagen, die Menge $A \sbs X$ erfülle die \textit{Carathéodory-Bedingung}, falls
+			\begin{equation*}
+				\mu^*(E)=\footnotemark \mu^*(E \cap A) + \mu^*(E \cap A^c) \: \forall \: E \cap X
+			\end{equation*}\footnotetext{\leq\textrm{gilt wegen Subbadditivität}}
+		gilt. Die Familie $\Sigma$ aller Mengen $A \sbs X$, die die Carathéodory-Bedingung erfüllen, bildet eine $\sigma$-Algebra $\Sigma$ und $\mu^*|_\Sigma$ ist ein Maß.
+	\end{theorem}
+
+	\begin{bem*}
+		Maße erfüllen wegen Additivität die Carathéodory-Bedingung
+	\end{bem*}
+
+	\begin{proof}\hfill
+	\begin{itemize}
+		\item[a)] \textbf{Behauptung.} $\Sigma$ ist eine Algebra.
+			\begin{proof}
+				Offenbar ist $X\in\Sigma$. Abgeschlossenheit unter Komplementbildung ist klar. Für endliche Vereinigungen betrachte $A,B\in\Sigma$. Sei $E \sbs X$ beliebig.
+				\begin{equation*}
+					\mu^*((A \cup B)\cap E) \stackrel{Subadd}\leq \mu^*(A\cap B^c \cap E)+ \mu^*(A^c \cap B \cap E) + \mu^*(A \cap B \cap E)
+				\end{equation*}
+				Zweifache Anwendung der Carathéodory-Bedingung liefert
+				\begin{align*}
+					\mu^*(E)&\stackrel{A\in\Sigma}{=}\mu^*(E\cap A)+\mu^*(E\cap A^c) \\
+					&\stackrel{B\in\Sigma}{=}\mu^*(E\cap A\cap B)+ \mu^*(E\cap A\cap \cp{B})+\mu^*(E\cap A^c\cap B)+\mu^*(E\cap A^c\cap B^c)
+				\end{align*}
+				Mit der obigen Abschätzung erhalten wir
+				\begin{equation*}
+					\mu^*\geq\mu^*((A\cup B)\cap E)+ \mu^*(E\cap \underbrace{A^c\cap B^c}_{(A\cup B)^c})
+				\end{equation*}
+			\end{proof}
+
+		\item[b)] \textbf{Behauptung.} $\Sigma$ ist eine $\sigma$-Algebra.
+			\begin{proof}
+				Sei also $(A_k)_{k\in\N} \sbs \Sigma$ (Ziel $\bigcup_{k\in\N}A_k\in\Sigma)$. Wir können ohne Einschränkung annehmen, dass die $A_k$ paarweise disjunkt sind (vgl. \textit{Satz 12}). Setze $B_k=\bigcup_{j=1}^{k}A_j \in\Sigma$, also $B_k \nearr \bigcup_{k\in\N}A_k$. Nun ist für jedes $E \sbs X$
+				\begin{align*}
+					\mu^*\underbrace{(B_k\cap E)}_{\sbs X} &\stackrel{A\in\Sigma}{=} \mu^*\underbrace{(B_k\cap E\cap A_k)}_{E\cap A_k}+ \mu^*\underbrace{(B_k\cap E\cap A^c_k)}_{\mathrlap{=E\cap B_{k-1}\text{ da }(A_k)_{k\in\N}\text{ paarweise disjunkt\footnotemark}}}\\
+					&=\sum_{j=1}^{k}\mu^*(E \cap A_j)
+				\end{align*}
+				\setcounter{footnote}{10}\footnotetext{$B_k\cap A)\ceq \mathop{\bigcup \kern -6.5pt \cdot \kern 2pt}_{k\in\N}A_k=\bigcup_{k\in\N}B_k \Ra B_k^c \supset A^c$}
+				also haben wir:
+				\begin{equation*}
+					\mu^*(E) \stackrel{B\in\Sigma}{=} \mu^*(E\cap B_k)+ \mu^*(E\cap B_k^c)\stackrel{\kern 1em \mathllap{\raisebox{10pt}{\text{\scriptsize Monotonie (Subadd.) 2er Term $\downarrow$ }}}}{\geq} \pr{\sum_{j=1}^{k}\mu^*(E\cap A_j)}+\mu^*(E\cap A^c)
+				\end{equation*}
+				Mit $k\to\infty$ und Subadditivität erhalten wir
+				\begin{align*}
+					\mu^*(E)&\geq\pr{\sum_{k\in\N}\mu^*(A\cap A_k)}+\mu^*(E\cap A^c)\\
+					&\geq \mu^*\underbrace{\pr{\bigcup_{k\in\N}(E\cap A_k)}}_{E\cap A}+\mu^*(E\cap A^c) \stackrel{Subadd}{\geq}\mu^*(E)
+				\end{align*}
+				Also gilt $A=\bigcupdot_{k\in\N}A_k\in\Sigma$, und folglich ist $\Sigma$ eine $\sigma$-Algebra $(*)$
+			\end{proof}
+		\item[c)] \textbf{Behauptung.} $\mu|_\Sigma$ ist ein Maß.
+			\begin{proof}
+				Hierzu betrachte eine Folge $(A_k)_{k\in\N}$ paarweise disjunkte Mengen in $\Sigma$. \\ $\mu^*(\emptyset)=0$ haben wir schon. Aus $(*)$ folgt mit $E=A\ceq\bigcupdot_{k\in\N}A_k$
+			\begin{equation*}
+				\mu^*(A)=\sum_{k\in\N}\mu^*\underbrace{(A\cap A_k)}_{A_K}+\mu^*\underbrace{(A\cap A^c)}_{\emptyset}=\sum_{k\in\N}\mu^*(A_k)
+			\end{equation*}
+			\end{proof}
+	\end{itemize}
+	\renewcommand\qedsymbol{} % renewing the qed symbol so that the square sign doesn't show up twice.
+	\end{proof}
+	\renewcommand\qedsymbol{$\square$} % setting the qed symbol back to normal
+
+	\begin{bem}
+		Das soeben konstruierte Maß $\mu^*|_\Sigma$ ist vollständig d.h. jede Teilmenge einer Nullmenge\footnote{$A\in\Sigma$ mit $ \mu(A)=0$} ist messbar.
+	\end{bem}
+
+	\begin{proof}
+		Sei $A\in\Sigma$ $\mu(A)=0, \: B\sbs A$. Ziel $B\in\Sigma$ ($\Ra \mu(B)=0$ wg. Monotonie). Sei $E\cap X$
+		\begin{equation*}
+			\mu^*\underbrace{E\cap B}_{\sbs B\sbs A}\leq\underbrace{\mu^*(A)}_{=0}\ \mu^*(\underbrace{E\cap B^c}_{\sbs E})\leq\mu^*(E)
+		\end{equation*}
+		Insofern ist $\mu^*(E)\geq\mu^*(E\cap B)+\mu^*(E\cap B^c)$, also $B\in\Sigma$.
+	\end{proof}
+
+
+
+
+\end{document}
