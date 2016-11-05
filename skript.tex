@@ -2,7 +2,7 @@
 \setlength{\parindent}{0pt} % setting the paragraph indent to zero
 
 % encoding and language
-\usepackage[no-math]{fontspec}  % fixes spacing issue with integrals in math mode 
+\usepackage[no-math]{fontspec}  % fixes spacing issue with integrals in math mode
 \usepackage[utf8]{luainputenc}
 \usepackage[english,ngerman]{babel}
 
@@ -38,6 +38,7 @@
 \newtheorem{bem}[cntr]{Bemerkung}
 \newtheorem*{bsp*}{Beispiel}
 \newtheorem*{bem*}{Bemerkung}
+\newtheorem{cor}[cntr]{Corollar}
 
 % self defined commands
 \newcommand{\mc}[1]{\mathcal{#1}}
@@ -71,7 +72,8 @@
 
 \newcommand{\bigcupdot}{\mathop{\mathchoice%
 			{\kern -4pt \bigcup \kern -9pt \cdot}  % for equations
-			{\bigcup \kern -7.7pt \cdot \kern 2pt}{}{}}}  % for inline math mode
+			{\bigcup \kern -7.7pt \cdot \kern 2pt}  % for inline math mode
+			{\bigcup \kern -2pt \cdot \kern 2pt}{}}} % for sub- and superscripts
 
 \renewcommand{\labelitemi}{$\cdot$}  % redefine the intemize dots
 
@@ -97,7 +99,7 @@
 
 	\subfile{VL_191016.tex}
 	\subfile{VL_211016.tex}
-	% placeholder VL 261016
+	\subfile{VL_261016.tex}
 	% placeholder VL 281016
 	\subfile{VL_021116.tex}
 
