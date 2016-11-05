@@ -1,7 +1,8 @@
 \documentclass[a4paper]{scrreprt}
-\setlength{\parindent}{0pt} % setting the paragraph indent to zero 
+\setlength{\parindent}{0pt} % setting the paragraph indent to zero
 
 % encoding and language
+\usepackage[no-math]{fontspec}  % fixes spacing issue with integrals in math mode 
 \usepackage[utf8]{luainputenc}
 \usepackage[english,ngerman]{babel}
 
@@ -56,6 +57,10 @@
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
+\newcommand{\md}{\mathrm{d}}
+
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
 
 
 \newcommand{\pr}[1]{\mathchoice%
@@ -80,20 +85,20 @@
 \publishers{\vspace{6em}gesetzt in \LaTeX\ von Sebastian Blänsdorf,\\ Fabian Krautgasser \& Marvin Sipp}
 
 \begin{document}
-	
+
 	\maketitle
 	\selectlanguage{ngerman}
-	
-	Dies ist das Vorlesungsskript zur Vorlesung \textit{Höhere Analysis} bei Dr. Philipp Reiter im Wintersemester 16/17 an der Universität Heidelberg. Da dieses Skript von Studenten angefertigt wird, ist keine Garantie auf Exaktheit und Vollständigkeit gegeben. Ebenso ist dies kein Anspruch auf Originalität, da sich die Inhalte aus vielerlei Fachbüchern zusammen setzen. Wir bitten zu entschuldigen, dass diese nicht explizit angegeben sind. 
-	
+
+	Dies ist das Vorlesungsskript zur Vorlesung \textit{Höhere Analysis} bei Dr. Philipp Reiter im Wintersemester 16/17 an der Universität Heidelberg. Da dieses Skript von Studenten angefertigt wird, ist keine Garantie auf Exaktheit und Vollständigkeit gegeben. Ebenso ist dies kein Anspruch auf Originalität, da sich die Inhalte aus vielerlei Fachbüchern zusammen setzen. Wir bitten zu entschuldigen, dass diese nicht explizit angegeben sind.
+
 	\newpage
 	\tableofcontents
 	\newpage
-	
+
 	\subfile{VL_191016.tex}
 	\subfile{VL_211016.tex}
 	% placeholder VL 261016
 	% placeholder VL 281016
 	\subfile{VL_021116.tex}
-	
+
 \end{document}
