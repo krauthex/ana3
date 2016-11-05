@@ -10,21 +10,21 @@
 		\end{equation*}
 		Insbesondere ist $f$ genau dann messbar, wenn jede seiner Komponenten $x \mapsto \left\langle f\pr{x},e_\ell \right\rangle,\ \ell=1,\dotsc,n$ messbar ist, und eine komplexwertige Funktion ist messbar genau dann, wenn Real- und Imaginärteil messbar sind.
 	\end{lem}
-	
+
 	\begin{proof}
 		Die $\sigma$-Algebra, die von den verallgemeinerten Quadern $I$ erzeugt wird, enthält sämtliche Quader der Form $\mathop{\bigtimes}_{j=1}^{n} \pr{a_j, b_j},\ -\infty<a_j<b_j<\infty$. Diese bilden eine Basis für die Topologie und führen somit auf $\mc{B}^n$. Hieraus folgt unmittelbar die zweite Aussage.
 	\end{proof}
 
 	Die Intervalle $\pr{a_j,\infty}$ können äquivalent durch $\left[\left. a_j,\infty\right)\right.$ beziehungsweise $\pr{-\infty, a_j}$ und $\left(\left. -\infty, a_j \right]\right.$ ersetzt werden.
-	
+
 	\begin{lem}
-		Seien $\pr{X,\Sigma_X}, \pr{Y, \Sigma_Y}, \pr{Z, \Sigma_Z}$ Maßräume. Sind $f\colon X\lra Y,\ g\colon Y\lra Z$ messbar, dann ist auch $g\circ f\colon X\lra Z$ messbar. Sind $\Sigma_X, \Sigma_Y$ Borel-$\sigma$-Algebren und $X,Y$ entsprechend topologische Räume, so ist jede stetige Funktion $f\colon X\lra Y$ messbar. 
+		Seien $\pr{X,\Sigma_X}, \pr{Y, \Sigma_Y}, \pr{Z, \Sigma_Z}$ Maßräume. Sind $f\colon X\lra Y,\ g\colon Y\lra Z$ messbar, dann ist auch $g\circ f\colon X\lra Z$ messbar. Sind $\Sigma_X, \Sigma_Y$ Borel-$\sigma$-Algebren und $X,Y$ entsprechend topologische Räume, so ist jede stetige Funktion $f\colon X\lra Y$ messbar.
 	\end{lem}
 
 	\begin{proof}
 		Das Urbild offener Mengen (diese erzeugen die Borel-$\sigma$-Algebra $\Sigma_Y$) ist aufgrund der Stetigkeit offen, also messbar (da $\Sigma_X$ alle offenen Mengen enthält). Ist $C\in \Sigma_Z$ messbar, so ist es auch $B\ceq g^{-1}\pr{C} \in \Sigma_Y$ und $A\ceq f^{-1}\pr{B} \in \Sigma_X$.
 	\end{proof}
-	
+
 	\begin{lem}
 		Sind $f,g \colon \pr{X,\Sigma} \lra \pr{\mathbb{R}, \mc{B}}$ messbar, so auch $f+g$ und $f\cdot g$.
 	\end{lem}
@@ -44,19 +44,19 @@
 	\begin{bem}
 		Wegen $\cbr{+\infty}=\bigcap_{k\in\N} \left( \left. k, +\infty \right]\right. ,\ \cbr{-\infty}=\overline{\mbb{R}}\sm \bigcup_{k\in\N} \left( \left. -k, +\infty \right]\right. $ ist \\ $f\colon X\lra \overline{\mbb{R}}$ messbar genau dann, wenn $f\pr{\left. \left( a, +\infty \right. \right]} \in \Sigma\ \forall a \in \mbb{R}$. Auch hier können wir alternativ $\left[a, +\infty \right]$ beziehungsweise $\left[ \left. -\infty, a \right)\right.$ oder $\left[-\infty, a\right]$ verwenden. Insofern gilt \textup{Lemma 37} auch für $f,g\colon \pr{X,\Sigma} \lra \pr{\overline{\mbb{R}}, \overline{\mc{B}}}$, wenn man Ausdrücke der Form $\infty-\infty$ beziehungsweise $0\cdot\infty$ vermeidet. In der Regel setzt man $\infty-\infty=0,\ 0\cdot\infty=0$.
 	\end{bem}
-	
+
 	\textbf{Wichtig:} Die Menge der messbaren Funktionen ist unter Grenzwertbildung abgeschlossen, genauer:
-	
+
 	\begin{lem}
 		Sei $\pr{f_k}_{k\in\N}$ eine Folge messbarer Funktionen $\pr{X,\Sigma} \lra \pr{\overline{\mbb{R}}, \overline{\mc{B}} }$. Dann sind auch $\sup_{k\in\N} f_k,\ \inf_{k\in\N} f_k,\ \limsup_{k\rightarrow\infty} f_k,\ \liminf_{k\rightarrow \infty} f_k$ messbar \footnote{Sei $\pr{x_n}_{n\in\N}$ eine Folge reeller Zahlen. Dann ist der Limes inferior von $\pr{x_n}_{n\in\N}$ definiert als \\ $\liminf_{n\rightarrow\infty} x_n \ceq \sup_{n\in\N} \inf_{k\ge n} x_k$. Analog ist der Limes superior von $\pr{x_n}_{n\in\N}$ definiert als\\ $\limsup_{n\rightarrow\infty} x_n \ceq \inf_{n\in\N} \sup_{k \ge n} x_k$. }.
 	\end{lem}
-	
+
 	\begin{proof}
 		Wir haben
 		\begin{equation*}
 			\pr{\sup_{k\in\N} f_k}^{-1} \pr{\left. \left( a, \infty \right. \right]} \stackrel{(*)}{=} \bigcup_{k\in\N} f_k^{-1} \pr{\left. \left( a, \infty \right. \right]}
 		\end{equation*}
-		und dies ist $\forall a \in \mbb{R}$ messbar. Hierbei wurde 
+		und dies ist $\forall a \in \mbb{R}$ messbar. Hierbei wurde
 		\begin{equation*}
 			x\in \pr{\sup_{k\in\N} f_k }^{-1} \pr{\left. \left( a, \infty \right. \right]} \stackrel{(*)}{\Longleftrightarrow} \sup_{k\in\N} f_k \pr{x} > a \Longleftrightarrow \exists k_0 \in \N \colon f_{k_0}\pr{x} > a
 		\end{equation*}
@@ -65,11 +65,67 @@
 			\inf_{k\in\N} f_k = - \sup_{k\in\N} \pr{-f_k},\ \liminf_{n\rightarrow\infty} f_k = \sup_{k\in\N} \inf_{j\ge k} f_j,\ \limsup_{n\rightarrow\infty} f_k = \inf_{n\in\N} \sup_{j\ge k} f_j.
 		\end{equation*}
 	\end{proof}
-	
+
 	\textbf{Zusatz zu Lemma 40:} Für messbare $f,g$ sind auch $\min\pr{f,g},\ \max\pr{f,g},\ |f|=\max\pr{f,-f}, \\f^\pm = \max\pr{\pm f, 0} \pr{\ge 0}$ sowie alle punktweisen Limites messbarer Funktionen messbar.
-	
+
 	\chapter{Integration}
 	Im Folgenden sei $\pr{X,\Sigma, \mu}$ ein Maßraum.
+
+	\begin{defin}
+		Eine messbare Funktion $f\colon \pr{X,\Sigma} \lra \pr{\mbb{R},\mc{B}}$ heißt \textit{einfach}, wenn ihr Bild endlich ist, das heißt, es gibt Mengen $A_1,\dotsc,A_m \in \Sigma,\ \alpha_1,\dotsc,\alpha_m \in \mbb{R}$ mit
+		\begin{equation*}
+			f = \sum_{j=1}^{m} a_j \rchi_{A_j},
+		\end{equation*}
+		wobei $\rchi_M$ die \textit{charakteristische Funktion}
+		\begin{equation*}
+			\rchi_M\pr{x} =
+				\begin{cases}
+					0 &: x\notin M\\
+					1 &: x\in M
+				\end{cases}
+		\end{equation*}
+		bezeichnet. Wir können fordern, dass die $A_j$ paarweise disjunkt sind, die $\alpha_j$ paarweise verschieden und $\bigcup A_j = X$ gilt: in diesem Fall ist $f\pr{X} = \cbr{\alpha_1,\dotsc,\alpha_m}$ und \\$f^{-1}\pr{\cbr{\alpha_j}}=A_j\ \forall j=1,\dotsc,m$ und diese Darstellung ist eindeutig. Der Vektorraum einfacher Funktionen wird mit $S\pr{X,\mu}$ bezeichnet.
+	\end{defin}
+
+	\begin{defin}[Integral]
+		Das Integral einer nicht-negativen, einfachen Funktion über der Menge $A \in \Sigma$ wird durch
+		\begin{equation*}
+			\int_{A} f \md \mu \ceq \sum_{j=1}^{m} \alpha_j \mu\pr{A_j \cap A}
+		\end{equation*}
+		erklärt, wobei wir $0\cdot \infty=0$ vereinbaren.
+	\end{defin}
+
+	\begin{lem}
+		Das Integral hat die folgenden Eigenschaften:
+		\begin{itemize}
+			\item[(i)] $\int_A f \md \mu = \int_X f \rchi_A \md \mu,\ f \in S\pr{X,\mu},\ f\ge 0,\ A\in \Sigma$
+			\item[(ii)] $\int_{\bigcup_{k\in\N} B_k} f \md \mu = \sum_{k\in\N} \int_{B_k} f \md \mu$, für paarweise disjunkte $\pr{B_k}_{k\in\N } \sbs \Sigma$
+			\item[(iii)] $\int_A \alpha f \md \mu = \alpha \int_A f \md \mu$ für $\alpha \ge 0$
+			\item[(iv)] $\int_A \pr{f+g} \md \mu = \int_A f \mu \mu + \int_A g \md \mu,\ g\in S\pr{X,\mu}$
+			\item[(v)] $A\sbs B,\ B\in \Sigma \Rightarrow \int_A f \md \mu \le \int_B f \md \mu$
+			\item[(vi)] $f \le g \Rightarrow \int_A f \md \mu \le \int_A g \md \mu$ für $ g\in S\pr{X,\mu},\ g \ge 0$
+		\end{itemize}
+	\end{lem}
+
+	\begin{proof}
+		\hfill
+		\begin{itemize}
+			\item[(i)] folgt sofort aus \textit{Definition 42}, denn $\sum_{j=1}^{m} \alpha_j \mu\pr{A_j \cap A} = \sum_{j=1}^{m} B_j \mu\pr{A_j}$ für $B_j$, die auf $f\cdot \rchi_{A_j}$ angepasst sind.
+			\item[(ii)] $\mu\pr{A_j\cap \bigcup_{n\in \N }B_n} = \sum_{k\in \N } \mu\pr{A_j\cap B_k}$ (man darf Reihe über nicht negative Zahlen beliebig umsortieren.)
+			\item[(iii)] klar.
+			\item[(iv)] Für $f=\sum_{j=1}^m \alpha_j \rchi_{A_j},\ g=\sum_{k=1}^n \beta_k \rchi_{B_k}$ (wie in \textit{Definition 42}) haben wir mit \\$C_{jk} = A_j \cap B_k$
+				\begin{align*}
+					\int_A \pr{f+g} \md \mu &\stackrel{(ii)}{=} \sum_{j,k} \int_{C_{jk}} \pr{f+g} \md \mu = \sum_{j,k} \pr{\alpha_j + \beta_k} \mu\pr{C_{jk}}\\
+					&=\underbrace{\sum_{j,k} \alpha_j \mu\pr{C_{jk}}}_{=\sum_{j=1}^m \alpha_j \mu\pr{A_j}} + \sum_{j,k} \beta_k \mu\pr{C_{jk}}= \int_A f \md \mu + \int_A g \md \mu
+				\end{align*}
+			\item[(v)] folgt aus der Monotonie von $\mu$
+			\item[(vi)] erhält man wie in \textit{(iv)} mit
+				\begin{equation*}
+					\int_A f \md \mu = \sum_{j,k} \alpha_j \mu\pr{C_{jk}} \stackrel{(*)}{\le} \sum_{j,k} \beta_k \mu\pr{C_{jk}} = \int_A g \md \mu,
+				\end{equation*}
+				wobei für $(*)$ gilt: auf $C_{jk}: \alpha_j \le \beta_k$ (wegen $f<g,\ C_{jk}$ paarweise disjunkt).
+		\end{itemize}
+	\end{proof}
 
 
 
