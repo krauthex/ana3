@@ -1,0 +1,88 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	Im Folgenden häufig $\pr{Y,\Sigma} = \pr{\mathbb{R}^n,\mc{B}^n}$.
+	\setcounter{cntr}{34}
+	\begin{lem}
+		Eine Funktion $f\colon \pr{X,\Sigma} \lra \pr{\mathbb{R}^n,\mc{B}^n}$ ist genau dann messbar, wenn
+		\begin{equation*}
+			f^{-1}\pr{I} \in \Sigma\ \forall I = \mathop{\bigtimes}_{j=1}^{n} \pr{a_j, \infty},\ a_1,\dotsc,a_n \in \mathbb{R}
+		\end{equation*}
+		Insbesondere ist $f$ genau dann messbar, wenn jede seiner Komponenten $x \mapsto \left\langle f\pr{x},e_\ell \right\rangle,\ \ell=1,\dotsc,n$ messbar ist, und eine komplexwertige Funktion ist messbar genau dann, wenn Real- und Imaginärteil messbar sind.
+	\end{lem}
+	
+	\begin{proof}
+		Die $\sigma$-Algebra, die von den verallgemeinerten Quadern $I$ erzeugt wird, enthält sämtliche Quader der Form $\mathop{\bigtimes}_{j=1}^{n} \pr{a_j, b_j},\ -\infty<a_j<b_j<\infty$. Diese bilden eine Basis für die Topologie und führen somit auf $\mc{B}^n$. Hieraus folgt unmittelbar die zweite Aussage.
+	\end{proof}
+
+	Die Intervalle $\pr{a_j,\infty}$ können äquivalent durch $\left[\left. a_j,\infty\right)\right.$ beziehungsweise $\pr{-\infty, a_j}$ und $\left(\left. -\infty, a_j \right]\right.$ ersetzt werden.
+	
+	\begin{lem}
+		Seien $\pr{X,\Sigma_X}, \pr{Y, \Sigma_Y}, \pr{Z, \Sigma_Z}$ Maßräume. Sind $f\colon X\lra Y,\ g\colon Y\lra Z$ messbar, dann ist auch $g\circ f\colon X\lra Z$ messbar. Sind $\Sigma_X, \Sigma_Y$ Borel-$\sigma$-Algebren und $X,Y$ entsprechend topologische Räume, so ist jede stetige Funktion $f\colon X\lra Y$ messbar. 
+	\end{lem}
+
+	\begin{proof}
+		Das Urbild offener Mengen (diese erzeugen die Borel-$\sigma$-Algebra $\Sigma_Y$) ist aufgrund der Stetigkeit offen, also messbar (da $\Sigma_X$ alle offenen Mengen enthält). Ist $C\in \Sigma_Z$ messbar, so ist es auch $B\ceq g^{-1}\pr{C} \in \Sigma_Y$ und $A\ceq f^{-1}\pr{B} \in \Sigma_X$.
+	\end{proof}
+	
+	\begin{lem}
+		Sind $f,g \colon \pr{X,\Sigma} \lra \pr{\mathbb{R}, \mc{B}}$ messbar, so auch $f+g$ und $f\cdot g$.
+	\end{lem}
+
+	\begin{proof}
+		Addition und Multiplikation sind stetige Abbildungen
+		\begin{equation*}
+			\pr{\mathbb{R}, \mc{B}} \times \pr{\mathbb{R},\mc{B}} \lra \pr{\mathbb{R}, \mc{B}}.
+		\end{equation*}
+		Somit folgt die Behauptung nach \textit{Lemma 36}.
+	\end{proof}
+
+	\begin{notat}
+		Gelegentlich möchte man die Werte $\pm \infty$ zulassen; wir setzen $\overline{\mathbb{R}}=\mbb{R} \cup \cbr{-\infty, \infty}$. Wir nennen $A \sbs \overline{\mbb{R}}$ \textit{Borel-Menge}, wenn $A \sbs \mbb{R}$ eine Borel-Menge ist. Entsprechend ist \\ $f\colon X\lra \overline{\mbb{R}}$ eine \textit{Borel-Funktion}, wenn $f^{-1}\pr{\cbr{-\infty, \infty}}$ beide Borel-Mengen sind und \\$f|_{X\sm f^{-1}\pr{\cbr{\pm \infty}}}$ eine Borel-Funktion ist. Die entsprechende Borel-$\sigma$-Algebra zu $\overline{\mbb{R}}$ wird mit $\overline{\mc{B}}$ bezeichnet.
+	\end{notat}
+
+	\begin{bem}
+		Wegen $\cbr{+\infty}=\bigcap_{k\in\N} \left( \left. k, +\infty \right]\right. ,\ \cbr{-\infty}=\overline{\mbb{R}}\sm \bigcup_{k\in\N} \left( \left. -k, +\infty \right]\right. $ ist \\ $f\colon X\lra \overline{\mbb{R}}$ messbar genau dann, wenn $f\pr{\left. \left( a, +\infty \right. \right]} \in \Sigma\ \forall a \in \mbb{R}$. Auch hier können wir alternativ $\left[a, +\infty \right]$ beziehungsweise $\left[ \left. -\infty, a \right)\right.$ oder $\left[-\infty, a\right]$ verwenden. Insofern gilt \textup{Lemma 37} auch für $f,g\colon \pr{X,\Sigma} \lra \pr{\overline{\mbb{R}}, \overline{\mc{B}}}$, wenn man Ausdrücke der Form $\infty-\infty$ beziehungsweise $0\cdot\infty$ vermeidet. In der Regel setzt man $\infty-\infty=0,\ 0\cdot\infty=0$.
+	\end{bem}
+	
+	\textbf{Wichtig:} Die Menge der messbaren Funktionen ist unter Grenzwertbildung abgeschlossen, genauer:
+	
+	\begin{lem}
+		Sei $\pr{f_k}_{k\in\N}$ eine Folge messbarer Funktionen $\pr{X,\Sigma} \lra \pr{\overline{\mbb{R}}, \overline{\mc{B}} }$. Dann sind auch $\sup_{k\in\N} f_k,\ \inf_{k\in\N} f_k,\ \limsup_{k\rightarrow\infty} f_k,\ \liminf_{k\rightarrow \infty} f_k$ messbar \footnote{Sei $\pr{x_n}_{n\in\N}$ eine Folge reeller Zahlen. Dann ist der Limes inferior von $\pr{x_n}_{n\in\N}$ definiert als \\ $\liminf_{n\rightarrow\infty} x_n \ceq \sup_{n\in\N} \inf_{k\ge n} x_k$. Analog ist der Limes superior von $\pr{x_n}_{n\in\N}$ definiert als\\ $\limsup_{n\rightarrow\infty} x_n \ceq \inf_{n\in\N} \sup_{k \ge n} x_k$. }.
+	\end{lem}
+	
+	\begin{proof}
+		Wir haben
+		\begin{equation*}
+			\pr{\sup_{k\in\N} f_k}^{-1} \pr{\left. \left( a, \infty \right. \right]} \stackrel{(*)}{=} \bigcup_{k\in\N} f_k^{-1} \pr{\left. \left( a, \infty \right. \right]}
+		\end{equation*}
+		und dies ist $\forall a \in \mbb{R}$ messbar. Hierbei wurde 
+		\begin{equation*}
+			x\in \pr{\sup_{k\in\N} f_k }^{-1} \pr{\left. \left( a, \infty \right. \right]} \stackrel{(*)}{\Longleftrightarrow} \sup_{k\in\N} f_k \pr{x} > a \Longleftrightarrow \exists k_0 \in \N \colon f_{k_0}\pr{x} > a
+		\end{equation*}
+		verwendet. Die restlichen Aussagen folgen mit
+		\begin{equation*}
+			\inf_{k\in\N} f_k = - \sup_{k\in\N} \pr{-f_k},\ \liminf_{n\rightarrow\infty} f_k = \sup_{k\in\N} \inf_{j\ge k} f_j,\ \limsup_{n\rightarrow\infty} f_k = \inf_{n\in\N} \sup_{j\ge k} f_j.
+		\end{equation*}
+	\end{proof}
+	
+	\textbf{Zusatz zu Lemma 40:} Für messbare $f,g$ sind auch $\min\pr{f,g},\ \max\pr{f,g},\ |f|=\max\pr{f,-f}, \\f^\pm = \max\pr{\pm f, 0} \pr{\ge 0}$ sowie alle punktweisen Limites messbarer Funktionen messbar.
+	
+	\chapter{Integration}
+	Im Folgenden sei $\pr{X,\Sigma, \mu}$ ein Maßraum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
