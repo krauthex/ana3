@@ -1,0 +1,147 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\begin{defin}[Integral]
+		Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma$, $f\colon(X,\Sigma)\lra(\mbb{R},\mc{B})$ messbar und nicht negativ. Dann ist
+	\begin{equation*}
+		\int_{A} \! f \, \mathrm{d}\mu\ceq \sup \left\{\int g \, \mathrm{d}\mu\ \middle|\ g\in S(X,\mu),g \le f, g\geq 0\right\}
+	\end{equation*}
+	Bis auf $(ii)$ und $(iv)$ übertragen sich die Aussagen aus \textit{Lemma 43} auf bel. nicht-negtive messbare Funktionen durch Approximation.
+	\end{defin}
+
+	\begin{theorem}[Monotone Konvergenz/ Beppo Levi]
+		Sei $(f_k)_{k\in\N}$ eine Folge messbarer nicht-negativer Funktionen $f_k\colon(X,\Sigma)\lra(\mbb{R},\mc{B})$ mit $f_k \nearr f$. Dann ist für $A\in\Sigma$
+		\begin{equation*}
+			\int_{A} \! f_k \, \mathrm{d}\mu \lra \int_{A} \! f \, \mathrm{d}\mu
+		\end{equation*}
+	\end{theorem}
+
+	\begin{proof}
+		($f$ messbar wegen \textit{Lemma 40}). Aus \textit{Lemma 43} $(vi)$ erhalten wir zunächst die Monotonie von $\int_{A} \! f_k \, \mathrm{d}\mu$ und hieraus die Konvergenz gegen ein $\varphi \in [0,\infty]$. Aus $f_k\leq f$ und $43(vi)$ folgt $\varphi\leq\int_{A} \! f \, \mathrm{d}\mu$. Für die Umkehrung wählen wir ein $g\in S(X,\mu), \: g\geq0, \: g\leq f$. Mit $A_K \ceq \{x\in A\mid f_k(x)\geq \vartheta \cdot g(x)\}$ für ein festes $\vartheta\in (0,1)$. Nun ist $A_k \nearr A \\(\bigcup_{k\in\N}A_k \supset A \: \mathrm{erfordert} \: \varphi\in(0,1)) $ und hieraus
+		\begin{equation*}
+			\underbrace{\int_A f_k \, \mathrm{d}\mu}_{\xlongrightarrow{k\lra\infty}\varphi} \stackrel{\text{43(v)}}{\geq}\int_{A_k} \! f_k \,\mathrm{d}\mu\geq\int_{A_k} \! \varphi \, g \: \mathrm{d}\mu\stackrel{\text{43(ii)}}{=}\varphi\int_{A_k} \! g \: \mathrm{d}\mu \lra \varphi\int_A \! g \: \mathrm{d}\mu
+		\end{equation*}
+		Insbesondere gilt dies auch für $\varphi=1$, also $\varphi\geq\int_A \! g \: \mathrm{d}\mu$. Durch Supremumsbildung erhalten wir $\varphi=\int_A \! f \: \mathrm{d}\mu$.
+	\end{proof}
+
+	\begin{bem}
+		Für jede nicht-negative Funktion $f$ mit einer monoton steigenden Folge nicht-negativer, einfacher Funktionen $(g_k)_{k\in\N}, \: g_k \nearr f$ ist $ \int_A \! g_k \, \mathrm{d}\mu \nearr \int_A \! f \, \mathrm{d}\mu$. Eine geeignete Folge $(g_k)_{k\in\N}$ lässt sich folgendermaßen konstruieren:
+		\begin{equation}
+			g_k(x)\ceq \sum_{j=0}^{k2^k}\frac{j}{2^k}\rchi_{f^{-1}(A_j)}(x) \: \mathrm{mit} \:
+			A_j=
+			\begin{cases}
+			[\frac{j}{2^k},\frac{j+1}{2^k}),& j=0,...,k2^k-1  \\
+			[k,\infty),& j=k2^k
+			\end{cases}
+		\end{equation}
+		Ist $f$ (gleichmäßig\footnote{Sei $X$ eine beliebige Menge. Dann heißt eine Familie $\mc{F}$ von auf $X$ definierten, reellwertigen Funktionen \textit{gleichmäßig beschränkt}, wenn es eine reelle Zahl $S$ gibt, für die gilt: $\forall x \in X\ \forall f \in \mc{F}\colon |f(x)| \le S$. Das heißt, $S$ ist eine gemeinsame obere Schranke für die Werte der Beträge aller Funktionen aus $\mc{F}$.}) beschränkt, so konvergiert $(g_k)_{k\in\N}$ gleichmäßig, denn $f\sbs M$ impliziert $0\leq f-g_k<\frac{1}{2^k}$ für $k>M$.
+			Mit \textup{Satz 45} überträgt man auch \textup{43(ii)} und \textup{(iv)}, da Grenzwerte über nicht-negative Größen vertauschen.
+	\end{bem}
+
+	\begin{lem}
+		Ist $f\geq 0$ messbar, so wird durch $\nu(A)\ceq\int_A \! f \, \mathrm{d}\mu$ ein Maß mit $\int \! g \, \mathrm{d}\nu=\int \! g f \, \mathrm{d}\mu$ für jedes messbare $g\geq 0$ definiert und wir schreiben $\mathrm{d}\nu=f\, \mathrm{d}\mu$
+	\end{lem}
+	\begin{proof}
+		\begin{equation*}
+			\nu(\emptyset)=\int_{\emptyset} \! f \, \mathrm{d}\mu \stackrel{(i)}=\int \! \underbrace{\rchi_\emptyset}_{\equiv 0}f \, \mathrm{d}\mu \stackrel{(i)}=0\cdot \int \! f \, \mathrm{d}\mu \stackrel{0\cdot\infty=0}=0
+		\end{equation*}
+		Weiterhin ist
+		\begin{equation*}
+			\nu(A\cup B)=\int_{(A\cup B)} \! f \, \mathrm{d}\mu \stackrel{(ii)}=\int_A \! f \, \mathrm{d}\mu \: + \: \int_B \! f \, \mathrm{d}\mu = \nu(A)+\nu(B)$ für $(A\cup B) = \es
+		\end{equation*}
+		Für abzählbare Vereinigungen liefert \textit{Satz 45}
+		\begin{equation*}
+			\nu(\bigcupdot_{k\in\N}A_k)=\int_{\bigcupdot A_k} f \, \mathrm{d}\mu \stackrel{(ii)}= \sum_{k\in\N}\int_{A_k} \! f \, \mathrm{d}\mu=\sum_{k\in\N} \nu(A_k)
+		\end{equation*}
+		Ist g einfach und nicht-negativ), so gilt $g=\sum_{j=1}^{m} \alpha_j \rchi_{B_j}$ für disjunkte $B_j\in\sum, \, \bigcup B_j=X$ und $\alpha_j\geq 0$, und wir haben
+		\begin{equation*}
+		\int \! g \, \mathrm{d}\nu= \sum_{j=1}^{m} \alpha_j \nu(A_j)=\sum_{j=1}^{m} \alpha_j \int_{B_j} \! f \, \mathrm{d}\mu \stackrel{43(iii)}= \sum_{j=1}^{m}\int \! \alpha_j f \rchi_{B_j} \, \mathrm{d}\mu \stackrel{43(iv)}= \mathlarger{\mathlarger{\int}} \! \underbrace{\pr{\sum_{j=1}^{m}\alpha_j \rchi_{B_j}}}_{=g}f \, \mathrm{d}\mu
+		\end{equation*}
+		Approximation liefert die Behauptung für beliebige $g\geq0$ mit \textit{Satz 45}.
+		\end{proof}
+
+		\begin{theorem}[Lemma von Fatou]
+			Sei $(X,\Sigma,\mu)$ ein Maßraum. Ist $(f_k)_{k\in\N}$ eine Folge nicht-negativer Funktionen $(X,\Sigma) \lra (\mbb{R}, \mc{B})$, so haben wir für ein beliebiges $A\in\Sigma$
+			\begin{equation*}
+				\int_A \! \liminf_{k\lra\infty} f_k \, \mathrm{d}\mu \leq \liminf_{k\lra\infty}\int_A \! f_k \, \mathrm{d}\mu
+			\end{equation*}
+		\end{theorem}
+
+		\begin{bem}
+			Im Allgemeinen können wir keine Gleichheit erwarten. Z.B. ist für $f_k=\rchi_{[k,k+1]} \: k\in\N$, einerseits $f_k(X) \xrightarrow{k\lra\infty}0 \: \forall x\in\mbb{R}$ nicht gleichmäßig, andererseits $\int_{\mbb{R}} \! f_k \, \mathrm{d}x=1$. Genauso für $f_k=k\rchi_{(0,1)}$ und $f_k=\frac{1}{k}\rchi_{(0,k)}$ (in letzterem Fall haben wir sogar gleichmäßige Konvergenz).
+		\end{bem}
+		\begin{proof}[Beweis: Lemma von Fatou]
+			Wir setzten $g_k\ceq \inf_{j\geq k} f_j$, also $g_k\nearr \lim\limits_{j\lra\infty} f_j$. Weiterhin $g_k\leq f_k \: \forall k\in\N$, folglich $\int_A \! g_k \, \mathrm{d}\mu\leq\int_A \! f_k \, \mathrm{d}\mu$ nach \textit{Lemma 43(vi)}. Übergang zum $\liminf\limits_{k\lra\infty}$ liefert
+			\begin{equation*}
+				\liminf_{k\lra\infty}\int \! g_k \, \mathrm{d}\mu= \lim\limits_{k\lra\infty} \int \! g_k \, \mathrm{d}\mu \stackrel{Satz \: 45}= \int_A \! g_k \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu
+			\end{equation*}
+		\end{proof}
+
+		\begin{defin}[Nochmal Integral]
+			Sei $(X,\Sigma,\mu)$ ein Maßraum $A\in\Sigma \: f:(X,\Sigma) \lra (\mbb{R},\mc{B})$ messbar. Ist $ \int_A \! f^\pm \, \mathrm{d}\mu<\infty$ , so nennen wir $f$ über $A$ integrierbar und wir setzten
+			\begin{equation*}
+				\int_A \! f \, \mathrm{d}\mu\ceq \int_A \! f^+ \, \mathrm{d}\mu \, - \, \int_A \! f^- \, \mathrm{d}\mu \: \in\mbb{R}
+			\end{equation*}
+			Die Menge der über $A$ integrierbaren Funktionen bezeichnen wir $\mathscr{L}^1(A,\mu)$
+		\end{defin}
+		\begin{lem}
+			Unter der Bedingung von \textup{Definition 50} ist das Integral linear und erfüllt sämtliche Eigenschaften aus \textup{Lemma 43}. Eine Funktion ist genau dann integrierbar, wenn ihr Betrag integrierbar ist. Darüber hinaus gilt für integrierbare Funktionen $f,g\colon X\lra\mbb{R}$
+			\begin{equation*}
+				\left\vert \int_A \! f \, \mathrm{d}\mu\right\vert \leq \int_A \! |f| \, \mathrm{d}\mu
+			\end{equation*}
+			und die Dreiecksungleichung
+			\begin{equation*}
+				\int \! |f+g| \, \mathrm{d}\mu \leq \int_A \! |f| \, \mathrm{d}\mu + \int_A \! |f| \, \mathrm{d}\mu
+			\end{equation*}
+			\end{lem}
+
+			\begin{proof}
+				Linearität und \textit{Lemma 43} verifiziert man unmittelbar. Setzte $\varphi\ceq\int \! f \, \mathrm{d}\mu$, dann ist
+				\begin{equation*}
+					|\varphi|= (\sign \varphi)\varphi \stackrel{\text{Linearität}}= \int_A \! (\sign \varphi)f \, \mathrm{d}\mu \stackrel{43(vi)}{\leq} \int_A \! |f| \, \mathrm{d}\mu
+				\end{equation*}
+				Die Dreiecksungleichung folgt mit $|f+g|\leq|f|+|g|$ aus der Linearität des Integrals.
+			\end{proof}
+
+			\begin{lem}
+				Sei $(X,\Sigma,\mu)$ ein Maßraum, $F\colon X\lra\mbb{R}$, messbar
+				\begin{itemize}
+					\item[(i)] Wir haben $\int_X \! |f| \, \mathrm{d}\mu=0 \Leftrightarrow f(x)=0$ für $\mu$-fast alle $x\in X$
+					\item[(ii)] Ist $f$ außerdem integrierbar oder nicht negativ und $A\in\Sigma$, so ist
+						\begin{equation*}
+							\mu(A)=0 \Rightarrow \int_A \! f \, \mathrm{d}\mu
+						\end{equation*}
+				\end{itemize}
+			\end{lem}
+
+			\begin{proof}
+				ÜZ3/A10
+			\end{proof}
+
+			Insofern ändert sich der Wert eines Integranten nicht, wenn wir den Integranten auf einer Nullmenge abändern.
+
+			\begin{lem}[Noch Fatou]
+				Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma, \: (f_k)_{k\in\N}$ eine Folge messbarer Funktionen $X\lra\mbb{R}$ und $g\colon X\lra\mbb{R}$ integrierbar, dann gilt
+				\begin{align*}
+				&\int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu \leq \liminf\limits_{k\lra\infty}\int_A \! f_k \, \mathrm{d}\mu, \: \mathrm{falls} \: g\leq f_k  \forall k\in\N \\
+				&\limsup\limits_{k\lra\infty}\int_A \! f_k \, \mathrm{d}\mu \leq \int_A \! \limsup\limits_{k\lra\infty} f_k \, \mathrm{d}\mu, \: \mathrm{falls} \: f_k\leq g \forall k\in\N
+				\end{align*}
+			\end{lem}
+
+		\begin{proof}
+			Man wende für die erste Ungleichung das Fatou-Lemma auf $f_k-g$ an und subtrahiere $\int_A \! g \, \mathrm{d}\mu$ auf beiden Seiten. \\
+			Die zweite Aussage folgt mit $\liminf_{k\lra\infty}(-f_k)= -\limsup_{k\lra\infty} f_k$
+		\end{proof}
+
+		\begin{theorem}[Dominierte Konvergenz]
+		Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma, \: (f_k)_k\in\N$ eine Folge messbarer Funktionen $X\lra\mbb{R}$, die punktweise\footnote{Sei $(f_n)_{n\in\N}, f_n\colon D\lra \mbb{R}$ eine Funktionenfolge. Die Funktionenfolge heißt punktweise konvergent gegen eine Funktion $f\colon D\lra \mbb{R}$, wenn $\forall x \in D$ gilt: $\lim_{n\to\infty} f_n(x) = f(x)$} fast überall, d.h. bis auf $\mu$-Nullmengen gegen $f:X\lra\mbb{R}$ konvergiere. Gibt es eine Majorante, das heißt ein integrierbares $g\colon X\lra\mbb{R}$ mit $\sup|(f_k)_{k\in\N}|\leq g$, so ist auch $f$ integrierbar und wir haben $\int_A \! f_k \, \mathrm{d}\mu \xrightarrow{k\lra\infty}\int_A \! f \, \mathrm{d}\mu$.
+		\end{theorem}
+
+		\begin{proof}
+			Nach Voraussetzung ist $-g\leq f_k\leq g \: \forall k\in\N$, folglich erhalten wir mit \textit{Lemma 53}
+			\begin{equation*}
+			\int_A \! f \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu \stackrel{53}\leq \liminf\limits_{k\lra\infty} \int_A \! f_k \, \mathrm{d}\mu \leq \limsup\limits_{k\lra\infty} \int_A \! f \, \mathrm{d}\mu \stackrel{53}\leq \int_A \underbrace{\limsup f_k}_{\lim f_k = f} \, \mathrm{d}\mu
+			\end{equation*}
+		\end{proof}
+		Zur Notwendigkeit der Voraussetzung an $g$, vergleiche \textit{Beispiel 46}.
+\end{document}
