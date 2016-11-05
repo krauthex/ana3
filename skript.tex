@@ -18,6 +18,9 @@
 \usepackage{mathtools}
 \usepackage{dsfont}
 \usepackage{nicefrac}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{relsize} % bigger integrals
 
 % other packages
 \usepackage{enumerate}
@@ -59,6 +62,7 @@
 \newcommand{\ceq}{\coloneqq}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
 \newcommand{\md}{\mathrm{d}}
+\DeclareMathOperator{\sign}{sign} %signum function
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -73,7 +77,7 @@
 \newcommand{\bigcupdot}{\mathop{\mathchoice%
 			{\kern -4pt \bigcup \kern -9pt \cdot}  % for equations
 			{\bigcup \kern -7.7pt \cdot \kern 2pt}  % for inline math mode
-			{\bigcup \kern -2pt \cdot \kern 2pt}{}}} % for sub- and superscripts
+			{\bigcup \kern -6.2pt \cdot \kern 2pt}{}}} % for sub- and superscripts
 
 \renewcommand{\labelitemi}{$\cdot$}  % redefine the intemize dots
 
@@ -102,5 +106,6 @@
 	\subfile{VL_261016.tex}
 	% placeholder VL 281016
 	\subfile{VL_021116.tex}
+	\subfile{VL_041116.tex}
 
 \end{document}
