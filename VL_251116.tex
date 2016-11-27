@@ -1,0 +1,113 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	
+\setcounter{cntr}{5}
+
+\begin{theorem}[Hölder]
+	Seien $p, p' \in [1, \infty)$ \textup{dual}, das heißt $\frac{1}{p} + \frac{1}{p'} = 1$. Ist $f \in L^p (X, \mu)$ und $g \in L^{p'} (X,\mu)$, so folgt $fg \in L^1(X,\mu)$ und 
+	\[
+		\lVert fg \rVert_{L^1} \leq \lVert f \rVert_{L^p} + \lVert g \rVert_{L^{p'}}.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Den Fall $p,p' \in \cbr{1,\infty}$ erhalten wir direkt aus den Eigenschaften des Integrals, vgl. \textit{Lemma I.48}. Wir können weiter $g\neq 0$ in $L^{p'}$ voraussetzen und \OE\ $\lVert g \rVert_{L^{p'}} = 1$ annehmen\footnote{Dies ist möglich, da wir uns ein $\tilde{g} \ceq \frac{g}{\lVert g \rVert_{L^{p'} } }$ definieren können, und mit diesem $\tilde{g}$ den Beweis führen können. Daher gilt der Beweis auch für $g$.}. Sei $A = \cbr{x\in X \mid g(x) \neq 0}$. Wir erhalten mit 
+	\[
+		(1-p')p = p'p\pr{\frac{1}{p'} -1} = p'p\pr{-\frac{1}{p}} = -p'
+	\]
+	durch Anwenden der Jensen-Ungleichung auf $\varphi(y) = \lvert y \rvert^p$, für $y \in \mbb{R}$, und $h=\lvert f \rvert \lvert g \rvert^{1-p'}$ auf das Maß $\nu$, mit 
+	\[
+		\md \nu = \lvert g \rvert^{p'} \md \mu \quad \pr{\nu(x) = \int_X 1 \md \nu = \int_X \lvert g \rvert^{p'} \md \mu = \lVert g \rVert_{L^{p'}}^{p'} = 1},
+	\]
+	\begin{align*}
+		\lVert fg \rVert_{L^1}^{p} &= \bigg\lvert \int_X \underbrace{\lvert fg \rvert }_{\leq \lvert f \rvert \lvert g \rvert} \md \mu \bigg\rvert^p \stackrel{\footnotemark}{\leq} \bigg\lvert \int_A \underbrace{\lvert f \rvert \lvert g \rvert^{1-p'}}_{h} \underbrace{\lvert g \rvert^{p'} \md \mu}_{\md \nu} \bigg\rvert^p = \varphi \pr{\int_A h \md \nu}\\
+		&\kern -0.5em \stackrel{\text{\scriptsize Jensen}}{\leq} \int_A \pr{\varphi \circ h} \md \nu = \int_A \lvert f \rvert^p \underbrace{\lvert g \rvert^{(1-p')p} \lvert g \rvert^{p'}}_{=1} \md \mu \stackrel{A\sbs X}{\leq} \lVert f \rVert_{L^p}^p.
+	\end{align*}
+\end{proof}
+
+\textbf{Zusatz:} Im Fall $p \in (1, \infty)$ ist $y \mapsto \lvert y \rvert^p$ strikt konvex, sodass Gleichheit impliziert, dass \\$h = \lvert f \rvert \lvert g \rvert^{1-p'}$ konstant ist, d.h. $g=0$ oder $\lvert f \rvert = \lambda \lvert g \rvert^{p'-1}$ für ein $x \in \mbb{R}$. % hier ist das x evtl falsch.... ? 
+
+\begin{cor}
+	Für jedes $f \in L^p (X,\mu)$ mit $p \in [1, \infty)$ gilt
+	\[
+		\lVert f \rVert_{L^p} = \sup \cbr{\int_X fg \md \mu \mathrel{\Big|}  g \in L^{p'} (X,\mu),\ \lVert g \rVert_{L^{p'} }= 1}.
+	\]
+\end{cor}
+
+\begin{proof}
+	''$\geq$'' folgt sofort aus Hölder. Für '' $\leq$ '' wählen wir geeignete ''Testfunktion'' $g$. Im Fall $p \in (1, \infty)$ nehmen wir
+	\[
+		g = \frac{\sign(f) \lvert f \rvert^{p-1}}{\lVert\ \lvert f \rvert^{p-1}\ \rVert_{L^p}} \quad (\text{ für } f \neq 0 \in L^p).
+	\]
+	Für $p=1$ wählen wir $g = \sign (f)$.
+\end{proof}
+
+\begin{lem}
+	Sei $\mu$ ein $\sigma$-finites Maß, $f\colon (X,\Sigma) \lra (\mbb{R}, \mc{B})$ messbar und $p\in [1, \infty)$. Gilt \\$f\cdot s \in L^1(X,\mu)$ für jedes $s \in S(X,\mu) \cap \mathscr{L}^1(X,\mu)$, so folgt $f \in L^p(X,\mu)$ und 
+	\[
+		\lVert f \rVert_{L^{p'}} = \sup \cbr{\int_X f\cdot s \md \mu \midd s \in S(X,\mu) \cap \mathscr{L}^1(X,\mu),\ \rVert s \lVert_{L^{p'}} =1}.
+	\]
+\end{lem}
+
+\begin{proof}
+	In der Übung.
+\end{proof}
+
+\begin{theorem}[Minkowski]
+	Seien $\mu, \nu$ zwei $\sigma$-finite Maße auf Maßräumen $(X, \Sigma, \mu), (Y, \Upsilon, \nu)$ und $f$ eine $(\mu \otimes \nu)$-messbare Funktion. Dann haben wir für $p\in [1, \infty)$
+	\[
+		\underbrace{\left\Vert \int_Y f(\cdot, y) \md \nu(y) \right\Vert_{L^p}}_{\pr{\int_X \left\vert \int_Y f(x,y) \md \nu(y) \right\vert^p \md \mu(x)}^{\nicefrac{1}{p}}} \leq \underbrace{ \int_Y \lVert f(\cdot, y) \rVert_{L^p} \md \nu(y).}_{\int_Y\pr{\int_X \lvert f(x,y) \rvert^p \md \mu(x)}^{\nicefrac{1}{p}} \md \nu(y)}
+	\]
+\end{theorem}
+
+\begin{proof}
+	Sei $g \in L^p(X,\mu)$ mit $g \geq 0$ und $\lVert g \rVert_{L^{p'}} =1$. Aus \textit{I.62 (Fubini)} folgt 
+	\[
+		\int_X g(x) \int_Y \lvert f(x,y) \rvert \md \nu(y) \md \mu(x) = \int_Y \underbrace{\int_X \lvert f(x,y)\rvert g(x) \md \mu(x)}_{\leq \lVert f(\cdot, y) \rVert_{L^{p}} \lVert g \rVert_{L^{p'}}} \md \nu(y)
+	\]
+	Durch Anwenden von \textit{Lemma 8} schließen wir, dass die linke Seite gerade die $L^p$-Norm von $\int_Y f(\cdot, y) \md \nu(y)$ ist.
+\end{proof}
+
+Ist $\nu = \delta_{\eta_1} + \delta_{\eta_2},\ \eta_1, \eta_2 \in Y,$ so haben wir (Aufgabe 19)
+\[
+	\lVert f(\cdot, \eta_1) + f(\cdot, \eta_2) \rVert_{L^p} \leq \lVert f(\cdot, \eta_1) \rVert_{L^p} + \lVert f(\cdot, \eta_2) \rVert_{L^p}.
+\]
+(Im Falle von $p=\infty$ rechne direkt nach.)
+
+Aus \textit{Fatous Lemma I.48} erhalten wir die Unterhalbsstetigkeit der Normen: Gilt $f_n \lra f$ punktweise $\mu$-fast überall, so haben wir 
+\[
+	\lVert f \rVert_{L^p}^p = \int_X \liminf_{k\to \infty} \lvert f_k \rvert^p \md \mu \leq \liminf_{k \to \infty} \underbrace{\int_X \lvert f_k \rvert^p \md \mu}_{=\lVert f_k \rVert_{L^p}^p}.
+\]
+Diese Ungleichung lässt sich wie folgt quantisieren:
+
+\begin{lem}
+	Sei $p\in[1,\infty)$ und $f_k \in L^p(X,\mu)$ mit $M\ceq \sup_{k\in\N} \lVert f_k \rVert_{L^p} < \infty$ konvergiere punktweise $\mu$-fast überall gegen eine Grenzfunktion $f$. Dann ist $f\in L^p(X,\mu)$ und 
+	\[
+		\lVert f_k \rVert_{L^p}^p - \lVert f_k - f \rVert_{L^p}^p \xrightarrow{k\to\infty} \lVert f \rVert_{L^p}^p.
+	\] 
+\end{lem}
+
+\begin{proof}
+	Mit \textit{Fatou} erhalten wir sofort
+	\[
+		\lVert f \rVert_{L^p} \leq \liminf_{k\to\infty} \lVert f_k \rVert_{L^p} \leq M.
+	\]
+	Weiterhin gibt es $\forall \varepsilon>0$ ein $C_\varepsilon< \infty$ mit 
+	\[
+		\big\lvert \lvert s - t \rvert^p - \lvert t \rvert^p - \lvert s \rvert^p \big\rvert \leq \varepsilon\lvert t \rvert^p + C_\varepsilon\lvert s \rvert^p. 
+	\]
+	Mit $t=f-f_k,\ s=f$ erhalten wir
+	\[
+		\underbrace{\big\lvert \lvert f_k \rvert^p - \lvert f-f_k \rvert^p - \lvert f \rvert^p \big\rvert}_{\rotatebox[origin=c]{180}{$\ceq$} A} \leq \varepsilon \underbrace{\lvert f-f_k \rvert^p + C_\varepsilon \lvert f \rvert^p}_{\rotatebox[origin=c]{180}{$\ceq$} B}.
+	\]
+	Nun ist $B-A \geq 0$ und wir erhalten
+	\begin{align*}
+		C_\varepsilon \lVert f \rVert_{L^p}^p &\leq \liminf_{k\to\infty} \int_X \bigg( \varepsilon \underbrace{\left| f - f_k \right|^p}_{\leq \abs{f} + \abs{f_k}} + C_\varepsilon \abs{f}^p - \big\lvert \abs{f_k}^p - \abs{f_k - f}^p - \abs{f}^p \big\rvert \bigg) \md \mu\\
+		&\leq \varepsilon \bigg(\underbrace{2 \sup_{k\in\N} \lVert f_k \rVert_{L^p}}_{\leq M} \bigg)^p + C_\varepsilon \lVert f \rVert_{L^p}^p - \limsup_{k\to\infty} \int_X \big\lvert \abs{f_k}^p - \abs{f_k - f}^p - \abs{f}^p \big\rvert \md \mu.
+	\end{align*}
+	Die Behauptung folgt mit $\varepsilon \searr 0$.
+\end{proof}
+
+
+\end{document}
