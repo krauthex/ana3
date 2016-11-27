@@ -66,11 +66,16 @@
 \newcommand{\ceq}{\coloneqq}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
 \newcommand{\md}{\: \mathrm{d}}
+\newcommand{\midd}{\mathrel{\Big|}}
 \DeclareMathOperator{\sign}{sign} %signum function
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
 
+\newcommand{\uarrow}[2]{\underset{\mathclap{\substack{\displaystyle{\uparrow}\\{#1}}}}{#2}} % arrow from below with subtext #1 pointing to #2
+\newcommand{\darrow}[2]{\overset{\mathclap{\substack{#1 \\ \displaystyle{\downarrow}}}}{#2}} % arrow from above with suptext #1 pointing to #2
 
 \newcommand{\pr}[1]{\mathchoice%
 			{\kern -1pt \left(#1\right)}  % for equations
@@ -113,7 +118,8 @@
 	\subfile{VL_041116.tex}
 	\subfile{VL_091116.tex}
 	\subfile{VL_111116.tex}
-	% placeholder 18.11.
+	%\subfile{VL_181116.tex}
 	\subfile{VL_231116.tex}
+	\subfile{VL_251116.tex}
 
 \end{document}
