@@ -1,0 +1,132 @@
+\documentclass[skript.tex]{subfiles}
+% \pr{große klammer}
+% \ceq :=\subfile{VL_111116.tex}
+% \colon für Funktion folgt
+% | ist \mid
+% \cbr große geschw klammer
+% \cp komplement
+% \cdot multiplikation
+\begin{document}
+
+\begin{bsp}
+a) Verkettung von Bildmaßen: $ f \colon X\to Y, \. g \colon Y \to \ Z $
+\begin{align*}
+	(g \circ f)_{*} \mu(c) &= \mu ((g \circ f)^{-1}(C)) = \mu ((f^{-1} \circ g^{-1})(C)) \\
+	&= \mu( f^{-1}(g^{-1}(C)) = f_* \mu(g^{-1}(C))\\
+	&= g_* f_* \mu(C)
+\end{align*}
+
+b) Sei $ f \colon X \to Mx+b, \. M \in \mbb{R}^{n\times n} $ invertierbar, $b \in \mbb{R}$ \\
+\begin{equation*}
+\text{zz: } f_* \lambda^n = \frac{1}{\lvert \det M \rvert}\lambda^n
+\end{equation*}
+Zunächst $f_*\lambda^n$ ist translationsinvariant und damit nach Satz 66, iii) ist $f_*\lambda^n$ ein Vielfaches von $\lambda^n$. Da M invertierbar, existieren $ V_1, V_2 \in D(n)$, $D$ Diagonalmatrix, sodass $M=V_1 D V_2$.
+
+c)
+\begin{equation}
+	\int_{A}g(\underbrace{Mx+b}_{f}) \md \lambda^n = \int _{A}(g \circ f) \md \lambda^n  \stackrel{\text{Satz 68}}{=} \int_{MA+b} g \md f_* \lambda^n \stackrel{\text{b)}}{=} \frac{1}{\lvert \det M \rvert} \int_{MA+b} g \md \lambda^n
+\end{equation}
+\end{bsp}
+
+\begin{theorem}[Transformationssatz]
+	Seien $U,V \sbs \mbb{R}^n$ offen und $f \in C^1(U,V)$, $f$ Diffeomorphismus\footnote{$f\in C^1(U,V), \. f^{-1} \in C^1 (V,U)$}, dann gilt $(f^{-1})_*\lambda^n = \lvert J_f \rvert \lambda^n, \. J_f= \det(\text{Df})$, Df Jacobi Matrix und es gilt:
+	
+	\begin{equation*}
+	\int_{U} (G \circ f) \lvert J_f \rvert \md \lambda^n = \int_{V} g \md \lambda^n \text{$\forall$ nicht negativen oder integrierbaren Funktionen $g \ceq V \to \mbb{R}$} 
+	\end{equation*}
+\end{theorem}
+	\begin{proof}
+		Wir betrachten zunächst $g=1$ und offene Quader, $R,\overline{R} \sbs U$
+		zz
+		\begin{equation*}
+		\int_{R} \lvert J_f \rvert \md \lambda^n = \int_{f(R)} \md \lambda^n= \lambda^n(f(R))
+		\end{equation*}
+		
+		Betrachte $\frac{\chi_{B_1(0)}}{\lambda^n(B_1(0))}$ und setzte $\varphi_\varepsilon(y) = \varepsilon^{-n} \varphi (\frac{y}{\varepsilon}), \. \varepsilon>0$. Es gilt nach 69c) $\left\lbrack
+		M= \begin{pmatrix}
+		1/\varepsilon &  & \text{\huge0} \\
+		 & \ddots &  \\
+		\text{\huge0} &  &  1/\varepsilon \\
+		\end{pmatrix}  \right \rbrack$ $\int_{\mbb{R}^n} \varphi_{\varepsilon}(y) \md \lambda^n(y)=1$ \\
+		Definiere
+		\begin{align*}
+		I_{\varepsilon} &= \int_{f(R)} \lvert J_f(f^{-1}(y))\rvert \int_{R} \varphi_{\varepsilon}(f(z)-y) \md \lambda^n(z) \md \lambda^n(y) \\
+		&= \int_{f(R)}\lvert J_f(f^{-1}(y)) \rvert h_{\varepsilon}(y) \md \lambda^n(y)
+		\end{align*}
+		
+		Nach Definition von $\varphi_{\varepsilon}$ ist $h_{\varepsilon} \neq 0$ für $ \varepsilon< \varepsilon_0$ nur für $z \in K \ceq f^{-1}(B_{\varepsilon}(y))$ $K$ kompakt. Setzte $x \colon f^{-1}(y) \in K$, dann erhalten wir mit der Transformation $ z \mapsto x + \varepsilon z$ und $W_{\varepsilon}(x) = \frac{1}{\varepsilon}(K-x)$ aus 69c)
+		
+		\begin{align*}
+		h_{\varepsilon}(y) & = \int_K \varphi_{\varepsilon} (f(z)-y) \md \lambda^n(z)\\
+		&= \varepsilon^{-n} \int_K \varphi( \frac{f(z)-y)}{\varepsilon}) \md \lambda^n(z) \\
+		&= \int_{W_{\varepsilon}(x)} \varphi(\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}) \md \lambda^n(z)
+		\end{align*}
+		
+		Wegen $\lvert \frac{f(x+ \varepsilon z) - f(x)}{\varepsilon} \rvert \geq \frac{\lvert z \rvert}{C}$, für C$\ceq \sup\limits_{k} \lvert D(f^{-1}) \rvert$ und $z \in \mbb{R}$ mit $x + \varepsilon z \in U$ ist der Integrand beschränkt für $ z \in B_C(0)$ überdeckt und wir erhalten mit dem Satz von der dominierten Konvergenz:
+	
+		\begin{align*}
+		\lim\limits_{\varepsilon \to 0} h_{\varepsilon}(y)
+	&	= \lim\limits_{\varepsilon \to 0}  \int_{B_C(0)} \varphi(\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}) \md \lambda^n(z) \\
+    &	=\footnotemark \int_{B_C(0)} \lim\limits_{\varepsilon \to 0} \varphi(\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}) \md \lambda^n(z)) 
+		\end{align*}
+		\footnotetext{dom. Konvergenz}
+		
+		\begin{equation*}
+		\varphi(\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}) \stackrel{ \varepsilon \to 0}{\to} \varphi (\text{Df}(x)z)
+		\end{equation*}
+		
+		Betrachte {$z \in \mbb{R}^n \lvert \text{Df}(x)z \rvert = 1$} ist Nullmenge. Somit gilt die Konvergenz fast überall und mit Lemma 52:
+		
+		\begin{align*}
+		\lim\limits_{\varepsilon \ to 0} h_{\varepsilon}(y) &= \int_{B_C(0)} \varphi(\text{Df}(x)z) \md \lambda^n(z) \\
+		&	=\footnotemark \frac{1}{\lvert \det \text{Df}(x)} \int_{\text{Df}(x)B_C(0)}\varphi(x) \md \lambda^n(x) \\
+		&  =\lvert J_f (f^{-1}(y))\rvert^{-1}
+		\end{align*}
+		\footnotetext{69c)}
+		
+		Der Satz von der dominierten Konvergenz ergibt dann:
+		\begin{equation*}
+		\lim\limits_{\varepsilon \to 0} \text{I}_{\varepsilon} = \int_{f(R)} 1 \md \lambda^n(x) = \lambda^n(f(R))
+		\end{equation*}
+		
+		Für die linke Seite benutze Fubini
+		\begin{equation*}
+		\text{I}_{\varepsilon} = \int_R  \int_{f(R)} \lvert J_f(f^{-1}(y)) \rvert \varphi_{\varepsilon}(f(z)-y) \md \lambda^n(y) \md \lambda^n (z)
+		\end{equation*}
+		Weil $f(z)$ für $ z \in R$ ein innerer Punkt ist von $f(R)$ impliziert die Stetigkeit von $ \lvert J_f(f^{-1}(\cdot)) \rvert$
+		\begin{align*}
+		&\int_{B_{\varepsilon f(z)}} \lvert J_f (f^{-1}(y)) \rvert \varphi_{\varepsilon} (f(z)-y) \md \lambda^n (y) \\
+		&= \int_{B_{\varepsilon f(z)}} ( \lvert J_f (f^{-1}(y)) \rvert - \lvert J_f (f^{-1}(f(z))) \rvert + \lvert J_f(f^{-1}(f(z))) \rvert ) \varphi_{\varepsilon} (f(z)-y) \md \lambda^n (y)\\
+		&= \lvert J_f(z) \rvert + \int_{B_{\varepsilon f(z)}} (\underbrace{\lvert J_f (f^{-1}(y)) \rvert - \lvert J_f (f^{-1}(f(z))) \rvert}_{\leq \sup\limits_{\eta \in B_{\varepsilon}(f(z))} \lvert J_f(f^{-1}(\eta)) - J_f (f^{-1}(f(z))) \rvert \stackrel{\varepsilon \to 0}{\to}0} \varphi_{\varepsilon} (f(z)-y) \md \lambda^n (y) 
+		\end{align*}
+		Dominierte Konvergenz $\rightarrow \lim\limits_{\varepsilon \to 0} I_{\varepsilon} = \int_R \lvert J_f(z) \rvert \md \lambda^n(z)$.\\ %Hier musste ich nen Umbruch machen, da er sonst nen Fehler anzeigte, warum genau, weiß ich auch nicht.
+		Setzte für $B \in \mathscr{B}(v)$ $\mu(B) = \int_B \lvert J_f (z) \rvert 
+		\md \lambda^n (z)
+		$ ist ein Maß nach Lemma 47. Das Rechtecke die Borelsche $\sigma$-Algebra erzeugen, folgt mit dem 1. Schritt und dem Eindeutigkeitssatz (Satz 23) die Identität $\mu(\cdot) = \lambda^n(f(\cdot)) = (f^{-1})_* \lambda^n$ auf 
+		$\mathscr(B)(v)$ Damit gilt der Satz $\forall g= \chi_B, \. B \in \mathscr{B}(v)$. Funktionen $g=g^+ - g^-$
+	\end{proof}
+	
+	\begin{bsp*}[Polarkoordinaten]
+		Wir betrachten $T_2 \colon [0, \infty) x [0, 2\pi) \to \mbb{R}^2$ mit
+		\begin{align*}
+	&	T_2(\rho, \varphi) = (\rho\cos(\varphi),\rho\sin(\varphi)) \:\:\: 				  \{0\}\times[0,2\pi) \\
+	&	\det \text{D}T_2 (\rho,\varphi) = \det \begin{pmatrix}
+		\cos (\varphi) & - \rho \sin(\varphi) \\
+		\sin(\varphi) & \rho \cos(\varphi) \\
+		\end{pmatrix} = \rho \\
+		& U \subseteq [0,\infty) \times [0,2\pi) \\
+		& \int_u g(\rho\cos(\varphi),\rho\sin(\varphi))\rho \md \lambda(\rho,\varphi) = \int_{T_2(U)} g \md \lambda^2
+		\end{align*}
+	\end{bsp*}
+
+	\begin{bsp*}[Sphärische Koordinaten]
+		\begin{align*}
+	&	T_3(\rho,\varphi,\omega) = 	(\rho\sin(\omega)\cos(\varphi),\rho\sin(\omega)\sin(\varphi),\rho\cos(\omega) \\
+	& \rho\in [0,\infty), \varphi \in [0,2\pi), \omega \in [0, \pi] \\
+	& \det \text{D}T_3 = \rho^2\sin(\omega) \\
+	& U \subseteq [0, \infty) \times [0,2\pi) \times [0, \pi] \\
+	& \int_U g( T_3 (\rho,\varphi,\omega)) \rho^2 \sin(\omega) \md \lambda (\rho,\varphi,\omega) = \int_{T_3(K)} g \md \lambda^3
+		\end{align*}
+	\end{bsp*}
+
+\end{document}
