@@ -15,13 +15,14 @@
 \usepackage{amssymb}
 \usepackage[fleqn]{amsmath}
 \usepackage{amsthm}  % for theorem-stuff
-\usepackage{mathtools}
+\usepackage{mathtools} 
 \usepackage{dsfont}
 \usepackage{nicefrac}
 \usepackage{extarrows}
 \usepackage{mathrsfs}
 \usepackage{relsize} % bigger integrals
 \usepackage{stmaryrd}  % for lightning symbol in proofs
+\usepackage{yhmath}  % for a wider widehat
 
 % other packages
 \usepackage{enumerate}
@@ -62,6 +63,8 @@
 \newcommand{\A}{\mc{A}}
 \newcommand{\D}{\mc{D}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}{\R^n}
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
@@ -69,7 +72,13 @@
 \newcommand{\midd}{\mathrel{\Big|}}
 \DeclareMathOperator{\sign}{sign} %signum function
 \newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\norm}[1]{\left\lVert\, #1\, \right\rVert}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\skp}[2]{\langle #1\,{,}\,#2 \rangle}
+\newcommand{\del}{\partial}
+\newcommand{\ddel}[2]{\frac{\del #1}{\del #2}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\bcdot}{\boldsymbol{\cdot}}
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -121,5 +130,8 @@
 	\subfile{VL_181116.tex}
 	\subfile{VL_231116.tex}
 	\subfile{VL_251116.tex}
+	%
+	%
+	\subfile{VL_071216.tex}
 
 \end{document}
