@@ -1,0 +1,120 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+\chapter{Fouriertransformation}
+\setcounter{cntr}{0}
+\begin{defin}[Fouriertransformation]
+	Für $f \in L^1(\mbb{R}^n)$ definieren wir
+	\[
+		\widehat{f}(p) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \int_{\mbb{R}^n} \e^{-i \skp{p}{x}} f(x) \md \lambda^n(x),\ p\in \mbb{R}^n,
+	\]
+	wobei $\skp{\cdot}{\cdot}$ das Skalarprodukt darstellt.
+\end{defin}
+Offenbar ist $\mc{F}\colon f \mapsto \widehat{f}$ eine lineare Abbildung, die beschränkt ist. Eine lineare Abbildung $A$ zwischen normierten Räumen $X,Y,\ A\colon X \lra Y$ heißt \textit{beschränkt}, falls es eine Konstante $C>0$ mit $\norm{Ax}_Y \leq C\cdot \norm{x}_X\ \forall x \in X$ gibt. 
+
+Im Folgenden ist $C^0_b(X)$ der Raum der stetigen und beschränkten Funktionen $X\lra \mbb{R}, B \sbs \mbb{R}^n$. Also $C^0_b = C^0 \cap \mathscr{L}^\infty$.
+
+\begin{lem}
+	Die Fouriertransformation $\mc{F}$ ist eine lineare beschränkte Abbildung $L^1(\Rn)  \lra C^0_b(\Rn)$ mit
+	\[
+		\norm{\widehat{f}}_{L^\infty} \leq \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \norm{f}_{L^1}.
+	\] 
+	Ist $f$ nicht-negativ, so gilt Gleichheit. % still not happy with the norm bars..... :(
+\end{lem}
+
+\begin{proof}
+	Die Abschätzung ergibt sich sofort aus der Definition. Es bleibt Stetigkeit von $\widehat{f}$ zu zeigen. Hierzu wählen wir eine Folge $(p_k)_{k\in\N} \sbs \Rn,\ p_k \lra p_0 \in \Rn$ für $k\lra\infty$. Wegen $\abs{\e^{-i \skp{p}{x}}}=1$ ist $\abs{f}$ eine integrierbare Majorante des Integranden und mit dem Satz über dominierte Konvergenz folgt die Behauptung. Ist $f\geq0$, so haben wir 
+	\begin{align*}
+		\norm{f}_{L^1} &= \int_\R \abs{f} \md \lambda^n = \int_{\Rn} \e^{-i \skp{0}{x}} f(x) \md \lambda^n(x)\\
+		&= (2\pi)^{\nicefrac{n}{2}} \widehat{f}(0) \uarrow{\text{Def }L^\infty}{\leq} (2\pi)^{\nicefrac{n}{2}} \norm{\widehat{f}}_{L^\infty} \leq \norm{f}_{L^1}.
+	\end{align*}
+\end{proof}
+
+\begin{lem}
+	Für $f,g \in L^1(\Rn),\ a,p \in \Rn,\ \lambda >0$ gilt:
+	\begin{itemize}
+		\item[(i)] $\widehat{f(\bcdot + a)}(p) = \e^{-i \skp{a}{p}} \widehat{f}(p)$, wobei die linke Seite die Fourier-Transformierte $x\mapsto f(x+a)$ ist.
+		\item[(ii)] $\widehat{\e^{-i \skp{\bcdot}{a}}f}(p) = \widehat{f}(p-a)$
+		\item[(iii)] $\widehat{f(\lambda \bcdot)}(p) = \frac{1}{\lambda^n} \widehat{f} \pr{\frac{p}{\lambda}}$
+		\item[(iv)] $\widehat{f(- \bcdot)}(p) = \widehat{f}(-p)$
+		\item[(v)] 	$\widehat{f}g,\ f\widehat{g} \in L^1$ mit $ \int \widehat{f}g = \int f \widehat{g}$
+{}	\end{itemize}
+\end{lem}
+
+\begin{proof}
+	In der Übung.
+\end{proof}
+
+\begin{lem}
+	Sei $f \in C^1(\Rn) $ mit $\lim_{\abs{x}\lra\infty} f(x) = 0$ und $f, \del_j f \in L^1(\Rn)$ für ein \\$j \in \cbr{1,\dotsc,n}$. Dann ist 
+	\[
+		\widehat{\del_j f} (p) = ip_j \widehat{f} (p)\ \forall p \in \Rn.
+	\]
+	Sind umgekehrt $f$ und $(x\mapsto x_j f(x))$ integrierbar (also $\in L^1$), so ist $\wh{f}$ nach $p_j$ differenzierbar und es gilt
+	\[
+		\wh{\bcdot_j f(\bcdot)} (p) = i\del_j \wh{f} (p)\ \forall p \in \Rn.
+	\]
+\end{lem}
+
+\begin{proof}
+	Partielle Integration liefert im ersten Fall
+	\begin{align*}
+		(2\pi)^{\nicefrac{n}{2}} \wh{\del_j f} (p) &= \int_{\Rn} \underbrace{\e^{-i \skp{p}{x}} \ddel{f}{x_j} (x)}_{\text{stetig!}} \md \lambda^n(x) \darrow{\text{P.I.}}{=} - \int_\Rn \ddel{\e^{-i \skp{p}{x}}}{x_j} f(x) \md \lambda^n(x)\\
+		&= i p_j \int_\Rn \e^{-i\skp{p}{x}} f(x) \md \lambda^n(x) = (2\pi)^{\nicefrac{n}{2}} i p_j \wh{f}(p).
+	\end{align*}
+	Für den zweiten Fall erhalten wir aus \textit{Aufgabe 9}
+	\begin{align*}
+		\wh{\bcdot_j f(\bcdot)} (p) &= \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \int_\Rn x_j f(x) \e^{-i \skp{x}{p}} \md \lambda^n(x) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \int_\Rn \underbrace{i \ddel{\e^{-i \skp{x}{p}}}{p_j} f(x)}_{\ddel{}{p_j}\underbrace{\pr{i \e^{-i \skp{x}{p}} }}_{\abs{\cdot} \leq 1} f(x)}   \md \lambda^n(x)\\
+		&= i \ddel{}{p_j} \wh{f}(p),
+	\end{align*}
+	was insbesondere die partielle Differenzierbarkeit von $\wh{f}$ beweist. 
+\end{proof}
+
+\begin{notat}
+	Das soeben bewiesene Resultat überträgt sich induktiv auf den Fall höherer Ableitungen. Für $f\in C^k(\Rn), k\in\N, \alpha \in (\N \cup \cbr{0})^n, \abs{\alpha} \leq k$ setzen wir
+	\[
+		\del_\alpha f \ceq \ddel{^{\abs{\alpha}} f}{^{\alpha_1}_{x_1} \cdot \dotsc \cdot \del_{x_n}^{\alpha_n}},\ \text{ wobei } x^\alpha = x_1^{\alpha_1} \cdot \dotsc \cdot x_n^{\alpha_n},\ \abs{\alpha} = \alpha_1 + \dotsc + \alpha_n \text{ ist.} 
+	\]
+	Ein Element $\alpha \in (\N \cup \cbr{0})^n$ heißt \textit{Multiindex} und $\abs{\alpha}$ ist seine Ordnung. Natürlich ist \\$(\lambda x)^\alpha = \lambda^{\abs{\alpha}} x^\alpha$ für $\lambda \in \R$.
+\end{notat}
+
+\begin{defin}[Schwartz-Raum]
+	Wir definieren
+	\[
+		\ms{S}(\Rn) \ceq \cbr{f \in C^\infty(\Rn) \midd \forall \alpha, \beta \in (\N \cup \cbr{0})^n \colon \sup_{x\in\Rn} \abs{x^\alpha(\del_\beta f) (x)} < \infty}.
+	\]
+	Die Elemente heißen \textit{Schwartz-Funktionen} bzw. \textit{schnell-fallende Funktionen}.
+\end{defin}
+
+\begin{bem}
+	Offenbar ist $\ms{S}(\Rn) \sbs L^p(\Rn)$ für $p\in [1,\infty]$ und wegen $C^\infty_c (\Rn) \sbs \ms{S}(\Rn)$ (insbesondere $\ms{S}(\Rn) \neq \es$) ist $\ms{S}(\Rn)$ für $p\in[1,\infty)$ nach \textup{Satz II.21} sogar dicht in $L^p(\Rn)$. Mit $f$ liegen auch $x\mapsto x^\alpha f(x)$ und $\del_\alpha f$ für jeden Multiindex $\alpha$ im Schwartz-Raum. 
+\end{bem}
+	
+\begin{lem}
+	Die Fouriertransformation $\mc{F}$ ist ein Operator $\mc{F} \colon \ms{S}(\Rn) \lra \ms{S}(\Rn)$. Insbesondere gilt für jeden Multiindex $\alpha \in (\N \cup \cbr{0})^n,\ f \in \ms{S}(\Rn),\ p\in \Rn:$
+	\[
+		\wh{\del_\alpha f} (p) = (ip)^\alpha \wh{f}(p) \quad\text{und}\quad \wh{\bcdot^\alpha f(\bcdot)} (p) = i^{\abs{\alpha}} \del_\alpha \wh{f} (p). 
+	\]
+\end{lem}
+
+\begin{proof}
+	Die Formeln erhält man induktiv aus \textit{Lemma 4}. Insbesondere ist $\wh{f} \in C^\infty (\Rn)$. Um $\wh{f} \in \ms{S}(\Rn)$ zu zeigen, verwenden wir zunächst, dass $\wh{f}$ nach \textit{Lemma 2} beschränkt ist. Damit $f$ nach \textit{Bemerkung 7} auch $(x\mapsto \del_\alpha (x^\beta f(x))) \in \ms{S}(\Rn)$ gilt und dessen Fourier-Transformierte ebenfalls beschränkt ist, erhalten wir eine gleichmäßige Schranke aus 
+	\[
+		p^\alpha \del_\beta \wh{f} (p) = i^{- \abs{\beta}} p^\alpha \wh{\bcdot^\beta f(\bcdot)} (p) = i^{- \abs{\alpha} - \abs{\beta}} \underbrace{\underbrace{\wh{\del_\alpha ( \boldsymbol{\cdot}^\beta f(\bcdot))}}_{\in \ms{S}(\Rn)} (p)}_{\mathclap{\text{gleichmäßig beschränkt in $p$ wegen \textit{Lemma 2}}}}
+	\]
+	für beliebige Multiindizes $\alpha, \beta \in (\N \cup \cbr{0})^n$.
+\end{proof}
+
+\textbf{''Moral'':} \, Das Abklingverhalten einer Funktion korrespondiert mit der Regularität\footnote{Glattheit} der Fourier-Transformierten, und die Regularität einer Funktion umgekehrt mit dem Abklingverhalten ihrer Fourier-Transformierten. 
+
+Insbesondere verschwindet die Fourier-Transformierte einer integrierbaren Funktion im Unendlichen, was im folgenden Corollar gezeigt wird. Mit $C_0^0 (\Rn)$ bezeichen wir den Raum aller stetigen Funktionen $f$, die $\lim_{\abs{x}\lra\infty} f(x) = 0$ erfüllen. 
+
+\begin{cor}[Riemann-Lebesgue]
+	Die Fouriertransformation bildet $L^1(\Rn)$ auf $C_0^0(\Rn)$ ab.
+\end{cor}
+	
+	
+	
+	
+
+\end{document}
