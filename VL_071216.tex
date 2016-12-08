@@ -25,7 +25,7 @@ Im Folgenden ist $C^0_b(X)$ der Raum der stetigen und beschränkten Funktionen $
 \begin{proof}
 	Die Abschätzung ergibt sich sofort aus der Definition. Es bleibt Stetigkeit von $\widehat{f}$ zu zeigen. Hierzu wählen wir eine Folge $(p_k)_{k\in\N} \sbs \Rn,\ p_k \lra p_0 \in \Rn$ für $k\lra\infty$. Wegen $\abs{\e^{-i \skp{p}{x}}}=1$ ist $\abs{f}$ eine integrierbare Majorante des Integranden und mit dem Satz über dominierte Konvergenz folgt die Behauptung. Ist $f\geq0$, so haben wir 
 	\begin{align*}
-		\norm{f}_{L^1} &= \int_\R \abs{f} \md \lambda^n = \int_{\Rn} \e^{-i \skp{0}{x}} f(x) \md \lambda^n(x)\\
+		\norm{f}_{L^1} &= \int_\Rn \abs{f} \md \lambda^n = \int_{\Rn} \e^{-i \skp{0}{x}} f(x) \md \lambda^n(x)\\
 		&= (2\pi)^{\nicefrac{n}{2}} \widehat{f}(0) \uarrow{\text{Def }L^\infty}{\leq} (2\pi)^{\nicefrac{n}{2}} \norm{\widehat{f}}_{L^\infty} \leq \norm{f}_{L^1}.
 	\end{align*}
 \end{proof}
