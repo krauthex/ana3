@@ -1,0 +1,121 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+
+\section{Vollständigkeit}
+\begin{theorem}[Riesz-Fischer (Vollständigkeit)]
+Der Raum $L^p(X, \mu)$ ist für $p \in [1,\infty]$ vollständig mithin ein Banachraum
+\end{theorem}
+
+\begin{bem}
+	Wir verwenden hierzu die Vollständigkeit von $\mbb{R}$. Sei zunächst $p< \infty$ und $(f_k)_{k \in \N}$ eine Cauchyfolge. $\forall \epsilon>0 \: \exists \: K=K(\epsilon) \in \N$
+	
+	\begin{equation*}
+		\forall j,k \geq K \: \colon \norm{f_j - f_k}_{L^p} < \epsilon
+	\end{equation*}
+	
+	Wir möchten zeigen, dass es ein Grenzelement $f \in L^p (X, \mu)$ mit $\norm{f_k - f}_{L^p} \xrightarrow{k\lra\infty} 0$ gibt. Es genügt die für eine Teilfolge von $(f_k)_{k \in \N}$ zu verifizieren. Durch Aussortieren von Elementen der Folge könne wir $ \norm{f_{k+1}-f_k}_{L^p} \leq 2^{-k} \: \forall k\in\N$. \\
+	 Mit $f_0 \ceq 0, \: g_k \ceq f_k - f_{k-1} \forall k \in \N \: G \ceq \sum_{k \in \N} \abs{g_k}$ erhalten wir
+	
+	\begin{equation*}
+	\norm{\sum_{j=1}^{k} \abs{g_j}}_{L^p} \leq \sum_{j=1}^{k} \norm{g_j}_{L^p} \leq \norm{g_1}_{L^p} + \sum_{j=1}^{k 2^{-j}} \leq \norm{g_1}_{L^p} +1
+	\end{equation*}
+	
+	Aus dem Satz der monotonen Konvergenz (I. 45) gewinnen wir $G \in L^p$ und wir haben insbesondere $G(x) < \infty$ für fast alle $x \in X$. Ans diesen Punkten konvergiert
+	
+	\begin{equation*}
+	\tilde f \colon \sum_{k\in \N} g_k = \lim_{ k \to \infty} \sum_{j=1}^{k} g_k = \lim_{k \to \infty} f_k
+	\end{equation*}
+
+	absolut. Dort ist also $ \abs{f_k(x) - \tilde f(x)}^p \xrightarrow{k\lra\infty} 0$ und wir haben
+	
+	\begin{equation*}
+	\abs{f_k - \tilde f}^p = \abs{ \sum_{j=1}^{k} g_j - \sum_{j=1}^{\infty} g_j}^p = \abs{\sum_{j=k+1}^{\infty} g_j}^p \leq \abs{\sum_{j=1}^{\infty} \abs{g_j}}^p \leq \abs{G}^p
+	\end{equation*}
+	
+	dort wo $G< \infty$. Nun ist $\abs{G}^p \in L^1$, mit $f \colon \liminf_{k \to \infty} f_k$ erhalten wir eine messbare Funktion mit $f = \tilde f$ $\mu$-fast überall. Nun folgt aus dem Satz über dominierte Konvergenz (I. 54)
+	
+	\begin{equation*}
+	\norm{f_k - f}_{L^p}^p = \int_X \abs{f_k -f}^p \md \mu \xrightarrow{k\lra\infty} 0
+	\end{equation*}
+	
+	Im Fall $p= \infty$ gilt für die Cauchyfolge $(f_k)_{k\in\N}$ 
+	
+	\begin{equation*}
+	\forall m \in \N \: \exists \: M(m) \in \N \: \forall j,k \geq M \: \norm{f_k - f_j}_{L^\infty} < \frac{1}{m}
+	\end{equation*}
+	
+	Also gibt es eine $\mu$-Nullmenge $A_{j,k,m} \in \Sigma$ mit
+	
+	\begin{equation*}
+	\abs{f_j(x)- f_k(x)} \leq \frac{1}{m} \: \forall x \in X \sm A_{j,k,m}
+	\end{equation*}
+	
+	Nun ist auch $A = \bigcup_{m\in\N} \bigcup_{j,k \geq M} A_{j,k,m}$ eine $\mu$-Nullmenge.
+	Folglich ist $ (f_k(x))_{k\in\N} \sbs \mbb{R}$ für jedes $ x \in X \sm A$ eine Cauchy-Folge und konvergiert gegen $f(x) \ceq \liminf_{k\to\infty} f_k(x)$ \\
+	Damit haben wir zunächst $\abs{f_j(x) - f(x)} \leq \frac{1}{m} \: \forall x \in X \sm A und j \geq M$. Weiterhin ist f messbar (I.40). Nun gilt.
+	
+	\begin{align*}
+	\abs{f_k-f}_{L^\infty} &= \sup\{s \geq 0 \mid \mu(\{x\in X \mid \abs{f_k(x) - f(x)} \geq s \})>0\} \\
+	&= \sup\{s \geq 0 \mid \mu( \underbrace{\{x\in X \sm A \mid \underbrace{\abs{f_k(x) - f(x)}}_{\leq \frac{1}{m} \: \text{falls} \: k\geq M}  \geq s \}}_{= \Phi \: \text{falls} \: k\geq M \: \text{und} \: s > \frac{1}{m}})>0\} \\
+	&\leq \frac{1}{m} \: \text{für} \: k \geq M
+	\end{align*}
+	
+	Also $\norm {f_k - f}_{L^\infty} \to 0$ für $ k \to \infty $
+\end{bem}
+
+\begin{cor}
+	Konvergiert eine Folge in $L^p(X,\mu), \: p \in [ 1,\infty]$, so gibt es eine Teilfolge, die punktweise $\mu$-fast überall konvergiert (A. 24). Die Grenzwerte einer in $L^p$ und $L^q$, $p,q \in [1,\infty]$ konvergierenden Folge stimmen fast überall überein.
+\end{cor}
+
+\begin{bsp}[Raumschiff]
+	\begin{equation*}
+	\underbrace{\chi_{[0,\frac{1}{2}]}, \: \chi_{[\frac{1}{2},1]}}_{\norm{·}_{L^p}=\frac{1}{2}}, \: \underbrace{\chi_{[0,\frac{1}{3}]}, \: \chi_{[\frac{1}{3},\frac{2}{3}]}, \: \chi_{[\frac{2}{3},1]}}_{\norm{·}_{L^p}=\frac{1}{3}}, \: \chi_{[0,\frac{1}{4}]}
+	\end{equation*}
+	
+	Also Konvergenz gegen Nullfunktion in $L^p$, aber nicht punktweise fast überall. Für $p= \infty$ braucht man nicht zu einer Teilfolge überzugehen.
+\end{bsp}
+
+\section{Approximation}
+
+\begin{defin}
+	Eine Teilmenge A eines topologischen Raums $X$ heißt dicht, falls es zu jedem Punkt $x\in X$ eine gegen $x$ konvergierende Folge in A gibt. \\
+	Erinnerung (A.13): Eine Folge $(\xi_k)_{k\in\N}$ konvergiert gegen $\xi_0 \in X$, falls es für jede offene Umgebung $U$ von $\xi_0$ (also $U$ offen $\xi_0 \in U$) ein $K = K(\xi_0,U) \in \N$ mit $\xi_k \in U \: \forall k \geq K$ gibt.
+\end{defin}
+
+\begin{theorem}
+	Sei $X$ ein lokal kompakter (jeder Punkt liegt in einer kompakten Umgebung) metrischer Raum und $\mu$ ein reguläres Borelmaß (endliche Werte auf Kompakta)
+	
+	\begin{align*}
+    \text{reg. von innen} \colon \mu(A) &= \sup\{\mu(X) \mid A \supset K \: \text{kompakt} \\
+    \text{reg. von außen} \colon \mu(A) &= \inf\{\mu(X) \mid A \subset U \: \text{offen}
+	\end{align*}
+	
+	Dann ist die Menge $C_c^0(X)$ aller stetigen Funktionen $X \to \mbb{R}$ mit kompaktem Träger dicht in $L^p(X,\mu), \: p\in [1, \infty)$. Hierbei wird für $f \colon X \to \mbb{R}$ 
+	
+	\begin{equation*}
+	\supp f \ceq  \overline{\{x\in X \mid f(x) \neq0 \}}
+	\end{equation*}
+	als Träger von $f$ (support) bezeichnet.
+\end{theorem}
+
+\begin{proof}
+	Wie in Bem. I.46 erläutert, können wir nicht negative messbare Funktionen durch eine Folge einfacher Funktionen bzg $L^1$-Norm approximieren. Man überträgt das Argument leicht auf eine beliebige integrierbare Funktionen und Funktionen aus $\mathscr{L}$ (bzgl $L^p$-Norm) $p \in [1,\infty)$. Die in I.46 konstruierten einfachen Funktionen waren linearkombinationen charakteristischer Funktionen von Urbildern halboffener Mengen, da das Maß nach Vorraussetztung regulär von innen ist, können wir diese durch Kompakta beliebig gut approximieren. Folglich genügt es zu zeigen, dass $\xi_k$ für kompakte $K \sbs X$ bezüglich $L^p$-Norm beliebig gut durch stetige Funktionen approximiert werden kann. Aufgrund äußerer Regularität finden wir für $\epsilon>0$ eine offene Menge $U$ mit $K \sbs U$ und $\mu(U \sm K) = \mu(U) - \mu(K) < \epsilon$.
+	Wir setzten $f_\epsilon(x) = \frac{\dist(x,U^c)\footnotemark}{\dist(x,K) + \dist(x,U^c)}$. Dies liefert eine stetige Funktion $ X \in [0,1]$ mit
+	\footnotetext{$\dist(x,Y) = \inf\dist_{y\in Y}(x,y)$}
+	\begin{align*}
+	f \epsilon(x) &= 0 \Leftrightarrow \dist(x,U^c)=0 \Leftrightarrow x \nsubseteq U \\
+	f \epsilon(x) &= 1 \Leftrightarrow \dist(x,K)=0 \Leftrightarrow x \in K!
+	\end{align*}
+
+	Wegen
+	\begin{equation*}
+    \int_X \underbrace{\abs{f_\epsilon - \xi_K}^p}_{=0 \: \text{auf} \: U^c \cup K} \md \mu = \int _{U \sm K} \underbrace{ \lvert f_\epsilon - \underbrace{\xi_K}_{=0} \rvert^p}_{\leq 1} \md \mu \leq \mu(U \sm K) < \epsilon
+	\end{equation*}
+	
+	folgt $\norm{f_\epsilon - \xi_K}_{L^p} \xrightarrow{\epsilon\lra 0} 0$
+\end{proof}
+
+	Die Aussage gilt nicht für $p = \infty$, da für stetige Funktionen $L^{\infty}$-Norm und Supremumsnorm übereinstimmen und der gleichmäßige Limes stetiger Funktionen ist wieder stetig.
+
+\end{document}
