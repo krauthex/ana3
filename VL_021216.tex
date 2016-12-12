@@ -1,0 +1,71 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\begin{defin}[Faltung]
+		Für integrierbare $f,g \colon \mbb{R}^n\to\mbb{R}$ setzen wir:
+		\[
+			(f\ast g)(x) = \int_{\mbb{R}^n} f(x-y)g(y) \md\lambda^n(y)
+			= \int_{\mbb{R}^n} f(y)g(x-y) \md\lambda^n(y)
+		\] und bezeichnen den Ausdruck $f \ast g$ als \emph{Faltung}.
+	\end{defin}
+	Die Faltung ist selbst integrierbar, wir haben nämlich:
+	\begin{align*}
+		\int_{\mbb{R}^n}\abs{f \ast g} \md \lambda^n
+		&\leq \int_{\mbb{R}^n} \int_{\mbb{R}^n} \abs{f(x-y)}\abs{g(y)} \md \lambda^n(y)  \md \lambda^n(x) \\
+		&\darrow{\text{Fubini}}{=} \int_{\mbb{R}^n} \underbrace{\int_{\mbb{R}^n} \abs{f(x-y)} \md \lambda^n(x)}_{\mathclap{
+			\uarrow{\text{Trafo.}}{=} \int_{\mbb{R}^n} \abs{f(x)} \md \lambda^n(x) = \norm{f}_{L^1}
+		}} \abs{g(y)} \md \lambda^n(y) = \norm{f}_{L^1} \norm{g}_{L^1} < \infty
+	\end{align*}
+	
+	\begin{lem}
+		Die Faltung besitzt die folgenden Eigenschaften:
+		\begin{enumerate}[(i)]
+			\item Für $x \in \mbb{R}^n$ ist die Funktion $f(x-\bcdot)g(\bcdot)$ genau dann integrierbar, wenn $f(\bcdot)g(x-\bcdot)$ integrierbar ist und in diesem Fall gilt
+			\[
+				(f \ast g)(x) = (g \ast f)(x).
+			\]
+			
+			\item Für $\phi \in C_c^k(\mbb{R}^n),\, k\in\N$ und $f \in L_\text{loc}^1(\mbb{R}^n)$ folgt $f \ast \phi \in C^k(\mbb{R}^n)$ und
+			\[
+				\del_\alpha(f\ast\phi) = (\del_\alpha\phi)\ast f
+			\]
+			für jede partielle Ableitung einer Ordnung $\leq k$. Dabei ist $\alpha$ ein sogenannter \emph{Multiindex}.
+			
+			\item Für $\phi \in C_c^k(\mbb{R}^n),\, k\in\N,\, f \in L_c^1(\mbb{R}^n)$ (d.\,h. es gibt einen Räpresentanten mit kompaktem Träger) ist
+			\[
+				f\ast\phi \in C_c^k(\mbb{R}^n)
+			\]
+			
+			\item Für $\phi \in L^1(\mbb{R}^n),\, f \in L^p(\mbb{R}^n),\, p \in [1,\infty]$ gilt auch $f \ast \phi \in L^p(\mbb{R}^n)$ und wir haben
+			\[
+				\norm{f\ast\phi}_{L^p} \leq \norm{\phi}_{L^1} \norm{f}_{L^p}.\quad\text{(Young-Ungleichung)}
+			\]
+		\end{enumerate}
+	\end{lem}
+	\begin{proof}
+		\hfill
+		\begin{enumerate}[(i)]
+			\item folgt durch Koordinatenwechsel (vgl. Bemerkung vor Trafo-Satz).
+			
+			\item folgt induktiv durch vertauschen von Differentiation und Integration (siehe Übungsaufgabe 9).
+			
+			\item Ist $\supp f \cup \supp \phi \sbs B_R(0)$ für $R > 0$, so erhalten wir für $x \in \mbb{R}^n$
+			\begin{align*}
+				(f \ast \phi)(x) &\overset{\text{Def.}}{=} \int_{\mbb{R}^n} f(y)\phi(x-y)\md\lambda^n(y) \overset{\boldsymbol !}{\neq} 0 \\
+				&\implies y,x-y \overset{\boldsymbol !}{\in} B_R(0) \implies x = (x-y)+y \overset{\boldsymbol !}{\in} B_{2R}(0).
+			\end{align*}
+			Demnach ist $\supp f\ast\phi \in B_{2R}(0)$.
+			
+			\item Für $p=\infty$ ist
+			\begin{align*}
+				\norm{f\ast\phi}_{L^\infty} &= \norm{\int_{\mbb{R}^n} f(y) \phi(\bcdot-y) \md\lambda^n(y)}_{L^\infty} \\ &\darrow{\text{Hölder}}{\leq} \norm{f}_{L^\infty} \norm{\int_{\mbb{R}^n}\phi(\bcdot-y) \md\lambda^n(y)}_{L^\infty} = \norm{\phi}_{L^1}\norm{f}_{L^\infty}
+			\end{align*}
+			Sei nun $p \in [1,\infty)$. Wir können \OE\  $\norm{\phi}_{L^1} = 1$ annehmen.\\
+			Anwendung der Jensenschen Ungleichung liefert (mit $\varphi(\xi) = \abs{\xi}^p$, $\md\mu=\abs{\phi}\md\lambda^n$, also $\mu$ ein Wahrscheinlichkeitsmaß)
+			\[
+				\norm{f\ast\phi}_{L^p}^p \leq 
+			\]
+		\end{enumerate}
+	\end{proof}
+	
+\end{document}
