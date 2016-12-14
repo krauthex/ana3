@@ -28,6 +28,7 @@
 \usepackage{enumerate}
 \usepackage{subfiles}
 \usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
 
 % theorem customizations
 \newcounter{cntr}
@@ -81,6 +82,7 @@
 \newcommand{\ddel}[2]{\frac{\del #1}{\del #2}}
 \newcommand{\wh}[1]{\widehat{#1}}
 \newcommand{\bcdot}{\boldsymbol{\cdot}}
+\renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
