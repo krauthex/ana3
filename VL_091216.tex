@@ -1,0 +1,157 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\begin{proof}
+		Sei zunächst $ f \in C_{C}^{\infty}( \mathbb{R} ).$ Dann ist für $p \in \mathbb{R}^n$ mit $p_j \neq 0$ 
+		
+		\begin{equation*}
+		\abs{\widehat{f} (p)} \stackrel{\text{Lemma 4}}{=} \abs{\frac{1}{ipj} \widehat{\del_j f(p)}} \stackrel{\text{Lemma 2}}{\leq} \frac{\norm{\del_j f}_{L^1}}{\abs{2 \pi}^{\frac{n}{2}} \abs{p_j}}
+		\end{equation*}	
+		
+		folglich 
+		
+		\begin{equation*}
+		\abs{\widehat{f}(p)} \leq \min_{j\in \{1, \dots, n\}, \: p_j \neq 0} \frac{\norm{\del_j f}_{L^1}}{(2 \pi)^{\frac{n}{2}} \abs{p_j}} \leq \frac{\max \norm{\del_j f}_{L^1}}{(2 \pi)^{\frac{n}{2}} \max_{j} \abs{p_j}}  \xrightarrow{\norm{p}\lra \infty} 0
+		\end{equation*}
+		
+		Zu beliebigem $f \in L^1(\R^n)$ finden wir nach Satz 2.21 eine Folge $(f_k)_{k \in \N} \sbs C_{C}^{\infty}(\R^n)$ und $\norm{ f_k -f}_{L^1} \xrightarrow{k\lra \infty} 0$. Nun ist für $ \abs{\widehat{f}(p)} \leq \underbrace{\abs{\widehat{{f_k}}(p)}}_{\text{für festes } k \in \N \xrightarrow{\abs{p}\lra \infty} 0} + \underbrace{\norm{\widehat{f_k} - \widehat{{f}}}_{L^\infty}}_{= \norm{\wh{f_k - f}}_{L^\infty} \stackrel{\text{Lemma 2}}{\leq} C\norm{f_k - f}_{L^1} \xrightarrow{k\lra \infty} 0} $
+	\end{proof}
+	
+	\begin{theorem}[Fourierinversion]
+		Die Fouriertransformation ist eine (beschränkte lineare) invertierbare Abbildung.
+		\begin{equation*}
+			\F \colon L^1(\R^n) \to C_0^0(\R^n)
+		\end{equation*}
+		Die Inverse ist durch
+		
+		\begin{equation*}
+		f(x) = \lim_{ \varepsilon \to 0} \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R ^n} \e^{ipx - \frac{\varepsilon^2 \abs{p}^2}{2}} \widehat{f}(p) \md \lambda^n (p)
+		\end{equation*}
+		
+		gegeben, wobei der Grenzwert bezüglich der $L^1$-Norm zu verstehen ist.
+	\end{theorem}
+	
+	\begin{proof}
+		Wir betrachen die Funktion $\phi \in C^\infty(\R ^n), \: \phi(x) = \frac{1}{(2 \pi)^{\frac{n}{2}}} \e^{-\frac{x^2}{2}}$ und definiere $ \phi_\varepsilon = \frac{1}{\varepsilon^n} \phi {\frac{\bcdot}{\varepsilon}} $. Nach A17 ist $\int_{\R^n} \phi \md \lambda^n = 1$ insofern ist $(\phi_\varepsilon)_{\varepsilon > 0}$ eine approximative Identität. Weiter ist
+		
+		\begin{equation*}
+		\widehat{\phi(\varepsilon \bcdot)}(p) \stackrel{\text{Lemma 3 (iii)}}{=} \frac{1}{\varepsilon^n} \widehat{\phi}(\frac{p}{\varepsilon}) \stackrel{\text{Ü.A.}}{=} \frac{1}{\varepsilon^n} \phi (\frac{p}{\varepsilon}) = \phi_{\varepsilon}(p)
+		\end{equation*}
+		
+		Nun haben wir $\forall x \in \R^n$
+		
+		\begin{align*}
+			& \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \e^{ipx - \frac{\varepsilon^2 \abs{p}^2}{2}} \widehat{f}(p) \md \lambda^n (p) = \int_{\R^n} \e^{ipx} \phi(\varepsilon p) \widehat{f}(p) \md \lambda^n (p) \\
+			&= \int_{\R^n} \widehat{f(\bcdot + x)}(p) \phi(\varepsilon p) \md \lambda^n(p) \stackrel{\text{Lemma 3(v)}}{=} \int_{\R^n} f(p+x) \underbrace{\widehat{\phi( \varepsilon \bcdot)(p)}}_{\phi_{\varepsilon}(p)} \md \lambda^n(p) \\
+		\end{align*}
+		
+		Sei g = -p
+		
+		\begin{equation*}
+		\int_{\R^n} f(x-y) \underbrace{\phi_{\varepsilon}(-y)}_{=\phi_{\varepsilon}(y)} \md \lambda^n(y) = (f\ast \phi_{\varepsilon})(x)
+		\end{equation*}
+		
+		Nach Lemma 2.20 konvergiert die rechte Seite für $\varepsilon \to 0$ bezüglich der $L^1$-Konvergenz gegen $f$.
+	\end{proof}
+	
+	\begin{cor}
+		Für $f \in L^1 (\R^n)$ mit $\wh{f} \in L^1 (\R ^n)$ gilt $\wc{( \wh{f})}=f$ wobei $\wc{f}(p) \ceq \wh{f}(-p)$.
+		Also $\wc{f}(p) = \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\Rn} \e^{ipx} f(x) \md \lambda^n (x)$
+		Insofern ist $\F$ eine Bijektion auf:
+		
+		\begin{equation*}
+		F^1(\R^n) = \{f\in L^1(\R^n) \mid \wh{f} \in L^1(\R^n) \}
+		\end{equation*}
+		
+		und insbesondere ist $\F\big|_{\ms{S}(\R^n)} \colon \ms{S}(\R^n) \to \ms{S}(\R^n)$ eine Bijektion.
+	\end{cor}
+	
+	\begin{proof}
+		Wegen $\phi(\varepsilon p) \xrightarrow{\varepsilon\lra 0} \frac{1}{(2 \pi)^{\frac{n}{2}}}$ für alle $p \in \R^n$ erhalten wir $\abs{ \e^{ipx} \phi (\varepsilon p) \wh{f}(p)} < \frac{\abs{\wh{f}(p)}}{(2 \pi)^{\frac{n}{2}}}
+		$
+		Nach Vorraussetzung liefert dies eine integrierbare Majorante und wir dürfen in der Formel aus Satz 10 Grenzwert und Integration vertauschen (Um punktweise Konvergenz zu erhalten, gehen wir zunächst von einer Teilfolge über ($L^p$-Konvergenz $\rightarrow$ punktweise Konvergenzfür eine Teilfolge) und erhalten die Konvergenz insgesamt (und teilfolgenunabhängig aus dem Teilfolgenprinzip)). Nun folgt $\wc{(\wh{f})}=f$ wie behauptet
+	\end{proof}
+	
+	\begin{lem}
+		Sei $f \in F^1(\R^n)$. Dann ist $f, \wh{f} \in L^2(\R^n)$ und
+		
+		\begin{equation*}
+		\underbrace{\norm{f}_{L^2}^2 = \norm{\wh{f}}_{L^2}^2}_{\text{Plancherel Identität}} \leq (2 \pi)^{-\frac{n}{2}} \norm{f}_{L^1} \norm{\wh{f}}_{L^1}
+		\end{equation*}
+	\end{lem}
+	
+	\begin{proof}
+		Aus dem Satz von Fubini folgt
+		
+		\begin{align*}
+		\int_{\R^n} \abs{\wh{f}(p)}^2 \md \lambda^n(p) &= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \int_{ \R^n} f(x) \underbrace{\e^{-ipx} \overline{\wh{f}(p)}}_{= \e^{ipx} \overline{\wh{f}(p)}} \md \lambda^n(x) \md \lambda^n(p) \\
+		&= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{ \R^n} f(x)  \underbrace{\overline{ \int_{ \R^n} e^{ipx} \tilde{f}(p) \md \lambda^n(p)}}_{= (2 \pi)^\frac{n}{2} \overline{\wc{(\wh{f})}(x)} \overline{f(x)} = (2 \pi)^{\frac{n}{2}} f(x)} \\
+		&= \int_{\R^n} \underbrace{f(x) \overline{f(x)\ \md \lambda^n (x)}}_{\abs{f(x)}^2}\\
+	     \text{Insbesondere } & \norm{\wh{f}}_{L^2}^2 \leq \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{R} \abs{f(x)} \md \lambda^n(x) \int_{ \R^n} \underbrace{\abs{\e{ipx}}}_{=1} \abs{\wh{f}(p)} \md \lambda^n (p)
+		\end{align*}
+		
+	\end{proof}
+		
+		\begin{theorem}[Unschärferelation]
+			Für $f \in \ms{S} (\R^n), \: p_0, \: x_0 \in \R, \: j=1, \dots, n$ gilt.
+			
+			\begin{equation*}
+			\norm{(\bcdot_j - x_0)f(\bcdot)}_{L^2} \norm{(\bcdot_j - p_0)\wh{f}(\bcdot)}_{L^2} \geq \frac{1}{2} \norm{f}_{L^2}^2
+			\end{equation*}
+		\end{theorem}
+		
+		\begin{proof}
+			Indem wir $f$ durch $\wh{f}(x) \ceq \e^{-ix_jp_0} f(x + x_0 \wh{e}_j)$ ersetzten, erhalten wir
+			
+			\begin{align*}
+			\norm{(\bcdot_j - x_0)(f\bcdot)}_{L^2}^2 &= \int_{ \R^n} \abs{(x_j-x_0) f(x)}^2 \md \lambda^n(x) \\
+			&= \int_{ \R^n} \abs{x_j f(x + x_0 \wh{e}_j)}^2 \md \lambda^n(x) \\
+			&= \norm{\bcdot_j \wh{f}(\bcdot)}_{L^2}^2 \\
+			\end{align*}
+			
+			\begin{align*}
+			\norm{(\bcdot_j - p_0)(f\bcdot)}_{L^2}^2 &= \int_{ \R^n} \abs{(p_j-p_0) f(p)}^2 \md \lambda^n(p) \\
+			&= \int_{ \R^n} \abs{p_j f(p + p_0 \wh{e}_j)}^2 \md \lambda^n(p) \\
+			&= \norm{\bcdot_j \wh{\tilde{f}}(\bcdot)}_{L^2}^2 \\
+			\end{align*}
+			
+			und $\norm{f}_{L^2}^2 = \norm{\tilde{f}}_{L^2}^2$ Sodass wir ohne Einschränkung $p_0 = x_0 = 0$ annehmen dürfen. Nun liefert partielle Integration
+			
+			\begin{equation*}
+			\norm{f}_{L^2}^2 = \int_{ \R^n} 1 \abs{f(x)}^2 \md \lambda^n(x) \stackrel{f \in \ms{S}}{=} 0 - \int_{ \R^n} x_j \underbrace{\frac{\del}{\del x_j} \abs{f(x)}^2}_{= 2 f(x) \frac{\del }{\del x_j} f(x)} \md \lambda^n(x)
+			\end{equation*}
+			
+			demnach ist
+			
+			\begin{equation*}
+			\norm{f}_{L^2}^2 \stackrel{\text{Cauchy Schwarz}}{\leq} 2 \norm{\bcdot_j f(\bcdot)}_{L^2} \underbrace{\norm{\frac{\del f}{\del x_j}(\bcdot)}_{L^2}}_{\mathrlap{\stackrel{\text{Plancherel}}{=} \norm{\frac{\wh{\del f}}{\del x_j}} \stackrel{\text{Lemma 4}}{=} \norm{ i \bcdot_j \wh{f}(\bcdot)}_{L^2} = \norm{\bcdot_j \wh{f}(\bcdot)}_{L^2}}}
+			\end{equation*}
+		\end{proof}
+		
+		\begin{theorem}
+			Sei $X$ ein normierter Raum mit dichter Teilmenge $\ms{V}$, und $Y$ sei ein Banachraum. Ist $ A \colon \ms{V} \to Y$ eine lineare und beschränkte Abbildung, das heißt, es gibt insbesondere ein $C_A >0$ mit $\underbrace{\norm{A_x}_Y}_{=A(x)} \leq C_A \norm{x}_X \forall x \in \ms{V}$
+			so gibt es genau eine Fortsetztung $\tilde{A}$, also eine lineare und beschränkte Abbildung $\tilde{A} \colon X \to Y, \: \tilde{A}|_V =A$, die die Abschätzung mit der selben Konstante $C_A \forall x \in X$ erfüllt. 
+			Ein $\R$-Vektorraum \footnote{Es sei $V$ eine Menge, ($K$, +, ·) ein Körper X heißt normierter Raum, wenn es eine Abbildung $\norm{\bcdot}_X \colon X \to [0, \infty]$ mit $\oplus \colon V \times V \to V $ eine innere zweistellige Verknüpfung, genannt Vektoraddition, und $\odot \colon K \times V \to V$ eine äußere zweistellige Verknüpfung, genannt Skalarmultiplikation. Mann nennt dann $(V, \oplus, \odot)$ ein Vektorraum über dem Körper $K$ oder kurz $K$-Vektorraum. (Eigentschaften Vektoraddition, Skalarmultiplikation siehe Wikipedia)}
+			
+			\begin{align*}
+			& \norm{x} = 0 \leftrightarrow x=0 \: \forall x\in X \\
+			& \norm{\lambda x} = \abs{\lambda}\norm{x} \: \forall \lambda \in \R, \: x \in X \\
+			& \norm{x+y} \leq \norm{x} + \norm{y} \: \forall x,y \in X\\
+			\end{align*}
+			
+			gibt.
+			
+			\begin{proof}
+				Sei $(x_k)_{k \in \N} \sbs \ms{V}$ eine Cauchyfolge, dann ist wegen $\norm{Ax_j - Ax_k}_Y = \norm{A(x_j-x_k)}_Y \leq C_A \norm{x_j-x_k}_X \to 0$ und $(A_k)_{k\in \N} \sbs Y$ eine Cauchyfolge und diese besitzt einen eindeutigen Grenzwert $\tilde{A}x_0 \ceq \lim_{k \to \infty} Ax_j$, sofern $x_0 = \lim_{k \to \infty} x_k \in X$ existiert.
+				Damit ist $\tilde{A} \colon X \to Y$ eindeutig gegeben, denn für eine Folge $(x_k)_{k \in \N}, \: (y_k)_{k \in \N} \sbs \ms{V}$ mit $x_k \xrightarrow{k\lra\infty} x_0 \xleftarrow{k\lra\infty} y_k$ ist
+				
+				\begin{equation*}
+				\norm{Ax_k - Ay_k}_y = \norm{A(x_k -y_k)}_Y \leq C_A \norm{x_k - y_k}_X \leq C_A (\norm{x_k-x_0}_X + \norm{y_k - y_0}_Y) \xrightarrow{k\lra\infty} 0
+				\end{equation*}
+				
+				Aufgrund von Stetigkeit von Vektoraddition und skalarer Mulitplikation erhalten wir die Linearität von $\tilde{A}$ und aus der Stetigkeit der Normen die behauptete Abschätzung.
+			\end{proof}
+		\end{theorem}
+		
+
+\end{document}
