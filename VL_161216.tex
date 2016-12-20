@@ -1,0 +1,66 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\section{Lösung von partiellen Differentialgleichungen (mit konstanten Koeffizienten)}
+	Die Poisson-Gleichung auf $\Rn$ ist durch
+	\[
+		-\Delta u = f
+	\]
+	gegeben, wobei $\Delta$ der Laplace-Operator mit 
+	\[
+		\Delta u = \ddel{^2 u}{x_1^2} + \dots + \ddel{^2 u}{x_n^2} 
+	\]
+	ist.
+	
+	Zunächst gehen wir davon aus, dass die Daten $f$ und die Lösung $u$ in $\ms{S}(\Rn)$ liegen. Insbesondere nehmen wir an, dass eine Lösung existiert. Anwenden der Fourier-Transformation liefert:
+	\[
+		\abs{p}^2 \wh{u}(p) =- \sum_{j=1}^{n} (ip_j)^2 \wh{u}(p) = - \sum_{j=1}^{n} \wh{\ddel{^2 u}{x_j^2}}(p) = - \wh{\Delta u}(p) = \wh{f}(p)
+	\]
+	\[
+		\stackrel{p\neq0}{\Longrightarrow} \wh{u}(p) = \abs{p}^{-2} \wh{f}(p)
+	\]
+	Die Funktion $p\mapsto \abs{p}^{-2}$ liegt für $n\geq3$ in $L^1(\Rn)$ und insofern erhalten wir mit \textit{Corollar 11}
+	\[
+		u = \wc{(\abs{\bcdot}^{-2}\wh{f})},
+	\]
+	wobei das Argument in Klammern $\in L^1$ ist. Bei der Herleitung haben wir lediglich $f, \abs{\bcdot}^{-2}\wh{f}(\bcdot) \in L^1(\Rn)$ verwendet. Wenn wir $\wh{f} \in L^1$ voraussetzen, folgt $\abs{p}^2 \wh{u}(p) = \wh{f}(p) \in L^1$ und \textit{Lemma 4} (Abklingverhalten von $\wh{g}$ liefert Information über Glattheit von $g$) liefert $u\in C^2$ (''klassische Lösung'').
+	
+	\begin{defin}[Gamma-Funktion]
+		Wir setzen für $z\in\C, \Re z > 0$
+		\[
+		\Gamma(z) = \int_0^\infty x^{z-1} \e^{-x} \md \lambda(x).
+		\]
+		Die Gamma-Funktion ist für $\Re z >0$ wohldefiniert und erfüllt die Funktionalgleichung
+		\[
+			z\Gamma(z) = \Gamma(z+1),
+		\]
+		wobei $\Gamma(1)=1$ ist. Hieraus erhält man unmittelbar $\Gamma(n) = (n-1)!$ für $n\in\N$.
+	\end{defin}
+	
+	\begin{lem}[Riesz-Potential]
+		Sei $\alpha \in (0,n)$, $g\in L^1(\Rn) \cap L^\infty(Rn)$, \\$(p \mapsto \abs{p}^{-\alpha} \wh{g}(p)) \in L^1(\Rn)$. Dann ist $\forall \xi \in \Rn$
+		\[
+			\wc{{\abs{\bcdot}^{-\alpha} \wh{g}(\bcdot)}}(\xi) = \int_\Rn I_\alpha\pr{\abs{\xi - y}} g(y) \md \lambda^n(y),
+		\]
+		mit
+		\[
+			I_\alpha(r) = \frac{\Gamma\pr{\frac{n-\alpha}{2}}}{2^\alpha \pi^{\nicefrac{n}{2}} \Gamma\pr{\frac{\alpha}{2}}} \frac{1}{r^{n-\alpha}}.
+		\]
+	\end{lem}
+
+	\begin{proof}
+		Wir setzen $\phi_t (p) = \exp\pr{-\frac{t\abs{p}^2}{2}}$ und erhalten zunächst für $p\neq0$ \big(und ab dem 2ten Schritt mit $\sigma(t) \ceq \frac{t\abs{p}^2}{2}$\big)
+		\begin{align*}
+			\lint_0^\infty \phi_t(p) t^{\frac{\alpha}{2}-1} \md \lambda(t) &= \lint_0^\infty \e^{- \frac{t\abs{p}^2}{2}} t^{\frac{\alpha}{2}-1} \md \lambda(t) = 2 \abs{p}^{-2} \lint_0^\infty \pr{2 \abs{p}^{-2} \sigma}^{\frac{\alpha}{2} -1} \e^{-\sigma} \md \lambda(\sigma)\\
+			&= \pr{2 \abs{p}^{-2}}^{\frac{\alpha}{2}} \lint_0^\infty \sigma^{\frac{\alpha}{2}-1} \e^{-\sigma} \md \lambda(\sigma) = \pr{2 \abs{p}^{-2}}^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}\\
+			&=C_\alpha \abs{p}^{-\alpha} \text{ mit } C_\alpha = 2^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}.
+ 		\end{align*} 
+ 		Nun ist
+ 		\begin{align*}
+	 		\wc{{\abs{\bcdot}^{-\alpha} \wh{g}(\bcdot)}}(\xi) &\darrow{\text{Def}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_\Rn \underbrace{\e^{i \skp{p}{\xi}} \abs{p}^{-\alpha} \wh{g}(p)}_{\in L^1} \md \lambda^n(p)\\
+	 		&= \frac{1}{(2\pi)^{\nicefrac{n}{2}} C_\alpha} \lint_\Rn \e^{i \skp{p}{\xi}} \lint_0^\infty \phi_t(p) t^{\frac{\alpha}{2} -1} \md \lambda(t)\ \wh{g}(p) \md \lambda^n(p)\\
+	 		&\darrow{\text{Fubini}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}} C_\alpha} \lint_0^\infty \lint_\Rn \e^{i\skp{p}{\xi}} \underbrace{\phi_t(p)}_{\mathclap{=t^{\frac{n}{2}} \wh{\phi}_{\nicefrac{1}{t}}(p)}} \wh{g}(p) \md \lambda^n(p)\ t^{\frac{\alpha}{2}-1} \md \lambda(t), 
+ 		\end{align*}
+ 		denn wir haben $\wh{\phi}_1 = \phi_1$ nach \textit{Aufgabe 30b} und folglich für $t>0$ und $p\in\R$
+	\end{proof}
+\end{document}
