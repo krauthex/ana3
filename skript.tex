@@ -23,6 +23,7 @@
 \usepackage{relsize} % bigger integrals
 \usepackage{stmaryrd}  % for lightning symbol in proofs
 \usepackage{yhmath}  % for a wider widehat
+\usepackage{mathabx} % for widecheck
 
 % other packages
 \usepackage{enumerate}
@@ -62,6 +63,7 @@
 \newcommand{\es}{\emptyset}
 \newcommand{\A}{\mc{A}}
 \newcommand{\D}{\mc{D}}
+\newcommand{\F}{\mathcal{F}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rn}{{\R^n}}
@@ -81,6 +83,7 @@
 \newcommand{\ddel}[2]{\frac{\del #1}{\del #2}}
 \newcommand{\wh}[1]{\widehat{#1}}
 \newcommand{\bcdot}{\boldsymbol{\cdot}}
+\newcommand{\wc}[1]{\widecheck{#1}}
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -135,5 +138,6 @@
 	\subfile{VL_301116.tex}
 	%
 	\subfile{VL_071216.tex}
+	\subfile{VL_091216.tex}
 
 \end{document}
