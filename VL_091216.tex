@@ -14,7 +14,10 @@
 		\abs{\widehat{f}(p)} \leq \min_{j\in \{1, \dots, n\}, \: p_j \neq 0} \frac{\norm{\del_j f}_{L^1}}{(2 \pi)^{\frac{n}{2}} \abs{p_j}} \leq \frac{\max \norm{\del_j f}_{L^1}}{(2 \pi)^{\frac{n}{2}} \max_{j} \abs{p_j}}  \xrightarrow{\norm{p}\lra \infty} 0
 		\end{equation*}
 		
-		Zu beliebigem $f \in L^1(\R^n)$ finden wir nach Satz 2.21 eine Folge $(f_k)_{k \in \N} \sbs C_{C}^{\infty}(\R^n)$ und $\norm{ f_k -f}_{L^1} \xrightarrow{k\lra \infty} 0$. Nun ist für $ \abs{\widehat{f}(p)} \leq \underbrace{\abs{\widehat{{f_k}}(p)}}_{\text{für festes } k \in \N \xrightarrow{\abs{p}\lra \infty} 0} + \underbrace{\norm{\widehat{f_k} - \widehat{{f}}}_{L^\infty}}_{= \norm{\wh{f_k - f}}_{L^\infty} \stackrel{\text{Lemma 2}}{\leq} C\norm{f_k - f}_{L^1} \xrightarrow{k\lra \infty} 0} $
+		Zu beliebigem $f \in L^1(\R^n)$ finden wir nach Satz 2.21 eine Folge $(f_k)_{k \in \N} \sbs C_{C}^{\infty}(\R^n)$ und $\norm{ f_k -f}_{L^1} \xrightarrow{k\lra \infty} 0$. Nun ist für 
+		\[
+			\abs{\widehat{f}(p)} \leq \underbrace{\abs{\widehat{{f_k}}(p)}}_{\mathclap{\substack{\text{für festes } \\ k \in \N \xrightarrow{\abs{p}\lra \infty} 0}}} + \underbrace{\norm{\widehat{f_k} - \widehat{{f}}}_{L^\infty}}_{\mathrlap{= \norm{\wh{f_k - f}}_{L^\infty} \stackrel{\text{Lemma 2}}{\leq} C\norm{f_k - f}_{L^1} \xrightarrow{k\lra \infty} 0}}
+		\]
 	\end{proof}
 	
 	\begin{theorem}[Fourierinversion]
@@ -32,7 +35,7 @@
 	\end{theorem}
 	
 	\begin{proof}
-		Wir betrachen die Funktion $\phi \in C^\infty(\R ^n), \: \phi(x) = \frac{1}{(2 \pi)^{\frac{n}{2}}} \e^{-\frac{x^2}{2}}$ und definiere $ \phi_\varepsilon = \frac{1}{\varepsilon^n} \phi {\frac{\bcdot}{\varepsilon}} $. Nach A17 ist $\int_{\R^n} \phi \md \lambda^n = 1$ insofern ist $(\phi_\varepsilon)_{\varepsilon > 0}$ eine approximative Identität. Weiter ist
+		Wir betrachen die Funktion $\phi \in C^\infty(\R ^n), \: \phi(x) = \frac{1}{(2 \pi)^{\frac{n}{2}}} \e^{-\frac{x^2}{2}}$ und definiere $ \phi_\varepsilon = \frac{1}{\varepsilon^n} \phi \pr{{\frac{\bcdot}{\varepsilon}}} $. Nach A17 ist $\int_{\R^n} \phi \md \lambda^n = 1$ insofern ist $(\phi_\varepsilon)_{\varepsilon > 0}$ eine approximative Identität. Weiter ist
 		
 		\begin{equation*}
 		\widehat{\phi(\varepsilon \bcdot)}(p) \stackrel{\text{Lemma 3 (iii)}}{=} \frac{1}{\varepsilon^n} \widehat{\phi}(\frac{p}{\varepsilon}) \stackrel{\text{Ü.A.}}{=} \frac{1}{\varepsilon^n} \phi (\frac{p}{\varepsilon}) = \phi_{\varepsilon}(p)
@@ -87,7 +90,7 @@
 		\int_{\R^n} \abs{\wh{f}(p)}^2 \md \lambda^n(p) &= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \int_{ \R^n} f(x) \underbrace{\e^{-ipx} \overline{\wh{f}(p)}}_{= \e^{ipx} \overline{\wh{f}(p)}} \md \lambda^n(x) \md \lambda^n(p) \\
 		&= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{ \R^n} f(x)  \underbrace{\overline{ \int_{ \R^n} e^{ipx} \tilde{f}(p) \md \lambda^n(p)}}_{= (2 \pi)^\frac{n}{2} \overline{\wc{(\wh{f})}(x)} \overline{f(x)} = (2 \pi)^{\frac{n}{2}} f(x)} \\
 		&= \int_{\R^n} \underbrace{f(x) \overline{f(x)\ \md \lambda^n (x)}}_{\abs{f(x)}^2}\\
-	     \text{Insbesondere } & \norm{\wh{f}}_{L^2}^2 \leq \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{R} \abs{f(x)} \md \lambda^n(x) \int_{ \R^n} \underbrace{\abs{\e{ipx}}}_{=1} \abs{\wh{f}(p)} \md \lambda^n (p)
+	     \text{Insbesondere } & \norm{\wh{f}}_{L^2}^2 \leq \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{R} \abs{f(x)} \md \lambda^n(x) \int_{ \R^n} \underbrace{\abs{\e^{ipx}}}_{=1} \abs{\wh{f}(p)} \md \lambda^n (p)
 		\end{align*}
 		
 	\end{proof}
