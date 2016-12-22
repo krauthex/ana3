@@ -23,7 +23,7 @@
 \usepackage{relsize} % bigger integrals
 \usepackage{stmaryrd}  % for lightning symbol in proofs
 \usepackage{yhmath}  % for a wider widehat
-\usepackage{mathabx} % for widecheck
+\usepackage{scalerel, stackengine} % used for the wide check command
 
 % other packages
 \usepackage{enumerate}
@@ -67,6 +67,7 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mbb{C}}
 \newcommand{\Rn}{{\R^n}}
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
@@ -83,9 +84,13 @@
 \newcommand{\del}{\partial}
 \newcommand{\ddel}[2]{\frac{\del #1}{\del #2}}
 \newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
 \newcommand{\bcdot}{\boldsymbol{\cdot}}
+\newcommand{\lint}{\int\limits}
+\newcommand{\ol}[1]{\overline{#1}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
-\newcommand{\wc}[1]{\widecheck{#1}}
+\renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
+
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -106,6 +111,18 @@
 
 \renewcommand{\labelitemi}{$\cdot$}  % redefine the intemize dots
 
+% for a wide check symbol
+\stackMath
+\newcommand\wc[1]{%
+	\savestack{\tmpbox}{\stretchto{%
+			\scaleto{%
+				\scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+				{\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+			}{\textheight}% 
+		}{0.5ex}}%
+	\stackon[1pt]{#1}{\scalebox{-1}{\tmpbox}}%
+}
+%\parskip 1ex
 
 %%%%%%%%%%%%%%%%%%
 
@@ -142,5 +159,6 @@
 	\subfile{VL_071216.tex}
 	\subfile{VL_091216.tex}
 	\subfile{VL_141216.tex}
+	\subfile{VL_161216.tex}
 
 \end{document}

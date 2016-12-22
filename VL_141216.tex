@@ -1,0 +1,48 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\begin{theorem}[Plancherel]
+		Die Foureiertransformation $\F$ lässt sich zu einer linearen beschränkten Abbildung $\wt{\F} \colon L^2(\R^n) \to L^2(\R^n)$ fortsetzen, die \emph{unitär} ist, d.\,h.
+		\[
+			\skp{\wt{\F}(f)}{\wt{\F}(g)}_{L^2}
+			= \skp{f}{g}_{L^2} \quad \forall f,g\in L^2(\R^n).
+		\]
+	\end{theorem}
+	\begin{proof}
+		Nach \emph{Satz III.21} liegt $C_c^\infty(\R^n) \sbs \ms{S}(\R^n)$ dicht in $L^2(\R^n)$.\\
+		Nach \emph{Lemma 8} ist $\F$ eine lineare und bijektive Selbstabbildung des Schwarzraumes und wegen $\ms{S}(\R^n) \sbs F^1(\R^n)$ erhalten wir die Beschränktheit aus der Plancherel-Identität (\emph{Lemma 12}). Nach \emph{Satz 14} gibt es eine eindeutige lineare Fortsetzung $\wt{\F} \colon L^2(\R^n) \to L^2(\R^n)$ mit $\norm{\wt{\F}(f)}_{L^2} \leq \norm{f}_{L^2}$.\\
+		Dass $\wt{\F}$ unitär ist, erhält man mit \emph{Lemma 12} aus
+		\begin{align*}
+			4\skp{f}{g}_{L^2} &= 4 \int_{\R^n}f(x)\ol{g(x)} \md\lambda^n(x) \\
+			&= \norm{f+g}_{L^2}^2 - \norm{f-g}_{L^2}^2 + i\norm{f-ig}_{L^2}^2 - i\norm{f+ig}_{L^2}^2 \\
+			&\uarrow{\text{\emph{Lemma 12}}}{=} \dotso = 4\skp{\wt{\F}(f)}{\wt{\F}(g)}_{L^2}.
+		\end{align*}
+	\end{proof}
+	\begin{bem*}
+		Solange der Integrand von $\wh{f}$ in $L^1(\R^n)$ liegt, lässt sich $\wt{\F}(f)$ direkt mit der Formel aus \emph{Definition 1} berechnen. In der Regel lässt sich $\wt{\F}$ für $f \in L^2(\R^n)$ nur als Grenzwert einer Folge $\wh{f_k}, \quad(f_k)_{k\in\N} \sbs \ms{S}(\R^n),\quad f_k \xrightarrow[\text{in }L^2]{k\to\infty}f$, darstellen.
+	\end{bem*}
+
+	\begin{lem}
+		Wir haben $\norm{\wt{\F}(f)}_{L^\infty} \leq (2\pi)^{-\nicefrac{n}{2}} \norm{f}_{L^1}$ für alle $f \in L^1 \cap L^2$.
+	\end{lem}
+	\begin{proof}
+		Sofern $f \in L_c^1(\R^n)$ gilt, folgt $f \in L^2(\R^n)$ und nach \emph{Lemma III.20} konvergiert\\ $\underbrace{f \ast \phi_\epsilon}_{\mathrlap{\in C_c^\infty(\R^n)\sbs\ms{S}(\R^n)}}$ für eine geeignete approximative Identität in $C_c^\infty(\R^n)$ bezüglich der $L^1$-Norm und der $L^2$-Norm gegen $f$. Die Behauptung gilt für $f \ast \phi_\epsilon$ nach \emph{Lemma 2} und für $\epsilon \searrow 0$ erhalten wir das gewünschte mit der Stetigkeit der Norm.\\
+		Für allgemeine $f \in L^1(\R^n) \cap L^2(\R^n)$ betrachten wir $f_R=f\chi_{B_R(0)}$.\\ % or \rchi - but change rest of the document, too
+		Dann ist $f_R\xrightarrow{R\nearrow\infty}f$ in $L^1$ und $L^2$ (dominierte Konvergenz) und wir erhalten die Behauptung durch Approximation.
+	\end{proof}
+	Insbesondere gilt für $f \in L^2(\R^n)$\quad($\implies  f\chi_{B_R(0)} \to f$ in $L^2$)
+	\[
+		\wt{\F}(f)(p) = \lim_{R\nearrow\infty} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{B_R(0)} e^{-ipx} f(x) \md\lambda^n(x),
+	\]
+	wobei der Grenzwert bezüglich der $L^2$-Norm zu verstehen ist und für $f \in F^1(\R^n)$ entfallen kann.
+	\begin{lem}
+		Für $f,g\in\ms{S}(\R^n)$ gilt $f \ast g$, $fg\in\ms{S}(\R^n)$ und wir haben
+		\[
+			\wh{f \ast g} = (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g} \quad\text{und}\quad \wh{fg}=(2\pi)^{-\nicefrac{n}{2}}\wh{f}\ast\wh{g}.
+		\]
+		Für $f,g \in L^1(\R^n)$ erhalten wir aus $f \ast g \in L^1(\R^n)$ die erste Abschätzung.
+	\end{lem}
+	\begin{proof}
+		Inhalt...
+	\end{proof}
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\section{Lösung von partiellen Differentialgleichungen (mit konstanten Koeffizienten)}
+	Die Poisson-Gleichung auf $\Rn$ ist durch
+	\[
+		-\Delta u = f
+	\]
+	gegeben, wobei $\Delta$ der Laplace-Operator mit 
+	\[
+		\Delta u = \ddel{^2 u}{x_1^2} + \dots + \ddel{^2 u}{x_n^2} 
+	\]
+	ist.
+	
+	Zunächst gehen wir davon aus, dass die Daten $f$ und die Lösung $u$ in $\ms{S}(\Rn)$ liegen. Insbesondere nehmen wir an, dass eine Lösung existiert. Anwenden der Fourier-Transformation liefert:
+	\[
+		\abs{p}^2 \wh{u}(p) =- \sum_{j=1}^{n} (ip_j)^2 \wh{u}(p) = - \sum_{j=1}^{n} \wh{\ddel{^2 u}{x_j^2}}(p) = - \wh{\Delta u}(p) = \wh{f}(p)
+	\]
+	\[
+		\stackrel{p\neq0}{\Longrightarrow} \wh{u}(p) = \abs{p}^{-2} \wh{f}(p)
+	\]
+	Die Funktion $p\mapsto \abs{p}^{-2}$ liegt für $n\geq3$ in $L^1(\Rn)$ und insofern erhalten wir mit \textit{Corollar 11}
+	\[
+		u = \wc{(\abs{\bcdot}^{-2}\wh{f})},
+	\]
+	wobei das Argument in Klammern $\in L^1$ ist. Bei der Herleitung haben wir lediglich $f, \abs{\bcdot}^{-2}\wh{f}(\bcdot) \in L^1(\Rn)$ verwendet. Wenn wir $\wh{f} \in L^1$ voraussetzen, folgt $\abs{p}^2 \wh{u}(p) = \wh{f}(p) \in L^1$ und \textit{Lemma 4} (Abklingverhalten von $\wh{g}$ liefert Information über Glattheit von $g$) liefert $u\in C^2$ (''klassische Lösung'').
+	
+	\begin{defin}[Gamma-Funktion]
+		Wir setzen für $z\in\C, \Re z > 0$
+		\[
+		\Gamma(z) = \int_0^\infty x^{z-1} \e^{-x} \md \lambda(x).
+		\]
+		Die Gamma-Funktion ist für $\Re z >0$ wohldefiniert und erfüllt die Funktionalgleichung
+		\[
+			z\Gamma(z) = \Gamma(z+1),
+		\]
+		wobei $\Gamma(1)=1$ ist. Hieraus erhält man unmittelbar $\Gamma(n) = (n-1)!$ für $n\in\N$.
+	\end{defin}
+	
+	\begin{lem}[Riesz-Potential]
+		Sei $\alpha \in (0,n)$, $g\in L^1(\Rn) \cap L^\infty(Rn)$, \\$(p \mapsto \abs{p}^{-\alpha} \wh{g}(p)) \in L^1(\Rn)$. Dann ist $\forall \xi \in \Rn$
+		\[
+			\wc{{\abs{\bcdot}^{-\alpha} \wh{g}(\bcdot)}}(\xi) = \int_\Rn I_\alpha\pr{\abs{\xi - y}} g(y) \md \lambda^n(y),
+		\]
+		mit
+		\[
+			I_\alpha(r) = \frac{\Gamma\pr{\frac{n-\alpha}{2}}}{2^\alpha \pi^{\nicefrac{n}{2}} \Gamma\pr{\frac{\alpha}{2}}} \frac{1}{r^{n-\alpha}}.
+		\]
+	\end{lem}
+
+	\begin{proof}
+		Wir setzen $\phi_t (p) = \exp\pr{-\frac{t\abs{p}^2}{2}}$ und erhalten zunächst für $p\neq0$ \big(und ab dem 2ten Schritt mit $\sigma(t) \ceq \frac{t\abs{p}^2}{2}$\big)
+		\begin{align*}
+			\lint_0^\infty \phi_t(p) t^{\frac{\alpha}{2}-1} \md \lambda(t) &= \lint_0^\infty \e^{- \frac{t\abs{p}^2}{2}} t^{\frac{\alpha}{2}-1} \md \lambda(t) = 2 \abs{p}^{-2} \lint_0^\infty \pr{2 \abs{p}^{-2} \sigma}^{\frac{\alpha}{2} -1} \e^{-\sigma} \md \lambda(\sigma)\\
+			&= \pr{2 \abs{p}^{-2}}^{\frac{\alpha}{2}} \lint_0^\infty \sigma^{\frac{\alpha}{2}-1} \e^{-\sigma} \md \lambda(\sigma) = \pr{2 \abs{p}^{-2}}^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}\\
+			&=C_\alpha \abs{p}^{-\alpha} \text{ mit } C_\alpha = 2^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}.
+ 		\end{align*} 
+ 		Nun ist
+ 		\begin{align*}
+	 		\wc{{\abs{\bcdot}^{-\alpha} \wh{g}(\bcdot)}}(\xi) &\darrow{\text{Def}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_\Rn \underbrace{\e^{i \skp{p}{\xi}} \abs{p}^{-\alpha} \wh{g}(p)}_{\in L^1} \md \lambda^n(p)\\
+	 		&= \frac{1}{(2\pi)^{\nicefrac{n}{2}} C_\alpha} \lint_\Rn \e^{i \skp{p}{\xi}} \lint_0^\infty \phi_t(p) t^{\frac{\alpha}{2} -1} \md \lambda(t)\ \wh{g}(p) \md \lambda^n(p)\\
+	 		&\darrow{\text{Fubini}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}} C_\alpha} \lint_0^\infty \lint_\Rn \e^{i\skp{p}{\xi}} \underbrace{\phi_t(p)}_{\mathclap{=t^{\frac{n}{2}} \wh{\phi}_{\nicefrac{1}{t}}(p)}} \wh{g}(p) \md \lambda^n(p)\ t^{\frac{\alpha}{2}-1} \md \lambda(t), 
+ 		\end{align*}
+ 		denn wir haben $\wh{\phi}_1 = \phi_1$ nach \textit{Aufgabe 30b} und folglich für $t>0$ und $p\in\R$
+ 		\begin{align*}
+	 		\wh{\phi}_t(p) &= \frac{1}{\sqrt{2\pi}}\lint_\R \e^{-ipx} \phi_t(x) \md \lambda(x) \darrow{\widetilde{x}=\sqrt{tx}}{=} \frac{1}{\sqrt{2\pi}} \lint_\R \e^{-i\widetilde{x}p/\sqrt{t}} \phi_1(\wt{x}) \frac{\md \lambda(\wt{x})}{\sqrt{t}}\\
+	 		&=\frac{1}{\sqrt{t}} \wh{\phi}_1 \pr{\frac{p}{\sqrt{t}}} = \frac{1}{\sqrt{t}} \phi_1 \pr{\frac{p}{\sqrt{t}}} = \frac{1}{\sqrt{t}} \phi_{\frac{1}{t}}(p).
+ 		\end{align*}
+ 		Wegen $\phi_1, g \in L^1$ folgt mit \textit{Lemma 17}
+ 		\[
+	 		\wh{\phi}_{\bcdot} \wh{g} = (2\pi)^{-\nicefrac{n}{2}} \wh{\phi_{\bcdot} * g}\ .
+ 		\]
+ 		Weiterhin ist $\wh{g}$ beschränkt und $\wh{\phi}_{\bcdot} \in \ms{S}(\Rn) \sbs L^1(\Rn)$, also ist $\wh{\phi}_{\bcdot}\wh{g} \in L^1$ und 
+ 		\[
+	 		\mc{F}^{-1} \pr{\wh{\phi}_{\bcdot} \wh{g}} = (2\pi)^{\nicefrac{n}{2}} \mc{F}^{-1} \pr{\wh{\phi_{\bcdot} * g}} = (2\pi)^{-\nicefrac{n}{2}} \phi_{\bcdot} * g\ .
+ 		\]
+ 		Nun können wir erneut den Satz von Fubini anwenden und erhalten
+ 		\begin{align*}
+	 		\wc{\abs{\bcdot}^{-2} \wh{g}(\bcdot)}(\xi) &= \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \e^{i \skp{p}{\xi}} \underbrace{\phi_{\frac{1}{t}}(p)\ \wh{g}(p)}_{\mathclap{=(2\pi)^{-\nicefrac{n}{2}} \wh{\phi_{\frac{1}{t}} * g}(p)} } \md \lambda^n(p)\ t^{\frac{\alpha-n}{2} -1}  \md \lambda(t)\\
+	 		%%
+	 		&\darrow{\mathllap{\text{Satz 10: } \phi_{\bcdot}*g, \wh{\phi_{\bcdot}*g} \in L^1}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \pr{\phi_{\frac{1}{t}} * g}(\xi)\ t^{\frac{\alpha-n}{2} -1} \md \lambda(t)\\
+	 		%%
+	 		&\darrow{\text{Def. Faltung}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \phi_{\frac{1}{t}} (\xi - y)\ g(y) \md \lambda^n (y)\ t^{\frac{\alpha-n}{2} -1} \md \lambda(t),
+	 		%%
+	 		\intertext{und mit $\wt{t}=\frac{1}{t}$ und $\md \wt{t} = - \frac{\md t}{t^2} = - \wt{t}^2 \md t$ erhalten wir}
+	 		%%
+	 		&\darrow{\text{Trafosatz}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \phi_{\wt{t}}(\xi -y)\ g(y) \md\lambda^n(y)\ \wt{t}^{\frac{n-\alpha}{2} +1 -2} \md \lambda\pr{\wt{t}}\\
+		 	%%
+		 	&\darrow{\text{Fubini}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_\Rn \underbrace{\lint_0^\infty \phi_{\wt{t}}(\xi-y) \wt{t}^{\frac{n-\alpha}{2}-1} \md \lambda\pr{\wt{t}}}_{\stackrel{\mathllap{\text{siehe oben}}}{=} C_{n-\alpha} \abs{\xi - y}^{-(n-\alpha)}} \ g(y) \md \lambda^n(y)\\
+		 	%%
+		 	&=\underbrace{\frac{C_{n-\alpha} / C_\alpha}{(2\pi)^{\nicefrac{n}{2}}}}_{(*)}\ \lint_\Rn \frac{g(y)}{\abs{\xi - y }^{n-\alpha} } \md \lambda^n(y) = \lint_\Rn I_\alpha \pr{\abs{\xi - y}}\ g(y) \md \lambda^n(y).
+ 		\end{align*}
+ 		Hierbei kann $(*)$ dargestellt werden durch
+ 		\[
+	 		(*) = (2\pi)^{-\nicefrac{n}{2}} \frac{2^{\frac{n-\alpha}{2}} \Gamma\pr{\frac{n-\alpha}{2}}}{2^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}}.
+ 		\]
+	\end{proof}
+	
+	\begin{theorem}[Poisson-Gleichung]
+		Sei $n\geq3, f\in L^1(\Rn) \cap L^\infty(\Rn), \wh{f}, \pr{\abs{\bcdot}^{-2} \wh{f}} \in L^1(\Rn)$. Dann ist
+		\[
+			u = \Phi * f,\quad \Phi(x) = I_2(\abs{x})
+		\]
+		eine (klassische) Lösung der Poisson-Gleichung $-\Delta u = f$. Die Funktion $\Phi$ wird auch als Fundamentallösung bezeichnet.
+	\end{theorem}
+	\subsection{Allgemeines Prinzip}
+	Gegeben sei eine lineare PDE
+	\[
+		P(i\del)u = f,\quad P(i\del) = \sum_{\abs{\alpha} \leq k} b_\alpha i^{\abs{\alpha}} \del_\alpha.
+	\]
+	Dann ist formal eine Lösung durch
+	\[
+		u = \wc{\frac{\wh{f}}{P(\bcdot)}}
+	\]
+	gegeben. $P(p) = \sum_{\abs{\alpha}\leq k} b_\alpha i^{\abs{\alpha}} p^\alpha$. Hier ist $\frac{1}{P(\bcdot)}$ ein ''Fourier-Multiplikator''.
+	
+	\subsubsection{Helmholtz-Gleichung}
+	\[
+		-\Delta u + u = f
+	\]
+	\[
+		\rightsquigarrow u(x) = \wc{\big(\underbrace{1 + \abs{\bcdot}^2}_{p\mapsto \frac{1}{1+\abs{p}^2}}\big)^{-1} \wh{f}} (x)
+	\]
+	Analog zeigt man für $\alpha \in (0,n), f\in L^1\cap L^\infty, \big(1+\abs{\bcdot}^2\big)^{-\nicefrac{\alpha}{2}} \wh{f} \in L^1$. Dann ist 
+	\[
+		\pr{1 + \abs{p}^2}^{- \nicefrac{\alpha}{2}} \wh{f} = \lint_\Rn I_{\frac{n-\alpha}{2}} (\abs{x-y})\ f(y) \md \lambda^n(y).
+	\]
+	Hier ist
+	\[
+		I_\alpha (r) = \frac{2}{(4\pi)^{\nicefrac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}} \pr{\frac{r}{2}}^{-\frac{n-\alpha}{2}} K_{\frac{n-\alpha}{2}} (r),\ r>0
+	\]
+	und
+	\[
+		K_\nu (r) = K_{-\nu} = \frac{1}{2} \left(\frac{r}{2}\right)^{\nu} \lint_0^\infty \e^{- t - \frac{r^2}{4t}} \frac{\md t }{t^{\nu +1}},\ r>0,\ \nu \in \R.
+	\]
+\end{document}
