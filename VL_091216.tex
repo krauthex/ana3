@@ -45,7 +45,7 @@
 		
 		\begin{align*}
 			& \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \e^{ipx - \frac{\varepsilon^2 \abs{p}^2}{2}} \widehat{f}(p) \md \lambda^n (p) = \int_{\R^n} \e^{ipx} \phi(\varepsilon p) \widehat{f}(p) \md \lambda^n (p) \\
-			&= \int_{\R^n} \widehat{f(\bcdot + x)}(p) \phi(\varepsilon p) \md \lambda^n(p) \stackrel{\text{Lemma 3(v)}}{=} \int_{\R^n} f(p+x) \underbrace{\widehat{\phi( \varepsilon \bcdot)(p)}}_{\phi_{\varepsilon}(p)} \md \lambda^n(p) \\
+			&= \int_{\R^n} \widehat{f(\bcdot + x)}(p) \phi(\varepsilon p) \md \lambda^n(p) \stackrel{\text{Lemma 3(v)}}{=} \int_{\R^n} f(p+x) \underbrace{\widehat{\phi( \varepsilon \bcdot)(p)}}_{\phi_{\varepsilon}(p)} \md \lambda^n(p)
 		\end{align*}
 		
 		Sei g = -p
@@ -109,13 +109,13 @@
 			\begin{align*}
 			\norm{(\bcdot_j - x_0)(f\bcdot)}_{L^2}^2 &= \int_{ \R^n} \abs{(x_j-x_0) f(x)}^2 \md \lambda^n(x) \\
 			&= \int_{ \R^n} \abs{x_j f(x + x_0 \wh{e}_j)}^2 \md \lambda^n(x) \\
-			&= \norm{\bcdot_j \wh{f}(\bcdot)}_{L^2}^2 \\
+			&= \norm{\bcdot_j \wh{f}(\bcdot)}_{L^2}^2
 			\end{align*}
 			
 			\begin{align*}
 			\norm{(\bcdot_j - p_0)(f\bcdot)}_{L^2}^2 &= \int_{ \R^n} \abs{(p_j-p_0) f(p)}^2 \md \lambda^n(p) \\
 			&= \int_{ \R^n} \abs{p_j f(p + p_0 \wh{e}_j)}^2 \md \lambda^n(p) \\
-			&= \norm{\bcdot_j \wh{\tilde{f}}(\bcdot)}_{L^2}^2 \\
+			&= \norm{\bcdot_j \wh{\tilde{f}}(\bcdot)}_{L^2}^2
 			\end{align*}
 			
 			und $\norm{f}_{L^2}^2 = \norm{\tilde{f}}_{L^2}^2$ Sodass wir ohne Einschränkung $p_0 = x_0 = 0$ annehmen dürfen. Nun liefert partielle Integration
@@ -139,7 +139,7 @@
 			\begin{align*}
 			& \norm{x} = 0 \leftrightarrow x=0 \: \forall x\in X \\
 			& \norm{\lambda x} = \abs{\lambda}\norm{x} \: \forall \lambda \in \R, \: x \in X \\
-			& \norm{x+y} \leq \norm{x} + \norm{y} \: \forall x,y \in X\\
+			& \norm{x+y} \leq \norm{x} + \norm{y} \: \forall x,y \in X
 			\end{align*}
 			
 			gibt.
