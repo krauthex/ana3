@@ -62,5 +62,75 @@
 	 		&\darrow{\text{Fubini}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}} C_\alpha} \lint_0^\infty \lint_\Rn \e^{i\skp{p}{\xi}} \underbrace{\phi_t(p)}_{\mathclap{=t^{\frac{n}{2}} \wh{\phi}_{\nicefrac{1}{t}}(p)}} \wh{g}(p) \md \lambda^n(p)\ t^{\frac{\alpha}{2}-1} \md \lambda(t), 
  		\end{align*}
  		denn wir haben $\wh{\phi}_1 = \phi_1$ nach \textit{Aufgabe 30b} und folglich für $t>0$ und $p\in\R$
+ 		\begin{align*}
+	 		\wh{\phi}_t(p) &= \frac{1}{\sqrt{2\pi}}\lint_\R \e^{-ipx} \phi_t(x) \md \lambda(x) \darrow{\widetilde{x}=\sqrt{tx}}{=} \frac{1}{\sqrt{2\pi}} \lint_\R \e^{-i\widetilde{x}p/\sqrt{t}} \phi_1(\wt{x}) \frac{\md \lambda(\wt{x})}{\sqrt{t}}\\
+	 		&=\frac{1}{\sqrt{t}} \wh{\phi}_1 \pr{\frac{p}{\sqrt{t}}} = \frac{1}{\sqrt{t}} \phi_1 \pr{\frac{p}{\sqrt{t}}} = \frac{1}{\sqrt{t}} \phi_{\frac{1}{t}}(p).
+ 		\end{align*}
+ 		Wegen $\phi_1, g \in L^1$ folgt mit \textit{Lemma 17}
+ 		\[
+	 		\wh{\phi}_{\bcdot} \wh{g} = (2\pi)^{-\nicefrac{n}{2}} \wh{\phi_{\bcdot} * g}\ .
+ 		\]
+ 		Weiterhin ist $\wh{g}$ beschränkt und $\wh{\phi}_{\bcdot} \in \ms{S}(\Rn) \sbs L^1(\Rn)$, also ist $\wh{\phi}_{\bcdot}\wh{g} \in L^1$ und 
+ 		\[
+	 		\mc{F}^{-1} \pr{\wh{\phi}_{\bcdot} \wh{g}} = (2\pi)^{\nicefrac{n}{2}} \mc{F}^{-1} \pr{\wh{\phi_{\bcdot} * g}} = (2\pi)^{-\nicefrac{n}{2}} \phi_{\bcdot} * g\ .
+ 		\]
+ 		Nun können wir erneut den Satz von Fubini anwenden und erhalten
+ 		\begin{align*}
+	 		\wc{\abs{\bcdot}^{-2} \wh{g}(\bcdot)}(\xi) &= \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \e^{i \skp{p}{\xi}} \underbrace{\phi_{\frac{1}{t}}(p)\ \wh{g}(p)}_{\mathclap{=(2\pi)^{-\nicefrac{n}{2}} \wh{\phi_{\frac{1}{t}} * g}(p)} } \md \lambda^n(p)\ t^{\frac{\alpha-n}{2} -1}  \md \lambda(t)\\
+	 		%%
+	 		&\darrow{\mathllap{\text{Satz 10: } \phi_{\bcdot}*g, \wh{\phi_{\bcdot}*g} \in L^1}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \pr{\phi_{\frac{1}{t}} * g}(\xi)\ t^{\frac{\alpha-n}{2} -1} \md \lambda(t)\\
+	 		%%
+	 		&\darrow{\text{Def. Faltung}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \phi_{\frac{1}{t}} (\xi - y)\ g(y) \md \lambda^n (y)\ t^{\frac{\alpha-n}{2} -1} \md \lambda(t),
+	 		%%
+	 		\intertext{und mit $\wt{t}=\frac{1}{t}$ und $\md \wt{t} = - \frac{\md t}{t^2} = - \wt{t}^2 \md t$ erhalten wir}
+	 		%%
+	 		&\darrow{\text{Trafosatz}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_0^\infty \lint_\Rn \phi_{\wt{t}}(\xi -y)\ g(y) \md\lambda^n(y)\ \wt{t}^{\frac{n-\alpha}{2} +1 -2} \md \lambda\pr{\wt{t}}\\
+		 	%%
+		 	&\darrow{\text{Fubini}}{=} \frac{1}{(2\pi)^{\nicefrac{n}{2}}C_\alpha} \lint_\Rn \underbrace{\lint_0^\infty \phi_{\wt{t}}(\xi-y) \wt{t}^{\frac{n-\alpha}{2}-1} \md \lambda\pr{\wt{t}}}_{\stackrel{\mathllap{\text{siehe oben}}}{=} C_{n-\alpha} \abs{\xi - y}^{-(n-\alpha)}} \ g(y) \md \lambda^n(y)\\
+		 	%%
+		 	&=\underbrace{\frac{C_{n-\alpha} / C_\alpha}{(2\pi)^{\nicefrac{n}{2}}}}_{(*)}\ \lint_\Rn \frac{g(y)}{\abs{\xi - y }^{n-\alpha} } \md \lambda^n(y) = \lint_\Rn I_\alpha \pr{\abs{\xi - y}}\ g(y) \md \lambda^n(y).
+ 		\end{align*}
+ 		Hierbei kann $(*)$ dargestellt werden durch
+ 		\[
+	 		(*) = (2\pi)^{-\nicefrac{n}{2}} \frac{2^{\frac{n-\alpha}{2}} \Gamma\pr{\frac{n-\alpha}{2}}}{2^{\frac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}}.
+ 		\]
 	\end{proof}
+	
+	\begin{theorem}[Poisson-Gleichung]
+		Sei $n\geq3, f\in L^1(\Rn) \cap L^\infty(\Rn), \wh{f}, \pr{\abs{\bcdot}^{-2} \wh{f}} \in L^1(\Rn)$. Dann ist
+		\[
+			u = \Phi * f,\quad \Phi(x) = I_2(\abs{x})
+		\]
+		eine (klassische) Lösung der Poisson-Gleichung $-\Delta u = f$. Die Funktion $\Phi$ wird auch als Fundamentallösung bezeichnet.
+	\end{theorem}
+	\subsection{Allgemeines Prinzip}
+	Gegeben sei eine lineare PDE
+	\[
+		P(i\del)u = f,\quad P(i\del) = \sum_{\abs{\alpha} \leq k} b_\alpha i^{\abs{\alpha}} \del_\alpha.
+	\]
+	Dann ist formal eine Lösung durch
+	\[
+		u = \wc{\frac{\wh{f}}{P(\bcdot)}}
+	\]
+	gegeben. $P(p) = \sum_{\abs{\alpha}\leq k} b_\alpha i^{\abs{\alpha}} p^\alpha$. Hier ist $\frac{1}{P(\bcdot)}$ ein ''Fourier-Multiplikator''.
+	
+	\subsubsection{Helmholtz-Gleichung}
+	\[
+		-\Delta u + u = f
+	\]
+	\[
+		\rightsquigarrow u(x) = \wc{\big(\underbrace{1 + \abs{\bcdot}^2}_{p\mapsto \frac{1}{1+\abs{p}^2}}\big)^{-1} \wh{f}} (x)
+	\]
+	Analog zeigt man für $\alpha \in (0,n), f\in L^1\cap L^\infty, \big(1+\abs{\bcdot}^2\big)^{-\nicefrac{\alpha}{2}} \wh{f} \in L^1$. Dann ist 
+	\[
+		\pr{1 + \abs{p}^2}^{- \nicefrac{\alpha}{2}} \wh{f} = \lint_\Rn I_{\frac{n-\alpha}{2}} (\abs{x-y})\ f(y) \md \lambda^n(y).
+	\]
+	Hier ist
+	\[
+		I_\alpha (r) = \frac{2}{(4\pi)^{\nicefrac{\alpha}{2}} \Gamma\pr{\frac{\alpha}{2}}} \pr{\frac{r}{2}}^{-\frac{n-\alpha}{2}} K_{\frac{n-\alpha}{2}} (r),\ r>0
+	\]
+	und
+	\[
+		K_\nu (r) = K_{-\nu} = \frac{1}{2} \left(\frac{r}{2}\right)^{\nu} \lint_0^\infty \e^{- t - \frac{r^2}{4t}} \frac{\md t }{t^{\nu +1}},\ r>0,\ \nu \in \R.
+	\]
 \end{document}
