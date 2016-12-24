@@ -76,6 +76,18 @@
 		\]
 	\end{cor}
 	\begin{proof}
-		%TODO
+		Aus der Cauchy-Schwarz-Ungleichung erhalten wir unmittelbar
+		\begin{align*}
+			\abs{(f \ast g)(x)} &= \abs{\int_{\R^n} f(y)g(x-y)\md\lambda^n(y)} \leq \int_{\R^n} \abs{f(y)}\abs{g(x-y)}\md\lambda^n(y) \\
+			&\leq \left(\int_{\R^n} \abs{f(y)}^2 \md\lambda^n(y)\right)^{\nicefrac{1}{2}} \left(\int_{\R^n} \abs{g(x-y)}^2\md\lambda^n(y)\right)^{\nicefrac{1}{2}} \\
+			&= \norm{f}_{L^2} \norm{g}_{L^2} \quad \forall x \in \R^n.
+		\end{align*}
+		Hieraus folgt zunächst $f \ast g \in L^\infty(\R^n)$.\\ %TODO: math error? actually L^1?
+		Wir wählen $(f_k)_{k\in\N},(g_k)_{k\in\N} \in \ms{S}(\R^n)$ mit $f_k \to f$ und $g_k \to g$ in $L^2(\R^n)$.
+		Zunächst ist
+		\[
+			\lVert \underbrace{f_k g_k}_{\mathclap{\in \ms{S} \sbs L^1}}-\underbrace{fg}_{\mathclap{\in L^1}} \rVert_{L^1} \leq \norm{f_k-f}_{L^2} \norm{g}_{L^2} \dots % TODO
+		\]
+			
 	\end{proof}
 \end{document}
