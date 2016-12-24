@@ -43,6 +43,39 @@
 		Für $f,g \in L^1(\R^n)$ erhalten wir aus $f \ast g \in L^1(\R^n)$ die erste Abschätzung.
 	\end{lem}
 	\begin{proof}
-		Inhalt...
+		Für $f,g\in\ms{S}(\R^n)$ sind $f \ast g, fg \in \ms{S}(\R^n)$ und wir erhalten $f \ast g \in L^1(\R^n)$ aus der Young-Ungleichung (\emph{Lemma III.17(iv)}).\\
+		Nun ist
+		\[
+			\wh{f \ast g}(p) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ipx} \lint_{\R^n} f(y)g(x-y) \md\lambda^n(y)\md\lambda^n(x).
+		\]
+		Nun erhalten wir mit Fubini
+		\begin{align*}
+			\wh{f \ast g}(p) &= \frac{(2\pi)^{\nicefrac{n}{2}}}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ipy} f(y) \underbrace{\frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ip(x-y)} \md\lambda^n(x)}_{= \wh{g}(p)}\md\lambda^n(y) \\
+			 &= (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g}.
+		\end{align*}
+		Wegen $\ms{S}(\R^n) \sbs L^1(\R^n)$ erhalten wir aus dem soeben Gezeigten für $f,g\in\ms{S}(\R^n)$
+		\[
+				\wh{f \ast g}(p) = (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g} \in \ms{S}(\R^n),
+		\]
+		denn nach \emph{Lemma 8} haben wir zunächst $\wh{f},\wh{g}\in\ms{S}(\R^n)$ und folglich $\wh{f}\wh{g} \in \ms{S}(\R^n)$.\\
+		Weil $\F$ nach \emph{Satz 10} injektiv auf $L^1(\R^n)$ ist, erhalten wir
+		\[
+			f \ast g = \F^{-1}(\wh{f \ast g}) = (2\pi)^{\nicefrac{n}{2}}\, \F^{-1}(\underbrace{\wh{f}\wh{g}}_{\in \ms{S}}) \darrow{\text{\emph{Corollar 11}}}{\in} \ms{S}(\R^n).
+		\]
+		Nach \emph{Corollar 11} gilt diese Identität auch bei Ersetzen von $(f,g)$ durch $(\wc{f},\wc{g})$ und so erhalten wir für alle $p \in \R^n$
+		\begin{align*}
+			(2\pi)^{-\nicefrac{n}{2}}(\wh{f}\ast\wh{g})(p) &= (2\pi)^{-\nicefrac{n}{2}}(\wc{f}\ast\wc{g})(-p) = \F^{-1}\left(\wh{\wc{f}}\wh{\wc{g}}\right)(-p)\\
+			&= \F^{-1}(fg)(-p) = \wc{fg}(-p) = \wh{fg}(p).
+		\end{align*}
+	\end{proof}
+
+	\begin{cor}
+		Die Faltung zweier Funktionen $f,g \in L^2(\R^n)$ liegt im Bild von $\F$, welches seinerseits eine Teilmenge von $C_0^0(\R^n)$ ist, und wir haben $\norm{f \ast g}_{L^\infty} \leq \norm{f}_{L^2} \norm{g}_{L^2}$ sowie
+		\[
+			\uarrow{fg \in L^1}{\wh{fg}} = (2\pi)^{-\nicefrac{n}{2}}\, \wt{\F}(f)\wt{\F}(g).
+		\]
+	\end{cor}
+	\begin{proof}
+		%TODO
 	\end{proof}
 \end{document}
