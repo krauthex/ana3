@@ -32,7 +32,7 @@
 	\end{proof}
 	Insbesondere gilt für $f \in L^2(\R^n)$\quad($\implies  f\chi_{B_R(0)} \to f$ in $L^2$)
 	\[
-		\wt{\F}(f)(p) = \lim_{R\nearrow\infty} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{B_R(0)} e^{-ipx} f(x) \md\lambda^n(x),
+		\wt{\F}(f)(p) = \lim_{R\nearrow\infty} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{B_R(0)} \e^{-ipx} f(x) \md\lambda^n(x),
 	\]
 	wobei der Grenzwert bezüglich der $L^2$-Norm zu verstehen ist und für $f \in F^1(\R^n)$ entfallen kann.
 	\begin{lem}
@@ -46,11 +46,11 @@
 		Für $f,g\in\ms{S}(\R^n)$ sind $f \ast g, fg \in \ms{S}(\R^n)$ und wir erhalten $f \ast g \in L^1(\R^n)$ aus der Young-Ungleichung (\emph{Lemma III.17(iv)}).\\
 		Nun ist
 		\[
-			\wh{f \ast g}(p) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ipx} \lint_{\R^n} f(y)g(x-y) \md\lambda^n(y)\md\lambda^n(x).
+			\wh{f \ast g}(p) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ipx} \lint_{\R^n} f(y)g(x-y) \md\lambda^n(y)\md\lambda^n(x).
 		\]
 		Nun erhalten wir mit Fubini
 		\begin{align*}
-			\wh{f \ast g}(p) &= \frac{(2\pi)^{\nicefrac{n}{2}}}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ipy} f(y) \underbrace{\frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} e^{-ip(x-y)} \md\lambda^n(x)}_{= \wh{g}(p)}\md\lambda^n(y) \\
+			\wh{f \ast g}(p) &= \frac{(2\pi)^{\nicefrac{n}{2}}}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ipy} f(y) \underbrace{\frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ip(x-y)} \md\lambda^n(x)}_{= \wh{g}(p)}\md\lambda^n(y) \\
 			 &= (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g}.
 		\end{align*}
 		Wegen $\ms{S}(\R^n) \sbs L^1(\R^n)$ erhalten wir aus dem soeben Gezeigten für $f,g\in\ms{S}(\R^n)$
@@ -85,9 +85,34 @@
 		Hieraus folgt zunächst $f \ast g \in L^\infty(\R^n)$.\\ %TODO: math error? actually L^1?
 		Wir wählen $(f_k)_{k\in\N},(g_k)_{k\in\N} \in \ms{S}(\R^n)$ mit $f_k \to f$ und $g_k \to g$ in $L^2(\R^n)$.
 		Zunächst ist
+		\begin{align*}
+			\lVert \underbrace{f_k g_k}_{\mathclap{\in \ms{S} \sbs L^1}}-\underbrace{fg}_{\mathclap{\in L^1}} \rVert_{L^1} &\leq \norm{f_k-f}_{L^2} \norm{g}_{L^2} - \norm{f}_{L^2} \norm{g_k-g}_{L^2} \\
+			&\leq \underbrace{\norm{f_k-f}_{L^2}}_{\to 0} \underbrace{\norm{g_k-g}_{L^2}}_{\to 0} + \underbrace{\norm{f_k-f}_{L^2}}_{\to 0} \underbrace{\norm{g}_{L^2}}_{< \infty} + \underbrace{\norm{f}_{L^2}}_{< \infty}\underbrace{\norm{g_k-g}_{L^2}}_{\to 0}
+		\end{align*}
+		und wir erhalten nach \emph{Lemma 2}
 		\[
-			\lVert \underbrace{f_k g_k}_{\mathclap{\in \ms{S} \sbs L^1}}-\underbrace{fg}_{\mathclap{\in L^1}} \rVert_{L^1} \leq \norm{f_k-f}_{L^2} \norm{g}_{L^2} \dots % TODO
+			\big\lVert\underbrace{\wh{f_k g_k}}_{\in L^1} - \underbrace{\wh{f g}}_{\in L^1}\big\rVert_{L^\infty} \leq (2\pi)^{-\nicefrac{n}{2}} \norm{f_k g_k - fg}_{L^1} \xrightarrow{k \to \infty} 0.
 		\]
-			
+		Weiter ist
+		\begin{align*}
+			\norm{\wh{f_k}\ast\wh{g_k} - \wt{\F}(f) \ast \wt{\F}(g)}_{L^\infty} \darrow{\text{siehe oben}}{\leq}&
+			\underbrace{\norm{\wh{f_k}-\wt{\F}(f)}_{L^\infty}}_{\to 0} \underbrace{\norm{\wh{g_k}-\wt{\F}(g)}_{L^\infty}}_{\to 0} + \underbrace{\norm{\wh{f_k}-f}_{L^2}}_{\to 0} \underbrace{\norm{\wt{\F}(g)}_{L^2}}_{< \infty}\\
+			&+ \underbrace{\norm{\wt{\F}(f)}_{L^2}}_{< \infty}\underbrace{\norm{\wh{g_k}-\wt{\F}(g)}_{L^2}}_{\to 0}.
+		\end{align*}
+		Für die linke Seite ist zu beachten, dass $f_k,g_k \in \ms{S}(\R^n)$ und somit auch $\wh{f_k},\wh{g_k} \in \ms{S}(\R^n)$. % and their \ast product?
+		Ebenso gilt mit $f,g \in L^2(\R^n)$ auch $\wt{\F}(f),\wt{\F}(f)\in L^2(\R^n)$ und $\wt{\F}(f) \ast \wt{\F}(g) \in L^\infty(\R^n)$.\\
+		Nun gilt bezüglich Konvergenz in $L^\infty$
+		\[
+			\wh{fg} \xleftarrow{k\to\infty} \wh{f_k g_k} \darrow{\text{\emph{Lemma 17}}}{=} (2\pi)^{-\nicefrac{n}{2}} \, \wh{f_k}\ast\wh{g_k} \xrightarrow{k\to\infty} (2\pi)^{-\nicefrac{n}{2}} \,\wt{\F}(f)\ast\wt{\F}(g).
+		\]
+		Da $fg \in L^1(\R^n) \implies \wh{fg} \in C_0^0(\R^n)$ nach Riemann-Lebesgue (\emph{Lemma 9}) erhalten wir (bei Wahl eines stetigen Vertreters auf der rechten Seite)
+		\[
+			\wh{fg} = (2\pi)^{-\nicefrac{n}{2}} \wt{\F}(f)\wt{\F}(g) \quad\text{für alle Punkte aus $\R^n$}
+		\]
+		Indem wir $(f,g)$ durch $(\wt{\F}^{-1}f,\wt{\F}^{-1}g)$ ersetzen, folgt
+		\begin{align*}
+			f \ast g &= (2\pi)^{\nicefrac{n}{2}}(2\pi)^{-\nicefrac{n}{2}} \,\wt{\F}(\wt{\F}^{-1}(f)) \ast \wt{\F}(\wt{\F}^{-1}(g)) \\
+			&= (2\pi)^{\nicefrac{n}{2}}\,\underbrace{\F(\underbrace{\wt{\F}^{-1}(f)}_{\in L^2}\underbrace{\wt{\F}^{-1}(g)}_{\in L^2})}_{\in L^1}, \text{ also } f \ast g \in \image \F.
+		\end{align*}
 	\end{proof}
 \end{document}
