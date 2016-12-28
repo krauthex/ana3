@@ -1,0 +1,167 @@
+\documentclass[a4paper]{scrreprt}
+\setlength{\parindent}{0pt} % setting the paragraph indent to zero
+
+% encoding and language
+\usepackage[no-math]{fontspec}  % fixes spacing issue with integrals in math mode
+\usepackage[utf8]{luainputenc}
+\usepackage[english,ngerman]{babel}
+
+% font
+\usepackage{libertine}
+%\usepackage{biolinum}
+\usepackage[mathcal]{euscript} % font for math mode, mathcal
+
+% math packages
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsthm}  % for theorem-stuff
+\usepackage{mathtools} 
+\usepackage{dsfont}
+\usepackage{nicefrac}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{relsize} % bigger integrals
+\usepackage{stmaryrd}  % for lightning symbol in proofs
+\usepackage{yhmath}  % for a wider widehat
+\usepackage{scalerel, stackengine} % used for the wide check command
+
+% other packages
+\usepackage{enumerate}
+\usepackage{subfiles}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+% theorem customizations
+\newcounter{cntr}
+\theoremstyle{definition}
+\newtheorem{defin}[cntr]{Definition}
+\newtheorem{notat}[cntr]{Notation}
+\newtheorem*{notat*}{Notation}
+\theoremstyle{plain}
+\newtheorem{theorem}[cntr]{Satz}
+\newtheorem{beh}[cntr]{Behauptung}
+\newtheorem*{beh*}{Behauptung}
+\newtheorem{lem}[cntr]{Lemma}
+\newtheorem{prop}[cntr]{Proposition}
+\newtheorem{bsp}[cntr]{Beispiel}
+\newtheorem{bem}[cntr]{Bemerkung}
+\newtheorem*{bsp*}{Beispiel}
+\newtheorem*{bem*}{Bemerkung}
+\newtheorem{cor}[cntr]{Corollar}
+
+% self defined commands
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mbb}[1]{\mathbb{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\cp}[1]{#1^\mathrm{C}}
+\newcommand{\cbr}[1]{\left\{#1\right\}}
+\newcommand{\searr}{\kern -2pt \searrow \kern -1pt}
+\newcommand{\nearr}{\kern -1pt \nearrow \kern -2pt}
+\newcommand{\cupdot}{\cup \kern -7.65pt \cdot}
+\newcommand{\sm}{\setminus}
+\newcommand{\sbs}{\subset}
+\newcommand{\es}{\emptyset}
+\newcommand{\A}{\mc{A}}
+\newcommand{\D}{\mc{D}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mbb{C}}
+\newcommand{\Rn}{{\R^n}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\ceq}{\coloneqq}
+\newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
+\newcommand{\md}{\: \mathrm{d}}
+\newcommand{\midd}{\mathrel{\Big|}}
+\DeclareMathOperator{\sign}{sign} %signum function
+\DeclareMathOperator{\supp}{supp} %support
+\DeclareMathOperator{\dist}{dist} %distance function
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\skp}[2]{\langle #1\,{,}\,#2 \rangle}
+\newcommand{\del}{\partial}
+\newcommand{\ddel}[2]{\frac{\del #1}{\del #2}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\newcommand{\bcdot}{\boldsymbol{\cdot}}
+\newcommand{\lint}{\int\limits}
+\newcommand{\ol}[1]{\overline{#1}}
+\DeclareMathOperator{\kernel}{\mathop{Kern}}
+\DeclareMathOperator{\image}{Bild}
+\renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
+\renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
+
+
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
+
+\newcommand{\uarrow}[2]{\underset{\mathclap{\substack{\displaystyle{\uparrow}\\{#1}}}}{#2}} % arrow from below with subtext #1 pointing to #2
+\newcommand{\darrow}[2]{\overset{\mathclap{\substack{#1 \\ \displaystyle{\downarrow}}}}{#2}} % arrow from above with suptext #1 pointing to #2
+
+\newcommand{\pr}[1]{\mathchoice%
+			{\kern -1pt \left(#1\right)}  % for equations
+			{\kern -1pt \left(#1\right)}  % for inline math mode
+			{\left(#1\right)}  % for sub- and superscripts
+			{\left(#1\right)}}  % subsub- and supersuperscripts
+
+\newcommand{\bigcupdot}{\mathop{\mathchoice%
+			{\kern -4pt \bigcup \kern -9pt \cdot}  % for equations
+			{\bigcup \kern -7.7pt \cdot \kern 2pt}  % for inline math mode
+			{\bigcup \kern -6.2pt \cdot \kern 2pt}{}}} % for sub- and superscripts
+
+\renewcommand{\labelitemi}{$\cdot$}  % redefine the intemize dots
+
+% for a wide check symbol
+\stackMath
+\newcommand\wc[1]{%
+	\savestack{\tmpbox}{\stretchto{%
+			\scaleto{%
+				\scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+				{\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+			}{\textheight}% 
+		}{0.5ex}}%
+	\stackon[1pt]{#1}{\scalebox{-1}{\tmpbox}}%
+}
+%\parskip 1ex
+
+%%%%%%%%%%%%%%%%%%
+
+% title and author
+\title{Höhere Analysis}
+\author{Dr. Philipp Reiter\\WS 16/17 Universität Heidelberg}
+\date{\today}
+\publishers{\vspace{6em}gesetzt in \LaTeX\ von Sebastian Blänsdorf,\\ Fabian Krautgasser \& Marvin Sipp}
+
+\begin{document}
+
+	\maketitle
+	\selectlanguage{ngerman}
+
+	Dies ist das Vorlesungsskript zur Vorlesung \textit{Höhere Analysis} bei Dr. Philipp Reiter im Wintersemester 16/17 an der Universität Heidelberg. Da dieses Skript von Studenten angefertigt wird, ist keine Garantie auf Exaktheit und Vollständigkeit gegeben. Ebenso ist dies kein Anspruch auf Originalität, da sich die Inhalte aus vielerlei Fachbüchern zusammen setzen. Wir bitten zu entschuldigen, dass diese nicht explizit angegeben sind.
+
+	\newpage
+	\tableofcontents
+	\newpage
+
+	\subfile{VL_191016.tex}
+	\subfile{VL_211016.tex}
+	\subfile{VL_261016.tex}
+	\subfile{VL_281016.tex}
+	\subfile{VL_021116.tex}
+	\subfile{VL_041116.tex}
+	\subfile{VL_091116.tex}
+	\subfile{VL_111116.tex}
+	\subfile{VL_181116.tex}
+	\subfile{VL_231116.tex}
+	\subfile{VL_251116.tex}
+	\subfile{VL_301116.tex}
+	\subfile{VL_021216.tex}
+	\subfile{VL_071216.tex}
+	\subfile{VL_091216.tex}
+	\subfile{VL_141216.tex}
+	\subfile{VL_161216.tex}
+	\subfile{placeholder.tex}
+
+\end{document}
