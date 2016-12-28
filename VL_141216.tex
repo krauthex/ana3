@@ -1,0 +1,118 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\begin{theorem}[Plancherel]
+		Die Foureiertransformation $\F$ lässt sich zu einer linearen beschränkten Abbildung $\wt{\F} \colon L^2(\R^n) \to L^2(\R^n)$ fortsetzen, die \emph{unitär} ist, d.\,h.
+		\[
+			\skp{\wt{\F}(f)}{\wt{\F}(g)}_{L^2}
+			= \skp{f}{g}_{L^2} \quad \forall f,g\in L^2(\R^n).
+		\]
+	\end{theorem}
+	\begin{proof}
+		Nach \emph{Satz III.21} liegt $C_c^\infty(\R^n) \sbs \ms{S}(\R^n)$ dicht in $L^2(\R^n)$.\\
+		Nach \emph{Lemma 8} ist $\F$ eine lineare und bijektive Selbstabbildung des Schwarzraumes und wegen $\ms{S}(\R^n) \sbs F^1(\R^n)$ erhalten wir die Beschränktheit aus der Plancherel-Identität (\emph{Lemma 12}). Nach \emph{Satz 14} gibt es eine eindeutige lineare Fortsetzung $\wt{\F} \colon L^2(\R^n) \to L^2(\R^n)$ mit $\norm{\wt{\F}(f)}_{L^2} \leq \norm{f}_{L^2}$.\\
+		Dass $\wt{\F}$ unitär ist, erhält man mit \emph{Lemma 12} aus
+		\begin{align*}
+			4\skp{f}{g}_{L^2} &= 4 \int_{\R^n}f(x)\ol{g(x)} \md\lambda^n(x) \\
+			&= \norm{f+g}_{L^2}^2 - \norm{f-g}_{L^2}^2 + i\norm{f-ig}_{L^2}^2 - i\norm{f+ig}_{L^2}^2 \\
+			&\uarrow{\text{\emph{Lemma 12}}}{=} \dotso = 4\skp{\wt{\F}(f)}{\wt{\F}(g)}_{L^2}.
+		\end{align*}
+	\end{proof}
+	\begin{bem*}
+		Solange der Integrand von $\wh{f}$ in $L^1(\R^n)$ liegt, lässt sich $\wt{\F}(f)$ direkt mit der Formel aus \emph{Definition 1} berechnen. In der Regel lässt sich $\wt{\F}$ für $f \in L^2(\R^n)$ nur als Grenzwert einer Folge $\wh{f_k}, \quad(f_k)_{k\in\N} \sbs \ms{S}(\R^n),\quad f_k \xrightarrow[\text{in }L^2]{k\to\infty}f$, darstellen.
+	\end{bem*}
+
+	\begin{lem}
+		Wir haben $\norm{\wt{\F}(f)}_{L^\infty} \leq (2\pi)^{-\nicefrac{n}{2}} \norm{f}_{L^1}$ für alle $f \in L^1 \cap L^2$.
+	\end{lem}
+	\begin{proof}
+		Sofern $f \in L_c^1(\R^n)$ gilt, folgt $f \in L^2(\R^n)$ und nach \emph{Lemma III.20} konvergiert\\ $\underbrace{f \ast \phi_\epsilon}_{\mathrlap{\in C_c^\infty(\R^n)\sbs\ms{S}(\R^n)}}$ für eine geeignete approximative Identität in $C_c^\infty(\R^n)$ bezüglich der $L^1$-Norm und der $L^2$-Norm gegen $f$. Die Behauptung gilt für $f \ast \phi_\epsilon$ nach \emph{Lemma 2} und für $\epsilon \searrow 0$ erhalten wir das gewünschte mit der Stetigkeit der Norm.\\
+		Für allgemeine $f \in L^1(\R^n) \cap L^2(\R^n)$ betrachten wir $f_R=f\chi_{B_R(0)}$.\\ % or \rchi - but change rest of the document, too
+		Dann ist $f_R\xrightarrow{R\nearrow\infty}f$ in $L^1$ und $L^2$ (dominierte Konvergenz) und wir erhalten die Behauptung durch Approximation.
+	\end{proof}
+	Insbesondere gilt für $f \in L^2(\R^n)$\quad($\implies  f\chi_{B_R(0)} \to f$ in $L^2$)
+	\[
+		\wt{\F}(f)(p) = \lim_{R\nearrow\infty} \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{B_R(0)} \e^{-ipx} f(x) \md\lambda^n(x),
+	\]
+	wobei der Grenzwert bezüglich der $L^2$-Norm zu verstehen ist und für $f \in F^1(\R^n)$ entfallen kann.
+	\begin{lem}
+		Für $f,g\in\ms{S}(\R^n)$ gilt $f \ast g$, $fg\in\ms{S}(\R^n)$ und wir haben
+		\[
+			\wh{f \ast g} = (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g} \quad\text{und}\quad \wh{fg}=(2\pi)^{-\nicefrac{n}{2}}\wh{f}\ast\wh{g}.
+		\]
+		Für $f,g \in L^1(\R^n)$ erhalten wir aus $f \ast g \in L^1(\R^n)$ die erste Abschätzung.
+	\end{lem}
+	\begin{proof}
+		Für $f,g\in\ms{S}(\R^n)$ sind $f \ast g, fg \in \ms{S}(\R^n)$ und wir erhalten $f \ast g \in L^1(\R^n)$ aus der Young-Ungleichung (\emph{Lemma III.17(iv)}).\\
+		Nun ist
+		\[
+			\wh{f \ast g}(p) = \frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ipx} \lint_{\R^n} f(y)g(x-y) \md\lambda^n(y)\md\lambda^n(x).
+		\]
+		Nun erhalten wir mit Fubini
+		\begin{align*}
+			\wh{f \ast g}(p) &= \frac{(2\pi)^{\nicefrac{n}{2}}}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ipy} f(y) \underbrace{\frac{1}{(2\pi)^{\nicefrac{n}{2}}} \lint_{\R^n} \e^{-ip(x-y)} \md\lambda^n(x)}_{= \wh{g}(p)}\md\lambda^n(y) \\
+			 &= (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g}.
+		\end{align*}
+		Wegen $\ms{S}(\R^n) \sbs L^1(\R^n)$ erhalten wir aus dem soeben Gezeigten für $f,g\in\ms{S}(\R^n)$
+		\[
+				\wh{f \ast g}(p) = (2\pi)^{\nicefrac{n}{2}} \wh{f}\wh{g} \in \ms{S}(\R^n),
+		\]
+		denn nach \emph{Lemma 8} haben wir zunächst $\wh{f},\wh{g}\in\ms{S}(\R^n)$ und folglich $\wh{f}\wh{g} \in \ms{S}(\R^n)$.\\
+		Weil $\F$ nach \emph{Satz 10} injektiv auf $L^1(\R^n)$ ist, erhalten wir
+		\[
+			f \ast g = \F^{-1}(\wh{f \ast g}) = (2\pi)^{\nicefrac{n}{2}}\, \F^{-1}(\underbrace{\wh{f}\wh{g}}_{\in \ms{S}}) \darrow{\text{\emph{Corollar 11}}}{\in} \ms{S}(\R^n).
+		\]
+		Nach \emph{Corollar 11} gilt diese Identität auch bei Ersetzen von $(f,g)$ durch $(\wc{f},\wc{g})$ und so erhalten wir für alle $p \in \R^n$
+		\begin{align*}
+			(2\pi)^{-\nicefrac{n}{2}}(\wh{f}\ast\wh{g})(p) &= (2\pi)^{-\nicefrac{n}{2}}(\wc{f}\ast\wc{g})(-p) = \F^{-1}\left(\wh{\wc{f}}\wh{\wc{g}}\right)(-p)\\
+			&= \F^{-1}(fg)(-p) = \wc{fg}(-p) = \wh{fg}(p).
+		\end{align*}
+	\end{proof}
+
+	\begin{cor}
+		Die Faltung zweier Funktionen $f,g \in L^2(\R^n)$ liegt im Bild von $\F$, welches seinerseits eine Teilmenge von $C_0^0(\R^n)$ ist, und wir haben $\norm{f \ast g}_{L^\infty} \leq \norm{f}_{L^2} \norm{g}_{L^2}$ sowie
+		\[
+			\uarrow{fg \in L^1}{\wh{fg}} = (2\pi)^{-\nicefrac{n}{2}}\, \wt{\F}(f)\wt{\F}(g).
+		\]
+	\end{cor}
+	\begin{proof}
+		Aus der Cauchy-Schwarz-Ungleichung erhalten wir unmittelbar
+		\begin{align*}
+			\abs{(f \ast g)(x)} &= \abs{\int_{\R^n} f(y)g(x-y)\md\lambda^n(y)} \leq \int_{\R^n} \abs{f(y)}\abs{g(x-y)}\md\lambda^n(y) \\
+			&\leq \left(\int_{\R^n} \abs{f(y)}^2 \md\lambda^n(y)\right)^{\nicefrac{1}{2}} \left(\int_{\R^n} \abs{g(x-y)}^2\md\lambda^n(y)\right)^{\nicefrac{1}{2}} \\
+			&= \norm{f}_{L^2} \norm{g}_{L^2} \quad \forall x \in \R^n.
+		\end{align*}
+		Hieraus folgt zunächst $f \ast g \in L^\infty(\R^n)$.\\ %TODO: math error? actually L^1?
+		Wir wählen $(f_k)_{k\in\N},(g_k)_{k\in\N} \in \ms{S}(\R^n)$ mit $f_k \to f$ und $g_k \to g$ in $L^2(\R^n)$.
+		Zunächst ist
+		\begin{align*}
+			\lVert \underbrace{f_k g_k}_{\mathclap{\in \ms{S} \sbs L^1}}-\underbrace{fg}_{\mathclap{\in L^1}} \rVert_{L^1} &\leq \norm{f_k-f}_{L^2} \norm{g}_{L^2} - \norm{f}_{L^2} \norm{g_k-g}_{L^2} \\
+			&\leq \underbrace{\norm{f_k-f}_{L^2}}_{\to 0} \underbrace{\norm{g_k-g}_{L^2}}_{\to 0} + \underbrace{\norm{f_k-f}_{L^2}}_{\to 0} \underbrace{\norm{g}_{L^2}}_{< \infty} + \underbrace{\norm{f}_{L^2}}_{< \infty}\underbrace{\norm{g_k-g}_{L^2}}_{\to 0}
+		\end{align*}
+		und wir erhalten nach \emph{Lemma 2}
+		\[
+			\big\lVert\underbrace{\wh{f_k g_k}}_{\in L^1} - \underbrace{\wh{f g}}_{\in L^1}\big\rVert_{L^\infty} \leq (2\pi)^{-\nicefrac{n}{2}} \norm{f_k g_k - fg}_{L^1} \xrightarrow{k \to \infty} 0.
+		\]
+		Weiter ist
+		\begin{align*}
+			\norm{\wh{f_k}\ast\wh{g_k} - \wt{\F}(f) \ast \wt{\F}(g)}_{L^\infty} \darrow{\text{siehe oben}}{\leq}&
+			\underbrace{\norm{\wh{f_k}-\wt{\F}(f)}_{L^\infty}}_{\to 0} \underbrace{\norm{\wh{g_k}-\wt{\F}(g)}_{L^\infty}}_{\to 0} + \underbrace{\norm{\wh{f_k}-f}_{L^2}}_{\to 0} \underbrace{\norm{\wt{\F}(g)}_{L^2}}_{< \infty}\\
+			&+ \underbrace{\norm{\wt{\F}(f)}_{L^2}}_{< \infty}\underbrace{\norm{\wh{g_k}-\wt{\F}(g)}_{L^2}}_{\to 0}.
+		\end{align*}
+		Für die linke Seite ist zu beachten, dass $f_k,g_k \in \ms{S}(\R^n)$ und somit auch $\wh{f_k},\wh{g_k} \in \ms{S}(\R^n)$. % and their \ast product?
+		Ebenso gilt mit $f,g \in L^2(\R^n)$ auch $\wt{\F}(f),\wt{\F}(f)\in L^2(\R^n)$ und $\wt{\F}(f) \ast \wt{\F}(g) \in L^\infty(\R^n)$.\\
+		Nun gilt bezüglich Konvergenz in $L^\infty$
+		\[
+			\wh{fg} \xleftarrow{k\to\infty} \wh{f_k g_k} \darrow{\text{\emph{Lemma 17}}}{=} (2\pi)^{-\nicefrac{n}{2}} \, \wh{f_k}\ast\wh{g_k} \xrightarrow{k\to\infty} (2\pi)^{-\nicefrac{n}{2}} \,\wt{\F}(f)\ast\wt{\F}(g).
+		\]
+		Da $fg \in L^1(\R^n) \implies \wh{fg} \in C_0^0(\R^n)$ nach Riemann-Lebesgue (\emph{Lemma 9}) erhalten wir (bei Wahl eines stetigen Vertreters auf der rechten Seite)
+		\[
+			\wh{fg} = (2\pi)^{-\nicefrac{n}{2}} \wt{\F}(f)\wt{\F}(g) \quad\text{für alle Punkte aus $\R^n$}
+		\]
+		Indem wir $(f,g)$ durch $(\wt{\F}^{-1}f,\wt{\F}^{-1}g)$ ersetzen, folgt
+		\begin{align*}
+			f \ast g &= (2\pi)^{\nicefrac{n}{2}}(2\pi)^{-\nicefrac{n}{2}} \,\wt{\F}(\wt{\F}^{-1}(f)) \ast \wt{\F}(\wt{\F}^{-1}(g)) \\
+			&= (2\pi)^{\nicefrac{n}{2}}\,\underbrace{\F(\underbrace{\wt{\F}^{-1}(f)}_{\in L^2}\underbrace{\wt{\F}^{-1}(g)}_{\in L^2})}_{\in L^1}, \text{ also } f \ast g \in \image \F.
+		\end{align*}
+	\end{proof}
+\end{document}
