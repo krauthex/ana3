@@ -7,7 +7,7 @@
 		\[
 			\int_0^1 \int_0^1 f(x,y) \md x \md y \stackrel{\footnotemark}{=} - \int_0^1 \frac{\md y}{(1+y)^2} = \frac{1}{1+y} \bigg\vert_0^1 = -\frac{1}{2}
 		\] \footnotetext{$\frac{\md}{\md x} \frac{x}{(x+y)^2} = \frac{1}{(x+y)^2}-2\frac{x}{(x+y)^3} = \frac{x-y}{(x+y)^3}\ \mathrm{ und }\ \int_0^1 \int_0^1 f(x,y) \md x \md y = \frac{1}{2}$}
-		Wäre $f\in \mathscr{L}^1\pr{[0,1]^2}$, so folge aus dem \textup{Satz 62 (Fatou)} zunächst die Integrierbarkeit der Funktionen
+		Wäre $f\in \mathscr{L}^1\pr{[0,1]^2}$, so folge aus dem \textup{Satz 62 (Fubini)} zunächst die Integrierbarkeit der Funktionen
 		\[
 			\int_{(0,1)} f(x_1,\cdot) \md \lambda(x_1),\ \int_{(0,1)} f(\cdot, x_2) \md \lambda(x_2) 
 		\]
@@ -76,11 +76,11 @@
 		\begin{itemize}
 			\item[(i)] Da $\mc{I}$ unter Schnitten abgeschlossen ist, und wegen \textit{Lemma 64} die Borel-$\sigma$-Algebra $\mc{B}^n$ erzeugt, folgt die Behauptung mit dem Eindeutigkeitssatz (23).
 			
-			\item[(ii)] Sei $\mc{A}$ die Algebra (nachrechnen!) endlicher Vereinigungen disjunkter Quader aus $\mc{I}$. Nun ist $\mu \ceq \lambda^n \vert_\mc{A}$ ein Prämaß. Die angegebene Formel ist gerade die Konstruktion des äußeren Maßes in \textit{Lemma 30}, und mit \textit{Satz 28} erhalten wir eine $\sigma$-Algebra $\Sigma$ mit $\mc{A} \in \Sigma$, sodass $\pr{\mbb{R}^n, \Sigma, \mu^*\vert_\Sigma}$ ein Maßraum ist. Weil $\mc{A}$ sämtliche offenen Quader $\bigtimes_{j=1}^n (a_j,b_j)$ enthält, folgt $\mc{B}^n = \Sigma (\mc{A}|\Rn) \sbs \Sigma$ und $\mu^*\vert_{\mc{B}^n}$ ist ein Maß auf $\mc{B}^n$, was zu zeigen war.
+			\item[(ii)] Sei $\mc{A}$ die Algebra (nachrechnen!) endlicher Vereinigungen disjunkter Quader aus $\mc{I}$. Nun ist $\mu \ceq \lambda^n \vert_\mc{A}$ ein Prämaß. Die angegebene Formel ist gerade die Konstruktion des äußeren Maßes in \textit{Lemma 30}, und mit \textit{Satz 28} erhalten wir eine $\sigma$-Algebra $\Sigma$ mit $\mc{A} \sbs \Sigma$, sodass $\pr{\mbb{R}^n, \Sigma, \mu^*\vert_\Sigma}$ ein Maßraum ist. Weil $\mc{A}$ sämtliche offenen Quader $\bigtimes_{j=1}^n (a_j,b_j)$ enthält, folgt $\mc{B}^n = \Sigma (\mc{A}|\Rn) \sbs \Sigma$ und $\mu^*\vert_{\mc{B}^n}$ ist ein Maß auf $\mc{B}^n$, was zu zeigen war.
 			
 			\item[(iii)] Die Translationsinvarianz ergibt sich unmittelbar aus (ii). Sei nun $\mu$ ein weiteres translationsinvariantes Maß auf $(\mbb{R}^n, \mc{B}^n)$. Sei $Q_r$ ein halboffener Würfel mit Seitenlänge $r$. Wir nehmen \OE\ $\mu(Q_1)=1$ an. Weil wir $Q_1$ in $m^n$ Würfel der Kantenlänge $\frac{1}{m}$ zerlegen können, folgt mit Translationsinvarianz und Additivität des Maßes:
 			\[
-				1 = \mu(Q_1) = m^n \mu\pr{Q_{\frac{1}{m}}} = m^{-n}. 
+				1 = \mu(Q_1) = m^n \mu\pr{Q_{\frac{1}{m}}} \Rightarrow \mu\pr{Q_{\frac{1}{m}}} = m^{-n}. 
 				\qquad \qquad
 				\begin{tikzpicture}
 					\foreach \x in {0,1,...,6}{
@@ -131,7 +131,7 @@
 	\end{theorem}
 	
 	\begin{proof}
-		Für $A = \cbr{x\in X \mid (g\circ f)(x) \geq 0}$ und $B = \cbr{y \in Y \mid g(x) \geq 0}$ gilt:
+		Für $A = \cbr{x\in X \mid (g\circ f)(x) \geq 0}$ und $B = \cbr{y \in Y \mid g(y) \geq 0}$ gilt:
 		\[
 			(f_*\mu) (B) = \mu(f^{-1}(B)) = \mu(\cbr{x\in X \mid f(x) \in B}) = \mu(A).
 		\]

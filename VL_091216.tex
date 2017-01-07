@@ -45,10 +45,10 @@
 		
 		\begin{align*}
 			& \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \e^{ipx - \frac{\varepsilon^2 \abs{p}^2}{2}} \widehat{f}(p) \md \lambda^n (p) = \int_{\R^n} \e^{ipx} \phi(\varepsilon p) \widehat{f}(p) \md \lambda^n (p) \\
-			&= \int_{\R^n} \widehat{f(\bcdot + x)}(p) \phi(\varepsilon p) \md \lambda^n(p) \stackrel{\text{Lemma 3(v)}}{=} \int_{\R^n} f(p+x) \underbrace{\widehat{\phi( \varepsilon \bcdot)(p)}}_{\phi_{\varepsilon}(p)} \md \lambda^n(p)
+			&= \int_{\R^n} \widehat{f(\bcdot + x)}(p) \phi(\varepsilon p) \md \lambda^n(p) \uarrow{\text{Lemma 3(v)}}{=} \int_{\R^n} f(p+x) \underbrace{\widehat{\phi( \varepsilon \bcdot)}(p)}_{\phi_{\varepsilon}(p)} \md \lambda^n(p)
 		\end{align*}
 		
-		Sei g = -p
+		Sei y = -p
 		
 		\begin{equation*}
 		\int_{\R^n} f(x-y) \underbrace{\phi_{\varepsilon}(-y)}_{=\phi_{\varepsilon}(y)} \md \lambda^n(y) = (f\ast \phi_{\varepsilon})(x)
@@ -87,10 +87,11 @@
 		Aus dem Satz von Fubini folgt
 		
 		\begin{align*}
-		\int_{\R^n} \abs{\wh{f}(p)}^2 \md \lambda^n(p) &= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \int_{ \R^n} f(x) \underbrace{\e^{-ipx} \overline{\wh{f}(p)}}_{= \e^{ipx} \overline{\wh{f}(p)}} \md \lambda^n(x) \md \lambda^n(p) \\
-		&= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{ \R^n} f(x)  \underbrace{\overline{ \int_{ \R^n} e^{ipx} \tilde{f}(p) \md \lambda^n(p)}}_{= (2 \pi)^\frac{n}{2} \overline{\wc{(\wh{f})}(x)} \overline{f(x)} = (2 \pi)^{\frac{n}{2}} f(x)} \\
-		&= \int_{\R^n} \underbrace{f(x) \overline{f(x)\ \md \lambda^n (x)}}_{\abs{f(x)}^2}\\
-	     \text{Insbesondere } & \norm{\wh{f}}_{L^2}^2 \leq \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{R} \abs{f(x)} \md \lambda^n(x) \int_{ \R^n} \underbrace{\abs{\e^{ipx}}}_{=1} \abs{\wh{f}(p)} \md \lambda^n (p)
+		\int_{\R^n} \abs{\wh{f}(p)}^2 \md \lambda^n(p) &= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{\R^n} \int_{ \R^n} f(x) \underbrace{\e^{-ipx} \overline{\wh{f}(p)}}_{=\overline{ \e^{ipx} \wh{f}(p)}} \md \lambda^n(x) \md \lambda^n(p) \\
+		&= \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{ \R^n} f(x)  \underbrace{\overline{ \int_{ \R^n} e^{ipx} \wh{f}(p) \md \lambda^n(p)}}_{= (2 \pi)^\frac{n}{2} \wc{(\wh{f})}(x) = (2 \pi)^{\frac{n}{2}} f(x)} \\
+		&= \int_{\R^n} \underbrace{f(x) \overline{f(x)}}_{\abs{f(x)}^2} \md \lambda^n (x)\\
+	     \text{Insbesondere } 
+	     & \norm{\wh{f}}_{L^2}^2 \leq \frac{1}{(2 \pi)^{\frac{n}{2}}} \int_{R} \abs{f(x)} \md \lambda^n(x) \int_{ \R^n} \underbrace{\abs{\e^{ipx}}}_{=1} \abs{\wh{f}(p)} \md \lambda^n (p)
 		\end{align*}
 		
 	\end{proof}

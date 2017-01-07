@@ -18,13 +18,13 @@ Der Raum $L^p(X, \mu)$ ist für $p \in [1,\infty]$ vollständig mithin ein Banac
 	 Mit $f_0 \ceq 0, \: g_k \ceq f_k - f_{k-1} \forall k \in \N \: G \ceq \sum_{k \in \N} \abs{g_k}$ erhalten wir
 	
 	\begin{equation*}
-	\norm{\sum_{j=1}^{k} \abs{g_j}}_{L^p} \leq \sum_{j=1}^{k} \norm{g_j}_{L^p} \leq \norm{g_1}_{L^p} + \sum_{j=1}^{k 2^{-j}} \leq \norm{g_1}_{L^p} +1
+	\norm{\sum_{j=1}^{k} \abs{g_j}}_{L^p} \leq \sum_{j=1}^{k} \norm{g_j}_{L^p} \leq \norm{g_1}_{L^p} + \sum_{j=1}^{k} 2^{-j} \leq \norm{g_1}_{L^p} +1
 	\end{equation*}
 	
 	Aus dem Satz der monotonen Konvergenz (I. 45) gewinnen wir $G \in L^p$ und wir haben insbesondere $G(x) < \infty$ für fast alle $x \in X$. Ans diesen Punkten konvergiert
 	
 	\begin{equation*}
-	\tilde f \colon \sum_{k\in \N} g_k = \lim_{ k \to \infty} \sum_{j=1}^{k} g_k = \lim_{k \to \infty} f_k
+	\tilde f = \sum_{k\in \N} g_k = \lim_{ k \to \infty} \sum_{j=1}^{k} g_j = \lim_{k \to \infty} f_k
 	\end{equation*}
 
 	absolut. Dort ist also $ \abs{f_k(x) - \tilde f(x)}^p \xrightarrow{k\lra\infty} 0$ und wir haben
@@ -33,7 +33,7 @@ Der Raum $L^p(X, \mu)$ ist für $p \in [1,\infty]$ vollständig mithin ein Banac
 	\abs{f_k - \tilde f}^p = \abs{ \sum_{j=1}^{k} g_j - \sum_{j=1}^{\infty} g_j}^p = \abs{\sum_{j=k+1}^{\infty} g_j}^p \leq \abs{\sum_{j=1}^{\infty} \abs{g_j}}^p \leq \abs{G}^p
 	\end{equation*}
 	
-	dort wo $G< \infty$. Nun ist $\abs{G}^p \in L^1$, mit $f \colon \liminf_{k \to \infty} f_k$ erhalten wir eine messbare Funktion mit $f = \tilde f$ $\mu$-fast überall. Nun folgt aus dem Satz über dominierte Konvergenz (I. 54)
+	dort wo $G< \infty$. Nun ist $\abs{G}^p \in L^1$, mit $f = \liminf_{k \to \infty} f_k$ erhalten wir eine messbare Funktion mit $f = \tilde f$ $\mu$-fast überall. Nun folgt aus dem Satz über dominierte Konvergenz (I. 54)
 	
 	\begin{equation*}
 	\norm{f_k - f}_{L^p}^p = \int_X \abs{f_k -f}^p \md \mu \xrightarrow{k\lra\infty} 0
@@ -57,7 +57,7 @@ Der Raum $L^p(X, \mu)$ ist für $p \in [1,\infty]$ vollständig mithin ein Banac
 	
 	\begin{align*}
 	\abs{f_k-f}_{L^\infty} &= \sup\{s \geq 0 \mid \mu(\{x\in X \mid \abs{f_k(x) - f(x)} \geq s \})>0\} \\
-	&= \sup\{s \geq 0 \mid \mu( \underbrace{\{x\in X \sm A \mid \underbrace{\abs{f_k(x) - f(x)}}_{\leq \frac{1}{m} \: \text{falls} \: k\geq M}  \geq s \}}_{= \Phi \: \text{falls} \: k\geq M \: \text{und} \: s > \frac{1}{m}})>0\} \\
+	&= \sup\{s \geq 0 \mid \mu( \underbrace{\{x\in X \sm A \mid \underbrace{\abs{f_k(x) - f(x)}}_{\leq \frac{1}{m} \: \text{falls} \: k\geq M}  \geq s \}}_{= \es \: \text{falls} \: k\geq M \: \text{und} \: s > \frac{1}{m}})>0\} \\
 	&\leq \frac{1}{m} \: \text{für} \: k \geq M
 	\end{align*}
 	
@@ -100,20 +100,20 @@ Der Raum $L^p(X, \mu)$ ist für $p \in [1,\infty]$ vollständig mithin ein Banac
 \end{theorem}
 
 \begin{proof}
-	Wie in Bem. I.46 erläutert, können wir nicht negative messbare Funktionen durch eine Folge einfacher Funktionen bzg $L^1$-Norm approximieren. Man überträgt das Argument leicht auf eine beliebige integrierbare Funktionen und Funktionen aus $\mathscr{L}$ (bzgl $L^p$-Norm) $p \in [1,\infty)$. Die in I.46 konstruierten einfachen Funktionen waren linearkombinationen charakteristischer Funktionen von Urbildern halboffener Mengen, da das Maß nach Vorraussetztung regulär von innen ist, können wir diese durch Kompakta beliebig gut approximieren. Folglich genügt es zu zeigen, dass $\xi_k$ für kompakte $K \sbs X$ bezüglich $L^p$-Norm beliebig gut durch stetige Funktionen approximiert werden kann. Aufgrund äußerer Regularität finden wir für $\epsilon>0$ eine offene Menge $U$ mit $K \sbs U$ und $\mu(U \sm K) = \mu(U) - \mu(K) < \epsilon$.
-	Wir setzten $f_\epsilon(x) = \frac{\dist(x,U^c)\footnotemark}{\dist(x,K) + \dist(x,U^c)}$. Dies liefert eine stetige Funktion $ X \in [0,1]$ mit
+	Wie in Bem. I.46 erläutert, können wir nicht negative messbare Funktionen durch eine Folge einfacher Funktionen bzg $L^1$-Norm approximieren. Man überträgt das Argument leicht auf eine beliebige integrierbare Funktionen und Funktionen aus $\mathscr{L}^p$ (bzgl $L^p$-Norm) $p \in [1,\infty)$. Die in I.46 konstruierten einfachen Funktionen waren linearkombinationen charakteristischer Funktionen von Urbildern halboffener Mengen, da das Maß nach Vorraussetztung regulär von innen ist, können wir diese durch Kompakta beliebig gut approximieren. Folglich genügt es zu zeigen, dass $\rchi_K$ für kompakte $K \sbs X$ bezüglich $L^p$-Norm beliebig gut durch stetige Funktionen approximiert werden kann. Aufgrund äußerer Regularität finden wir für $\epsilon>0$ eine offene Menge $U$ mit $K \sbs U$ und $\mu(U \sm K) = \mu(U) - \mu(K) < \epsilon$.
+	Wir setzten $f_\epsilon(x) = \frac{\dist(x,U^C)\footnotemark}{\dist(x,K) + \dist(x,U^C)}$. Dies liefert eine stetige Funktion $ X \in [0,1]$ mit
 	\footnotetext{$\dist(x,Y) = \inf\dist_{y\in Y}(x,y)$}
 	\begin{align*}
-	f \epsilon(x) &= 0 \Leftrightarrow \dist(x,U^c)=0 \Leftrightarrow x \nsubseteq U \\
+	f \epsilon(x) &= 0 \Leftrightarrow \dist(x,U^C)=0 \Leftrightarrow x \notin U \\
 	f \epsilon(x) &= 1 \Leftrightarrow \dist(x,K)=0 \Leftrightarrow x \in K!
 	\end{align*}
 
 	Wegen
 	\begin{equation*}
-    \int_X \underbrace{\abs{f_\epsilon - \xi_K}^p}_{=0 \: \text{auf} \: U^c \cup K} \md \mu = \int _{U \sm K} \underbrace{ \lvert f_\epsilon - \underbrace{\xi_K}_{=0} \rvert^p}_{\leq 1} \md \mu \leq \mu(U \sm K) < \epsilon
+    \int_X \underbrace{\abs{f_\epsilon - \rchi_K}^p}_{=0 \: \text{auf} \: U^C \cup K} \md \mu = \int _{U \sm K} \underbrace{ \lvert f_\epsilon - \underbrace{\rchi_K}_{=0} \rvert^p}_{\leq 1} \md \mu \leq \mu(U \sm K) < \epsilon
 	\end{equation*}
 	
-	folgt $\norm{f_\epsilon - \xi_K}_{L^p} \xrightarrow{\epsilon\lra 0} 0$
+	folgt $\norm{f_\epsilon - \rchi_K}_{L^p} \xrightarrow{\epsilon\lra 0} 0$
 \end{proof}
 
 	Die Aussage gilt nicht für $p = \infty$, da für stetige Funktionen $L^{\infty}$-Norm und Supremumsnorm übereinstimmen und der gleichmäßige Limes stetiger Funktionen ist wieder stetig.
