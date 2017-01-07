@@ -1,7 +1,8 @@
 \documentclass[skript.tex]{subfiles}
 
 \begin{document}
-	\chapter{Maßtheorie}
+	\chapter{Lebesgue-Integral}
+	\section{Maßräume}
 	
 	\begin{defin}[Algebra]
 		Eine Algebra $\mc{A}$ ist eine Familie von Teilmengen einer gegebenen Menge $X$ mit folgenden Eigenschaften:
@@ -31,7 +32,7 @@
 	\begin{defin}
 		Allgemein ist $\mf{P}\pr{X}$ (=Potenzmenge, Menge aller Teilmengen von X) die größte und $\left\{\emptyset, X \right\}$ die kleinste $\sigma$-Algebra. Sei $S \subset \mf{P}\pr{X}$, dann stellt
 		\begin{equation*}
-			\Sigma\pr{S} = \bigcap\left\{ \mc{A} \mid \mc{A}\ \sigma\text{-Algebra mit } S \in \mc{A}\right\}
+			\Sigma\pr{S} = \bigcap\left\{ \mc{A} \mid \mc{A}\ \sigma\text{-Algebra mit } S \subseteq \mc{A}\right\}
 		\end{equation*}
 		tatsächlich eine $\sigma$-Algebra dar. Es ist die kleinste $\sigma$-Algebra die $S$ enthält und wird als \textit{die von $S$ erzeugte} $\sigma$-Algebra bezeichnet. $\Sigma\pr{S}$ ist eindeutig bestimmt.
 		
@@ -57,16 +58,19 @@
 	\end{beh*}
 	\begin{proof}\hfill 
 		\begin{itemize}
-			\item[''$\Leftarrow$''] Weil $\Sigma \cap Y$ die Mengen aus $S \cap Y$ enthält, gilt $\Sigma\pr{S\cap Y} \subset \Sigma \cap Y$ 
-			\item[''$\Rightarrow$''] Betrachte die Menge
+			\item[''$\subseteq$''] Weil $\Sigma \cap Y$ die Mengen aus $S \cap Y$ enthält, gilt $\Sigma\pr{S\cap Y} \subseteq \Sigma\pr{\Sigma \cap Y} = \Sigma \cap Y$ 
+			\item[''$\supseteq$''] Betrachte die Menge
 				\begin{equation*}
 					\cbr{A \subset \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S\cap Y}}
 				\end{equation*}
-				Dies ist eine $\sigma$-Algebra, weil diese die Menge $S$ enthält, folgt
+				Dies ist eine $\sigma$-Algebra. Weil diese die Menge $S$ enthält, folgt
 				\begin{equation*}
 					\Sigma\pr{S} \subset \cbr{A \in \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S\cap Y}} \subset \Sigma\pr{S}
 				\end{equation*}
-				also Gleichheit und folglich $\Sigma\pr{S} \cap Y = \cbr{A \in \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S \cap Y}} \cap Y \subset \Sigma\pr{S \cap Y}$
+				also Gleichheit und folglich 
+				\[
+					\Sigma\pr{S} \cap Y = \cbr{A \in \Sigma\pr{S} \mid A \cap Y \in \Sigma\pr{S \cap Y}} \cap Y \subset \Sigma\pr{S \cap Y}
+				\]
 		\end{itemize}
 	\end{proof}
 	
@@ -92,17 +96,17 @@
 		Die Familie aller endlichen offenen Intervalle $\subset \mathbb{R}$ erzeugt bereits $\mc{B}$.
 	\end{bem*}
 	
-	\begin{defin}[Maßraum, Maß]
-		Eine Menge $X$ mit einer $\sigma$-Algebra $\mc{A} \subset \mf{P}\pr{X}$ heißt \textit{Maßraum}. Ein \textit{Maß} ist eine Abbildung $\mu\colon \mc{A} \longrightarrow \left[ 0, \infty \right]$ mit:
+	\begin{defin}[Messraum, Maß, Maßraum]
+		Eine Menge $X$ mit einer $\sigma$-Algebra $\mc{A} \subset \mf{P}\pr{X}$ heißt \textit{Messraum}. Ein \textit{Maß} ist eine Abbildung $\mu\colon \mc{A} \longrightarrow \left[ 0, \infty \right]$ mit:
 		\begin{itemize}
 			\item $\mu\pr{\emptyset} = 0$
-			\item \textbf{\boldmath$\sigma$-Additivität}: Für eine Folge\footnote{Folgen sind indizierbar mit $\mathbb{N}$. Im Unterschied dazu können Familien auch überabzählbar sein.} paarweise disjunkter\footnote{$A_j \cap A_k = \emptyset$ für $j\neq k$} Mengen $\pr{A_k}_{k\in \mathbb{N}} \subset \mc{A}$ ist $\mu\pr{\bigcup_{k\in\mathbb{N}} A_k } = \sum_{k\in\mathbb{N}} \mu\pr{A_k}$
+			\item \textbf{\boldmath$\sigma$-Additivität}: Für eine Folge\footnote{Folgen sind indizierbar mit $\mathbb{N}$. Im Unterschied dazu können Familien auch überabzählbar sein.} paarweise disjunkter\footnote{$A_j \cap A_k = \emptyset$ für $j\neq k$} Mengen $\pr{A_k}_{k\in \mathbb{N}} \subset \mc{A}$ ist \\ $\mu\pr{\bigcup_{k\in\mathbb{N}} A_k } = \sum_{k\in\mathbb{N}} \mu\pr{A_k}$
 		\end{itemize}
 		Die Elemente in $\mc{A}$ heißen \textit{messbar}, und das Tripel $\pr{X, \mc{A}, \mu}$ heißt somit \textit{Maßraum}.
 	\end{defin}
 	
 	\begin{defin}[$\sigma$-Finitheit]
-		Ein Maß heißt \textit{$\sigma$-finit}, falls es eine abzählbare Überdeckung $\cbr{X_k}_{k\in\mathbb{N}} \subset \mc{A}$ von $X$ gibt, also $X=\bigcup_{k\in\mathbb{N}} X_k$, sodass $\mu\pr{X_k} < \infty\ \forall k$.
+		Ein Maß heißt \textit{$\sigma$-finit}, falls es eine abzählbare Überdeckung \\ $\cbr{X_k}_{k\in\mathbb{N}} \subset \mc{A}$ von $X$ gibt, also $X=\bigcup_{k\in\mathbb{N}} X_k$, sodass $\mu\pr{X_k} < \infty\ \forall k$.
 		
 		$\mu$ heißt \textit{endlich}, falls $\mu\pr{X}<\infty$, und \textit{Wahrscheinlichkeitsmaß}, falls $\mu\pr{X}=1$.
 	\end{defin}
@@ -110,13 +114,13 @@
 	\begin{bsp}
 		\hfill
 		\begin{itemize}
-			\item[(a)] \textbf{Zählmaß}: Für $X$ und $\mc{A}=\mf{P}\pr{X}$ setze 
+			\item[(a)] \textbf{Zählmaß}: Für $X$ und $\mc{A}=\mf{P}\pr{X}$ setze für $A \in \mc{A}$
 				\begin{equation*}
 					\mu\pr{A} = 
 					\begin{cases}
 						\#A &: A \text{ endlich}\\
 						\infty &: \text{sonst}
-					\end{cases}\ \forall A\in\mc{A}
+					\end{cases}
 				\end{equation*}
 				$\mu$ ist endlich, wenn $X$ endlich, und $\sigma$-finit, wenn $X$ abzählbar ist.
 				
@@ -129,20 +133,20 @@
 						\end{cases}
 				\end{equation*}
 			
-			\item[(c)] \textbf{Positive Linearkombinationen}: Seien $\mu_1, \mu_2$ Maße auf $\pr{X, \mc{A}}$. Dann erhalten wir durch $\mu:= \alpha_1\mu_1 + \alpha_2\mu_2$ für $\alpha_1, \alpha_2 > 0$ wieder ein Maß. 
-		\end{itemize}
+			\item[(c)] \textbf{Positive Linearkombinationen}: Seien $\mu_1, \mu_2$ Maße auf $\pr{X, \mc{A}}$. Dann erhalten wir durch $\mu:= \alpha_1\mu_1 + \alpha_2\mu_2$ für $\alpha_1, \alpha_2 \geq 0$ wieder ein Maß. 
+		\end{itemize} 
 	\end{bsp}
 
 	\begin{bsp}
-		Sei $\mu$ ein Maß auf $\pr{X,\mc{A}}$ und $Y\in\mc{A}$. Dann ist $\mu_{|_{Y}}\pr{A} \coloneqq \mu\pr{A\cap Y}$ wieder ein Maß auf $\pr{X, \mc{A}}$. 
+		Sei $\mu$ ein Maß auf $\pr{X,\mc{A}}$ und $Y\in\mc{A}$. Dann ist $\mu|_{Y}\pr{A} \coloneqq \mu\pr{A\cap Y}$ wieder ein Maß auf $\pr{X, \mc{A}}$. 
 	\end{bsp}
 	
 	\begin{bem*}
 		Für $Y \in \mc{A}$ können wir die $\sigma$-Algebra $\mc{A}$ zu 
 		\begin{equation*}
-			\mc{A}_{|_{Y}} = \cbr{A \in \mc{A} \mid A \subset Y}
+			\mc{A}|_{Y} = \cbr{A \in \mc{A} \mid A \subset Y}
 		\end{equation*}
-		einschränken. Dann ist $\mu_{|_Y}\pr{A} = \mu\pr{A\cap Y},\ A\cap Y \in \mc{A},$ ein Maß (siehe oben) und $\pr{Y,\mc{A}_{|_Y},\mu_{|_Y}}$ ein Maßraum und dieser ist $\mu$-finit, falls $\pr{X,\mc{A},\mu}\ \sigma$-finit ist. 
+		einschränken. Dann ist $\mu|_Y\pr{A} = \mu\pr{A\cap Y},\ A\cap Y \in \mc{A},$ ein Maß (siehe oben) und $\pr{Y,\mc{A}|_Y,\mu|_Y}$ ein Maßraum und dieser ist $\mu$-finit, falls $\pr{X,\mc{A},\mu}\ \sigma$-finit ist. 
 	\end{bem*}
 	
 	\begin{notat}

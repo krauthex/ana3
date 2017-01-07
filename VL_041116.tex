@@ -4,7 +4,7 @@
 	\begin{defin}[Integral]
 		Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma$, $f\colon(X,\Sigma)\lra(\mbb{R},\mc{B})$ messbar und nicht negativ. Dann ist
 	\begin{equation*}
-		\int_{A} \! f \, \mathrm{d}\mu\ceq \sup \left\{\int g \, \mathrm{d}\mu\ \middle|\ g\in S(X,\mu),g \le f, g\geq 0\right\}
+		\int_{A} \! f \, \mathrm{d}\mu\ceq \sup \left\{\int g \, \mathrm{d}\mu\ \big|\ g\in S(X,\mu),g \le f, g\geq 0\right\}
 	\end{equation*}
 	Bis auf $(ii)$ und $(iv)$ übertragen sich die Aussagen aus \textit{Lemma 43} auf bel. nicht-negtive messbare Funktionen durch Approximation.
 	\end{defin}
@@ -26,14 +26,14 @@
 
 	\begin{bem}
 		Für jede nicht-negative Funktion $f$ mit einer monoton steigenden Folge nicht-negativer, einfacher Funktionen $(g_k)_{k\in\N}, \: g_k \nearr f$ ist $ \int_A \! g_k \, \mathrm{d}\mu \nearr \int_A \! f \, \mathrm{d}\mu$. Eine geeignete Folge $(g_k)_{k\in\N}$ lässt sich folgendermaßen konstruieren:
-		\begin{equation}
+		\begin{equation*}
 			g_k(x)\ceq \sum_{j=0}^{k2^k}\frac{j}{2^k}\rchi_{f^{-1}(A_j)}(x) \: \mathrm{mit} \:
 			A_j=
 			\begin{cases}
 			[\frac{j}{2^k},\frac{j+1}{2^k}),& j=0,...,k2^k-1  \\
 			[k,\infty),& j=k2^k
 			\end{cases}
-		\end{equation}
+		\end{equation*}
 		Ist $f$ (gleichmäßig\footnote{Sei $X$ eine beliebige Menge. Dann heißt eine Familie $\mc{F}$ von auf $X$ definierten, reellwertigen Funktionen \textit{gleichmäßig beschränkt}, wenn es eine reelle Zahl $S$ gibt, für die gilt: $\forall x \in X\ \forall f \in \mc{F}\colon |f(x)| \le S$. Das heißt, $S$ ist eine gemeinsame obere Schranke für die Werte der Beträge aller Funktionen aus $\mc{F}$.}) beschränkt, so konvergiert $(g_k)_{k\in\N}$ gleichmäßig, denn $f\sbs M$ impliziert $0\leq f-g_k<\frac{1}{2^k}$ für $k>M$.
 			Mit \textup{Satz 45} überträgt man auch \textup{43(ii)} und \textup{(iv)}, da Grenzwerte über nicht-negative Größen vertauschen.
 	\end{bem}
@@ -68,12 +68,12 @@
 		\end{theorem}
 
 		\begin{bem}
-			Im Allgemeinen können wir keine Gleichheit erwarten. Z.B. ist für $f_k=\rchi_{[k,k+1]} \: k\in\N$, einerseits $f_k(X) \xrightarrow{k\lra\infty}0 \: \forall x\in\mbb{R}$ nicht gleichmäßig, andererseits $\int_{\mbb{R}} \! f_k \, \mathrm{d}x=1$. Genauso für $f_k=k\rchi_{(0,1)}$ und $f_k=\frac{1}{k}\rchi_{(0,k)}$ (in letzterem Fall haben wir sogar gleichmäßige Konvergenz).
+			Im Allgemeinen können wir keine Gleichheit erwarten. Z.B. ist für $f_k=\rchi_{[k,k+1]}, \\ k\in\N$, einerseits $f_k(X) \xrightarrow{k\lra\infty}0 \: \forall x\in\mbb{R}$ nicht gleichmäßig, andererseits $\int_{\mbb{R}} \! f_k \, \mathrm{d}x=1$. Genauso für $f_k=k\rchi_{(0,1)}$ und $f_k=\frac{1}{k}\rchi_{(0,k)}$ (in letzterem Fall haben wir sogar gleichmäßige Konvergenz).
 		\end{bem}
 		\begin{proof}[Beweis: Lemma von Fatou]
-			Wir setzten $g_k\ceq \inf_{j\geq k} f_j$, also $g_k\nearr \lim\limits_{j\lra\infty} f_j$. Weiterhin $g_k\leq f_k \: \forall k\in\N$, folglich $\int_A \! g_k \, \mathrm{d}\mu\leq\int_A \! f_k \, \mathrm{d}\mu$ nach \textit{Lemma 43(vi)}. Übergang zum $\liminf\limits_{k\lra\infty}$ liefert
+			Wir setzten $g_k\ceq \inf_{j\geq k} f_j$, also $g_k\nearr \lim\limits_{j\lra\infty} f_j$. Weiterhin \\ $g_k\leq f_k \: \forall k\in\N$, folglich $\int_A \! g_k \, \mathrm{d}\mu\leq\int_A \! f_k \, \mathrm{d}\mu$ nach \textit{Lemma 43(vi)}. Übergang zum $\liminf\limits_{k\lra\infty}$ liefert
 			\begin{equation*}
-				\liminf_{k\lra\infty}\int \! g_k \, \mathrm{d}\mu= \lim\limits_{k\lra\infty} \int \! g_k \, \mathrm{d}\mu \stackrel{Satz \: 45}= \int_A \! g_k \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu
+				\liminf_{k\lra\infty}\int \! g_k \, \mathrm{d}\mu= \lim\limits_{k\lra\infty} \int \! g_k \, \mathrm{d}\mu \darrow{\text{Satz 45}}{=} \int_A \! \lim_{k\to\infty} g_k \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu
 			\end{equation*}
 		\end{proof}
 
@@ -109,7 +109,7 @@
 					\item[(i)] Wir haben $\int_X \! |f| \, \mathrm{d}\mu=0 \Leftrightarrow f(x)=0$ für $\mu$-fast alle $x\in X$
 					\item[(ii)] Ist $f$ außerdem integrierbar oder nicht negativ und $A\in\Sigma$, so ist
 						\begin{equation*}
-							\mu(A)=0 \Rightarrow \int_A \! f \, \mathrm{d}\mu
+							\mu(A)=0 \Rightarrow \int_A \! f \, \mathrm{d}\mu = 0
 						\end{equation*}
 				\end{itemize}
 			\end{lem}
@@ -134,13 +134,13 @@
 		\end{proof}
 
 		\begin{theorem}[Dominierte Konvergenz]
-		Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma, \: (f_k)_k\in\N$ eine Folge messbarer Funktionen $X\lra\mbb{R}$, die punktweise\footnote{Sei $(f_n)_{n\in\N}, f_n\colon D\lra \mbb{R}$ eine Funktionenfolge. Die Funktionenfolge heißt punktweise konvergent gegen eine Funktion $f\colon D\lra \mbb{R}$, wenn $\forall x \in D$ gilt: $\lim_{n\to\infty} f_n(x) = f(x)$} fast überall, d.h. bis auf $\mu$-Nullmengen gegen $f:X\lra\mbb{R}$ konvergiere. Gibt es eine Majorante, das heißt ein integrierbares $g\colon X\lra\mbb{R}$ mit $\sup|(f_k)_{k\in\N}|\leq g$, so ist auch $f$ integrierbar und wir haben $\int_A \! f_k \, \mathrm{d}\mu \xrightarrow{k\lra\infty}\int_A \! f \, \mathrm{d}\mu$.
+		Sei $(X,\Sigma,\mu)$ ein Maßraum, $A\in\Sigma, \: (f_k)_{k\in\N}$ eine Folge messbarer Funktionen $X\lra\mbb{R}$, die punktweise\footnote{Sei $(f_n)_{n\in\N}, f_n\colon D\lra \mbb{R}$ eine Funktionenfolge. Die Funktionenfolge heißt punktweise konvergent gegen eine Funktion $f\colon D\lra \mbb{R}$, wenn $\forall x \in D$ gilt: $\lim_{n\to\infty} f_n(x) = f(x)$} fast überall, d.h. bis auf $\mu$-Nullmengen gegen $f:X\lra\mbb{R}$ konvergiere. Gibt es eine Majorante, das heißt ein integrierbares $g\colon X\lra\mbb{R}$ mit $\sup|(f_k)_{k\in\N}|\leq g$, so ist auch $f$ integrierbar und wir haben $\int_A \! f_k \, \mathrm{d}\mu \xrightarrow{k\lra\infty}\int_A \! f \, \mathrm{d}\mu$.
 		\end{theorem}
 
 		\begin{proof}
 			Nach Voraussetzung ist $-g\leq f_k\leq g \: \forall k\in\N$, folglich erhalten wir mit \textit{Lemma 53}
 			\begin{equation*}
-			\int_A \! f \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu \stackrel{53}\leq \liminf\limits_{k\lra\infty} \int_A \! f_k \, \mathrm{d}\mu \leq \limsup\limits_{k\lra\infty} \int_A \! f \, \mathrm{d}\mu \stackrel{53}\leq \int_A \underbrace{\limsup f_k}_{\lim f_k = f} \, \mathrm{d}\mu
+			\int_A \! f \, \mathrm{d}\mu = \int_A \! \liminf\limits_{k\lra\infty} f_k \, \mathrm{d}\mu \stackrel{53}\leq \liminf\limits_{k\lra\infty} \int_A \! f_k \, \mathrm{d}\mu \leq \limsup\limits_{k\lra\infty} \int_A \! f_k \, \mathrm{d}\mu \stackrel{53}\leq \int_A \underbrace{\limsup f_k}_{\lim f_k = f} \, \mathrm{d}\mu
 			\end{equation*}
 		\end{proof}
 		Zur Notwendigkeit der Voraussetzung an $g$, vergleiche \textit{Beispiel 46}.

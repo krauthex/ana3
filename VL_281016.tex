@@ -24,8 +24,8 @@
 			\item
 				\begin{defin}
 					\unskip
-					Die Elemente von $\Lambda$ heißen \textbf{Lebesgue-messbare} Mengen (bzw.
-					\textbf{Lebesgue-Mengen}) und $\lambda$ ist das \textbf{Lebesgue-Maß}.
+					Die Elemente von $\Lambda$ heißen \textit{Lebesgue-messbare} Mengen (bzw.
+					\textit{Lebesgue-Mengen}) und $\lambda$ ist das \textit{Lebesgue-Maß}.
 				\end{defin}
 		\end{enumerate}
 		
@@ -36,7 +36,7 @@
 			\[
 				\mu^*(A) = \inf\left\{ 
 				  \sum_{k\in\N} \mu(A_k)
-				  \Biggm\vert (A_k)_{k\in\N} \sbs A,\quad A \sbs \bigcup_{k\in\N} A_k
+				  \Bigm\vert (A_k)_{k\in\N} \sbs A, A \sbs \bigcup_{k\in\N} A_k
 				\right\}
 			\]
 			Dies definiert ein äußeres Maß $\mu^*$ mit $\mu^* = \mu$ auf $\mc{A}$
@@ -49,8 +49,7 @@
 			\emph{1. Teil:} Übungsaufgabe 5. \\
 			\emph{2. Teil: (Carathéodory-Eigenschaft):}\quad
 			Sei $E \sbs X$ beliebig und $A \sbs \mc{A}$. \\
-			(Ziel: $\mu^*(E) \geq \mu^*(E \cap \cp{A}) + \mu^*(E \cap A)$,
-			\quad$\leq$ folgt sofort aus der Subadditivität).
+			(Ziel: $\mu^*(E) \geq \mu^*(E \cap \cp{A}) + \mu^*(E \cap A)$, ''$\leq$'' folgt sofort aus der Subadditivität).
 			
 			Wir betrachten eine beliebige Überdeckung von $E$ durch
 			\[
@@ -98,14 +97,15 @@
 							Vereinigung separat).
 					\end{itemize}
 					Wir haben erreicht:
+					\addtocounter{footnote}{-2}
 					\[
 						\sum_{j=1}^\infty \lambda(I_j) \longleftarrow \sum_{j=1}^k \lambda(I_j)
-						\xlongequal{\text{Add.}} \lambda{\Bigg( \bigcup_{j=1}^k I_j \Bigg)}
-						\overset{\text{Monot.}\footnotemark}{\leq}
+						\darrow{\text{Add.}}{=} \lambda{\Bigg( \bigcup_{j=1}^k I_j \Bigg)}
+						\darrow{\text{Monot.}\footnotemark}{\leq}
 						\lambda{\Bigg( \bigcup_{j=1}^\infty I_j \Bigg)} = \lambda(I)
 					\]
-					\footnotetext{$\lambda{\left(\bigcup_{j=1}^k B_j\right)}
-								= \sum_{k\in\N}^k \lambda(B_j)$
+					\footnotetext[10]{$\lambda{\left(\bigcup_{j=1}^k B_j\right)}
+								= \sum_{j\in\N}^k \lambda(B_j)$
 								vgl. Beweis zu \emph{Satz 12(i)}.}
 					Für die andere Richtung wählen wir zunächst für jedes $k\in\N$ ein 
 					\emph{offenes} $J_k \supset I_k$ mit
@@ -115,17 +115,17 @@
 					für ein zu bestimmendes $\epsilon > 0$.
 					
 					Sei zunächst $I$ kompakt. Dann können wir endlich viele $J_k$ auswählen,
-					sodass diese $I$ überdecken\footnote{Satz von Heine-Borel}.
+					sodass diese $I$ überdecken\footnote[11]{Satz von Heine-Borel}.
 					Wir können durch Umnummerierung erreichen, dass dies die ersten $K$ Elemente 
 					sind und wir haben
-					\addtocounter{footnote}{-2}
+					%\addtocounter{footnote}{-3}
 					\[	
-						\lambda(I) \overset{\text{Monot.}\footnotemark}{\leq}
+						\lambda(I) \overset{\text{Monot.}\footnotemark[10]}{\leq}
 						\lambda{\Bigg(\bigcup_{j=1}^K J_j\Bigg)} \overset{\text{Subadd.}}{\leq}
 						\sum_{j=1}^K \lambda(J_j)  \overset{\text{Konstr.}}{\leq}
 						\epsilon + \sum_{j=1}^K \lambda(I)
 					\]
-					\addtocounter{footnote}{1}
+					%\addtocounter{footnote}{1}
 					Mit $\epsilon \searr 0$ folgt $\sigma$-Additivität für kompakte $I$.
 					Da wir mit Additivität und \\ $\lambda(\{x\}) = \lambda([x,x]) = 0 \ 
 					\forall x \in \mbb{R}$ Endpunkte an Intervalle hinzufügen / entfernen können,
@@ -207,16 +207,15 @@
 			\]
 			Hierfür müssen die Urbilder der Intervalle messbar sein.
 		\end{minipage}
-			
+		
+		\section{Messbare Funktionen}
+		
 		\begin{defin}
-			Seien $(X,\Sigma_X)$, $(Y,\Sigma_Y)$ Messräume. \\
-			Eine Funktion $f \colon X \to Y$ heipt \textbf{messbar} (eigentlich
-			\textbf{$\boldsymbol{\Sigma_X}$-$\boldsymbol{\Sigma_Y}$-messbar}), falls \\
-			$f^{-1}(A) \in \Sigma_X \quad \forall A \in \Sigma_Y$.
+			Seien $(X,\Sigma_X)$, $(Y,\Sigma_Y)$ Messräume.Eine Funktion $f \colon X \to Y$ heißt \textit{messbar} (eigentlich \textit{$\Sigma_X$-$\Sigma_Y$-messbar}), falls $f^{-1}(A) \in \Sigma_X\: \forall A \in \Sigma_Y$.
 				
 			Ist $X$ ein topologischer Raum und $\Sigma_X$ die entsprechende
 			Borel-$\sigma$-Algebra, so nennen wir eine messbare Funktion
-			\textbf{Borel-Funktion}.
+			\textit{Borel-Funktion}.
 		\end{defin}
 		
 		\begin{bem}
@@ -235,7 +234,8 @@
 				\in \Sigma_X}.
 			\]
 		\end{bem}
-
+	
+		\setcounter{footnote}{11}
 
 
 		

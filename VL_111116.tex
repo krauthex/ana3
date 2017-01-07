@@ -20,7 +20,7 @@
 	\begin{lem}
 		Seien $(X_1, \Sigma_1),(X_2, \Sigma_2)$ Messräume und $S_1 \sbs \Sigma_1,\ S_2 \sbs \Sigma_2$ mit\\ $\Sigma_{X_1}(S_1) = \Sigma_1,\ \Sigma_{X_2}(S_2) = \Sigma_2$. Dann gilt
 		\[
-			\underbrace{\Sigma_1 \otimes \Sigma_2}_{\substack{\sigma\text{-Algebra erzeugt von }\\ A_1\times A_2,\ A_j \in \Sigma_j}} \stackrel{\substack{\supset \text{ haben} \\ \text{wir schon} \\ \downarrow}}{=} \underbrace{\Sigma_{X_1 \times X_2}\pr{S_1 \times S_2}}_{\substack{\sigma\text{-Algebra erzeugt von }\\ A_1\times A_2,\ A_j \in S_j}}\quad \Sigma , \mathrm{\rotatebox[origin=c]{180}{$\ceq$}}
+			\underbrace{\Sigma_1 \otimes \Sigma_2}_{\substack{\sigma\text{-Algebra erzeugt von }\\ A_1\times A_2,\ A_j \in \Sigma_j}} \stackrel{\substack{\supset \text{ haben} \\ \text{wir schon} \\ \downarrow}}{=} \underbrace{\Sigma_{X_1 \times X_2}\pr{S_1 \times S_2}}_{\substack{\sigma\text{-Algebra erzeugt von }\\ A_1\times A_2,\ A_j \in S_j}}\: \mathrm{\rotatebox[origin=c]{180}{$\ceq$}} \Sigma,
 		\]
 		wobei $S_1 \times S_2 = \cbr{A_1 \times A_2 \mid A_1 \in S_1,\ A_2 \in S_2}$.
 	\end{lem}
@@ -76,7 +76,7 @@
 		\begin{itemize}
 			\item[(i)] Da $\mc{I}$ unter Schnitten abgeschlossen ist, und wegen \textit{Lemma 64} die Borel-$\sigma$-Algebra $\mc{B}^n$ erzeugt, folgt die Behauptung mit dem Eindeutigkeitssatz (23).
 			
-			\item[(ii)] Sei $\mc{A}$ die Algebra (nachrechnen!) endlicher Vereinigungen disjunkter Quader aus $\mc{I}$. Nun ist $\mu \ceq \lambda^n \vert_\mc{A}$ ein Prämaß. Die angegebene Formel ist gerade die Konstruktion des äußeren Maßes in \textit{Lemma 30}, und mit \textit{Satz 28} erhalten wir eine $\sigma$-Algebra $\Sigma$ mit $\mc{A} \in \Sigma$, sodass $\pr{\mbb{R}^n, \Sigma, \mu^*\vert_\Sigma}$ ein Maßraum ist. Weil $\mc{A}$ sämtliche offenen Quader $\bigtimes_{j=1}^n (a_j,b_j)$ enthält, folgt $\mc{B}^n = \Sigma_{\mbb{R}^n} (\mc{A}) \sbs \Sigma$ und $\mu^*\vert_{\mc{B}^n}$ ist ein Maß auf $\mc{B}^n$, was zu zeigen war.
+			\item[(ii)] Sei $\mc{A}$ die Algebra (nachrechnen!) endlicher Vereinigungen disjunkter Quader aus $\mc{I}$. Nun ist $\mu \ceq \lambda^n \vert_\mc{A}$ ein Prämaß. Die angegebene Formel ist gerade die Konstruktion des äußeren Maßes in \textit{Lemma 30}, und mit \textit{Satz 28} erhalten wir eine $\sigma$-Algebra $\Sigma$ mit $\mc{A} \in \Sigma$, sodass $\pr{\mbb{R}^n, \Sigma, \mu^*\vert_\Sigma}$ ein Maßraum ist. Weil $\mc{A}$ sämtliche offenen Quader $\bigtimes_{j=1}^n (a_j,b_j)$ enthält, folgt $\mc{B}^n = \Sigma (\mc{A}|\Rn) \sbs \Sigma$ und $\mu^*\vert_{\mc{B}^n}$ ist ein Maß auf $\mc{B}^n$, was zu zeigen war.
 			
 			\item[(iii)] Die Translationsinvarianz ergibt sich unmittelbar aus (ii). Sei nun $\mu$ ein weiteres translationsinvariantes Maß auf $(\mbb{R}^n, \mc{B}^n)$. Sei $Q_r$ ein halboffener Würfel mit Seitenlänge $r$. Wir nehmen \OE\ $\mu(Q_1)=1$ an. Weil wir $Q_1$ in $m^n$ Würfel der Kantenlänge $\frac{1}{m}$ zerlegen können, folgt mit Translationsinvarianz und Additivität des Maßes:
 			\[
@@ -105,16 +105,18 @@
 		\end{itemize}
 	\end{proof}
 
+	\section{Transformation}
+
 	\begin{lem}[Bildmaß]
 			Seinen $(X, \Sigma_X),\ (Y, \Sigma_Y)$ Messräume auf $f\colon X \lra Y$ messbar. Ist $\mu$ ein Maß auf $(X, \Sigma_X)$ so wird durch
 			\[
-				(f_* \mu)(B) \ceq \mu\underbrace{\pr{f^{-1} (B) }}_{\mathclap{\stackrel{\text{def}}{=} \cbr{x\in X \mid f(x) \in B}}},\ B \in \Sigma_Y
+				(f_* \mu)(B) \ceq \mu\underbrace{\pr{f^{-1} (B) }}_{\mathclap{\stackrel{\text{Def}}{=} \cbr{x\in X \mid f(x) \in B}}},\ B \in \Sigma_Y
 			\]
 			ein Maß auf $Y$ definiert, das \textup{Bildmaß von $\mu$ bezüglich f}. Wir haben $(f_* \mu)(B) = 0\ \forall B \in \Sigma_Y$ mit $B\cap f(X) = \es$.
 	\end{lem}
 	
 	\begin{proof}
-			Wir haben $f_* \mu (\es) = \mu(f^{-1}(\es)) = 0$, da $f^{-1}(\es) = \es$ und \\ $(f_* \mu) \pr{\bigcupdot_{k\in\N} B_k} = \mu\pr{f^{-1} \pr{\bigcupdot_{k\in\N} B_k}} $ für eine Folge paarweise disjunkter Mengen $\pr{B_k}_{k\in\N} \sbs \Sigma_Y$. Dann wird durch $A_k \ceq f^{-1} (B_k)$ ebenfalls wieder eine Folge paarweise disjunkter Mengen erzeugt (nachrechnen!) und wir haben wegen $f^{-1} \pr{\bigcupdot_{k\in\N} B_k }= \bigcupdot_{k\in\N} f^{-1} (B_k)$ und $\sigma$-Additivität
+			Wir haben $f_* \mu (\es) = \mu(f^{-1}(\es)) = 0$, da $f^{-1}(\es) = \es$ und \\ $(f_* \mu) \pr{\bigcupdot_{k\in\N} B_k} = \mu\pr{f^{-1} \pr{\bigcupdot_{k\in\N} B_k}} $ für eine Folge paarweise disjunkter Mengen\\ $\pr{B_k}_{k\in\N} \sbs \Sigma_Y$. Dann wird durch $A_k \ceq f^{-1} (B_k)$ ebenfalls wieder eine Folge paarweise disjunkter Mengen erzeugt (nachrechnen!) und wir haben wegen $f^{-1} \pr{\bigcupdot_{k\in\N} B_k }= \bigcupdot_{k\in\N} f^{-1} (B_k)$ und $\sigma$-Additivität
 			\[
 				(f_* \mu)\pr{\bigcupdot_{k\in\N} B_k} = \mu\pr{\bigcupdot_{k\in\N} f^{-1} (B_k) } = \sum_{k\in\N} \mu(f^{-1} (B_k)) = \sum_{k\in\N} (f_* \mu)(B_k).
 			\]

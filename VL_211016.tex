@@ -13,7 +13,7 @@
 			
 			\item[(ii)] Wir definieren $\pr{B_k}_{k\in \mathbb{N}} \subset \mc{A}$ induktiv durch $B_1 \coloneqq A_1$, $B_{k+1} = A_{k+1}\setminus \bigcup_{j=1}^k A_k \in \mc{A}$, woraus folgt
 				\begin{equation*}
-					\bigcupdot_{k=1}^K B_k = \bigcup_{n=1}^K A_k\ \forall k \in \mathbb{N}
+					\bigcupdot_{k\in\N} B_k = \bigcup_{k\in\N} A_k
 				\end{equation*}
 			Nach Definition gilt:
 				\begin{equation*}
@@ -27,14 +27,14 @@
 			Die $\sigma$-Additivität liefert
 				\begin{equation*}
 					\mu\pr{A_k} = \sum_{j=1}^k \mu\pr{C_j} \stackrel{\scriptscriptstyle k\rightarrow\infty}{\longrightarrow} 
-					\underbrace{\sum_{k\in\mathbb{N}} \mu\pr{C_k}}_{=\mu\pr{A}}\ \pr{\le \sum_{k\in\mathbb{N}} \mu\pr{A_k}}
+					\sum_{k\in\mathbb{N}} \mu\pr{C_k}=\mu\pr{A}\ \pr{\le \sum_{k\in\mathbb{N}} \mu\pr{A_k}}
 				\end{equation*}
 				
-			\item[(iv)] $D_k \coloneqq A_1\setminus A_k \forall k \in \mathbb{N}$. Damit ist $D_k \nearr A_k\setminus A$, und wir haben 
+			\item[(iv)] $D_k \coloneqq A_1\setminus A_k \forall k \in \mathbb{N}$. Damit ist $D_k \nearr A_1\setminus A$, und wir haben 
 				\begin{equation*}
-					\mu\pr{A_1} - \mu\pr{A_k} = \mu\pr{A_1\setminus A_k} \underset{\scriptscriptstyle (iii)}{\stackrel{\scriptscriptstyle k\rightarrow\infty}{\longrightarrow}} \mu\pr{A_1\setminus A} - \mu\pr{A}
+					\mu\pr{A_1} - \mu\pr{A_k} = \mu\pr{A_1\setminus A_k} \underset{\scriptscriptstyle (iii)}{\stackrel{\scriptscriptstyle k\rightarrow\infty}{\longrightarrow}} \mu\pr{A_1\setminus A} = \mu(A_1) - \mu\pr{A}
 				\end{equation*}
-			Subtraktion von $\mu\pr{A_1} < \infty$ liefert die Behauptung.
+			Subtraktion von $\mu\pr{A_1} < \infty$ und Multiplikation mit $-1$ liefert die Behauptung.
 		\end{itemize}
 	\end{proof}
 
@@ -51,13 +51,13 @@
 	\end{bsp}
 
 	\begin{defin}[Regularität]
-		Sei $X$ ein topologischer Raum, $\pr{X,\mc{A}, \mu}$ ein Maßraum. Das Maß $\mu$ heißt \textit{regulär von außen}, wenn gilt:
+		Sei $X$ ein topologischer Raum, $\pr{X,\mc{A}, \mu}$ ein Maßraum. Das Maß $\mu$ heißt \textit{regulär von außen}, wenn für $A\in\mc{A}$ gilt:
 			\begin{equation*}
-				\mu\pr{A} = \inf\cbr{\mu\pr{U} \mid A \subset U,\ U \text{ offen} } \forall A \in \mc{A}
+				\mu\pr{A} = \inf\cbr{\mu\pr{U} \mid A \subset U,\ U \text{ offen} }.
 			\end{equation*}
-		Außerdem heißt das Maß $\mu$ \textit{regulär von innen}, wenn gilt:
+		Außerdem heißt das Maß $\mu$ \textit{regulär von innen}, wenn für $A\in\mc{A}$ gilt:
 			\begin{equation*}
-				\mu\pr{A} = \sup\cbr{\mu\pr{K} \mid K \subset A,\ K \text{ kompakt}} \forall A \in \mc{A}
+				\mu\pr{A} = \sup\cbr{\mu\pr{K} \mid K \subset A,\ K \text{ kompakt}}.
 			\end{equation*}
 		Ein Maß heißt \textit{regulär}, wenn es regulär von innen und außen ist. 
 	\end{defin}
@@ -65,6 +65,8 @@
 	\begin{bsp}
 		Das Zählmaß ist regulär von innen, jedoch nicht von außen. Das Dirac-Maß ist regulär ($X,\mc{A}$ wie in \textup{Beispiel 15}).
 	\end{bsp}
+	
+	\section{Konstruktion von Maßen}
 
 	\subsection*{Strategie:}
 	\begin{enumerate}
@@ -138,7 +140,7 @@
 			\begin{equation*}
 				\D \sbs D\pr{A} \Ra \D = D\pr{A}
 			\end{equation*}
-			Für beliebige $U\in S, \mc{V} \in \tilde{\D} \ceq D\pr{U}$ folgt nach Definition $U\cap \mc{V} \in \D$. Dies impliziert $U \in D\pr{\mc{V}}$, also $S\sbs D\pr{\mc{V}}\ \forall \mc{V} \in \D$. Wie eben ist $D\pr{\mc{V}} \sbs \D$, also $D\pr{\mc{V}} = \D\ \forall \mc{V} \in \D$. Folglich ist $\D$ abgeschlossen unter endlichen Schnitten.
+			Für beliebige $U\in S, \mc{V} \in \tilde{\D} \ceq D\pr{U}$ folgt nach Definition $U\cap \mc{V} \in \D$. Dies impliziert \\ $U \in D\pr{\mc{V}}$, also $S\sbs D\pr{\mc{V}}\ \forall \mc{V} \in \D$. Wie eben ist $D\pr{\mc{V}} \sbs \D$, also $D\pr{\mc{V}} = \D\ \forall \mc{V} \in \D$. Folglich ist $\D$ abgeschlossen unter endlichen Schnitten.
 		\end{beh*}
 	\end{proof}
 

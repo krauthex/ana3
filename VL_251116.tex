@@ -5,7 +5,7 @@
 \setcounter{cntr}{5}
 
 \begin{theorem}[Hölder]
-	Seien $p, p' \in [1, \infty)$ \textup{dual}, das heißt $\frac{1}{p} + \frac{1}{p'} = 1$. Ist $f \in L^p (X, \mu)$ und $g \in L^{p'} (X,\mu)$, so folgt $fg \in L^1(X,\mu)$ und 
+	Seien $p, p' \in [1, \infty)$ \textup{dual}, das heißt $\frac{1}{p} + \frac{1}{p'} = 1$. Ist $f \in L^p (X, \mu)$ und \\ $g \in L^{p'} (X,\mu)$, so folgt $fg \in L^1(X,\mu)$ und 
 	\[
 		\lVert fg \rVert_{L^1} \leq \lVert f \rVert_{L^p} \cdot \lVert g \rVert_{L^{p'}}.
 	\]
@@ -24,6 +24,7 @@
 		\lVert fg \rVert_{L^1}^{p} &= \bigg\lvert \int_X \underbrace{\lvert fg \rvert }_{\leq \lvert f \rvert \lvert g \rvert} \md \mu \bigg\rvert^p \stackrel{\footnotemark}{\leq} \bigg\lvert \int_A \underbrace{\lvert f \rvert \lvert g \rvert^{1-p'}}_{h} \underbrace{\lvert g \rvert^{p'} \md \mu}_{\md \nu} \bigg\rvert^p = \varphi \pr{\int_A h \md \nu}\\
 		&\kern -0.5em \stackrel{\text{\scriptsize Jensen}}{\leq} \int_A \pr{\varphi \circ h} \md \nu = \int_A \lvert f \rvert^p \underbrace{\lvert g \rvert^{(1-p')p} \lvert g \rvert^{p'}}_{=1} \md \mu \stackrel{A\sbs X}{\leq} \lVert f \rVert_{L^p}^p.
 	\end{align*}
+	\footnotetext{Statt $X$ auch $A$ möglich, da $g$ auf $X\sm A =0$ ist.}
 \end{proof}
 
 \textbf{Zusatz:} Im Fall $p \in (1, \infty)$ ist $y \mapsto \lvert y \rvert^p$ strikt konvex, sodass Gleichheit impliziert, dass \\$h = \lvert f \rvert \lvert g \rvert^{1-p'}$ konstant ist, d.h. $g=0$ oder $\lvert f \rvert = \lambda \lvert g \rvert^{p'-1}$ für ein $x \in \mbb{R}$. % hier ist das x evtl falsch.... ? 

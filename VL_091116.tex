@@ -8,38 +8,38 @@
 		Sei $f \in C^0 (a,b)$ Lebesgue-integrierbar auf $(a,b)$. \\
 		Wir setzen
 		\[
-			F(x) = \int_{(a,x]} f \md\lambda\,, \quad x \in (a,b)
+			F(x) = \lint_{(a,x]} f \md\lambda\,, \quad x \in (a,b)
 		\]
 		Wir behaupten $F \in C^1(a,b)$ mit $F'(x) = f(x) \; \forall x \i\int_{(x,x+\epsilon]} f(\xi) \md \lambda(\xi)n (a,b)$. \\ 
 		In der Tat, für $\epsilon > 0$ ist
 		\begin{align*}
-			\frac{F(x+\epsilon)-F(x)}{\epsilon} &\xlongequal{\text{Lem. 43}}
-			\frac{1}{\epsilon} \int_{(x,x+\epsilon]} f(\xi) \md \lambda(\xi)
-			= \frac{1}{\epsilon} \int_{(x,x+\epsilon]} (f(x)+f(\xi)-f(x)) \md \lambda(\xi)
-			\\ &\xlongequal{\text{Lem. 43}}
-			\frac{1}{\epsilon}\int_{(x,x+\epsilon]} f(x) \md \lambda(\xi)
-			+ \frac{1}{\epsilon}\int_{(x,x+\epsilon]} 
+			\frac{F(x+\epsilon)-F(x)}{\epsilon} &\darrow{\text{Lem. 43}}{=}
+			\frac{1}{\epsilon} \lint_{(x,x+\epsilon]} f(\xi) \md \lambda(\xi)
+			= \frac{1}{\epsilon} \lint_{(x,x+\epsilon]} (f(x)+f(\xi)-f(x)) \md \lambda(\xi)
+			\\ &\darrow{\text{Lem. 43}}{=}
+			\frac{1}{\epsilon}\lint_{(x,x+\epsilon]} f(x) \md \lambda(\xi)
+			+ \frac{1}{\epsilon}\lint_{(x,x+\epsilon]} 
 			\underbrace{(f(\xi)-f(x))}_{
 				\mathrlap{
 					\leq sup_{\eta\in(x,x+\epsilon]} |f(\eta)-f(x)|
 				}
 			}
 			\md \lambda(\xi) \\
-			&\overset{\text{L. 45}}{\leq}
+			&\darrow{\text{Lem. 45}}{\leq}
 			\frac{1}{\epsilon} f(x)
 			\underbrace{\lambda\big((x,x+\epsilon]\big)}_\epsilon
-			+ \frac{1}{\epsilon} \lambda\big((x,x+\epsilon]\big) \sup | f(\eta)-f(x)|
+			+ \frac{1}{\epsilon} \lambda\big((x,x+\epsilon]\big) \sup | f(\eta)-f(x)|.
 		\end{align*}
 		Wir haben also
 		\[
 			\frac{F(x+\epsilon)-F(x)}{\epsilon}
-			= f(x) + \int_{(x,x+\epsilon]}(f(\xi)-f(x)) \md \lambda(\xi)
+			= f(x) + \lint_{(x,x+\epsilon]}(f(\xi)-f(x)) \md \lambda(\xi)
 		\]
 		mit
 		\[
-			\left|\int_{(x,x+\epsilon]}(f(\xi)-f(x)) \md \lambda(\xi)\right|
+			\left|\lint_{(x,x+\epsilon]}(f(\xi)-f(x)) \md \lambda(\xi)\right|
 			\overset{\text{L. 51}}{\leq}
-			\frac{1}{\epsilon} \int_{(x,x+\epsilon]}|f(\xi)-f(x)| \md \lambda(\xi)
+			\frac{1}{\epsilon} \lint_{(x,x+\epsilon]}|f(\xi)-f(x)| \md \lambda(\xi)
 			\leq \sup_{\eta\in(x,x+\epsilon]} |f(\eta)-f(x)|
 			\underset{\text{Stetigk.}}{\xrightarrow{\epsilon\searrow 0}} 0.
 		\]
@@ -53,13 +53,13 @@
 	\end{bem}
 
 	\begin{bsp*}
-		$\int_0^x \frac{\sin x}{x} \md x$ existiert als Riemann-Integral
-		$\lim_{R\nearrow\infty} \int_0^R \frac{\sin(x)}{x} \md x$, andererseits ist
+		$\int_0^\infty \frac{\sin x}{x} \md x$ existiert als Riemann-Integral
+		$\lim_{R\nearrow\infty} \int_0^R \frac{\sin(x)}{x} \md x$, andererseits ist \\
 		$\int_0^\infty\left|\frac{\sin x}{x}\right| \md x = \infty$, also keine
 		Lebesgue-Integrierbarkeit.
 	\end{bsp*}
 
-	\subsection*{Produktmaße}
+	\section{Produktmaße}
 	\begin{notat}
 		Für Messräume $(X_1,\Sigma_1)$, $(X_2,\Sigma_2)$ bezeichnen wir die
 		$\sigma$-Algebra, die alle „Rechtecke“ der Form $A_1 \times A_2$ mit 
@@ -133,7 +133,7 @@
 		\[
 			\left( \bigcup_{k\in\N} A_k \right)_1(x_2)
 			= \left\{ x_1\ \Big\vert\ (x_1,x_2) \in \bigcup_{k\in\N}A_k \right\}
-			= \bigcup_{k\in\N}\underbrace{\{x_1 \mid (x_1,x_2) \in A_k\}}_{= (A_k)_1(x_2) \in \Sigma_1}\} \in \Sigma_1
+			= \bigcup_{k\in\N}\underbrace{\{x_1 \mid (x_1,x_2) \in A_k\}}_{= (A_k)_1(x_2) \in \Sigma_1} \in \Sigma_1
 		\]
 		Für $A_2(x_1)$ argumentiere analog.
 	\end{proof}
@@ -162,7 +162,7 @@
 	
 	\begin{theorem}
 		Sind $(X_1,\Sigma_1,\mu_1)$, $(X_2,\Sigma_2,\mu_2)$ Maßräume mit $\sigma$-finiten Maßen und $A \in \Sigma_1 \otimes \Sigma_2$. \\
-		Dann sind die Abbildungen $x_1 \mapsto \mu_2(A_2(x_1))$, $x_1 \mapsto \mu_1(A_1(x_2))$ auf $X_1$ bzw. $X_2$ messbar und es gilt
+		Dann sind die Abbildungen $x_1 \mapsto \mu_2(A_2(x_1))$, $x_2 \mapsto \mu_1(A_1(x_2))$ auf $X_1$ bzw. $X_2$ messbar und es gilt
 		\[
 			\int_{X_1} \mu_2(A_2(x_1)) \md \mu_1(x_1)
 			= \int_{X_2} \mu_1(A_1(x_2)) \md \mu_2(x_2).
@@ -200,12 +200,12 @@
 			}_{\underset{\text{vgl. Bew. Satz 12}}{\xrightarrow{\tau \to\infty}}
 				(\mu_1 \otimes \mu_2)\left(\bigcupdot_{k\in\N} A_k\right)
 			}
-			&\xlongequal{\text{Def.}}
+			&\darrow{\text{Def.}}{=}
 			\mathlarger\int_{X_1} \mu_2 \Bigg(\underbrace{
 				\left(\bigcupdot_{k=1}^\tau A_k\right)_2 (x_1)
 			}_{=\bigcupdot_{k=1}^\tau (A_k)_2 (x_1)}
 			\Bigg) \md \mu_1(x_1) \\
-			&\xlongequal{\text{$\sigma$-Add.}}
+			&\darrow{\text{$\sigma$-Add.}}{=}
 			\mathlarger\int_{X_1}\sum_{k=1}^\tau \mu_2((A_k)_2(x_1)) \md \mu_1(x_1)
 			= \sum_{k=1}^\tau (\mu_1\otimes\mu_2)(A_k)
 		\end{align*}
@@ -247,7 +247,7 @@
 		\begin{align*}
 			\iint\limits_{X_1 \times X_2} f(x_1,x_2) \md(\mu_1\otimes\mu_2)(x_1,x_2)
 			=& \sum_{j=1}^k \alpha_j \iint\limits_{X_1 \times X_2} \rchi_{A_j}(x_1,x_2) \md(\mu_1\otimes\mu_2)(x_1,x_2) \\
-			\xlongequal{\text{Def. 60}}& \sum_{j=1}^k 
+			\darrow{\text{Def. 60}}{=}& \sum_{j=1}^k 
 			\alpha_j \int_{X_1} \left(\int_{X_2} \rchi_{A_j}(x_1,x_2) \md\mu_2(x_2) \right)\md\mu_1(x_1) \\
 			=& \int_{X_1} \left(\int_{X_2} f(x_1,x_2) \md\mu_2(x_2) \right)\md\mu_1(x_1) \\
 			= \dotsb =&  \int_{X_2} \left(\int_{X_1} f(x_1,x_2) \md\mu_1(x_1) \right)\md\mu_2(x_2)
@@ -258,7 +258,7 @@
 		\]
 		und
 		\[
-			\lim_{k\to\infty} \int_{X_2} f_k(\cdot,x_2) \md\mu_2(x_2) \xlongequal{\text{Satz 45}} \int_{X_2} f(\cdot,x_2) \md\mu_2(x_2)
+			\lim_{k\to\infty} \int_{X_2} f_k(\cdot,x_2) \md\mu_2(x_2) \darrow{\text{Satz 45}}{=} \int_{X_2} f(\cdot,x_2) \md\mu_2(x_2)
 		\]
 		Nun sind erneut die Voraussetzungen für \emph{Satz 45} erfüllt und wir erhalten
 		\begin{align*}

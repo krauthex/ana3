@@ -4,8 +4,9 @@
 
 	\begin{proof}
 		Sei $\mu$ ein weiteres Maß mit $\tilde{\mu}=\mu$ auf S (Ziel: $\mu=\tilde{\mu}$ überall).\\
-		Zunächst ist $\tilde{\mu}(X)\stackrel{\textrm{Satz 12}}=\lim\limits_{k \to \infty}\tilde{\mu}(\underbrace{X_k}_{\in S})=\lim\limits_{k \to \infty}\mu(X_k)\stackrel{\textrm{Satz 12}}=\mu(X)$ \\
-		Sei nun $\mu<\infty$
+		Zunächst ist $\tilde{\mu}(X)\stackrel{\textrm{Satz 12}}=\lim\limits_{k \to \infty}\tilde{\mu}(\underbrace{X_k}_{\in S})=\lim\limits_{k \to \infty}\mu(X_k)\stackrel{\textrm{Satz 12}}=\mu(X)$.
+		
+		Sei nun $\mu<\infty$.
 	\end{proof}
 
 	\begin{beh*}
@@ -15,7 +16,7 @@
 	\begin{proof}
 		$X\in\mc{D}$ wie gesehen. Für $A\in\mc{D}$ ist
 		\begin{equation*}
-			\tilde{\mu}\underbrace{(A^c)}_{\in\Sigma}=\tilde{\mu}(X)-\tilde{\mu}(A)=\mu(X)-\mu(A)=\mu(A^c) \Rightarrow A^c\in\mc{D}
+			\tilde{\mu}\underbrace{(A^C)}_{\in\Sigma}=\tilde{\mu}(X)-\tilde{\mu}(A)=\mu(X)-\mu(A)=\mu(A^C) \Rightarrow A^C\in\mc{D}
 		\end{equation*}
 	Abgeschlossenheit unter abzählbaren disjunkten Vereinigungen.
 	Betrachte $(B_k)_{k\in\N},\\ B_j\cap B_k=\es \: \forall j,k \in \N, B_k \in \mc{D}, B=\bigcup_{k \in\N} B_k$
@@ -61,7 +62,7 @@
 	\begin{theorem}[Fortsetzung äußere Maße]
 		Sei $\mu^*$ ein äußeres Maß auf einer Menge $X$. Wir sagen, die Menge $A \sbs X$ erfülle die \textit{Carathéodory-Bedingung}, falls
 			\begin{equation*}
-				\mu^*(E)=\footnotemark \mu^*(E \cap A) + \mu^*(E \cap A^c) \: \forall \: E \cap X
+				\mu^*(E)=\footnotemark \mu^*(E \cap A) + \mu^*(E \cap A^C) \: \forall \: E \cap X
 			\end{equation*}\footnotetext{\leq\textrm{gilt wegen Subbadditivität}}
 		gilt. Die Familie $\Sigma$ aller Mengen $A \sbs X$, die die Carathéodory-Bedingung erfüllen, bildet eine $\sigma$-Algebra $\Sigma$ und $\mu^*|_\Sigma$ ist ein Maß.
 	\end{theorem}
@@ -76,16 +77,16 @@
 			\begin{proof}
 				Offenbar ist $X\in\Sigma$. Abgeschlossenheit unter Komplementbildung ist klar. Für endliche Vereinigungen betrachte $A,B\in\Sigma$. Sei $E \sbs X$ beliebig.
 				\begin{equation*}
-					\mu^*((A \cup B)\cap E) \stackrel{Subadd}\leq \mu^*(A\cap B^c \cap E)+ \mu^*(A^c \cap B \cap E) + \mu^*(A \cap B \cap E)
+					\mu^*((A \cup B)\cap E) \stackrel{\text{Subadd}}\leq \mu^*(A\cap B^C \cap E)+ \mu^*(A^C \cap B \cap E) + \mu^*(A \cap B \cap E)
 				\end{equation*}
 				Zweifache Anwendung der Carathéodory-Bedingung liefert
 				\begin{align*}
-					\mu^*(E)&\stackrel{A\in\Sigma}{=}\mu^*(E\cap A)+\mu^*(E\cap A^c) \\
-					&\stackrel{B\in\Sigma}{=}\mu^*(E\cap A\cap B)+ \mu^*(E\cap A\cap \cp{B})+\mu^*(E\cap A^c\cap B)+\mu^*(E\cap A^c\cap B^c)
+					\mu^*(E)&\stackrel{A\in\Sigma}{=}\mu^*(E\cap A)+\mu^*(E\cap A^C) \\
+					&\stackrel{B\in\Sigma}{=}\mu^*(E\cap A\cap B)+ \mu^*(E\cap A\cap \cp{B})+\mu^*(E\cap A^C\cap B)+\mu^*(E\cap A^C\cap B^C)
 				\end{align*}
 				Mit der obigen Abschätzung erhalten wir
 				\begin{equation*}
-					\mu^*\geq\mu^*((A\cup B)\cap E)+ \mu^*(E\cap \underbrace{A^c\cap B^c}_{(A\cup B)^c})
+					\mu^*\geq\mu^*((A\cup B)\cap E)+ \mu^*(E\cap \underbrace{A^C\cap B^C}_{(A\cup B)^C})
 				\end{equation*}
 			\end{proof}
 
@@ -93,18 +94,18 @@
 			\begin{proof}
 				Sei also $(A_k)_{k\in\N} \sbs \Sigma$ (Ziel $\bigcup_{k\in\N}A_k\in\Sigma)$. Wir können ohne Einschränkung annehmen, dass die $A_k$ paarweise disjunkt sind (vgl. \textit{Satz 12}). Setze $B_k=\bigcup_{j=1}^{k}A_j \in\Sigma$, also $B_k \nearr \bigcup_{k\in\N}A_k$. Nun ist für jedes $E \sbs X$
 				\begin{align*}
-					\mu^*\underbrace{(B_k\cap E)}_{\sbs X} &\stackrel{A\in\Sigma}{=} \mu^*\underbrace{(B_k\cap E\cap A_k)}_{E\cap A_k}+ \mu^*\underbrace{(B_k\cap E\cap A^c_k)}_{\mathrlap{=E\cap B_{k-1}\text{ da }(A_k)_{k\in\N}\text{ paarweise disjunkt\footnotemark}}}\\
+					\mu^*\underbrace{(B_k\cap E)}_{\sbs X} &\stackrel{A\in\Sigma}{=} \mu^*\underbrace{(B_k\cap E\cap A_k)}_{E\cap A_k}+ \mu^*\underbrace{(B_k\cap E\cap A^C_k)}_{\mathrlap{=E\cap B_{k-1}\text{ da }(A_k)_{k\in\N}\text{ paarweise disjunkt\footnotemark}}}\\
 					&=\sum_{j=1}^{k}\mu^*(E \cap A_j)
 				\end{align*}
-				\setcounter{footnote}{10}\footnotetext{$B_k\cap A)\ceq \mathop{\bigcup \kern -6.5pt \cdot \kern 2pt}_{k\in\N}A_k=\bigcup_{k\in\N}B_k \Ra B_k^c \supset A^c$}
+				\setcounter{footnote}{8}\footnotetext{$(B_k\cap A)\ceq \mathop{\bigcup \kern -6.5pt \cdot \kern 2pt}_{k\in\N}A_k=\bigcup_{k\in\N}B_k \Ra B_k^C \supset A^C$}
 				also haben wir:
 				\begin{equation*}
-					\mu^*(E) \stackrel{B\in\Sigma}{=} \mu^*(E\cap B_k)+ \mu^*(E\cap B_k^c)\stackrel{\kern 1em \mathllap{\raisebox{10pt}{\text{\scriptsize Monotonie (Subadd.) 2er Term $\downarrow$ }}}}{\geq} \pr{\sum_{j=1}^{k}\mu^*(E\cap A_j)}+\mu^*(E\cap A^c)
+					\mu^*(E) \stackrel{B\in\Sigma}{=} \mu^*(E\cap B_k)+ \mu^*(E\cap B_k^C)\stackrel{\kern 1em \mathllap{\raisebox{10pt}{\text{\scriptsize Monotonie (Subadd.) 2er Term $\downarrow$ }}}}{\geq} \pr{\sum_{j=1}^{k}\mu^*(E\cap A_j)}+\mu^*(E\cap A^C)
 				\end{equation*}
 				Mit $k\to\infty$ und Subadditivität erhalten wir
 				\begin{align*}
-					\mu^*(E)&\geq\pr{\sum_{k\in\N}\mu^*(A\cap A_k)}+\mu^*(E\cap A^c)\\
-					&\geq \mu^*\underbrace{\pr{\bigcup_{k\in\N}(E\cap A_k)}}_{E\cap A}+\mu^*(E\cap A^c) \stackrel{Subadd}{\geq}\mu^*(E)
+					\mu^*(E)&\geq\pr{\sum_{k\in\N}\mu^*(A\cap A_k)}+\mu^*(E\cap A^C)\\
+					&\geq \mu^*\underbrace{\pr{\bigcup_{k\in\N}(E\cap A_k)}}_{E\cap A}+\mu^*(E\cap A^C) \stackrel{\text{Subadd}}{\geq}\mu^*(E)
 				\end{align*}
 				Also gilt $A=\bigcupdot_{k\in\N}A_k\in\Sigma$, und folglich ist $\Sigma$ eine $\sigma$-Algebra $(*)$
 			\end{proof}
@@ -112,7 +113,7 @@
 			\begin{proof}
 				Hierzu betrachte eine Folge $(A_k)_{k\in\N}$ paarweise disjunkte Mengen in $\Sigma$. \\ $\mu^*(\emptyset)=0$ haben wir schon. Aus $(*)$ folgt mit $E=A\ceq\bigcupdot_{k\in\N}A_k$
 			\begin{equation*}
-				\mu^*(A)=\sum_{k\in\N}\mu^*\underbrace{(A\cap A_k)}_{A_K}+\mu^*\underbrace{(A\cap A^c)}_{\emptyset}=\sum_{k\in\N}\mu^*(A_k)
+				\mu^*(A)=\sum_{k\in\N}\mu^*\underbrace{(A\cap A_k)}_{A_K}+\mu^*\underbrace{(A\cap A^C)}_{\emptyset}=\sum_{k\in\N}\mu^*(A_k)
 			\end{equation*}
 			\end{proof}
 	\end{itemize}
@@ -127,9 +128,9 @@
 	\begin{proof}
 		Sei $A\in\Sigma$ $\mu(A)=0, \: B\sbs A$. Ziel $B\in\Sigma$ ($\Ra \mu(B)=0$ wg. Monotonie). Sei $E\cap X$
 		\begin{equation*}
-			\mu^*\underbrace{E\cap B}_{\sbs B\sbs A}\leq\underbrace{\mu^*(A)}_{=0}\ \mu^*(\underbrace{E\cap B^c}_{\sbs E})\leq\mu^*(E)
+			\mu^*\underbrace{E\cap B}_{\sbs B\sbs A}\leq\underbrace{\mu^*(A)}_{=0}\ \mu^*(\underbrace{E\cap B^C}_{\sbs E})\leq\mu^*(E)
 		\end{equation*}
-		Insofern ist $\mu^*(E)\geq\mu^*(E\cap B)+\mu^*(E\cap B^c)$, also $B\in\Sigma$.
+		Insofern ist $\mu^*(E)\geq\mu^*(E\cap B)+\mu^*(E\cap B^C)$, also $B\in\Sigma$.
 	\end{proof}
 
 
