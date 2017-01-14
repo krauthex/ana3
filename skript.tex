@@ -145,6 +145,13 @@
 	\manifold{#1}{#2}{#3};
 	\hcsphere{#1+1.9*#3}{#2+#3}{.7*#3};
 } % usage: \saucer{x}{y}{scale}; „flying saucer“ (manifold cut by sphere) in tikz, position relative to lower left corner
+\newcommand{\squigglyset}[4]{
+	\draw plot[smooth cycle,tension=1] coordinates {
+		(#1,#2+#4*1.4) (#1+#3*.3,#2+#4*1.7) (#1+#3*.8,#2+#4*2.2)
+		(#1+#3*1.5,#2+#4*1.7) (#1+#3*1.5,#2+#4) (#1+#3*1.6,#2+#4*.4)
+		(#1+#3*1.4,#2) (#1+#3*0.8,#2+#4*.2) (#1+#3*.4,#2)
+		(#1,#2+#4*.4) (#1+#3*.1,#2+#4*.9)};
+} % usage: \squigglyset{x}{y}{scale x}{scale y}; position relative to lower left
 
 
 %%%%%%%%%%%%%%%%%%

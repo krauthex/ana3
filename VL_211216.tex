@@ -57,12 +57,27 @@
 			\hfill
 			\begin{minipage}{.4\textwidth}
 				\begin{tikzpicture}
-				\hcsphere{0}{0}{2};
+				\hcsphere{-2}{0}{2};
+				
+				\draw[->,thick] (1.5,2) node[right]{$\graph g$} to[bend right] (.5,1.2);
+				\draw[->,thick] (-2,2) node[above]{$B_1(0)\sbs\R^2$} to[bend right] (-.5,0);
+				\draw[->,ultra thick] (0,0)--(3,0);
+				\draw[->,ultra thick] (0,0)--(0,3);
+				\draw[->,ultra thick] (0,0)--(3,0);
+				\draw[->,ultra thick] (0,0)--(-1.4,-1.2);
 				\end{tikzpicture}
 			\end{minipage}
 			\medskip\\
 			Allgemein möchte man eine (Hyper-) Fläche der Form $ M = \{ X,Y \in \R^{k+m} \mid f(x,y) = 0\}$ lokal als Graph einer Funktion $ x \to g(x) \in \R^m $ schreiben, also $ (x, g(x)) \in M$.
-	
+	\begin{center}
+		\fbox{
+		\begin{minipage}{.4\textwidth}
+			\vspace{.4\textwidth}
+			Grafik folgt in Kürze.
+			\vspace{.4\textwidth}
+		\end{minipage}
+		}
+	\end{center}
 	\begin{theorem}[implizite Funktionen]
 		Seien $k, m \in \N, \: \Omega \sbs \R^{k + m}$ eine offene Menge und \\$f \in C^1 (\Omega, \R^m)$. Es gebe ein $(\xi, \eta) \in \Omega$ mit $f( \xi, \eta) = 0 $ und $ \det \diff _y( \xi, \eta) \neq 0$, wobei \\$\diff _y f(x,y) = \left(\frac{\del f_j}{\del y_l}(x,y)\right)_{j,l = 1, \dots, m}$.\\
 		Dann gibt es offene Umgebungen $U \sbs \R$ von $\xi$ und $V \sbs \R^m$ von $\eta$ und ein $\phi \in C^1(U,V)$ mit
@@ -79,17 +94,18 @@
 		\end{equation*}
 		und erhalten $\diff F(x,y) = \begin{pmatrix} \mathds{1}_{k \times k} & 0 \\ \diff _x f(x,y) & \diff _y f(x,y) \end{pmatrix}$.\\
 		Insbesondere ist $\det \diff F(\xi, \eta)  = \underbrace{(\det \mathds{1}_{k \times k})}_{=1} \underbrace{(\det \diff _y f(\xi, \eta))}_{\neq 0}$ also $\diff F(\xi, \eta) \in \mathrm{GL}(k+m)\footnotemark$
-		\footnotetext{Menge der invertierbaren $(k+m) \times (k+m)$-Matrizen, \emph{general linear group}}
+		\footnotetext{Menge der invertierbaren $(k+m) \times (k+m)$-Matrizen, \emph{general linear group}}.
 		
 		Nun erhalten wir aus \emph{Satz 2} offene Mengen $\mc{W}, \wt{\mc{W}} \sbs \R^{k+m}$ mit $(\xi, \eta) \in \mc{W}, \: F(\xi, \eta) \in \wt{\mc{W}}$, sodass $F|_{\mc{W}}$ ein Diffeomorphismus $\mc{W} \to \wt{\mc{W}}$ liefert. Durch verkleinern von $\mc{W}$ (ohne Ändern der Notation, betrifft auch $\wt{\mc{W}}$) können wir $\mc{W} = U \times V $ annehmen wobei $U$ und $V$ offene Umgebungen von $\xi$ bzw $\eta$ sind.
-		
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%
-		
-		Hier Graphik
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%
-		
+		\begin{center}
+			\fbox{
+				\begin{minipage}{.4\textwidth}
+					\vspace{.4\textwidth}
+					Grafik folgt in Kürze.
+					\vspace{.4\textwidth}
+				\end{minipage}
+			}
+		\end{center}
 		Weiter setzen wir $G = ( F|_{\mc{W}})^{-1} \colon \wt{\mc{W}} \to \mc{W}$.\\
 		Wegen $F(x,y) = (x,f(x,y))\ \forall(x,y) \in \Omega \supset U \times V$ gibt es eine Funktion $g \colon \wt{\mc{W}} \to V$ mit 
 		\begin{align*}
@@ -114,10 +130,23 @@
 		\begin{defin}[Untermannigfaltigkeit]
 			Seien $m,n \in \N \cup \{0\}, \: m \leq n$.\\
 			Eine $C^1$-Untermannigfaltigkeit des $\Rn$ mit Dimension $m$ (kurz: Mannigfaltigkeit) ist eine nichtleere Menge $M \sbs \Rn$ (Notation $M^m$) mit der folgenden Eigenschaft:\\
-			Für jedes $\xi \in M$ existiert eine offene Umgebung $\Omega \sbs \Rn, \: \xi \in \Omega$, eine offene Menge $U \sbs \R^m$ und eine Immersion $\phi \in C^1(U,\Rn),$ die $U$ homöomorph auf $\image\phi = M \cap \Omega$.\\
+			Für jedes $\xi \in M$ existiert eine offene Umgebung $\Omega \sbs \Rn, \: \xi \in \Omega$, eine offene Menge $U \sbs \R^m$ und eine Immersion $\phi \in C^1(U,\Rn),$ die $U$ homöomorph auf $\image\phi = M \cap \Omega$.\medskip\\
 			\begin{minipage}{\textwidth}
 				\begin{tikzpicture}
 				\saucer{0}{0}{1};
+				
+				\draw (1,1.7) node[left]{$M \cap \Omega$} to[bend left] (2.3,1);
+				\draw (3.3,1.7) node[right]{$\Omega$} to (3,1.57);
+				\node at (1.5,0) {$M$};
+				\filldraw (2.6,1) circle[radius=.05] node[above]{$\xi$};
+				
+				\draw[->,thick] (7.5,1.2) to[bend right] node[above]{$\phi$} (2.9,1);
+				
+				\draw[->,ultra thick] (6.2,0)--(10,0);
+				\draw[->,ultra thick] (6.5,-.3)--(6.5,2.5);
+				\squigglyset{7}{.4}{1.3}{.7};
+				\filldraw (8,1.2) circle[radius=.05] node[below]{$\phi^{-1}(\xi)$};
+				\draw (9,2) node[right]{$U$} to (8.6,1.85);
 				\end{tikzpicture}
 			\end{minipage}\medskip\\
 			Das Paar $(\phi^{-1},U)$ heißt \emph{Karte} und die Menge aller Karten bildet einen \emph{Atlas}.
