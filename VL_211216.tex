@@ -1,13 +1,16 @@
 \documentclass[skript.tex]
 
+% TODO: sphere with \mbb{S} or \mathds{S}?
+
 \begin{document}
+	\setcounter{cntr}{0}
 	\chapter{Differenzierbare Mannigfaltigkeiten}
 	\section{Implizite Funktionen und Untermannigfaltigkeiten}
 	
 	\begin{defin}\hfill
 			\begin{itemize}
 			\item[(i)] Seien $X.Y$ topologische Räume. Eine stetige Abbildung $f\colon X \to Y$ die bijektiv ist und deren Inverse ebenfalls stetig ist, heißt Homöomorphismus.
-			\item[(ii)] Seien $X,Y$ normierte Räume. Ein Homöomorphismus $F \colon X \to Y$ heißt \\ $C^1$-Diffeomorphismus, wenn $ f \in C^1(X,Y), \: f^{-1} \in C^1(Y,X)$.\\
+			\item[(ii)] Seien $X,Y$ normierte Räume. Ein Homöomorphismus $F \colon X \to Y$ heißt \\ ($C^1$-) Diffeomorphismus, wenn $ f \in C^1(X,Y), \: f^{-1} \in C^1(Y,X)$.\\
 			Entsprechend $C^k$-Diffeomorphismus für $f,f^{-1} \in C^k$.
 		\end{itemize}	
 	\end{defin}
@@ -20,33 +23,45 @@
 		 (\diff((f|_{\mc{V}})^{-1}))(f(x)) = (\diff f(x))^{-1} \: \forall x \in \mc{V}
 		 \end{equation*}
 	\end{theorem}
+	\begin{proof}
+		Siehe Analysis II, verwende vor allem Banachschen Fixpunktsatz.
+	\end{proof}
 	
 	\begin{cor}[Globaler Umkehrsatz]
 		Sei $\Omega \sbs \Rn$ offen und nichtleer, $f \in C^1(\Omega,\Rn)$.\\
 		Ist die Jacobi-Matrix $\diff f(x)$ für alle $x \in \Omega$ invertierbar und ist $f$ injektiv (!), so liefert f einen Diffeomorphismus $\Omega \to \mc{W} \ceq \image f$.\\ Insbesondere ist $\mc{W}$ offen, und die Identität aus \emph{Satz 2} gilt für alle $x \in \Omega$.
-		
-		\begin{proof}
-			Nach Vorraussetztung ist $f \colon \Omega \to \mc{W}$ bijektiv und $C^1$. \emph{Satz 2} impliziert nun, dass D$f(x) \: \forall x \in \Omega$ invertierbar ist und dass 
-			$f^{-1}$ in jedem Punkt $y = f(f^{-1}(y))\in \mc{W}$ stetig differenzierbar ist. 
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			
-			
-			Hier Graphik einfügen 
-			
-			
-			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-			
-			Sei $f \colon X \to Y$, dann ist Graph $f = \{(x,f(x)) \mid x \in X \} \sbs X \times Y$. Beispielweise können wir die Sphäre $ \mathds{S}^2 = \{(x_1, x_2, y) \in \R^3 \mid \underbrace{x_1^2 + x_2^2 + y^2 =1}_{\mathclap{f(x_1,x_2,y) = x_1^2 + x_2^2 + y^2 - 1}} \} = f^{-1}(\{0\})$ für $y>0$ als Graph der Funktion $g(x_1,x_2) = \sqrt{1- x_1^2 - x_2^2}, \: (x_1,x_2) \in B_1(0)\sbs \R^2$ darstellen.
-		\end{proof}
 	\end{cor}
-	
-	Allgemein möchte man eine (Hyper-) Fläche der Form $ M = \{ X,Y \in \R^{k+m} \mid f(x,y) = 0\}$ lokal als Graph einer Funktion $ x \to g(x) \in \R^m $ schreiben, also $ (x, g(x)) \in M$ 
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	Graphik
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{proof}
+			Nach Voraussetzung ist $f \colon \Omega \to \mc{W}$ bijektiv und $C^1$. \emph{Satz 2} impliziert nun, dass D$f(x) \: \forall x \in \Omega$ invertierbar ist und dass 
+			$f^{-1}$ in jedem Punkt $y = f(f^{-1}(y))\in \mc{W}$ stetig differenzierbar ist.
+		\end{proof}
+			
+			\begin{minipage}{.4\textwidth}
+				\begin{tikzpicture}
+					\manifold{0}{0}{1};
+				\end{tikzpicture}
+			\end{minipage}
+			\hfill
+			\begin{minipage}{.6\textwidth}
+				Sei $f \colon X \to Y$, dann ist\\
+				$\graph f = \{(x,f(x)) \mid x \in X \} \sbs X \times Y$.
+			\end{minipage}\medskip\\
+			\begin{minipage}{.6\textwidth}
+				Beispielweise können wir die Sphäre
+				\begin{align*}
+					\mathds{S}^2 &= \{(x_1, x_2, y) \in \R^3 \mid \underbrace{x_1^2 + x_2^2 + y^2 =1}_{\mathclap{f(x_1,x_2,y)
+					= x_1^2 + x_2^2 + y^2 - 1}} \} \\ &= f^{-1}(\{0\})
+				\end{align*}
+				für $y>0$ als Graph der Funktion\\ $g(x_1,x_2) = \sqrt{1- x_1^2 - x_2^2}, \: (x_1,x_2) \in B_1(0)\sbs \R^2$ darstellen.
+			\end{minipage}
+			\hfill
+			\begin{minipage}{.4\textwidth}
+				\begin{tikzpicture}
+				\hcsphere{0}{0}{2};
+				\end{tikzpicture}
+			\end{minipage}
+			\medskip\\
+			Allgemein möchte man eine (Hyper-) Fläche der Form $ M = \{ X,Y \in \R^{k+m} \mid f(x,y) = 0\}$ lokal als Graph einer Funktion $ x \to g(x) \in \R^m $ schreiben, also $ (x, g(x)) \in M$.
 	
 	\begin{theorem}[implizite Funktionen]
 		Seien $k, m \in \N, \: \Omega \sbs \R^{k + m}$ eine offene Menge und \\$f \in C^1 (\Omega, \R^m)$. Es gebe ein $(\xi, \eta) \in \Omega$ mit $f( \xi, \eta) = 0 $ und $ \det \diff _y( \xi, \eta) \neq 0$, wobei \\$\diff _y f(x,y) = \left(\frac{\del f_j}{\del y_l}(x,y)\right)_{j,l = 1, \dots, m}$.\\
@@ -63,7 +78,7 @@
 		F(x,y) = (\uarrow{\in \R^k}{x}, \underbrace{f(x,y)}_{\in \R^m})
 		\end{equation*}
 		und erhalten $\diff F(x,y) = \begin{pmatrix} \mathds{1}_{k \times k} & 0 \\ \diff _x f(x,y) & \diff _y f(x,y) \end{pmatrix}$.\\
-		Insbesondere ist $\det \diff F(\xi, \eta)  = \underbrace{(\det \mathds{1}_{k \times k})}_{=1} \underbrace{(\det \diff _y f(\xi, \eta))}_{\neq 0}$ also D$F(\xi, \eta) \in \mathrm{GL}(k+m)\footnotemark$
+		Insbesondere ist $\det \diff F(\xi, \eta)  = \underbrace{(\det \mathds{1}_{k \times k})}_{=1} \underbrace{(\det \diff _y f(\xi, \eta))}_{\neq 0}$ also $\diff F(\xi, \eta) \in \mathrm{GL}(k+m)\footnotemark$
 		\footnotetext{Menge der invertierbaren $(k+m) \times (k+m)$-Matrizen, \emph{general linear group}}
 		
 		Nun erhalten wir aus \emph{Satz 2} offene Mengen $\mc{W}, \wt{\mc{W}} \sbs \R^{k+m}$ mit $(\xi, \eta) \in \mc{W}, \: F(\xi, \eta) \in \wt{\mc{W}}$, sodass $F|_{\mc{W}}$ ein Diffeomorphismus $\mc{W} \to \wt{\mc{W}}$ liefert. Durch verkleinern von $\mc{W}$ (ohne Ändern der Notation, betrifft auch $\wt{\mc{W}}$) können wir $\mc{W} = U \times V $ annehmen wobei $U$ und $V$ offene Umgebungen von $\xi$ bzw $\eta$ sind.
@@ -100,13 +115,12 @@
 			Seien $m,n \in \N \cup \{0\}, \: m \leq n$.\\
 			Eine $C^1$-Untermannigfaltigkeit des $\Rn$ mit Dimension $m$ (kurz: Mannigfaltigkeit) ist eine nichtleere Menge $M \sbs \Rn$ (Notation $M^m$) mit der folgenden Eigenschaft:\\
 			Für jedes $\xi \in M$ existiert eine offene Umgebung $\Omega \sbs \Rn, \: \xi \in \Omega$, eine offene Menge $U \sbs \R^m$ und eine Immersion $\phi \in C^1(U,\Rn),$ die $U$ homöomorph auf $\image\phi = M \cap \Omega$.\\
+			\begin{minipage}{\textwidth}
+				\begin{tikzpicture}
+				\saucer{0}{0}{1};
+				\end{tikzpicture}
+			\end{minipage}\medskip\\
 			Das Paar $(\phi^{-1},U)$ heißt \emph{Karte} und die Menge aller Karten bildet einen \emph{Atlas}.
-			
-			%%%%%%%%%%%%%%%
-			
-			Graphik
-			
-			%%%%%%%%%%%%%%%
 		\end{defin}
 	
 	

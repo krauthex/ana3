@@ -91,7 +91,8 @@
 \newcommand{\ol}[1]{\overline{#1}}
 \DeclareMathOperator{\kernel}{\mathop{Kern}}
 \DeclareMathOperator{\image}{Bild}
-\DeclareMathOperator{\diff}{D} % Jacobi-Martix
+\DeclareMathOperator{\graph}{Graph}
+\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
 \newcommand{\zz}{\mathrm{z\kern-.3em\raise-0.5ex\hbox{z}}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
 \renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
@@ -128,6 +129,23 @@
 	\stackon[1pt]{#1}{\scalebox{-1}{\tmpbox}}%
 }
 %\parskip 1ex
+
+% user defined TikZ commands
+\newcommand{\manifold}[3]{
+	\shade[shading=axis,bottom color=gray!90,top color=white, shading angle=35]
+	(#1,#2) to[out=45,in=120,looseness=.8] (3*#3+#1,-.4*#3+#2) to[out=45,in=120,looseness=.8] (5*#3+#1,#2) to[out=110,in=70,looseness=1.1] cycle;
+} % usage: \manifold{x}{y}{scale}; manifold in tikz, position relative to lower left corner
+\newcommand{\hcsphere}[3]{
+	\draw[dashed,color=gray!140] (#1,#2) to[out=-90,in=-90,looseness=1.7] (2*#3+#1,#2);
+	\shade[shading=axis,bottom color=gray!90,top color=white, shading angle=35] (#1,#2) to[out=90,in=90,looseness=1.7] (2*#3+#1,#2) to[out=-140,in=-60,looseness=.6] cycle;
+	\draw (#1,#2) to[out=90,in=90,looseness=1.7] (2*#3+#1,#2) to[out=-140,in=-60,looseness=.6] cycle;
+	\draw[dashed,color=gray!140] (2*#3+#1,#2) to[out=115,in=50,looseness=.5] (#1,#2);
+} % usage: \hcsphere{x}{y}{scale}; half colored sphere in tikz, position relative to middle left
+\newcommand{\saucer}[3]{
+	\manifold{#1}{#2}{#3};
+	\hcsphere{#1+1.9*#3}{#2+#3}{.7*#3};
+} % usage: \saucer{x}{y}{scale}; „flying saucer“ (manifold cut by sphere) in tikz, position relative to lower left corner
+
 
 %%%%%%%%%%%%%%%%%%
 
