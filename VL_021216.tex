@@ -155,13 +155,14 @@
 			(f\ast\phi_\epsilon)(x)-f(x) = \int_{\mbb{R}^n} \phi_\epsilon(y)(f(x-y)-f(x)) \md\lambda^n(y)
 		\]
 		und die Minkowski-Ungleichung (\emph{Satz 9}) liefert
-		\[
-			\norm{(f\ast\phi_\epsilon)-f}_{L^p} \darrow{\text{$\Delta$-Ungl.}}{\leq} \underbrace{
+		\begin{align*}
+			\norm{(f\ast\phi_\epsilon)-f}_{L^p} \darrow{\text{$\Delta$-Ungl.}}{\leq}& \underbrace{
 				\norm{\int_{B_r(0)} \phi_\epsilon(y)(f(\bcdot-y)-f(\bcdot)) \md\lambda^n(y)}_{L^p}
-			}_{(\ast)}+\underbrace{
+			}_{(\ast)}\\
+			&+\underbrace{
 			\norm{\int_{\mbb{R}^n \setminus B_r(0)} \phi_\epsilon(y)(f(\bcdot-y)-f(\bcdot)) \md\lambda^n(y)}_{L^p}
 			}_{(\ast\ast)},
-		\]
+		\end{align*}
 		wobei man die beiden Terme weiter abschätzen kann:
 		\begin{align*}
 			(\ast) &\leq \int_{B_r(0)}\abs{\phi_\epsilon(y)}\underbrace{\norm{f(\bcdot-y)-f)}_{L^p}}_{\leq \delta/(2\sup_{\epsilon>0}\norm{\phi_\epsilon}_{L^1})} \md\lambda^n(y) \leq \delta/2 \\
