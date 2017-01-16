@@ -22,7 +22,7 @@
 \usepackage{mathrsfs}
 \usepackage{relsize} % bigger integrals
 \usepackage{stmaryrd}  % for lightning symbol in proofs
-\usepackage{yhmath}  % for a wider widehat
+%\usepackage{yhmath}  % for a wider widehat !!! BLOCKS FUNCTION OF relsize (even if order of including is changed) !!!
 \usepackage{scalerel, stackengine} % used for the wide check command
 
 % other packages
@@ -70,6 +70,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mbb{C}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\tp}{{\mathsf{T}}} % tranpose a matrix
 \newcommand{\Rn}{{\R^n}}
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
@@ -92,9 +94,12 @@
 \newcommand{\ol}[1]{\overline{#1}}
 \DeclareMathOperator{\kernel}{Kern}
 \DeclareMathOperator{\image}{Bild}
-\DeclareMathOperator{\rank}{Rang}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\rang}{Rang}
+\DeclareMathOperator{\rank}{\rang} % compatibility
 \DeclareMathOperator{\graph}{Graph}
-\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
+%\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
 \newcommand{\zz}{\mathrm{z\kern-.3em\raise-0.5ex\hbox{z}}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
 \renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...

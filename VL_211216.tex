@@ -9,18 +9,18 @@
 	
 	\begin{defin}\hfill
 			\begin{itemize}
-			\item[(i)] Seien $X.Y$ topologische Räume. Eine stetige Abbildung $f\colon X \to Y$ die bijektiv ist und deren Inverse ebenfalls stetig ist, heißt Homöomorphismus.
-			\item[(ii)] Seien $X,Y$ normierte Räume. Ein Homöomorphismus $F \colon X \to Y$ heißt \\ ($C^1$-) Diffeomorphismus, wenn $ f \in C^1(X,Y), \: f^{-1} \in C^1(Y,X)$.\\
-			Entsprechend $C^k$-Diffeomorphismus für $f,f^{-1} \in C^k$.
+			\item[(i)] Seien $X.Y$ topologische Räume. Eine stetige Abbildung $f\colon X \to Y$ die bijektiv ist und deren Inverse ebenfalls stetig ist, heißt \emph{Homöomorphismus}.
+			\item[(ii)] Seien $X,Y$ normierte Räume. Ein Homöomorphismus $F \colon X \to Y$ heißt \\ \emph{($C^1$-) Diffeomorphismus}, wenn $ f \in C^1(X,Y), \: f^{-1} \in C^1(Y,X)$.\\
+			Entsprechend \emph{$C^k$-Diffeomorphismus} für $f,f^{-1} \in C^k$.
 		\end{itemize}	
 	\end{defin}
 	
 	\begin{theorem}[Umkehrsatz, Satz über die Umkehrfunktion]
-		Sei $\Omega \sbs \Rn$ eine nichtleere, offene Menge und $f \in C^1(\Omega,\Rn).$ Dann ist die Invertierbarkeit der Jacobimatrix $\diff f(\xi)$ in $\xi \in \Omega$ äquivalent zur Existenz einer lokalen Umkehrfunktion von f in einer Umgebung $f(\xi)$.\\
+		Sei $\Omega \sbs \Rn$ eine nichtleere, offene Menge und $f \in C^1(\Omega,\Rn).$ Dann ist die Invertierbarkeit der Jacobimatrix $D f(\xi)$ in $\xi \in \Omega$ äquivalent zur Existenz einer lokalen Umkehrfunktion von f in einer Umgebung $f(\xi)$.\\
 		Genauer gibt es eine offene Teilmenge $ \mc{V} \sbs \Omega, \: \mc{W}
 		 \sbs \Rn $ mit $\xi \in \mc{V}$ und $F(\xi) \in \mc{W}, \: \mc{W} \sbs \image f$, sodass $f|_{\mc{V}}$ ein Diffeomorphismus $\mc{V} \to \mc{W}$ ist. Insbesondere gilt
 		 \begin{equation*}
-		 (\diff((f|_{\mc{V}})^{-1}))(f(x)) = (\diff f(x))^{-1} \: \forall x \in \mc{V}
+		 (D((f|_{\mc{V}})^{-1}))(f(x)) = (D f(x))^{-1} \: \forall x \in \mc{V}
 		 \end{equation*}
 	\end{theorem}
 	\begin{proof}
@@ -29,7 +29,7 @@
 	
 	\begin{cor}[Globaler Umkehrsatz]
 		Sei $\Omega \sbs \Rn$ offen und nichtleer, $f \in C^1(\Omega,\Rn)$.\\
-		Ist die Jacobi-Matrix $\diff f(x)$ für alle $x \in \Omega$ invertierbar und ist $f$ injektiv (!), so liefert f einen Diffeomorphismus $\Omega \to \mc{W} \ceq \image f$.\\ Insbesondere ist $\mc{W}$ offen, und die Identität aus \emph{Satz 2} gilt für alle $x \in \Omega$.
+		Ist die Jacobi-Matrix $D f(x)$ für alle $x \in \Omega$ invertierbar und ist $f$ injektiv (!), so liefert f einen Diffeomorphismus $\Omega \to \mc{W} \ceq \image f$.\\ Insbesondere ist $\mc{W}$ offen, und die Identität aus \emph{Satz 2} gilt für alle $x \in \Omega$.
 	\end{cor}
 		\begin{proof}
 			Nach Voraussetzung ist $f \colon \Omega \to \mc{W}$ bijektiv und $C^1$. \emph{Satz 2} impliziert nun, dass D$f(x) \: \forall x \in \Omega$ invertierbar ist und dass 
@@ -79,11 +79,11 @@
 		}
 	\end{center}
 	\begin{theorem}[implizite Funktionen]
-		Seien $k, m \in \N, \: \Omega \sbs \R^{k + m}$ eine offene Menge und \\$f \in C^1 (\Omega, \R^m)$. Es gebe ein $(\xi, \eta) \in \Omega$ mit $f( \xi, \eta) = 0 $ und $ \det \diff _y( \xi, \eta) \neq 0$, wobei \\$\diff _y f(x,y) = \left(\frac{\del f_j}{\del y_l}(x,y)\right)_{j,l = 1, \dots, m}$.\\
+		Seien $k, m \in \N, \: \Omega \sbs \R^{k + m}$ eine offene Menge und \\$f \in C^1 (\Omega, \R^m)$. Es gebe ein $(\xi, \eta) \in \Omega$ mit $f( \xi, \eta) = 0 $ und $ \det D _y( \xi, \eta) \neq 0$, wobei \\$D _y f(x,y) = \left(\frac{\del f_j}{\del y_l}(x,y)\right)_{j,l = 1, \dots, m}$.\\
 		Dann gibt es offene Umgebungen $U \sbs \R$ von $\xi$ und $V \sbs \R^m$ von $\eta$ und ein $\phi \in C^1(U,V)$ mit
 		\begin{align*}
 		&\{(x,y) \in U \times V \mid f(x,y) =0 \} = \{(x, \phi(x)) \mid x \in U \} \text{ und} \\
-		& \diff  \phi (x) = - ( \diff _y f(x, \phi(x)))^{-1} \diff _x f(x,\phi(x)) \forall x \in U
+		& D  \phi (x) = - ( D _y f(x, \phi(x)))^{-1} D _x f(x,\phi(x)) \forall x \in U
 		\end{align*}
 	\end{theorem}
 	
@@ -92,11 +92,11 @@
 		\begin{equation*}
 		F(x,y) = (\uarrow{\in \R^k}{x}, \underbrace{f(x,y)}_{\in \R^m})
 		\end{equation*}
-		und erhalten $\diff F(x,y) = \begin{pmatrix} \mathds{1}_{k \times k} & 0 \\ \diff _x f(x,y) & \diff _y f(x,y) \end{pmatrix}$.\\
-		Insbesondere ist $\det \diff F(\xi, \eta)  = \underbrace{(\det \mathds{1}_{k \times k})}_{=1} \underbrace{(\det \diff _y f(\xi, \eta))}_{\neq 0}$ also $\diff F(\xi, \eta) \in \mathrm{GL}(k+m)\footnotemark$
+		und erhalten $D F(x,y) = \begin{pmatrix} \mathds{1}_{k \times k} & 0 \\ D_x f(x,y) & D_y f(x,y) \end{pmatrix}$.\\
+		Insbesondere ist $\det D F(\xi, \eta)  = \underbrace{(\det \mathds{1}_{k \times k})}_{=1} \underbrace{(\det D_y f(\xi, \eta))}_{\neq 0}$ also $D F(\xi, \eta) \in \mathrm{GL}(k+m)\footnotemark$
 		\footnotetext{Menge der invertierbaren $(k+m) \times (k+m)$-Matrizen, \emph{general linear group}}.
 		
-		Nun erhalten wir aus \emph{Satz 2} offene Mengen $\mc{W}, \wt{\mc{W}} \sbs \R^{k+m}$ mit $(\xi, \eta) \in \mc{W}, \: F(\xi, \eta) \in \wt{\mc{W}}$, sodass $F|_{\mc{W}}$ ein Diffeomorphismus $\mc{W} \to \wt{\mc{W}}$ liefert. Durch verkleinern von $\mc{W}$ (ohne Ändern der Notation, betrifft auch $\wt{\mc{W}}$) können wir $\mc{W} = U \times V $ annehmen wobei $U$ und $V$ offene Umgebungen von $\xi$ bzw $\eta$ sind.
+		Nun erhalten wir aus \emph{Satz 2} offene Mengen $\mc{W}, \wt{\mc{W}} \sbs \R^{k+m}$ mit $(\xi, \eta) \in \mc{W}, \: F(\xi, \eta) \in \wt{\mc{W}}$, sodass $F|_{\mc{W}}$ ein Diffeomorphismus $\mc{W} \to \wt{\mc{W}}$ liefert. Durch verkleinern von $\mc{W}$ (ohne Ändern der Notation, betrifft auch $\wt{\mc{W}}$) können wir $\mc{W} = U \times V $ annehmen wobei $U$ und $V$ offene Umgebungen von $\xi$ bzw. $\eta$ sind.
 		\begin{center}
 			\fbox{
 				\begin{minipage}{.4\textwidth}
@@ -118,18 +118,18 @@
 		f(x,y) \iff F(x,y) = (x,0) \iff (x,y) = G(x,0) = (x,g(x,0)) \iff y = g(x,0)
 		\end{equation*}
 		Mit der Definition $\phi \colon U \to V, \: x \to g(x,0)$, ergibt sich \[f(x,y) = 0 \iff y = \phi (x) \: \forall (x,y) \in U \times V.\]
-		Da $G$ ein Diffeomorphismus ist, folgt $g \in C^1 (\wt{\mc{W}}, V)$ und $\phi \in C^1 (U,V)$. Mit der Kettenregel erhalten wir $f(x, \phi(x)) \: \forall x \in U = 0 \rightarrow \diff _x f(x,\phi(x)) + \underbrace{\diff _y f(x, \phi(x))}_{\mathclap{\text{invertierbar wegen Umkehrsatz}}} \diff  \phi(x) = 0$. \\
+		Da $G$ ein Diffeomorphismus ist, folgt $g \in C^1 (\wt{\mc{W}}, V)$ und $\phi \in C^1 (U,V)$. Mit der Kettenregel erhalten wir $f(x, \phi(x)) \: \forall x \in U = 0 \rightarrow D _x f(x,\phi(x)) + \underbrace{D _y f(x, \phi(x))}_{\mathclap{\text{invertierbar wegen Umkehrsatz}}} D  \phi(x) = 0$. \\
 		\end{proof}
 		Grundkonzepte der Untermannigfaltigkeiten. Mannigfaltigkeiten „sehen lokal so aus“ wie eine Umgebung im $\R^k$ für ein $ k \in \N$.
 		
-		\begin{defin}
-			Sei $\Omega \sbs \Rn$ nichtleer und offen, $\phi \in C^1(\Omega, \R^m), \: m \geq n$ Die Abbildung $\phi$ heißt Immersion, falls der Rang von D$\phi(x) \: \forall x \in \Omega$ stets minimal ist (also gleich $n$).\\
-			(Alternativ: $\diff\phi(x) \colon \Rn \to \R^m$ ist (linear und) injektiv.)
+		\begin{defin}[Immersion]
+			Sei $\Omega \sbs \Rn$ nichtleer und offen, $\phi \in C^1(\Omega, \R^m), \: m \geq n$.\\ Die Abbildung $\phi$ heißt \emph{Immersion}, falls der Rang von D$\phi(x) \: \forall x \in \Omega$ stets minimal ist (also gleich $n$).\\
+			(Alternativ: $D\phi(x) \colon \Rn \to \R^m$ ist (linear und) injektiv.)
 		\end{defin}
 		
 		\begin{defin}[Untermannigfaltigkeit]
 			Seien $m,n \in \N \cup \{0\}, \: m \leq n$.\\
-			Eine $C^1$-Untermannigfaltigkeit des $\Rn$ mit Dimension $m$ (kurz: Mannigfaltigkeit) ist eine nichtleere Menge $M \sbs \Rn$ (Notation $M^m$) mit der folgenden Eigenschaft:\\
+			Eine \emph{$C^1$-Untermannigfaltigkeit des $\Rn$ mit Dimension $m$} (kurz: \emph{Mannigfaltigkeit}) ist eine nichtleere Menge $M \sbs \Rn$ (Notation $M^m$) mit der folgenden Eigenschaft:\\
 			Für jedes $\xi \in M$ existiert eine offene Umgebung $\Omega \sbs \Rn, \: \xi \in \Omega$, eine (offene) Menge $U \sbs \R^m$ und eine Immersion $\phi \in C^1(U,\Rn),$ die $U$ homöomorph auf $\image\phi = M \cap \Omega$.\medskip\\
 			\begin{minipage}{\textwidth}
 				\begin{tikzpicture}
