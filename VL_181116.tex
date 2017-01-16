@@ -18,9 +18,9 @@ a) Verkettung von Bildmaßen: $ f \colon X\to Y, \. g \colon Y \to \ Z $
 
 b) Sei $ f \colon X \to Mx+b, \. M \in \mbb{R}^{n\times n} $ invertierbar, $b \in \mbb{R}$ \\
 \begin{equation*}
-\text{zz: } f_* \lambda^n = \frac{1}{\lvert \det M \rvert}\lambda^n
+\zz:\ f_* \lambda^n = \frac{1}{\lvert \det M \rvert}\lambda^n
 \end{equation*}
-Zunächst $f_*\lambda^n$ ist translationsinvariant und damit nach Satz 66, iii) ist $f_*\lambda^n$ ein Vielfaches von $\lambda^n$. Da M invertierbar, existieren $ V_1, V_2 \in D(n)$, $D$ Diagonalmatrix, sodass $M=V_1 D V_2$.
+Zunächst $f_*\lambda^n$ ist translationsinvariant und damit nach Satz 66, iii) ist $f_*\lambda^n$ ein Vielfaches von $\lambda^n$. Da M invertierbar, existieren $ V_1, V_2 \in D(n)$, $D Diagonalmatrix, sodass $M=V_1 D V_2$.
 
 c)
 \begin{equation*}
@@ -111,8 +111,8 @@ c)
 	\begin{bsp*}[Polarkoordinaten]
 		Wir betrachten $T_2 \colon [0, \infty) \times [0, 2\pi) \to \mbb{R}^2$ mit
 		\begin{align*}
-	&	T_2(\rho, \varphi) = (\rho\cos(\varphi),\rho\sin(\varphi)) 
-	&	\det \text{D}T_2 (\rho,\varphi) = \det \begin{pmatrix}
+	&	T_2(\rho, \varphi) = (\rho\cos(\varphi),\rho\sin(\varphi))\\
+	&	\det DT_2 (\rho,\varphi) = \det \begin{pmatrix}
 		\cos (\varphi) & - \rho \sin(\varphi) \\
 		\sin(\varphi) & \rho \cos(\varphi) \\
 		\end{pmatrix} = \rho \\
@@ -125,7 +125,7 @@ c)
 		\begin{align*}
 	&	T_3(\rho,\varphi,\omega) = 	(\rho\sin(\omega)\cos(\varphi),\rho\sin(\omega)\sin(\varphi),\rho\cos(\omega) \\
 	& \rho\in [0,\infty), \varphi \in [0,2\pi), \omega \in [0, \pi] \\
-	& \det \text{D}T_3 = \rho^2\sin(\omega) \\
+	& \det DT_3 = \rho^2\sin(\omega) \\
 	& U \subseteq [0, \infty) \times [0,2\pi) \times [0, \pi] \\
 	& \int_U g( T_3 (\rho,\varphi,\omega)) \rho^2 \sin(\omega) \md \lambda (\rho,\varphi,\omega) = \int_{T_3(K)} g \md \lambda^3
 		\end{align*}
