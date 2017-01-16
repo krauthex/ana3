@@ -20,7 +20,7 @@ b) Sei $ f \colon X \to Mx+b, \. M \in \mbb{R}^{n\times n} $ invertierbar, $b \i
 \begin{equation*}
 \zz:\ f_* \lambda^n = \frac{1}{\lvert \det M \rvert}\lambda^n
 \end{equation*}
-Zunächst $f_*\lambda^n$ ist translationsinvariant und damit nach Satz 66, iii) ist $f_*\lambda^n$ ein Vielfaches von $\lambda^n$. Da M invertierbar, existieren $ V_1, V_2 \in D(n)$, $D Diagonalmatrix, sodass $M=V_1 D V_2$.
+Zunächst $f_*\lambda^n$ ist translationsinvariant und damit nach Satz 66, iii) ist $f_*\lambda^n$ ein Vielfaches von $\lambda^n$. Da M invertierbar, existieren $ V_1, V_2 \in D(n)$, $D$ Diagonalmatrix, sodass $M=V_1 D V_2$.
 
 c)
 \begin{equation*}
@@ -29,7 +29,7 @@ c)
 \end{bsp}
 
 \begin{theorem}[Transformationssatz]
-	Seien $U,V \sbs \mbb{R}^n$ offen und $f \in C^1(U,V)$, $f$ Diffeomorphismus\footnote{$f\in C^1(U,V),\ f^{-1} \in C^1 (V,U)$}, dann gilt $(f^{-1})_*\lambda^n = \lvert J_f \rvert \lambda^n, \. J_f= \det(\text{Df})$, Df Jacobi Matrix und es gilt:
+	Seien $U,V \sbs \mbb{R}^n$ offen und $f \in C^1(U,V)$, $f$ Diffeomorphismus\footnote{$f\in C^1(U,V),\ f^{-1} \in C^1 (V,U)$}, dann gilt $(f^{-1})_*\lambda^n = \lvert J_f \rvert \lambda^n, \. J_f= \det(Df)$, Df Jacobi-Matrix und es gilt:
 	
 	\begin{equation*}
 	\int_{U} (g\circ f) \lvert J_f \rvert \md \lambda^n = \int_{V} g \md \lambda^n 
@@ -74,13 +74,13 @@ c)
 		\end{align*}
 		Weiters ist
 		\begin{equation*}
-		\varphi\pr{\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}} \stackrel{ \varepsilon \to 0}{\lra} \varphi (\text{Df}(x)z)
+		\varphi\pr{\frac{f(x+ \varepsilon z) - f(x)}{\varepsilon}} \stackrel{ \varepsilon \to 0}{\lra} \varphi (Df(x)z)
 		\end{equation*}
 		
 		Betrachte {$z \in \mbb{R}^n \lvert Df(x)z \rvert = 1$} ist Nullmenge. Somit gilt die Konvergenz fast überall und mit Lemma 52:
 		
 		\begin{align*}
-		\lim\limits_{\varepsilon \to 0} h_{\varepsilon}(y) &= \int_{B_C(0)} \varphi(\text{Df}(x)z) \md \lambda^n(z) \\
+		\lim\limits_{\varepsilon \to 0} h_{\varepsilon}(y) &= \int_{B_C(0)} \varphi(Df(x)z) \md \lambda^n(z) \\
 		&	\stackrel{\footnotemark}{=} \frac{1}{\lvert \det Df(x)} \lint_{Df(x)B_C(0)}\varphi(x) \md \lambda^n(x) \\
 		&  =\lvert J_f (f^{-1}(y))\rvert^{-1}
 		\end{align*}
