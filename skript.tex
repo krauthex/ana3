@@ -55,7 +55,7 @@
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\ms}[1]{\mathscr{#1}}
-\newcommand{\cp}[1]{#1^\mathrm{C}}
+\newcommand{\cp}[1]{#1^\mathsf{C}}
 \newcommand{\cbr}[1]{\left\{#1\right\}}
 \newcommand{\searr}{\kern -2pt \searrow \kern -1pt}
 \newcommand{\nearr}{\kern -1pt \nearrow \kern -2pt}
@@ -137,6 +137,19 @@
 }
 %\parskip 1ex
 
+\newcommand{\missingGraphic}{%
+\begin{center}
+	\fbox{%
+		\begin{minipage}{.4\textwidth}
+			\vspace{.4\textwidth}
+			Grafik folgt in Kürze.
+			\vspace{.4\textwidth}
+		\end{minipage}
+	}
+\end{center}
+}
+
+
 % user defined TikZ commands
 \newcommand{\manifold}[3]{
 	\shade[shading=axis,bottom color=gray!90,top color=white, shading angle=35]
@@ -200,5 +213,7 @@
 	\subfile{VL_211216.tex}
 	\subfile{VL_231216.tex}
 	\subfile{VL_110117.tex}
+	\subfile{placeholder.tex}
+	\subfile{VL_200117.tex}
 
 \end{document}
