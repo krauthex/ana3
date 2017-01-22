@@ -1,0 +1,55 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\setcounter{cntr}{25}
+	\setcounter{section}{3}
+	\section{Glatte Ränder}
+	
+	\begin{defin}[Relativtopologie und Rand]
+		Sei $(X,\mc{O})$ ein topologischer Raum, $Y \sbs X$ eine nichtleere Teilmenge von $X$. Wir bezeichnen
+		\[
+			\mc{O} \cap Y \ceq \cbr{U \cap Y \mid U \in \mc{O}}
+		\]
+		als \textit{Relativtopologie} von $Y$ bezüglich $X$.
+		
+		Der Rand $\del Y$ ist die Menge aller Punkte $x\in X$, für die jedes $U \in \mc{O}$	mit $x\in U$ Punkte aus $Y$ und $\cp{Y}=X\sm Y$ enthält.Insbesondere ist $(Y, \mc{O}\cap Y)$ wieder ein topologischer Raum.
+		\missingGraphic
+	\end{defin}
+	
+	
+	\begin{defin}[Glatte Ränder und adaptierte Karten]
+		Sei $M\sbs \Rn$ eine m-dimensionale Mannigfaltigkeit und $\Omega \sbs M$. Wir sagen $\Omega$ habe einen \textit{glatten Rand}, falls es für jedes $p\in \del \Omega$ eine Karte $\varphi^{-1} \colon W \lra U$ mit $p\in W$ und $\varphi\pr{U \cap \cbr{x_1 \leq 0}} = \Omega \cap W$ sowie \\$\varphi\pr{U \cap \cbr{x_1 = 0}} = \del \Omega \cap W$ gibt. Eine solche Karte $\varphi^{-1}$ heißt \textit{$\Omega$-adaptiert.} Ein Atlas heißt \textit{$\Omega$-adaptiert}, falls sämtliche seiner Karten deren Definitionsbereich $\del \Omega$ schneidet, $\Omega$-adaptiert sind.
+		\missingGraphic
+	\end{defin}
+	
+	\begin{lem}
+		Sei $M$ eine $m$-dimensionale Mannigfaltigkeit im $\Rn, \Omega \sbs M$ eine Teilmenge mit glattem Rand. Dann gibt es einen $\Omega$-adaptierten Atlas. Ist $M$ orientiert und $m\geq 2$, so kann man erreichen, dass dieser Atlas orientiert ist.
+	\end{lem}
+	
+	\begin{proof}
+		Nach Definition erhalten wir eine (abzählbare) Familie in $M$ offener Mengen, die $\del \Omega$ überdecken und auf denen jeweils Karten definiert sind. Der Definitionsbereich aller weiteren Karten des Atlas schränken wir so ein, dass kein Punkt aus $\del \Omega$ enthalten ist.
+		
+		Durch Ausnutzen der Glattheit des Randes erhalten wir so aus einem gegebenen Atlas $\mc{A}_0$ einen $\Omega$-adaptierten Atlas $\mc{A}$. Wir nehmen nun an, dass $\mc{A}_0$ orientiert ist. Indem wir bei der Konstruktion von $\mc{A}$ die Definitionsbereiche entsprechend einschränken, finden wir für jede Karte $\varphi^{-1}\colon W\lra U$ aus $\mc{A}$ ein $\wt{\varphi}^{-1} \colon \wt{W} \lra \wt{U}$ aus $\mc{A}_0$ mit $W\sbs \wt{W}$, wobei $\det D\pr{\wt{\varphi}^{-1} \circ \varphi}$ auf $W$ das Vorzeichen nicht ändert. Ersetzen wir nun sämtliche Karten $\varphi^{-1} \in \A$, für die dieses Vorzeichen negativ ist, durch $\pr{\varphi \circ S}^{-1}$, wobei $S$ die Spiegelung an $\pr{\R \times m}^\bot$ ist, das heißt, $S e_j = e_j$ für $j=1,\dots, m-1,\, S e_m = -e_m$, so erhalten wir einen $\Omega$-adaptierten Atlas $\wh{\A}$ mit $\det \pr{\wt{\varphi}^{-1} \circ \varphi} > 0\ \forall \varphi^{-1} \in \A$ (und $\wt{\varphi}$ wie eben gefordert). Für Karten \\ $\varphi_1^{-1} \colon W_1 \lra U_1, \, \varphi_2^{-1} \colon W_2 \lra U_2$ aus $\wh{\A}$ und $W_1 \cap W_2 \neq \es$ und $\wt{\varphi}_1^{-1}\colon \wt{W}_1 \lra \wt{U}_1,\, \\ \wt{\varphi}_2^{-1}\colon \wt{W}_2 \lra \wt{U}_2$, wobei $W_1 \sbs \wt{W}_1$ und $W_2 \sbs \wt{W}_2$, gilt nun:
+		\[
+			\varphi_2^{-1} \circ \varphi_1 = \underbrace{\pr{\varphi_2^{-1} \circ \wt{\varphi}_2}}_{=\pr{\wt{\varphi}_2^{-1} \circ \varphi_2} } \circ \pr{\wt{\varphi}_2^{-1} \circ \wt{\varphi}_1} \circ \pr{\wt{\varphi}_1^{-1} \circ \varphi_1},
+		\]
+		und dies ist orientierungstreu, da Verkettungen und Umkehrungen orientierungstreuer Abbildungen wieder orientierungstreu sind. Die Karten aus $\A_0$ und $\wh{\A}$ sind gleichorientiert, denn fur eine Karte $\wt{\varphi}_1^{-1} \colon \wt{W}_1 \lra \wt{U}_1$ aus $\A_0$ und eine weitere Karte $\varphi_2^{-1} \colon W_2 \lra U_2$ aus $\wh{A}$ mit $W_1 \cap W_2 \neq \es$ ist der Kartenwechsel 
+		\[ 
+			\varphi_2^{-1} \circ \varphi_1 = \underbrace{\pr{\varphi_2^{-1} \circ \wt{\varphi}_1}}_{\A_0\text{-Kartenwechsel}} \circ \underbrace{\pr{\wt{\varphi}_1^{-1} \circ \varphi_1}}_{\mathrlap{\text{orientierungstreu nach Karten von } \wh{\A}}}
+		\]
+	auf seinem Definitionsbereich orientierungstreu.
+	\end{proof}
+	
+	\begin{theorem}[Ränder als Mannigfaltigkeiten]
+		Sei $M$ eine m-dimensionale Mannigfaltigkeit im $\Rn,\\ m,n \in \N,\, m\leq n$. Ist $\Omega \sbs M$ eine Teilmenge mit glattem Rand, so ist $\del M$ eine $(m-1)$-dimensionale Mannigfaltigkeit im $\Rn$. Ist $M$ orientierbar, so ist auch $\del M$.
+	\end{theorem}
+
+	\begin{proof}
+		Für einen $\Omega$-adaptierten Atlas $\A$ und $\varphi^{-1} \colon W\lra U$ aus $\A$ mit $\del \Omega \cap W \neq \es$ definieren wir eine stetige, bijektive Abbildung $\wt{\varphi}^{-1} \colon \del \Omega \cap W \lra \wt{U}$, wobei 
+		\[
+			\wt{U} \ceq \cbr{x' \in \R^{m-1} \mid \pr{0, x'} \in U \sbs \R^m},\quad \wt{\varphi}(x') = \varphi(0,x'),\, x' \in \wt{U}.
+		\]
+		Wenn $U$ offen ist, so ist auch $\wt{U}$ eine offene Teilmenge in $\R^{m-1}$. Weiterhin ist $\del \Omega \cap W$ offen in $\del \Omega$. Weil auch die Umkehrabbildung $\wt{\varphi}^{-1} = P\circ \varphi^{-1}\vert_{\del \Omega \cap W}$ stetig ist, wobei $P$ die Projektion $(x_1, x') \mapsto x'$ bezeichnet, ist $\wt{\varphi}$ ein Homöomorphismus. Wegen $D\wt{\varphi} = \pr{\ddel{\varphi}{x_2}, \dots, \ddel{\varphi}{x_m}}$ und $\rang D\varphi =m$ hat $D\wt{\varphi}$ vollen Rang mit $m-1$ und $\del M$ ist eine Mannigfaltigkeit. Nun sei M orientiert. Fall $m=1$ führt auf Punktmengen. Also $m\geq 2$. Nach \textit{Lemma 28} können wir annehmen, dass $\A$ aus gleichorientierten $\Omega$-adaptierten Karten besteht. Zu zeigen bleibt, dass nun auch alle Karten aus dem Atlas $\wt{\A}$ gleich orientiert sind, wobei $\wt{\A}$ der Atlas für $\del \Omega$ ist. der aus offenen Karten $\wt{\varphi}^{-1} $ besteht, die wie oben aus adaptierten Karten $\varphi^{-1} \in \A$ hervorgehen, deren Definitionsbereich $\del \Omega$ schneidet. 
+	\end{proof}
+	
+\end{document}
