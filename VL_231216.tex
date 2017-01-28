@@ -127,7 +127,7 @@
 			\graph g = \{(y,z) \in U \times V \mid f(y,z) = 0\} = M \cap (U \times V).
 		\]
 		
-		\emph{(iii)$\implies$(i)}:\quad Unter den Voraussetzungen von \emph{iii} erhalten wir mit
+		\emph{(iii)$\implies$(i)}:\quad Unter den Voraussetzungen von \emph{(iii)} erhalten wir mit
 		\[
 			\phi \colon y \mapsto \Pi(y,g(y))
 		\]
@@ -150,7 +150,7 @@
 
 	\begin{theorem}
 		Sei $M\sbs\Rn$ eine $m$-dimensionale Mannigfaltigkeit, $\xi \in M$, $m \leq n$.\\
-		Sei $\phi \in C^1(U,\Rn)$ eine lokale Parametrisierung von $M$ an $\xi$ und sei $f$ wie in \emph{Satz 9\,(iii)}.\\
+		Sei $\phi \in C^1(U,\Rn)$ eine lokale Parametrisierung von $M$ an $\xi$ und sei $f$ wie in \emph{Satz 9\,(ii)}.\\
 		Dann gilt
 		\begin{alignat*}{2}
 			T_\xi M &= \image D\phi(0) &&=\kernel Df(\xi),\\
@@ -162,13 +162,12 @@
 		\]
 	\end{theorem}
 	\begin{proof}
-		Wir können \OE\ $\phi(0) = \xi$ annehmen.\\
+		Wir können \OE\ $\phi(0) = \xi$ annehmen.
 		Wir zeigen zunächst $\image D\phi(0) \sbs T_\xi M$.\\
 		Für $w\in\image D\phi(0)$ gibt es ein
 		$u\in\R^m$ mit $w=D\phi(0)u$.\\
-		Für $\gamma(t)=\phi(tu)$ gilt $\gamma(0) = \phi(0) = \xi$ und $\gamma'(0) = D\phi(0)u=w$.\\
-		Damit ist $w \in T_\xi M$.\\
-		Weiterhin ist $T_\xi M \sbs \kernel Df(\xi)$.\\
+		Für $\gamma(t)=\phi(tu)$ gilt $\gamma(0) = \phi(0) = \xi$ und $\gamma'(0) = D\phi(0)u=w$. Damit ist $w \in T_\xi M$.\\
+		Weiterhin ist $T_\xi M \sbs \kernel Df(\xi)$.
 		Sei hierzu $v \in T_\xi M$. Definitionsgemäß gibt es eine
 		Kurve $\gamma \colon (-\epsilon,\epsilon) \to M$ mit $\gamma(0)=\xi$ und $\gamma'(0)=v$. Wir können $\epsilon>0$ so klein wählen, dass $\image\gamma$ in $M\cap\Omega$ enthalten ist, wobei $\Omega$ die
 		in \emph{Satz 9\,(ii)} angegebene offene Menge bezeichnet.\\
@@ -185,10 +184,9 @@
 		\[
 			\dim\kernel Df(\xi) = n - \rank Df(\xi) = n-(n-m) = m
 		\]
-		folgt die behauptete Identität.\\
-		Insbesondere ist $T_\xi M$ ein $m$-dimensionaler Vektorraum.\\
+		folgt die behauptete Identität. Insbesondere ist $T_\xi M$ ein $m$-dimensionaler Vektorraum.\\
 		Wir erhalten nach Definition $N_\xi M = (T_\xi M)^\perp
-		= (\image D\phi(0))^\perp$.\\
+		= (\image D\phi(0))^\perp$.
 		Sei nun $w = \nabla f_j(\xi)$ für ein $j=1,\dotsc,n-m$ und $v \in T_\xi M$.\\
 		Wir erhalten
 		\[
