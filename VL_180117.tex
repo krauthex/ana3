@@ -1,0 +1,45 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	\begin{center}
+		\fbox{
+			\begin{minipage}{.4\textwidth}
+				\vspace{.4\textwidth}
+				Grafik folgt in Kürze.
+				\vspace{.4\textwidth}
+			\end{minipage}
+		}
+	\end{center}
+	\subsection*{Orientierung\footnotemark}
+	\footnotetext{Erinnerung:\quad Zwei Basen eines Vektorraumes heißen \emph{gleichorientiert}, wenn die Basiswechselmatrix eine positive Determinante besitzt $\rightsquigarrow$ zwei Äquivalenzklassen. Dabei bezeichnet man diejenige Äquivalenzklasse als \emph{positiv orientiert}, welche die Standardbasis enthält.}
+	\begin{defin}
+		Sei $M$ eine $m$-dimensionale Mannigfaltigkeit im $\Rn$, $1 \leq m \leq n$.\\
+		\begin{minipage}{.5\textwidth}
+			\begin{enumerate}[(i)]
+				\item Zwei Karten $\vphi_1^{-1} \colon W_1 \to U_1$, $\vphi_1^{-1} \colon W_1 \to U_1$ heißen \emph{gleichorientiert}, wenn für $W_1 \cap W_2 \neq \emptyset$ der Kartenwechsel
+				\begin{align*}
+					\hspace{-2em}
+					\psi = \vphi_2^{-1}&\circ\vphi_1 \colon\\ \vphi_1^{-1}&(W_1 \cap W_2) \to \vphi_2^{-1}(W_1 \cap W_2)
+				\end{align*}
+				die Eigenschaft $\det D\psi > 0$ auf\\$\vphi_1^{-1}(W_1 \cap W_2)$ besitzt und in diesem Fall nennen wir $\psi$ \emph{orientierungstreu}.
+				\item $M$ heißt \emph{orientierbar}, wenn es einen Atlas aus gleichorientierten Karten gibt und dieser heißt dann \emph{orientiert}.
+			\end{enumerate}
+		\end{minipage}
+		\hfill
+		\fbox{
+			\begin{minipage}{.4\textwidth}
+				\vspace{.4\textwidth}
+				Grafik folgt in Kürze.
+				\vspace{.4\textwidth}
+			\end{minipage}
+		}
+	\end{defin}
+
+	\begin{bsp}\hfill\vspace{-.5\baselineskip}
+		\begin{enumerate}[(i)]
+			\item Jede Mannigfaltigkeit, die durch eine einzige Karte parametrisiert werden kann, ist orientierbar. Insbesondere ist jede offene Menge im $\Rn$ orientierbar, weil sie z.\,B. durch die Identität parametrisiert wird.
+			\item Sei $\gamma \colon I \to \Rn$ eine $C^1$-Kurve, $I\sbs\R$ ein offenes und beschränktes Intervall, $\gamma' \neq 0$, sodass $\gamma \colon I \to \image\gamma$ ein Homöomorphismus ist.\\ Dann ist $\image\gamma$ eine Mannigfaltigkeit und ihre Parametrisierung $\gamma$ induziert eine Orientierung auf $\image\gamma$ (gegeben durch Orientierung von $I$). Diese korrespondiert mit der Orientierung sämtlicher Tangentialräume
+			$T_{\gamma(t)}\image\gamma = \R\gamma'(t),\ t \in I$.
+		\end{enumerate}
+	\end{bsp}
+\end{document}

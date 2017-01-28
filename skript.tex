@@ -103,6 +103,10 @@
 %\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
 \newcommand{\zz}{\mathrm{z\kern-.3em\raise-0.5ex\hbox{z}}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
+\newcommand{\vphi}{\varphi}
+%\let\temp\phi		% this is a style workaround 
+%\let\phi\varphi		% swaps commands for phi and varphi
+%\let\varphi\temp	% only works with let
 \renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
 
 
@@ -201,5 +205,8 @@
 	\subfile{VL_211216.tex}
 	\subfile{VL_231216.tex}
 	\subfile{VL_110117.tex}
+	\subfile{placeholder.tex}
+	\setcounter{cntr}{20}
+	\subfile{VL_180117.tex}
 
 \end{document}
