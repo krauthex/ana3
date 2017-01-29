@@ -40,6 +40,8 @@
 	auf seinem Definitionsbereich orientierungstreu.
 	\end{proof}
 	
+	\missingGraphic
+	
 	\begin{theorem}[Ränder als Mannigfaltigkeiten]
 		Sei $M$ eine m-dimensionale Mannigfaltigkeit im $\Rn,\\ m,n \in \N,\, m\leq n$. Ist $\Omega \sbs M$ eine Teilmenge mit glattem Rand, so ist $\del M$ eine $(m-1)$-dimensionale Mannigfaltigkeit im $\Rn$. Ist $M$ orientierbar, so ist auch $\del M$.
 	\end{theorem}
@@ -49,7 +51,30 @@
 		\[
 			\wt{U} \ceq \cbr{x' \in \R^{m-1} \mid \pr{0, x'} \in U \sbs \R^m},\quad \wt{\varphi}(x') = \varphi(0,x'),\, x' \in \wt{U}.
 		\]
-		Wenn $U$ offen ist, so ist auch $\wt{U}$ eine offene Teilmenge in $\R^{m-1}$. Weiterhin ist $\del \Omega \cap W$ offen in $\del \Omega$. Weil auch die Umkehrabbildung $\wt{\varphi}^{-1} = P\circ \varphi^{-1}\vert_{\del \Omega \cap W}$ stetig ist, wobei $P$ die Projektion $(x_1, x') \mapsto x'$ bezeichnet, ist $\wt{\varphi}$ ein Homöomorphismus. Wegen $D\wt{\varphi} = \pr{\ddel{\varphi}{x_2}, \dots, \ddel{\varphi}{x_m}}$ und $\rang D\varphi =m$ hat $D\wt{\varphi}$ vollen Rang mit $m-1$ und $\del M$ ist eine Mannigfaltigkeit. Nun sei M orientiert. Fall $m=1$ führt auf Punktmengen. Also $m\geq 2$. Nach \textit{Lemma 28} können wir annehmen, dass $\A$ aus gleichorientierten $\Omega$-adaptierten Karten besteht. Zu zeigen bleibt, dass nun auch alle Karten aus dem Atlas $\wt{\A}$ gleich orientiert sind, wobei $\wt{\A}$ der Atlas für $\del \Omega$ ist. der aus offenen Karten $\wt{\varphi}^{-1} $ besteht, die wie oben aus adaptierten Karten $\varphi^{-1} \in \A$ hervorgehen, deren Definitionsbereich $\del \Omega$ schneidet. 
+		Wenn $U$ offen ist, so ist auch $\wt{U}$ eine offene Teilmenge in $\R^{m-1}$. Weiterhin ist $\del \Omega \cap W$ offen in $\del \Omega$. Weil auch die Umkehrabbildung $\wt{\varphi}^{-1} = P\circ \varphi^{-1}\vert_{\del \Omega \cap W}$ stetig ist, wobei $P$ die Projektion $(x_1, x') \mapsto x'$ bezeichnet, ist $\wt{\varphi}$ ein Homöomorphismus. Wegen $D\wt{\varphi} = \pr{\ddel{\varphi}{x_2}, \dots, \ddel{\varphi}{x_m}}$ und $\rang D\varphi =m$ hat $D\wt{\varphi}$ vollen Rang mit $m-1$ und $\del M$ ist eine Mannigfaltigkeit. Nun sei M orientiert. Fall $m=1$ führt auf Punktmengen. Also $m\geq 2$. Nach \textit{Lemma 28} können wir annehmen, dass $\A$ aus gleichorientierten $\Omega$-adaptierten Karten besteht. Zu zeigen bleibt, dass nun auch alle Karten aus dem Atlas $\wt{\A}$ gleich orientiert sind, wobei $\wt{\A}$ der Atlas für $\del \Omega$ ist. der aus offenen Karten $\wt{\varphi}^{-1} $ besteht, die wie oben aus adaptierten Karten $\varphi^{-1} \in \A$ hervorgehen, deren Definitionsbereich $\del \Omega$ schneidet. Hierzu betrachten wir Karten\\ $\varphi_1^{-1} \colon W_1 \lra U_1,\ \varphi_2^{-1} \colon W_2 \lra U_2$ aus $\A_0$ mit $W_1 \cap W_2 \cap \del\Omega \neq \es$. Wie oben erhalten wir hieraus Karten $\wt{\varphi}_1^{-1} \colon \del\Omega \cap W_1 \lra \wt{U}_1,\ \wt{\varphi}_2^{-1} \colon \del\Omega \cap W_2 \lra \wt{U}_2$ aus $\wt{\A}$. Der Kartenwechsel $\psi \ceq \wt{\varphi}_2^{-1} \circ \wt{\varphi}_1 \colon \varphi_1^{-1}\pr{\del\Omega \cap W_1 \cap W_2} \lra \varphi_2^{-1} \pr{\del\Omega \cap W_1 \cap W_2}$ ist durch \\$\wt{\psi}(x') = P\circ \varphi_2^{-1} \circ \varphi_1(0, x') = \pr{\psi_2(0,x'),\dots,\psi_m(0,x')}$, gegeben, wobei \\$(0,x') \in \varphi_1^{-1} \pr{\del\Omega \cap W_1 \cap W_2}$ und $\psi = \varphi_2^{-1} \circ \varphi_1 \colon \varphi_1^{-1} (W_1 \cap W_2) \lra \varphi_2^{-1} (W_1 \cap W_2)$ ein Kartenwechsel ist. Man erhält $D\wt{\psi}(x')$ als rechte untere $(m-1)\times(m-1)$-Untermatrix von $D\psi(0,x')$.
+		
+		Weil nun $\varphi_1^{-1}, \varphi_2^{-1}$ beide $\Omega$-adaptiert sind, gilt:
+		\[
+			\psi_1 (0,x_2, \dots, x_m) = 0 \text{ und } \psi_j(x_1, x_2, \dots,x_m) \leq 0 \text{ für } x_1 \leq 0.
+		\]
+		Damit ist 
+		\[
+			\ddel{\psi_1}{x_j} (0,x_2, \dots, x_m) 
+				\begin{cases}
+					\geq 0 &\text{für } j=1\\
+					=0 &\text{für } j=2,\dots,m
+				\end{cases}\ .
+		\]
+		Insofern haben wir 
+		\[
+			0 < \det D\psi(0,x') = \det 
+				\begin{pmatrix}
+					\ddel{\psi_1}{x_1} & \text{\raisebox{-0.4em}{\huge0}} \\ 
+					&\\
+					\text{\raisebox{-0.7em}{\huge*}} & D\wt{\psi}(x')
+				\end{pmatrix} = \underbrace{\ddel{\psi_1}{x_1}}_{>0} \det D\wt{\psi}(x'),
+		\]
+		also $\det D\wt{\psi}(x') > 0$.
 	\end{proof}
 	
 \end{document}
