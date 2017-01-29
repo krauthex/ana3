@@ -1,0 +1,120 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+\setcounter{cntr}{0}
+	\chapter{Differentialformen und der Satz von Stokes}
+	
+	Hier: $\omega$ definiert auf offener Umgebung von $M$ im $\Rn$, Differentialformen wirken auf ganz $\Rn$.
+	
+	\begin{enumerate}
+		\item Alternierende k-Formen auf endlich-dimensionalen Vektorräumen
+		\item Differentialformen, ordne jedem Punkt $ p \in M$ eine alternierende \footnote{alternierend: berücksichtige Orientierung der Mannigfaltikeit} k-Form zu.
+		\item Integration von Differentialformen auf Mannigfaltigkeiten (Satz von Stokes)
+		\item Anwendung (Satz von Gauß)
+	\end{enumerate}
+	
+	\section{Multilineare Algebra}
+	
+	Multilinearität heißt: Messen des k-dimensionalen Volumens kleiner Maschen
+	%footnotes in Sections sind zwar machbar, aber nicht schön, da sie dann auch im Table of contents erscheinen. Es ist zwar auch da wieder raus zu bekommen, aber mein ästhetisches Empfinden für das "Schöne" in Latex verbietet es mir. So wie es jetzt ist, ist es zwar auch nicht super schön, allerdings war das die Lösung mit der ich am besten leben kann. Darf aber gerne noch korrigiert werden ;)
+	
+	% edit by fabs: habs aus der footnote rausgenommen, das kann auch ruhig so als kommentar darunter stehen ;-)
+	\begin{defin}[k-Formen] 
+		Eine (alternierende) k-Form auf einem n-dimensionalem, reellen Vektorraum $V$ ist eine (in jedem Argument) lineare Abbildung $\omega \colon V^k \to \R$, die bei der Vertauschung zweier Einträge das Vorzeichen wechselt. Der Vektorraum der k-Form wird mit $\alt ^k V$ bezeichnet, $k \in \N$ und wir setzten $\alt^0 V = \R$
+	\end{defin}
+
+	\begin{bsp}
+		Die Determinante $(v_1, \dots, v_k) \mapsto \det(v_1, \dots, v_k), \: v_1 \dots, v_k \in \R^k$ ist eine k-Form. Für k=1 ist die Bedingung des Alternierens leer, wir haben also $\alt^1 V = V'\overset{\footnotemark}{\cong}  V$ \footnotetext{isomorph} wobei $V'$ den Dualraum von $V$ bezeichnet.
+	\end{bsp}
+
+	\begin{bem}
+		Für eine lineare Abbildung $\omega \colon V^k \to \R$ sind äquivalent:
+		\begin{itemize}
+			\item[a)]$\omega$ wechselt beim Vertauschen zweier Einträge das Vorzeichen  
+			\[  
+				\omega(v_1, \dots, v_j, \dots, v_l, \dots, v_k) = - \omega(v_1, \dots, v_l, \dots, v_j, \dots, v_k)
+			\]
+			\item[b)]$\omega$ verschwindet, wenn zwei Einträge gleich sind.
+			\[
+				0= \omega(a+b,a+b) = \underbrace{\omega(a,a) + \omega(b,b)}_{=0} + \omega(a,b) + \omega(b,a)
+			\]
+			\item[c)] $\omega$ verschwindet, wenn die Einträge linear abhängig sind.
+			\item[d)] Für eine Permutation $\pi \footnotemark  \in \mf{S}_k \footnotemark$ \footnotetext[3]{$\pi \colon \{1, \dots, k\} \xrightarrow{\text{bijektiv} } \{1, \dots, k\}$} \footnotetext[4]{symmetrische Gruppe} auf $\{1, \dots, k\}$ gilt 
+			\[
+				\omega(v_1, \dots, v_k) = (\sign \pi) \omega(v_{\pi(1)}, \dots, v_{\pi(1)})
+			\]
+		\end{itemize}
+	\end{bem}
+
+	\begin{defin}[Äußeres Produkt]
+		Zu $\omega \in \alt^k V$ und $\eta \in \alt^l V, \: k,l %habe \ell ausprobiert, mag ich aber nicht ^^ Dann sieht das k seltsam aus im Vergleich.
+		 \in \N$, definierten wir das äußere Produkt (Dachprodukt) $\omega \wedge \eta \in \alt^{k+l} V$ durch 
+		 \begin{equation*}
+		 (\omega \wedge \eta)(v_1, \dots, v_{k+l}) = \frac{1}{k!l!} \sum_{\pi \in \mf{S}_{k+l}} (\sign \pi) \omega (v_{\pi(1)}, \dots, v_{\pi(k)}) \eta(v_{\pi(k+1)}, \dots, v_{\pi(k+l)})
+		 \end{equation*}
+		 Mit Hilfe von Bemerkung 3d), weißt ,man nach, dass $\omega \wedge \eta$ tatsächlich ein Element aus $\alt^{k+l}V$ darstellt.
+	\end{defin}
+
+	\begin{lem}
+		Das äußere Produkt $\wedge \colon \alt^k V \times \alt^l V \to \alt^{k+l} V$ ist bilinear, assoziativ und antikommutativ. Das heißt $\eta \wedge \omega = (-1)^{kl}(\omega \wedge \eta)$ für $\omega \in \alt^k V, \: \eta \in \alt^l V$. Für $\omega \in \alt^k V, \: 1 \in \alt^0 V$ ist $ 1 \wedge \omega = \omega \wedge 1$
+	\end{lem}
+	
+	\begin{proof}
+		Bilinearität und $1 \wedge \omega = \omega$ sind klar. Die Permutation $(1, \dots, k+l) \mapsto (k+1, \dots, k+l, 1, \dots, k)$ besitzt das Signum $(-1)^{kl}$, woraus sich die Anitkommutativität ergibt. Für $\omega \in \alt^kV, \: \eta \in \alt^l V, \: \xi \in \alt^m V$ zeigen wir
+		\begin{align*}
+			((\omega \wedge \eta) \wedge \xi)(v_1, \dots, v_{k+l+m}) &= (\omega \wedge(\eta \wedge \xi))(v_1, \dots, v_{k+l+m}) \\
+			\begin{split}
+				{}&= \sum_{\pi \in \mf{S}_{k+l+m}} \quad \frac{\sign (\pi)}{k!l!m!} \omega(v_{\pi(1)}, \dots, v_{\pi(k)})\\
+				{}& \qquad \eta(v_{\pi(k+1)}, \dots, v_{\pi(k+l)}) \\
+				{}& \qquad \xi(v_{\pi(k+l+1)}, \dots, v_{\pi(k+l+m)}). \: \: (\star)
+			\end{split}
+		\end{align*}
+		Wir betrachten $\omega \wedge(\eta \wedge \xi)$, der Fall ($\omega \wedge \eta) \wedge \xi$ läuft analog. Zunächst ist
+		
+		\begin{align*}
+		\begin{split}
+			(\omega \wedge (\eta \wedge\xi))(v_1, \dots, v_{k+l+m}) &= \sum_{\pi \in \mf{S}_{k+l+m}} \frac{\sign(\pi)}{k!(l+m)!} \omega(v_{\pi(1)}, \dots, v_{\pi(k)})\\ {}& \qquad (\eta \wedge \xi)(v_{\pi(k+1)}, \dots, v_{\pi(k+m+l)}). \: \: (\star \star)
+		\end{split}
+		\end{align*}
+		Wir betrachen $a = (a_1, \dots, a_k), \: a_j \in \{1, \dots, k+l+m\}$, paarweise verschieden. \\ Jede Permutation $\pi \in \mf{S}_{k+l+m}$ mit $\pi(j) = a_j \: \forall j=1, \dots, k$ lässt sich durch 
+		\begin{equation*}
+		\pi(j) = \begin{cases}
+		a_j \footnotemark \colon j= 1, \dots, k \\ \tau_a(k+ \wt{\pi}(j-k)) \colon j = k+1, \dots, k+l+m
+		\end{cases}
+		\end{equation*}
+		\footnotetext{$=\tau_a(j)$}
+		darstellen, wobei $\tau_a \in \mf{S}_{k+l+m}$ eine entsprechend gewählte Permutation ist mit
+		\begin{equation*}
+		 \tau_a(j) = a_j, \: j=1, \dots, k$ und $\wt{\pi} \in \mf{S}_{l+m}
+		\end{equation*}
+		Indem wir die Summierung in $(\star)$ zunächst über $\pi$ mit der gerade aufgeführten Zerlegung durchführen, erhalten wir
+		\begin{equation*}
+		\sum_a \frac{\sign \tau_a}{k!} \omega(v_{a_1}, \dots, v_{a_k})
+		\underbrace{\sum_{\wt{\pi} \in \mf{S}_{l+m}} \frac{\sign(\wt{\pi})}{l!m!}\eta(v_{\tau_a(k+\wt{\pi}(1))}, \dots, v_{\tau_a(k+\wt{\pi}(l))}) \xi(v_{\tau_a(k+\wt{\pi}(l+1))}, \dots, v_{\tau_a(k+\wt{\pi}(l+m))})}_
+			{=(\eta \wedge \xi)v_{\tau_a(k+\wt{\pi}(l+1))}, \dots, v_{\tau_a(k+\wt{\pi}(l+m))}}
+		\end{equation*}
+		
+		Für $(\star \star)$ erhalten wir entsprechend:
+		\begin{equation*}
+		\sum_a \frac{\sign \tau_a}{k!} \omega(v_{a_1}, \dots, v_{a_k})\sum_{\wt{\pi} \in \mf{S}_{l+m}} \frac{\sign \wt{\pi}}{(l+m)!} (\eta \wedge \xi)(v_{\tau_a(k+\wt{\pi}(1))}, \dots, v_{\tau_a(k+\wt{\pi}(l+m))})
+		\end{equation*}
+		Wegen $(\eta \wedge \xi)(v_{\tau_a(k+\wt{\pi}(1))}, \dots, v_{\tau_a(k+\wt{\pi}(l+m))}) = (\sign \wt{\pi})(\eta \wedge \xi)(v_{\tau_a(k+1)}, \dots, v_{\tau_a(k+l+m)})$ und  \# $\mf{S}_{l+m} = (l+m)!$ folgt Gleichheit.
+	\end{proof}
+		\begin{bem}
+			Durch Induktion erhalten wir wie in gedarde erbrachten Beweis für $\omega_j \in \alt^{k_j} V \: j=1, \dots, N$
+			\begin{equation*}
+			(\omega_1 \wedge, \dots, \wedge \omega_N)(v_1, \dots, v_{k_1+ \dots + k_n}) = \sum_{\pi \in \mf{S}_{k_1 + \dots + k_n}} \frac{\sign \pi}{k_1! \dots k_N!} \prod_{j=1}^{N} \omega_j(v_{\pi_{(k_1+ \dots + k_{j-1}+1)}}, \dots, v_{\pi_{(k_1+ \dots + k_j)}})
+			\end{equation*}
+			Für $k_1 = \dots = k_N = 1, \: \omega_1, \dots, \omega_N \in \alt^1 V = V^1, \: v_1, \dots, v_N \in V$ ist demnach 
+			\[
+				(\omega_1 \wedge \dots \wedge \omega_N)(v_1, \dots, v_N) \overset{\footnotemark}{=} \det((\omega_j(v_l))_{j,l = 1, \dots,N}).
+			\] \footnotetext{Determinantenformel}
+		\end{bem}
+		\begin{theorem}
+			Für eine Basis $(\delta_1, \dots, \delta_n)$ des Dualraums $V'$ ist $(\delta_{j_1} \wedge \dots \wedge \delta_{j_k} \mid 1 \leq j_1 < j_2 < \dots < j_k \leq n)$ eine Basis der $\alt^k V$. Ist $(e_1, \dots, e_n)$ die zu $( \delta_1, \dots, \delta_n)$ duale Basis von $V \:(\delta_j(e_k) = \delta_{jk} \footnotemark)$ \footnotetext{jetzt Kroneckerdelta} so haben wir $\omega = \sum_{j_1 < \dots < j_k} a_{j_1, \dots, j_k} \: \delta_{j_1} \wedge \dots \wedge \delta_{j_k}$ mit $a_{j_1, \dots, j_k} = \omega(e_{j_1}, \dots, e_{j_k}) \in \R$ Mithin ist $\dim \alt^l V \left( \begin{array}{c}n\\k\end{array} \right)$, inbesondere $\alt^k V = \{0\}$ für $k > n$
+		\end{theorem}
+		\begin{proof}
+			Indem wir auf beiden Seiten der behaupteten Gleichungen die Argumente $(e_{j_1}, \dots, e_{j_k})$ einsetzten, ergibt sich $\omega (e_{j_1}, \dots, e_{j_k}) = a_{j_1, \dots, j_k}$, was nach Definition koffekt ist. Da wir mit alternierenden k-Formen arbeiten, gilt die Gleichung für beliebige Argumente.\\ Ist $\sum_{j_1 < \dots < j_k} b_{j_1, \dots, j_k} \delta_{j_1} \wedge \dots \wedge \delta_{j_k} = 0$ so erhält man durch Einsetzen von $(e_{j_1}, \dots, e_{j_k})$ mit $j_1 < \dots < j_k$ sofort $b_{j_1, \dots, j_k} = 0$ und somit lineare Unabhängigkeit.
+		\end{proof}
+	
+\end{document}
