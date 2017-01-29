@@ -75,6 +75,8 @@
 \newcommand{\Rn}{{\R^n}}
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
+\newcommand{\cn}{\colon}
+\newcommand{\we}{\wedge}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
 \newcommand{\md}{\: \mathrm{d}}
 \newcommand{\midd}{\mathrel{\Big|}}
@@ -101,10 +103,10 @@
 \DeclareMathOperator{\rank}{\rang} % compatibility
 \DeclareMathOperator{\graph}{Graph}
 %\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
-\newcommand{\zz}{\mathrm{z\kern-.3em\raise-0.5ex\hbox{z}}}
+\newcommand{\zz}{\mathsf{z\kern-.3em\raise-0.5ex\hbox{$\mathsf{z}$}}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
 \renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
-
+\renewcommand{\to}{\lra}
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -215,6 +217,9 @@
 	\subfile{VL_231216.tex}
 	\subfile{VL_110117.tex}
 	\subfile{VL_130117.tex}
+	\subfile{placeholder.tex}
 	\subfile{VL_200117.tex}
+	\subfile{placeholder.tex}
+	\subfile{VL_270117.tex}
 
 \end{document}
