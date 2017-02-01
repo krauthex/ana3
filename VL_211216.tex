@@ -16,7 +16,7 @@
 	\end{defin}
 	
 	\begin{theorem}[Umkehrsatz, Satz über die Umkehrfunktion]
-		Sei $\Omega \sbs \Rn$ eine nichtleere, offene Menge und $f \in C^1(\Omega,\Rn).$ Dann ist die Invertierbarkeit der Jacobimatrix $D f(\xi)$ in $\xi \in \Omega$ äquivalent zur Existenz einer lokalen Umkehrfunktion von f in einer Umgebung $f(\xi)$.\\
+		Sei $\Omega \sbs \Rn$ eine nichtleere, offene Menge und $f \in C^1(\Omega,\Rn).$ Dann ist die Invertierbarkeit der Jacobimatrix $D f(\xi)$ in $\xi \in \Omega$ äquivalent zur Existenz einer lokalen $C^1$-Umkehrfunktion von f in einer Umgebung $f(\xi)$.\\
 		Genauer gibt es eine offene Teilmenge $ \mc{V} \sbs \Omega, \: \mc{W}
 		 \sbs \Rn $ mit $\xi \in \mc{V}$ und $F(\xi) \in \mc{W}, \: \mc{W} \sbs \image f$, sodass $f|_{\mc{V}}$ ein Diffeomorphismus $\mc{V} \to \mc{W}$ ist. Insbesondere gilt
 		 \begin{equation*}
@@ -49,7 +49,7 @@
 			\begin{minipage}{.6\textwidth}
 				Beispielweise können wir die Sphäre
 				\begin{align*}
-					\mathds{S}^2 &= \{(x_1, x_2, y) \in \R^3 \mid \underbrace{x_1^2 + x_2^2 + y^2 =1}_{\mathclap{f(x_1,x_2,y)
+					\mbb{S}^2 &= \{(x_1, x_2, y) \in \R^3 \mid \underbrace{x_1^2 + x_2^2 + y^2 =1}_{\mathclap{f(x_1,x_2,y)
 					= x_1^2 + x_2^2 + y^2 - 1}} \} \\ &= f^{-1}(\{0\})
 				\end{align*}
 				für $y>0$ als Graph der Funktion\\ $g(x_1,x_2) = \sqrt{1- x_1^2 - x_2^2}, \: (x_1,x_2) \in B_1(0)\sbs \R^2$ darstellen.
@@ -149,7 +149,7 @@
 				\draw (9,2) node[right]{$U$} to (8.6,1.85);
 				\end{tikzpicture}
 			\end{minipage}\medskip\\
-			Die Abbildung $\phi$ heißt \emph{(lokale) Parametrisierung von $M$ um $\xi$}, ihre Umkehrung $\phi \colon M\cap\Omega \to U$ bzw. das Paar $(\phi^{-1},U)$ heißt \emph{Karte} und eine Familie von Karten, deren Urbilder ganz $M$ überdecken, bildet einen \emph{Atlas}.
+			Die Abbildung $\phi$ heißt \emph{(lokale) Parametrisierung von $M$ um $\xi$}, ihre Umkehrung \\$\phi^{-1} \colon M\cap\Omega \to U$ bzw. das Paar $(\phi^{-1},U)$ heißt \emph{Karte} und eine Familie von Karten, deren Urbilder ganz $M$ überdecken, bildet einen \emph{Atlas}.
 		\end{defin}
 	
 	

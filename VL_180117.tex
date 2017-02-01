@@ -10,6 +10,7 @@
 			\end{minipage}
 		}
 	\end{center}
+	\newpage
 	\subsection*{Orientierung\footnotemark}
 	\footnotetext{Erinnerung:\quad Zwei Basen eines Vektorraumes heißen \emph{gleichorientiert}, wenn die Basiswechselmatrix eine positive Determinante besitzt $\rightsquigarrow$ zwei Äquivalenzklassen. Dabei bezeichnet man diejenige Äquivalenzklasse als \emph{positiv orientiert}, welche die Standardbasis enthält.}
 	\begin{defin}
@@ -41,5 +42,37 @@
 			\item Sei $\gamma \colon I \to \Rn$ eine $C^1$-Kurve, $I\sbs\R$ ein offenes und beschränktes Intervall, $\gamma' \neq 0$, sodass $\gamma \colon I \to \image\gamma$ ein Homöomorphismus ist.\\ Dann ist $\image\gamma$ eine Mannigfaltigkeit und ihre Parametrisierung $\gamma$ induziert eine Orientierung auf $\image\gamma$ (gegeben durch Orientierung von $I$). Diese korrespondiert mit der Orientierung sämtlicher Tangentialräume
 			$T_{\gamma(t)}\image\gamma = \R\gamma'(t),\ t \in I$.
 		\end{enumerate}
+	\end{bsp}
+
+	\begin{bem}\hfill\vspace{-.5\baselineskip}
+		\begin{enumerate}[(i)]
+			\item Sei $\mc{A}$ ein orientierter Atlas. Sind (nicht zu $\mc{A}$ gehörende) Karten $\vphi_1^{-1} \colon W_1 \to U_1$,\\ $\vphi_2^{-1} \colon W_2 \to U_2$ jeweils gleichorientiert zu allen Karten aus $\mc{A}$, so sind auch $\vphi_1^{-1}$ und $\vphi_2^{-1}$ gleichorientiert und $\mc{A} \cup \{\vphi_1^{-1},\vphi_2^{-1}\}$ ist ebenfalls ein orientierter Atlas. --- In der Tat, für jeden Punkt $\xi \in W_1 \cap W_2$ finden wir eine Karte $\vphi_0^{-1} \colon W_0 \to U_0$, $\xi \in W_0$, aus $\mc{A}$ mit
+			\[
+				\vphi_2^{-1}\circ\vphi_1 = \underbrace{(\vphi_2^{-1}\circ\vphi_0)}_{\mathclap{\text{orientierungstreu}}}\circ\underbrace{(\vphi_0^{-1}\circ\vphi_1)}_{\mathclap{\text{orientierungstreu}}}
+			\]
+			in einer hinreichend kleinen Umgebung von $\vphi^{-1}(\xi) \in U_1$. Aus der Kettenregel folgt, dass die Verkettung zweier orientierungstreuer Kartenwechsel wieder orientierungstreu ist.
+			
+			\item Eine Orientierung auf $M$ induziert ebenfalls eine Orientierung der Tangentialräume $T_p M$:\\
+			Ist $M$ durch einen Atlas $\mc{A}$ orientiert und $\vphi^{-1}\colon W \to U$ eine Karte aus $\mc{A}$ mit $\vphi(u) = p$, so legt $\left(\ddel{\vphi}{x_1}(u),\dotsc,\ddel{\vphi}{x_m}(u)\right)$ eine Orientierung des Tangentialraumes fest und diese ist unabhängig von der speziellen Wahl von $\vphi$. Weil zwei \emph{nicht} gleichorientierte Karten an (mindestens) eine Punkt unterschiedliche Orientierungen von $T_p M$ induzieren, ist die Orientierung von $M$ eindeutig durch die induzierten Orientierungen der Tangentialräume gegeben.
+		\end{enumerate}
+	\end{bem}
+
+	\begin{theorem}
+		Eine \emph{Hyperfläche im $\Rn$}, d.\,h. eine $(n-1)$-dimensionale Mannigfaltigkeit im $\Rn$ ist genau dann orientierbar, wenn es auf $M$ ein stetiges \emph{Normalenfeld} gibt, d.\,h. eine stetige Abbildung $\nu \colon M \to \mbb{S}^{n-1}$ mit $\nu(p) \in N_p M \quad\forall p \in M$.
+	\end{theorem}
+	\begin{proof}
+		TODO
+	\end{proof}
+
+	\begin{bsp}(Kleinsche Flasche, Möbiusband und orientierbares Band)\hfill
+		\begin{center}
+			\fbox{
+				\begin{minipage}{.4\textwidth}
+					\vspace{.4\textwidth}
+					Grafik folgt in Kürze.
+					\vspace{.4\textwidth}
+				\end{minipage}
+			}
+		\end{center}
 	\end{bsp}
 \end{document}
