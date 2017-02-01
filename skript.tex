@@ -55,7 +55,7 @@
 \newcommand{\mf}[1]{\mathfrak{#1}}
 \newcommand{\mbb}[1]{\mathbb{#1}}
 \newcommand{\ms}[1]{\mathscr{#1}}
-\newcommand{\cp}[1]{#1^\mathrm{C}}
+\newcommand{\cp}[1]{#1^\mathsf{C}}
 \newcommand{\cbr}[1]{\left\{#1\right\}}
 \newcommand{\searr}{\kern -2pt \searrow \kern -1pt}
 \newcommand{\nearr}{\kern -1pt \nearrow \kern -2pt}
@@ -75,6 +75,8 @@
 \newcommand{\Rn}{{\R^n}}
 \newcommand{\Ra}{\Rightarrow}
 \newcommand{\ceq}{\coloneqq}
+\newcommand{\cn}{\colon}
+\newcommand{\we}{\wedge}
 \newcommand{\lra}{\kern -1pt \longrightarrow \kern -1pt}
 \newcommand{\md}{\: \mathrm{d}}
 \newcommand{\midd}{\mathrel{\Big|}}
@@ -101,14 +103,10 @@
 \DeclareMathOperator{\rank}{\rang} % compatibility
 \DeclareMathOperator{\graph}{Graph}
 %\newcommand{\diff}{\mathrm{D}} % Jacobi matrix, not \DeclareMathOperator because of spacing
-\newcommand{\zz}{\mathrm{z\kern-.3em\raise-0.5ex\hbox{z}}}
+\newcommand{\zz}{\mathsf{z\kern-.3em\raise-0.5ex\hbox{$\mathsf{z}$}}}
 \renewcommand{\epsilon}{\varepsilon} % quick and dirty style improvement; DO NOT do this for \phi, because \phi and \varphi are both used
-\newcommand{\vphi}{\varphi}
-%\let\temp\phi		% this is a style workaround 
-%\let\phi\varphi		% swaps commands for phi and varphi
-%\let\varphi\temp	% only works with let
 \renewcommand{\Re}{\mathrm{Re\,}} % fractal letters aren't that nice tbh...
-
+\renewcommand{\to}{\lra}
 
 \DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}}
 \newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}} % inner command, used by \rchi
@@ -141,6 +139,19 @@
 	\stackon[1pt]{#1}{\scalebox{-1}{\tmpbox}}%
 }
 %\parskip 1ex
+
+\newcommand{\missingGraphic}{%
+\begin{center}
+	\fbox{%
+		\begin{minipage}{.4\textwidth}
+			\vspace{.4\textwidth}
+			Grafik folgt in Kürze.
+			\vspace{.4\textwidth}
+		\end{minipage}
+	}
+\end{center}
+}
+
 
 % user defined TikZ commands
 \newcommand{\manifold}[3]{
@@ -205,8 +216,10 @@
 	\subfile{VL_211216.tex}
 	\subfile{VL_231216.tex}
 	\subfile{VL_110117.tex}
+	\subfile{VL_130117.tex}
 	\subfile{placeholder.tex}
-	\setcounter{cntr}{20}
-	\subfile{VL_180117.tex}
+	\subfile{VL_200117.tex}
+	\subfile{VL_250117.tex}
+	\subfile{VL_270117.tex}
 
 \end{document}

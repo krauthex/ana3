@@ -1,0 +1,146 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\setcounter{chapter}{5}
+	\setcounter{section}{1}
+	\setcounter{cntr}{7}
+	
+	\begin{defin}
+		Für eine lineare Abbildung $f\colon V\lra W$ zwischen endlich-dimensionalen Vektorräumen und $\omega \in \alt^k W$ erhalten wir durch 
+		\[
+			\pr{f^*\omega}(v_1,\dots,v_k) = \omega(f(v_1), \dots, f(v_k))
+		\]
+		die \textit{zurückgeholte Form} $f^*\omega \in \alt^k V$. Dabei ist $f^* \colon \alt^k W \lra \alt_k V$.
+	\end{defin}
+	
+	\begin{lem}
+		Für eine lineare Abbildung $f\colon V\lra W$ zwischen endlich-dimensionalen reellen Vektorräumen und $\omega \in \alt^k W,\ \eta \in \alt^\ell W$ gilt:
+		\[
+			f^*(\omega \wedge \eta) = (f^*\omega) \wedge (f^*\eta).
+		\]
+	\end{lem}
+	\begin{proof}
+		Wir haben
+		\begin{align*}
+			f^*(\omega \wedge \eta)(v_1,\dots, v_{k+\ell}) &= \frac{1}{k! \ell!} \sum_{\pi \in \mf{S}_{k+\ell}} (\sign \pi) \omega(f(v_{\pi(1)},\dots, v_{\pi(k)}) \eta(f(v_{\pi(k+1)},\dots, v_{\pi(k+\ell)})\\
+			&=\frac{1}{k! \ell!} \sum_{\pi \in \mf{S}_{k+\ell}} (\sign \pi) (f^*\omega)(v_{\pi(1)},\dots, v_{\pi(k)}) (f^* \eta)(v_{\pi(k+1)},\dots, v_{\pi(k+\ell)})\\
+			&=\big((f^* \omega) \wedge (f^* \eta)\big) (v_1,\dots,v_{k+\ell}).
+		\end{align*}
+	\end{proof}
+	
+	\begin{lem}
+		Ist $V$ ein endlich-dimensionaler, reeller Vektorraum, $f\colon V\lra V$ linear, sowie \\ $\omega \in \alt^k V,\ n=\dim V$, so erhalten wir $f^* \omega = (\det f)\omega$.
+	\end{lem}
+	\begin{proof}
+		Nach \textit{Satz V.7} ist $\dim \alt^n V = 1$, und wegen der Linearität von\\ $f^* \colon \alt^n V \lra \alt^n V$ gibt es ein $\lambda \in \R$ mit $f^* \omega = \lambda \omega\ \forall \omega \in \alt^n V$. Mit einem Isomorphismus $\Phi\colon V \lra \Rn$ und $\wt{\omega} = \Phi^* \det$ ergibt sich für die Standardeinheitsbasis $(e_1,\dots,e_n)\sbs\Rn$:
+		\begin{align*}
+			\lambda &= \lambda \det (e_1,\dots,e_n) = \lambda \wt{\omega}(\Phi^{-1}(e_1),\dots, \Phi^{-1}(e_n)) = f^*\wt{\omega}(\Phi^{-1}(e_1),\dots,\Phi^{-1}(e_n))\\
+			&=\wt{\omega}(f\Phi^{-1}(e_1),\dots, f\Phi^{-1}(e_n)) = \det \pr{\Phi f \Phi^-1(e_1),\dots,\Phi f \Phi^{-1}(e_n)} = \det f.
+		\end{align*}
+	\end{proof}
+
+\section{Differentialformen}
+
+	\begin{defin}[Differentialform]
+		Eine Differentialform der Ordnung $k,\ k\in \N \cup \cbr{0}$, auf einer offenen Menge $\Omega \sbs \Rn$ ist eine Abbildung $\omega\colon \Omega \lra \alt^k\Rn$. 
+	\end{defin}
+
+	\begin{bsp}[Differentiale und Differentialform]
+		Differentialformen der Ordnung $0$ sind wegen $\alt^0 \Rn = \R$ gerade die reellwertigen Funktionen auf $\Omega$. Ist $f\in C^1(\Omega)$, so liefert \\$x\mapsto \md f(x) \in (\Rn)' \cong \Rn$ eine Differentialform der Ordnung $1$ (mit $(\Rn)'$ bezeichnen wir den Dualraum zu $\Rn$). $\pr{f(x+h) - f(x) = (Lx)h + o(\abs{h}),\ Lx\cn \Rn \lra \R,\ Lx \text{ oder } \md f(x),\ Df(x)}$.
+		
+		Die Menge der Differentialformen der Ordnung $k$ wird mit punktweiser Addition und punktweiser skalarer Multiplikation zu einem Vektorraum. Auch das äußere Produkt definiert man punktweise. 
+	\end{bsp}
+
+	\begin{notat}
+		Wir betrachten die Projektionsabbildung $x_j\cn \Omega \sbs \Rn \to \R,\ \\x\mapsto \skp{x}{e_j} = x_j,\ j=1,\dots,n$. Nun erhält man 
+		\[
+		\nabla x_j (x)e_k = \skp{e_j}{e_k} = \delta_{jk},\ j,k=1,\dots,n\ ,
+		\]
+		sodass $\pr{\md x_j}_{j=1,\dots,n}$ die zur Standardbasis $(e_1,\dots,\e_n)$ des $\Rn$ duale Basis des $(\Rn)'$ ist. Nach \textit{Satz V.7} lässt sich jede Differentialform der Ordnung $k$ eindeutig durch 
+		\[
+			\omega =  \sum_{\mathclap{1\leq j_1 < \dots < j_k \leq n}} a_{j_1,\dots,j_k} \md x_{j_1} \we \dots \we \md x_{j_n}
+		\]
+		darstellen, wobei $a_{j_1,\dots,j_k} = \omega(e_{j_1}, \dots, e_{j_n}) $ ist. Für $f\in C^1(\Omega)$ haben wir
+		\[
+			\md f(x) = \sum_{j=1}^n \ddel{f}{x_j} (x) \md x_j,
+		\]
+		denn $\sum_{j=1}^n \ddel{f}{x_j}(x) \md x_j(e_k) = \ddel{f}{x_k} (x) = \md f(x) e_k$, da $\md x_j(e_k) = \delta_{jk}$.
+	\end{notat}
+
+	\begin{defin}[Zurückgeholte Form]
+		Für offene Mengen $\Omega_1 \sbs \R^m,\ \Omega_2 \sbs \Rn,\ f\in C^1(\Omega_1, \Omega_2)$ und eine Differentialform $\omega$ der Ordnung $k$ auf $\Omega_2$ ist die \textit{auf $\Omega_1$ zurückgeholte Form} $f^*\omega$ durch
+		\[
+			(f^* \omega)(x)(v_1,\dots,v_k) = \omega\pr{f(x)}(\md f(x)v_1, \dots, \md f(x) v_k)
+		\]
+		erklärt.
+	\end{defin}
+
+	\begin{theorem}[Äußere Ableitung]
+		Für $k\in\N \cup \cbr{0}$ gibt es genau eine Abbildung $\md$ von der Menge der \textup{differenzierbaren} $k$-Formen nach $\alt^{k+1}\Rn$, die
+		\begin{itemize}
+			\item[(i)] linear ist,
+			\item[(ii)] im Fall $k=0$, für eine differenzierbare Abbildung $f\cn \Omega \to \R$, das Differential $\md f$ liefert,
+			\item[(iii)] für jede differenzierbare Differentialform $\omega$ der Ordnung $k$ und eine differenzierbare Differentialform $\eta$ der Ordnung 0 die Produktregel
+			\[
+				\md(\omega \we \eta) = (\md \omega) \we \eta + (-1)^k \omega \we (\md \eta) 
+			\]
+			erfüllt und
+			\item[(iv)] für $\omega \in C^2(\Omega, \alt^k \Rn)$ der \textup{Exaktheitsbedingung} $\mathrm{dd} \omega =0$ genügt.
+		\end{itemize}
+	Ist $\omega =  \sum_{j_1 < \dots < j_k} a_{j_1,\dots,j_k} \md x_{j_1} \we \dots \we \md x_{j_n}$, so erhalten wir 
+	\[
+		\md \omega = \sum_{\mathclap{j_1 < \dots < j_k}} \md a_{j_1,\dots,j_k} \we \md x_{j_1} \we \md x_{j_k}.
+	\]
+	\end{theorem}
+
+	\begin{defin}
+		Fur eine differenzierbare Differentialform $\omega$ wird $\md$ die \textit{äußere Ableitung, Cartan-Ableitung oder Differential} genannt.
+	\end{defin}
+
+	\begin{bsp}\hfil
+		\begin{itemize}
+			\item[(i)] Jede differenzierbare Differentialform $\omega$ der Ordnung $(n-1)$ auf $\Rn$ kann als
+			\[
+				\omega = \sum_{j=1}^n (-1)^{j-1} f_j \md x_1 \we \dots \we \md x_{j-1} \we \md x_{j+1} \we \dots \we \md x_{n}
+			\]
+			dargestellt werden, wobei $f_1,\dots,f_n$ geeignete reelle differenzierbare Funktionen sind. Wir haben dann 
+			\begin{align*}
+				\md \omega &\darrow{\mathrm{dd}x_j=0}{=} \sum_{j=1}^n (-1)^{j-1} \underbrace{\underbrace{(\md f_j)}_{\mathclap{\kern 2.5em=\sum_{\ell = 1}^{k} \ddel{f}{x_\ell}\md x_\ell}} \we \md x_1 \we \dots \we \md x_{j-1} \we \md x_{j+1} \we \dots \we \md x_n}_{=\ddel{f}{x_j}\md x_j \we \md x_1 \we \dots \we \md x_{j-1} \we \md x_{j+1} \we \dots \we \md x_n}\\
+				&= \underbrace{\sum_{j=1}^n \ddel{f}{x_j}}_{=\mathrm{div} f} \md x_1 \we \dots \we \md x_n.
+			\end{align*}
+			
+			\item[(ii)] Für $n=3$ können wir ein e Differentialform der Ordnung 1 als $\omega = f_1 \md x_1 + f_2 \md x_2 + f_3 \md x_3$ mit skalaren Funktionen $f_1, f_2, f_3$ schreiben. Sofern sie differenzierbar sind, folgt
+			\begin{align*}
+				\md \omega &= \md f_1 \we \md x_1 + \md f_2 \we \md x_2 + \md f_3 \we \md x_3\\
+				\begin{split}
+						{}&= \ddel{f_1}{x_2} \md x_2 \we \md x_1 + \ddel{f_1}{x_3} \md x_3 \we \md x_1\\
+						 {}& \quad+ \ddel{f_2}{x_1} \md x_1 \we \md x_2 + \ddel{f_2}{x_3} \md x_3 \we \md x_2\\
+						 {}& \quad+ \ddel{f_3}{x_2} \md x_2 \we \md x_3 + \ddel{f_3}{x_1} \md x_1 \we \md x_3
+					\end{split}\\
+				\begin{split}
+					{}&=\pr{\ddel{f_2}{x_1} - \ddel{f_1}{x_2}} \md x_1 \we \md x_2 + \pr{\ddel{f_3}{x_2} - \ddel{f_2}{x_3}} \md x_2 \we \md x_3\\
+					{}& \quad + \pr{\ddel{f_1}{x_3} - \ddel{f_3}{x_1}} \md x_3 \we \md x_1
+				\end{split}\\
+				&=\mathrm{rot} f \cdot \md \vec{F},
+			\end{align*}
+			wobei $\md \vec{F} = 
+				\begin{pmatrix}
+					\md x_2 \we \md x_3\\
+					\md x_3 \we \md x_1\\
+					\md x_1 \we \md x_2
+				\end{pmatrix}$ das vektorielle Flächenelement ist, $\md \vec{S} = 
+				\begin{pmatrix}
+				\md x_1\\
+				\md x_2\\
+				\md x_3
+				\end{pmatrix}$ das vektorielle Linienelement, $\md V = \md x_1 \we \md x_2 \we \md x_3$ das Volumenelement ist. 
+				
+				Wir haben 
+				\[
+					\md f = \nabla f \cdot \md \vec{S},\quad \md(g \cdot \md \vec{S}) = (\mathrm{rot}\ g)\cdot \md \vec{F},\quad \md(h\cdot \md \vec{F}) = (\mathrm{div} f )\md V.
+				\]
+			
+			
+		\end{itemize}
+	\end{bsp}
+\end{document}

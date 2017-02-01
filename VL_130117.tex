@@ -1,0 +1,62 @@
+\documentclass[skript.tex]{subfiles}
+
+\begin{document}
+	
+	Im folgenden beschränkt wir uns auf Mannigfaltigkeiten, die einen endlichen Atlas besitzen, dies betrifft insbesondere kompakte Minnigfaltigkeiten. Ziel ist es, die auf lokale Parametrisierungen definierten Flächenintegrale zu einem Integral auf der gesamten Mannigfaltigkeit zusammen zukleben.
+	
+	\begin{defin}[Partition der Eins]
+		Gegeben sei eine Übredeckung der Mannigfaltigkeit $M \sbs \Rn$ durch die Mengen $W_1, \dots, W_l$, d.h. $M = \bigcup _{j=1}^l W_j$. Eine Familie $(\alpha_j)_{j= 1, \dots, l}$ messbarer Funktionen $M \to \R$ heißt eine der Überdeckung $(W_j)_{j = 1, \dots, l}$ untergeordnete Partition der Eins, wenn
+		
+		\begin{itemize}
+			\item[1)] Bild $\alpha_j \sbs [0,1]$ für $ j=1, \dots, l$
+			\item[2)] $\alpha_j \equiv 0$ auf $ M\sm W_j$ für $j=1, \dots, l$
+			\item[3)] $\sum_{j=1}^{l} \alpha_j \equiv 1$ auf $M$.
+		\end{itemize}
+	Für einen endlichen Atlas $(\varphi_j^{-1}) \colon W_j \to U_j)_{j=1, \dots,l} $ einer Mannigfaltigkeit $M$ konstruieren wir eine der Überdeckung $(W_j)_{j = 1, \dots, l}$ untergeordnete Partition der Eins $(\alpha_j)_{j = 1, \dots, l}$, sodass $\alpha_j \circ \varphi_j$ jeweils messbar ist, durch $\alpha_1 = \rchi_{W_1}, \alpha_2= \rchi_{W_2 \setminus W_1}, \dots, \alpha_j = \rchi_{W_j \setminus (W_1 \cup \dots \cup W_{j-1})}$. Dann ist $\alpha_j \circ \varphi_j = \rchi_{U_j \setminus \varphi^{-1}(W_1 \cup \dots \cup W_{j-1})}$
+	\end{defin}
+	
+	\begin{defin}[Integral auf Mannigfaltigkeit]
+		Sei $M\sbs \Rn$ eine $m$-dimensionale Mannigfaltigkeit mit endlichem Atlas. $(\varphi_j^{-1} \colon W_j \to U_j)_{j=1, \dots, l}$ \footnote{Alternativ: $\varphi_j \colon U_j \to W_j)$} Eine Funktion $f \colon M \to \R$ heißt integrierbar, wenn $ f \rchi_{W_j} \forall j= 1, \dots, l$ integegrierbar im Sinne von Def. 14. Ist $(\alpha_j)_{j = 1, \dots, l}$ eine der Überdeckung $(W_j)_{j = 1, \dots, l}$ untergeordnete Partition der Eins und ist $\alpha_j \circ \varphi_j$ messbar für alle $j = 1, \dots, l$, so definieren wir das Integral von $f$ über $M$ durch
+		\begin{align*}
+		  \int_M f \md A^m &= \sum_{j=1}^{l} \int_M \alpha_j f \md A^m \\
+		  &= \sum_{j=1}^{l} \int_{U_j} \underbrace{(\alpha_j \circ \varphi_j)(f \circ \varphi_j)}_{= (\alpha_j f) \circ \varphi_j} \sqrt{\det ((\text{D}\varphi_j)^\tp (\text{D}\varphi_j)} \md \lambda^m
+		\end{align*}
+		Entsprechend sind die Räume $L^p(M)$ erklärt.		
+	\end{defin}
+
+	\begin{lem}
+		Das Integral auf einer Mannigfaltigkeit ist wohldefiniert und hängt insbesondere nicht vom gewählten Atlas ab.
+		
+		\begin{proof}
+			Zunächst ist wegen Bild $\alpha_j \sbs [0,1]$ mit $f \rchi_{W_j}$ auch $\alpha_j f \rchi_{W_j} = \alpha_j f$ integrierbar. Seien nun $(\varphi_j^{-1} \colon W_j \to U_j)_{j=1, \dots, l}$ und $(\wt{\varphi}_k^{-1} \colon \wt{W}_k \to \wt{U}_k)_{k=1, \dots, \wt{l}}$ Atlanten mit untergeordneten Partitionen der Eins $(\alpha_j)_{j = 1, \dots, l}$ und  $(\wt{\alpha}_k)_{k = 1, \dots, \wt{l}}$. Ist $f \rchi_{W_j} \forall j = 1, \dots, l $ integrierbar, so auch $\alpha_j f \rchi_{\wt{W}_k} 
+			\forall j,k$. Nach Def 14 ist dann auch $f \rchi_{\wt{W}_k} = \underbrace{\sum_{j=1} \alpha_j }_{\equiv 1} f \rchi_{\wt{W}_k}$ integrierbar und wir haben 
+			\[
+				\sum_{j=1}^{l} \int_M \alpha_j f \md A^m = \sum_{j=1}^{l} \sum_{k=1}^{\wt{l}} \int_M \alpha_j \wt{\alpha}_k f \md A^m =\sum_{k=1}^{\wt{l}} \int_M \wt{\alpha}_k f \md A^m.
+			\]
+			\end{proof}
+	\end{lem}
+	
+	\begin{defin}
+		Sei $M \sbs \Rn$ eine $m$-dimensionale Mannigfaltigkeit mit endlichem Atlas. Ist $S \sbs \Rn$ eine Teilmenge und ist $\rchi_S$ integrierbar im Sinne von Def. 17, so nennen wir $S$ integrierbar und definieren den $m$-dim Flächeninhalt von $S$ durch $\text{vol}^m(S) = \int_M \rchi_S \md A^m$. Im Fall $\text{vol}^m(S)=0$ sprechen wir von einer $m$-dimensionalen Nullmenge. Eine Funktion $ f \colon S \to \R$ heißt über $A$ integierbar, falls $f \rchi_S$ im Sinne von Definition 17 integrierbar ist und wir setzen
+		\begin{equation*}
+		\int_S f \md A^m = \int_M f \rchi_S \md A ^m
+		\end{equation*}
+		Entsprechend sind Räume $L^p(S)$ erklärt. Ist $S$ in $M$ offen, d.h. ist selbst eine Mannigfaltigkeit, so stimmt letztere Definition mit dem Integralbegriff auf Def. 17 überein.
+	\end{defin}
+	
+	\begin{lem}
+Sei $M \sbs  \Rn$ eine $m$-dimensionale Nullmenge. Ist $f$ integrierbar, so ist auch $\wh{f}$ integrierbar und wir haben $\int_M f \md A^m = \int_M \wh{f} \md A^m$.
+	\end{lem}
+
+	\begin{proof}
+		Ist $S \sbs M$ eine $m$-dimensionale Nullmenge, so gilt für jede Karte $\varphi^{-1} \colon W \to U$
+		\begin{align*}
+			0 = \text{vol}^m(S) \geq \int_M \rchi_{S \cap W} \md A^m &= \int_U (\rchi_S \circ \varphi) \sqrt{\det( (\text{D}\varphi)^T \text{D} \varphi)} \md \lambda^m \\ & = \int_{U \cap \varphi^{-1}(S)} \sqrt{\det( (\text{D}\varphi)^T \text{D} \varphi)} \md \lambda^m.
+		\end{align*}
+		Da der Radikand positiv ist ($\varphi$ ist Immersion \& Lemma 13) folgt $\lambda^m(U \cap \varphi^{-1}(S)) = 0$ (Lemma 1.52). Gilt nun $f = \wh{f}$ auf $ M/S$ so haben wir $\wh{f} \circ \varphi = f \circ \varphi$ fast überall in $U$ für jede Karte $\varphi^{-1} \colon W \to U$.
+	\end{proof}
+	
+	
+	
+	
+\end{document}
