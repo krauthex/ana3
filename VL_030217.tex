@@ -1,0 +1,146 @@
+\documentclass[skript.tex]
+
+\begin{document}
+	\begin{proof}[Beweis zu Satz V.24 (Stokes)]
+		Sei $\A$ ein orientierter Atlas aus K-adaptierten Karten. Da K kompakt ist,
+		gibt es endlich viele Karten $(\varphi_j^{-1}\cn W_j \to U_j)_{j=1,\dots,N}$ mit
+		$K\sbs \bigcup_{j=1}^{N} W_j$. Nun sei $(\alpha_j)_{j=1,\dots,N}$ eine der
+		Überdeckungen $(W_j)_{j=1,\dots,N}$ untergeordnete Partition der Eins. Nun
+		können wir $\varphi_j^*(\alpha_j \omega)$ durch Null stetig differenzierbar auf
+		ganz $\Rn$ fortsetzen. Nach \textit{Satz V.18}
+		\[
+		\lint_K \md (\alpha_j \omega) = \lint_{K\cap W_j} \md(\alpha_j \omega) =
+		\lint_{\cbr{x_1 \leq 0}\cap U_j} \varphi^*(\md (\alpha_j \omega)) =
+		\lint_{\cbr{x_1 \leq 0}} \md(\varphi^* (\alpha_j \omega)).
+		\]
+		Wir haben hier $W_j \cap \del K \neq \es$ angenommen, anderenfalls sieht man
+		wie in \textit{Lemma V.25}, dass das entsprechende Integral verschwindet. 
+		
+		Sei nun (wie in Beweis von \textit{Satv IV.29}) $\wt{\varphi}_j = \varphi_j
+		\circ P\cn \wt{U}_j \to W_j$ die von $\varphi_j$ induzierte Randkarte, wobei
+		$P(x') = (0,x'), x'\in \R^{n-1}.$ Dann haben wir 
+		\[
+		\lint_{\del K} \alpha_j \omega = \lint_{\del K \cap W_j} \alpha_j \omega =
+		\lint_{\wt{U}_j} \wt{\varphi}_j^* (\alpha_j \omega) = \lint_{\wt{U}_j} P^*
+		\varphi_j^* (\alpha_j \omega) = \lint_{\cbr{x_1 = 0}} \varphi_j^* (\alpha_j
+		\omega).
+		\]
+		Mit \textit{Lemma V.25} ergibt sich
+		\[
+		\lint_K \md(\alpha_j \omega) = \lint_{\cbr{x_1 \leq 0}} \md(\varphi^*
+		(\alpha_j \omega )) = \lint_{\underbrace{\del \cbr{x_1 \leq 0}}_{\cbr{x_1 = 0}}}
+		\varphi^* (\alpha_j \omega) = \lint_{\del K} \alpha_j \omega.
+		\]
+		Summation über $j=1,\dots,N$ liefert das Gewünschte.
+	\end{proof}
+	
+	\setcounter{section}{3}
+	\section{Partielle Integration}
+	\setcounter{cntr}{26}
+	\begin{theorem}[Satz von Stokes, klassisch]
+		Sei $\Omega \sbs \R^{3}$ offen, $M\sbs \Omega$ eine orientierte
+		zweidimensionale $C^2$-Mannigfaltigkeit, $K\sbs M$ eine kompakte Teilmenge mit
+		glattem Rand $\del K$ und $g\in C^1(\Omega, \R^3)$ ein Vektorfeld. Dann
+		definiert $\omega = g \cdot \md \vec{s}$ eine stetig differenzierbare
+		Differentialform der Ordnung 1 auf $\Omega$,
+		und wir haben
+		
+		\[
+		\lint_K \rot g \cdot \nu \md A^2  = \lint_{\del K} g \cdot \tau \md A^1,
+		\]
+		wobei $\nu$ das äußere Normalenfeld auf $K$ bezeichnet und $\tau$ das positiv
+		orientierte Tangentialfeld, das von der von $K$ induzierten Orientierung auf $\del K$ bestimmt wird, ist.
+	\end{theorem}
+
+	\begin{proof}
+		Natürlich ist $g\cdot \md \vec{s} = g_1 \md x_1 + g_2 \md x_2 + g_3 \md x_3 $ eine stetig differenzierbare Differentialform der Ordnung 1 auf $\Omega$. Nach \textit{Satz V.24} haben wir:
+		\[
+			\int_K (\rot g) \md \vec{F} \darrow{\text{Bem. 11}}{=} \int_K \md(g\cdot \md \vec{s}) \darrow{\text{Satz 24}}{=} \int_{\del K} g\cdot \md\vec{s}.
+		\]
+		Wir nehmen nun an, dass $\del K$ wie in \textit{Beispiel V.23} durch eine Karte parametrisiert wird. Wir haben (hier: $I=\mbb{S}^1 \cong \R\sm\mbb{Z}$)
+		\begin{align*}
+			\int_{\del K} g \md \vec{s} &= \int_{\image \gamma } g\md \vec{s} = \int_I \gamma^*(g\cdot\md \vec{s}) = \int_I g(\gamma(t)) \cdot \gamma'(t) \md t\\
+			&= \int_I g(\gamma(t)) \cdot \underbrace{\frac{\gamma'(t)}{\abs{\gamma'(t)}}}_{\tau(t)} \abs{\gamma'(t)}\md t = \int_{\wt{I}} g(\wt{\gamma}(s)) \cdot \wt{\tau}(s) \md s,
+		\end{align*}
+		wobei wir im letzten Schritt eine Reparametrisierung nach der Bogenlänge vorgenommen haben. Die Reparametrisierung ist ebenfalls eine Parametrisierung von $\del K$, also $\int_{\del K} g \md \vec{s} = \int_{\del K} g \tau \md A^1$.
+		
+		Zu zeigen bleibt $\int_K f \md \vec{F} = \int_K f \cdot \nu \md A^2$ für integrierbares $f$. Für einen Beweis siehe Forster, Analysis 3 \textsection 20, Satz 3.
+		
+		Mit $f=\rot g$ folgt die Behauptung.
+	\end{proof}
+
+	\begin{theorem}[Satz von Gauß, klassisch]
+		Sei $\Omega \sbs \R^3$ offen, $K \sbs \Omega$ kompakt mit glattem Rand $\del K$, auf dem das äußere Normalenfeld'' $\nu$ definiert ist, und $h\in C^1(\Omega, \R^3)$ ein Vektorfeld. Dann definiert $\omega=h\cdot \md \vec{F}$ eine stetig differenzierbare
+		Differentialform der Ordnung 2 auf $\Omega$, und wir haben
+		\[
+			\int_K \divv h \md \lambda^3 = \int_{\del K} h \cdot \nu \md A^2.
+		\]
+	\end{theorem}
+
+	\begin{theorem}[Satz von Gauß (Divergenzsatz)]
+		Für $\Omega \sbs \Rn$ offen, ein Vektorfeld $h \in C^1(\Omega, \Rn)$, $K \sbs \Omega$ kompakt und glattem Rand und äußerem Normalenfeld $\nu$ gilt:
+		\[
+			\int_K \divv h \md \lambda^n = \int_{\del K} h \cdot \nu \md A^{n-1}.
+		\]
+	\end{theorem}
+	
+	\begin{proof}[Beweis Satz 28 \& 29]
+		Offenbar ist $h\cdot \md \vec{F}$ eine differenzierbare Differentialform der Ordnung 2. Ansonsten ist \textit{Satz 28} ein Spezialfall von \textit{Satz 29} für $n=3$.
+		
+		Wir verwenden die Differentialform $\md \vec{F} = 
+			\begin{pmatrix}
+				\md F_1 & \cdots & \md F_n
+			\end{pmatrix}^\tp$ mit 
+		\[
+			\md F_j = (-1)^{j-1} \md x_1 \we \dots \we \md x_{j-1} \we \md x_{j+1} \we \dots \we \md x_n
+		\]
+		und $\int_K f \cdot \md \vec{F} = \int_K f \cdot \nu \md A^{n-1}$ (siehe Forster) für integrierbare $f\cn \Omega \to \R$. 
+		
+		Wir erhalten :
+		\begin{align*}
+			\int_K \divv h \md \lambda^n &\darrow{\text{Def. 19 ff}}{=} \int_K \divv h \md x_1 \we \dots \we \md x_n \darrow{\text{Bem. 17(i)}}{=} \int_K \md(h\cdot \md\vec{F})\\
+			&\darrow{\text{Satz 24}}{=} \int_{\del K} h \cdot \md \vec{F} \darrow{\text{Forster}}{=} \int_K h\cdot \nu \md A^{n-1}.
+		\end{align*}
+	\end{proof}
+
+	\begin{cor}[Partielle Integration]
+		Für $\Omega \sbs \Rn$ offen, $u,v\in C^1(\Omega)$, $K \sbs \Omega$ kompakt mit glattem Rand und äußerem Normalenfeld $\nu$ gilt:
+		\[
+			\int_K \ddel{u}{x_j}v \md \lambda^n = \int_{\del K} uv\nu_j \md A^{n-1} - \int_K u\ddel{v}{x_j} \md \lambda^n,\quad j=1,\dots,N
+		\]
+		Insbesondere ist auch $\int_K \ddel{u}{x_j} \md \lambda^n = \int_{\del K} u \nu_j \md A^{n-1}.$
+	\end{cor}
+
+	\begin{proof}
+		Mit $h=uv e_j$ erhalten wir aus dem Divergenzsatz:
+		\[
+			\int_K \pr{v \ddel{u}{x_j} + u \ddel{v}{x_j}}\md \lambda^n = \int_K \underbrace{\divv h}_{\ddel{uv}{x_j}} = \int_{\del K} h \cdot \nu \md A^{n-1} = \int_{\del K} uv \nu_j \md A^{n-1}
+		\]
+		Mit $\nu \equiv 1$ folgt die 2te Formel.
+	\end{proof}
+
+	\begin{cor}[Green'sche Formeln]
+		Für $\Omega \sbs \Rn$ offen, $u,v\in C^2(\Omega)$, $K \sbs \Omega$ kompakt mit glattem Rand und äußerem Normalenfeld $\nu$ gilt:
+		\begin{align*}
+			\int_K \Delta u \md \lambda^n &= \int_{\del K} \ddel{u}{\nu} \md A,\\
+			\int_K \nabla u \cdot \nabla v \md \lambda^n  &= \int_{\del K} u \ddel{v}{\nu} \md A - \int_K u\Delta v \md \lambda^n,\\
+			\int_K (u\Delta v - v\Delta u) \md \lambda^n &= \int_{\del K} \pr{u \ddel{v}{\nu} - v \ddel{u}{\nu}} \md A.
+		\end{align*}
+	\end{cor}
+	
+	\begin{proof}
+		Wir setzen zunächst $h=\nabla u$, dann ist:
+		\[
+			\int_K \Delta u \md \lambda^n = \int_K \nabla\nabla u \md \lambda^n = \int_K \divv \nabla u \darrow{\text{Div. Satz}}{=} \int_{\del K} \nabla u \cdot \nu \md A^{n-1} = \int_{\del K} \ddel{u}{\nu} \md A^{n-1}
+		\]
+		Mit $h=u\nabla v$ ist $\divv h = \sum_{j=1}^{k} \ddel{h}{x_j} = \nabla u \cdot \nabla v + u \Delta v$, woraus sich
+		\[
+			\int_K \pr{\nabla u \cdot \nabla v + u\Delta v} \md \lambda^n = \int_{\del K} u \underbrace{\nabla v \cdot \nu}_{\ddel{v}{\nu}} \md A^{n-1}
+		\]
+		ergibt. Durch Vertauschen von $u,v$ in der letzten Gleichung und Subtraktion erhalten wir
+		\[
+			\int_K \pr{u \Delta v - v\Delta u} \md \lambda^n = \int_{\del K} \pr{u \ddel{v}{\nu} - v \ddel{u}{\nu}} \md A^{n-1}.
+		\]
+	\end{proof}
+	
+\end{document}
