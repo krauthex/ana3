@@ -1,0 +1,145 @@
+\documentclass[skript.tex]{subfiles}
+
+
+\begin{document}
+	
+	\begin{theorem}
+		Für offene Mengen $\Omega_1 \sbs \Rn, \: f \in C^2 (\Omega_1,\Omega_2)$ und eine differenzierbare Differenzialform auf $\Omega_2$ ist auch die auf $\Omega_1$ zurückgeholte Form $f^*\omega$ differenzierbar und es gilt $\md( f^* \omega) = f^*(\md \omega)$.
+	\end{theorem}
+
+	\begin{proof}
+		Für eine differenzierbare Differentialform der Ordnung $O$ ist $f^*g = g \circ f$ differenzierbar und für $x \in \Omega_1$ und $v \in \R^m$ haben wir
+		
+		\begin{equation*}
+		\md(f^*g)(v)= \md(g \circ f)(v)= \md g (f(x)) \md f(x)v = f^*(\md \omega)(x)(v)
+		\end{equation*}
+		
+		Für allgemein $\omega = \sum_{j_1 < \dots j_k} a_{j_1, \dots,j_k} \md x_{j_1} \wedge \dots \wedge \md x_{j_k}$ erhalten wir mit Lemma 9
+		
+		\begin{align*}
+		f^*\md \omega &= \sum_{j_1 < \dots < j_k} \underbrace{f^* \md a_{j_1, \dots, j_k}}_{=\md (f^*a_{j_1, \dots, j_k})} \wedge \underbrace{f \md x_{j_1}}_{= \md (f^ x_{j_1})} \wedge \dots \wedge \underbrace{f^* \md x_{j_k}}_{= \md (f^* x_{j_k})}\\
+		 &= \md ( \sum _{\mathclap{j_1 < \dots < j_k}} (f^*a_{j_1, \dots j_k}) \wedge \md(f^* x_{j_1}) \wedge \dots \wedge \md (f^* x_{j_k}) = \md( f^* \omega).
+		\end{align*}
+		
+	\end{proof}
+		
+		\section{Integration von Differentialformen}
+		\begin{defin}
+			Sei $\Omega \sbs \Rn$ offen. Eine Differentialform $\omega = f \md x_1 \wedge \dots \wedge \md x_n$ heißt integrierbar über $A \sbs \Omega$ falls $f$ über $A$ integrierbar ist. Wir setzten 
+			
+			\begin{equation*}
+			\int_A \omega = \int_A f \md \lambda^n.
+			\end{equation*}
+		\end{defin}
+	
+	\begin{theorem}[Transformationsformel]
+		Sind $U,V \sbs \Rn$ offen, $\varphi \colon V \to U$ ein orientierungstreuer $C^1$- Diffeomorphismus und $\omega$ eine integrierbare Differentialform der Ordnung $n$ auf $U$ so gilt
+		
+		\begin{equation*}
+		\int_V \varphi^* \omega = \int_U \omega.
+		\end{equation*}
+		
+		Im allgemeinen Fall $k \in \{1, \dots, n\}$ definieren wir Integrale zunächst über lokale Parametrisierung.
+		
+		\begin{proof}
+			Für $\omega = f \md x_1 \wedge \dots \wedge \md x_n$ erhalten wir zunächst 
+			\begin{align*}
+			(\varphi^* \omega)(x)(v_1, \dots, v_2) &= \omega(\varphi(x))(\md \varphi(x) v_1, \dots, \varphi(x)v_n) \\
+			&= f(\varphi(x))(\md x_1 \wedge \dots \wedge \md x_n)(\md \varphi(x)v_1, \dots, \md \varphi(x) v_n)\\
+			&= f(\varphi(x))\underbrace{(\md \varphi(x))^*}_{\det \md \varphi(x)}(\md x_1 \wedge \dots \wedge \md x_n)(v_1, \dots, v_n),
+			\end{align*}
+			
+			also
+			
+			 \begin{equation*}
+			 \int_V \varphi^* \omega = \int_V f \varphi \underbrace{\det \md \varphi( \cdot)}_{>0} \md \lambda^n \overset{I.70}{=} \int_U f \md \lambda^n = \int_U \omega.
+			 \end{equation*}
+			
+			
+		\end{proof}
+	\end{theorem}
+	
+		\begin{defin}
+			Sei $\Omega \sbs \Rn$ und $M \sbs \Omega$ eine k-dimensionale orientierte Mannigfaltigkeit sowie $\varphi^{-1} \colon W \to U$ eine Karte eines orientierten Atlanten. Eine auf $ M\sm W$ verschwindende Differentialform $\varphi^* \omega$ auf $U$ im Sinne von Definition 5.19 integrierbar ist, und wir setzten
+		
+			\begin{equation*}
+			\int_M \omega = \int_U \varphi^* \omega
+			\end{equation*}
+			
+			Wie bei der Definition von Flächenintegralen muss man sich von der Unabhängigkeit dieser Definition von der gewählten Karte überzeugen; dies folgt aus der angegebenen Transformationsformel. Eintsprechendes gilt für die folgende Konvention.
+		\end{defin}
+	
+		\begin{defin}
+			Sei $ \Omega \sbs \Rn$ offen, $M \sbs \Omega$ eine k-dimensionale Mannigfaltigkeit mit orientiertem Atlas $(\varphi_j^{-1} \colon W_j \to U_j)_{j = 1, \dots, N}$. Eine Differentialform $\omega \colon \Omega \to \alt^k \Rn$ heißt integrierbar, falls $\rchi_{W_j} \omega$ für alle 
+			$j = 1, \dots , N$ im Sinne von Definition 5.21 integrierbar ist. Ist $(\alpha_j)_{j=1, \dots, N}$ eine der Überdeckung $(W_j)_{j = 1, \dots, N}$ untergeordnete Partiion der Eins und $\alpha_j \circ \varphi_j$ messbar für $j = 1, \dots , N$, so definieren wir das Integral von $\omega$ über $M$ durch 
+			
+			\begin{equation*}
+			\int_M \omega = \sum_{j=1}^{N} \int_M \alpha_j \omega
+			\end{equation*}
+			
+			wobei auf der rechten Seite die in Definition V.21 erklärten Integrale stehen.
+		\end{defin}
+	
+		\begin{bsp}[Kurvenintegrale]
+			Sei $\gamma \in C^1(I, \Rn)$ für endliches Intervall $I = (a,b), \: 0<c \leq \abs{\gamma '} \leq C < \infty$ auf $I$ und $ \gamma \colon I \to \image\gamma$ ein Homöomorphismus, so ist das $\image\gamma$ eine eindimensionale Mannigfaltigkeit, und für eine Differentialform $\nu = \sum_{j=1}^{n} f_j \md x_j$erhalten wir die zurückgeholte Form $\gamma^* \nu = \sum_{j=1}^{n} (f_j \circ \gamma) \md \gamma_j$. Ist $\nu$ integrierbar, so folgt
+			
+			\begin{equation*}
+			\int_{\image \gamma} \nu = \int_I \gamma^* \nu = \int_I \skp{f(\gamma(t))}{\gamma'(t)} \md t.
+			\end{equation*}
+			
+			Sei nun $\omega$ eine stetig differenzierbare Funktion auf einer Umgebung von Bild $\gamma$. Dann haben wir für $\nu = \md \omega= \sum_{j=1}^{n} \frac{\del \omega}{\del x_j} \md x_j$
+			
+			\begin{equation*}
+			\int_{\image\gamma} \md \omega = \int_I \skp{\nabla \omega( \gamma(t))}{\gamma' (t)} \md t = \omega(\gamma(b)) - \omega(\gamma(a)) "= \int_{\del \image \gamma} \omega"
+			\end{equation*}
+			
+			\end{bsp}
+			
+			\begin{lem}
+				Für eine stetig differenzierbare Differentialform $\omega$ der Ordnung $k-1$ mit kompaktem Träger auf $\R^k, \: k\geq 2$, ist
+				
+				\begin{equation*}
+				\int_{\{x_1 \leq 0\}} \md \omega = \int_{ \del \{x_1 \geq 0\}} \omega
+				\end{equation*}
+				
+				\begin{proof}
+					Für $\omega = \sum_{j =1}^{k}(-1)^{j-1} f_j \md x_1 \wedge \dots \wedge \md x_{j-1} \wedge \md x_{j+1} \wedge \dots \wedge \md x_k $ mit $f_j \in C^1 (\R^k)$ folgt
+					
+					\begin{equation*}
+					 \int_{\{x1 \leq 0\}} \md \omega \overset{\text{Bsp} 17}{=} \int_{\{x_1 \leq 0\}}(\text{div} f) \md x_1 \wedge \dots \wedge \md x_k \overset{\text{Def} 19}{=}  \int_{\{x_1 \leq 0\}} \text{div} f \md \lambda^n
+					 \end{equation*}
+					
+					Mit dem Satz von Fubini können wir den j-ten Summanden in der Divergenz $\text{div} f = \sum_{j=1}^{n} \frac{\del f}{\del x_j}$ zunächst und $x_j$ integrieren. Wir erhalten
+					
+					\begin{align*}
+					&\int_{-\infty}^{\infty} \frac{\del f}{\del x_j}(x) \md \lambda (x_j) \darrow{\text{kompakter Träger}}{=}0 \: \: \: (\text{für} j=2, \dots, k) \\ 
+					& \int_{-\infty}^{\infty} \frac{\del f}{\del x_1}(x) \md \lambda (x_1) = f_1 (0, \underbrace{x_2, \dots, x_k}_{x' \in \R^{k-1}})
+					\end{align*}
+					also
+					\begin{equation*}
+					\int_{\{x_1 \leq 0\}} \md \omega = \int_{\R^{k-1}} \md \omega = \int_{\R^{k-1}}	f_1 (0,x') \md^{k-1} (x')
+					\end{equation*}
+					
+					Für die Berechnung des Randintegrals bezeichnen wir die Elemente aus $\R{k-1}$ wieder mit $x' = (x'_1, \dots, x'_{k-1})$ und schreiben dementsprechend $\md x'_j, \: j=1, \dots, k-1$. Die Identität $\psi = \id_{\R^k}$ induziert die lokale Parametrisierung
+					
+					\begin{align*}
+					\wt{\varphi} \colon \R^{k-1} &\to  \del \{x_1 \leq 0\} = \{x_1 = 0\} \sbs \R^k \\  x' &\mapsto (0, x')
+					\end{align*}
+					
+					Nach Satz 18 haben wir $\wt{\varphi}^* \md x_j \overset{S.18}{=} \md \tilde{\varphi}^* = \md (x_j \circ \varphi) = \begin{cases*}
+					0, \: j=1 \\ \md x_{j-1} \colon j= 2, \dots, k
+					\end{cases*} $ \\
+					
+					Mit Lemma 9 folgt
+					\begin{align*}
+					\int_{\del \{x_1 \leq 0 \}} \omega = \int_{\R^{k-1}} \wt{\varphi}^* \omega &=\int_ {R^{k-1}} f_1 \abs{\wt{\varphi}(x')} \md x'_1 \wedge \dots \wedge \md x' _{k-1} \\ 
+					&= \int _{R^{k-1}} f_1 (0,x') \md \lambda^{k-1}(x')
+					\end{align*}
+				\end{proof}
+			\end{lem}
+	
+		\begin{theorem}[Glatte Partition der Eins]
+			Sei $K \sbs \Rn$ kompakt und $(U_j)_{j=1, \dots, N}$ eine offene Überdeckung von $K$, also $K \sbs \bigcup_{j =1}^{N} U_j$. Dann gibt es eine Überdeckung $(U_j)_{j = 1, \dots, N}$ untergeordnete Partition der Eins $(\alpha_j)_{j = 1, \dots, N}$ mit $\alpha_j \in C^{\infty} (\Rn)$ und $\text{supp} \alpha_j \sbs U_j j = 1, \dots, N$
+		\end{theorem}
+	
+\end{document}
